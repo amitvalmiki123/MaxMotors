@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Original, owner-supplied source models must never be committed.
+assets/raw/*
+!assets/raw/.gitkeep
