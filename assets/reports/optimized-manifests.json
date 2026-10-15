@@ -1,0 +1,546 @@
+[
+  {
+    "id": "sikandar-suv",
+    "kind": "car",
+    "generatedAt": "2026-10-15T08:25:46.825Z",
+    "credits": {
+      "inGameName": "Sikandar SUV",
+      "title": "2022 Mahindra Scorpio-N",
+      "authors": [
+        "Modding Beast (model, textures)",
+        "BHP3D (export, edits)"
+      ],
+      "source": "https://sketchfab.com/3d-models/2022-mahindra-scorpio-n-538b10f2860f44e694dc3e9d3e223bf8",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modified": "Optimized for MaxMotors (simplified geometry, interior removed, resized/re-encoded textures, brand badges and logos removed)."
+    },
+    "units": "meters",
+    "source": {
+      "file": "assets/raw/scorpio-n.glb",
+      "triangles": 156,
+      "bounds": {
+        "min": [
+          -0.95,
+          0,
+          -2.616
+        ],
+        "max": [
+          0.95,
+          1.58,
+          2.616
+        ]
+      }
+    },
+    "output": {
+      "file": "/tmp/out/models/sikandar-suv.glb",
+      "bytes": 31760,
+      "triangles": 156,
+      "attempts": 1,
+      "textureSizePx": 2048,
+      "textureQuality": 80,
+      "textureBytesBefore": 282958,
+      "textureBytesAfter": 26528
+    },
+    "transform": {
+      "yawRadians": 0,
+      "yawDegrees": 0,
+      "scale": 0.890673,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "frontConfidence": "naming(4)",
+      "sourceSize": [
+        1.9,
+        1.58,
+        5.232
+      ],
+      "longAxis": "z"
+    },
+    "bounds": {
+      "min": [
+        -0.846,
+        0,
+        -2.33
+      ],
+      "max": [
+        0.846,
+        1.407,
+        2.33
+      ]
+    },
+    "size": [
+      1.692,
+      1.407,
+      4.66
+    ],
+    "wheels": {
+      "detected": true,
+      "count": 4,
+      "wheelbase": 3.984,
+      "track": 1.426,
+      "radius": 0.338,
+      "frontZ": -1.992,
+      "rearZ": 1.992,
+      "list": [
+        {
+          "corner": "front-left",
+          "position": [
+            -0.713,
+            0.338,
+            -1.992
+          ],
+          "radius": 0.338,
+          "width": 0.232,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.5,
+          "members": [
+            "wheel_fl"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_f_dummy/wheel_fl"
+          ]
+        },
+        {
+          "corner": "front-right",
+          "position": [
+            0.713,
+            0.338,
+            -1.992
+          ],
+          "radius": 0.338,
+          "width": 0.232,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.5,
+          "members": [
+            "wheel_fr"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_f_dummy/wheel_fr"
+          ]
+        },
+        {
+          "corner": "rear-left",
+          "position": [
+            -0.713,
+            0.338,
+            1.992
+          ],
+          "radius": 0.338,
+          "width": 0.232,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.5,
+          "members": [
+            "wheel_rl"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_r_dummy/wheel_rl"
+          ]
+        },
+        {
+          "corner": "rear-right",
+          "position": [
+            0.713,
+            0.338,
+            1.992
+          ],
+          "radius": 0.338,
+          "width": 0.232,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.5,
+          "members": [
+            "wheel_rr"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_r_dummy/wheel_rr"
+          ]
+        }
+      ]
+    },
+    "strip": {
+      "removedNodes": [
+        "Badge_Logo_Decal"
+      ],
+      "removedMaterials": [
+        "Logo_Emblem"
+      ],
+      "removedMeshes": [
+        "Badge_Logo_Decal"
+      ],
+      "interiorRemoved": [],
+      "interiorSkipped": null
+    },
+    "materials": [
+      {
+        "name": "Carosserie",
+        "alphaMode": "OPAQUE",
+        "doubleSided": false,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "Tire",
+        "alphaMode": "OPAQUE",
+        "doubleSided": false,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "Vitres",
+        "alphaMode": "OPAQUE",
+        "doubleSided": false,
+        "emissive": false,
+        "baseColor": [
+          0.2,
+          0.3,
+          0.35,
+          1
+        ],
+        "textures": []
+      }
+    ],
+    "stats": {
+      "nodes": 53,
+      "meshes": 5,
+      "materials": 3,
+      "textures": 2
+    }
+  },
+  {
+    "id": "aurora-v12",
+    "kind": "car",
+    "generatedAt": "2026-10-15T08:25:46.945Z",
+    "credits": {
+      "inGameName": "Aurora V12",
+      "title": "( FREE ) Lamborghini Terzo Millennio",
+      "authors": [
+        "SDC PERFORMANCE (model)",
+        "Oxo (base interior)"
+      ],
+      "source": "https://sketchfab.com/3d-models/free-lamborghini-terzo-millennio-7ad3dffa9d344c3c978eafcc220cb709",
+      "license": "CC BY-NC 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "modified": "Optimized for MaxMotors (simplified geometry, resized/re-encoded textures, brand badges and logos removed).",
+      "nonCommercial": "MaxMotors must remain non-commercial while this model ships."
+    },
+    "units": "meters",
+    "source": {
+      "file": "assets/raw/terzo-millennio.glb",
+      "triangles": 156,
+      "bounds": {
+        "min": [
+          -0.95,
+          0,
+          -2.12
+        ],
+        "max": [
+          0.95,
+          1.4,
+          2.12
+        ]
+      }
+    },
+    "output": {
+      "file": "/tmp/out/models/aurora-v12.glb",
+      "bytes": 31476,
+      "triangles": 156,
+      "attempts": 1,
+      "textureSizePx": 2048,
+      "textureQuality": 78,
+      "textureBytesBefore": 282958,
+      "textureBytesAfter": 25382
+    },
+    "transform": {
+      "yawRadians": 3.141593,
+      "yawDegrees": 180,
+      "scale": 1.061321,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "frontConfidence": "naming(4)",
+      "sourceSize": [
+        1.9,
+        1.4,
+        4.24
+      ],
+      "longAxis": "z"
+    },
+    "bounds": {
+      "min": [
+        -1.008,
+        0,
+        -2.25
+      ],
+      "max": [
+        1.008,
+        1.486,
+        2.25
+      ]
+    },
+    "size": [
+      2.016,
+      1.486,
+      4.5
+    ],
+    "wheels": {
+      "detected": true,
+      "count": 4,
+      "wheelbase": 4.076,
+      "track": 1.698,
+      "radius": 0.212,
+      "frontZ": -2.038,
+      "rearZ": 2.038,
+      "list": [
+        {
+          "corner": "rear-right",
+          "position": [
+            0.849,
+            0.212,
+            2.038
+          ],
+          "radius": 0.212,
+          "width": 0.276,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.5,
+          "members": [
+            "wheel_rl"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_r_dummy/wheel_rl"
+          ]
+        },
+        {
+          "corner": "rear-left",
+          "position": [
+            -0.849,
+            0.212,
+            2.038
+          ],
+          "radius": 0.212,
+          "width": 0.276,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.5,
+          "members": [
+            "wheel_rr"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_r_dummy/wheel_rr"
+          ]
+        },
+        {
+          "corner": "front-right",
+          "position": [
+            0.849,
+            0.212,
+            -2.038
+          ],
+          "radius": 0.212,
+          "width": 0.276,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.5,
+          "members": [
+            "wheel_fl"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_f_dummy/wheel_fl"
+          ]
+        },
+        {
+          "corner": "front-left",
+          "position": [
+            -0.849,
+            0.212,
+            -2.038
+          ],
+          "radius": 0.212,
+          "width": 0.276,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.5,
+          "members": [
+            "wheel_fr"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_f_dummy/wheel_fr"
+          ]
+        }
+      ]
+    },
+    "strip": {
+      "removedNodes": [
+        "Badge_Logo_Decal"
+      ],
+      "removedMaterials": [
+        "Logo_Emblem"
+      ],
+      "removedMeshes": [
+        "Badge_Logo_Decal"
+      ],
+      "interiorRemoved": [],
+      "interiorSkipped": null
+    },
+    "materials": [
+      {
+        "name": "Carosserie",
+        "alphaMode": "OPAQUE",
+        "doubleSided": false,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "Tire",
+        "alphaMode": "OPAQUE",
+        "doubleSided": false,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "Vitres",
+        "alphaMode": "OPAQUE",
+        "doubleSided": false,
+        "emissive": false,
+        "baseColor": [
+          0.2,
+          0.3,
+          0.35,
+          1
+        ],
+        "textures": []
+      }
+    ],
+    "stats": {
+      "nodes": 53,
+      "meshes": 5,
+      "materials": 3,
+      "textures": 2
+    }
+  },
+  {
+    "id": "forest-dirt-trail",
+    "kind": "track",
+    "generatedAt": "2026-10-15T08:25:47.386Z",
+    "credits": {
+      "inGameName": "Forest Dirt Trail",
+      "title": "Dirt Road Through Forest",
+      "authors": [
+        "99.Miles"
+      ],
+      "source": "https://sketchfab.com/99Miles",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modified": "Optimized for MaxMotors (simplified geometry, instanced foliage, resized/re-encoded textures)."
+    },
+    "units": "meters",
+    "source": {
+      "file": "assets/raw/forest-dirt-road.glb",
+      "triangles": 834
+    },
+    "output": {
+      "file": "/tmp/out/tracks/forest-dirt-trail.glb",
+      "bytes": 33372,
+      "triangles": 834,
+      "attempts": 1,
+      "textureSizePx": 1024,
+      "textureQuality": 74,
+      "textureBytesBefore": 191589,
+      "textureBytesAfter": 15256
+    },
+    "transform": {
+      "yawRadians": 0,
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "note": "track keeps source orientation; terrain JSON carries the vertical offset"
+    },
+    "bounds": {
+      "min": [
+        -240,
+        -1.2,
+        -240
+      ],
+      "max": [
+        240,
+        3.187,
+        240
+      ]
+    },
+    "size": [
+      480,
+      4.387,
+      480
+    ],
+    "terrain": {
+      "file": "/tmp/out/tracks/forest-dirt-trail.terrain.json",
+      "cellSize": 2,
+      "cols": 240,
+      "rows": 240,
+      "heightOffset": -1.158,
+      "roadHalfWidth": 3.2,
+      "roadPoints": 61,
+      "roadCoverage": 0.0067,
+      "heights": {
+        "minHeight": -2.358,
+        "maxHeight": 2.028
+      }
+    },
+    "strip": {
+      "removedNodes": [],
+      "removedMaterials": [],
+      "removedMeshes": [],
+      "interiorRemoved": [],
+      "interiorSkipped": null
+    },
+    "stats": {
+      "nodes": 4,
+      "meshes": 3,
+      "materials": 2,
+      "textures": 2
+    }
+  }
+]

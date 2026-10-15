@@ -9,3 +9,6 @@ coverage/
 # Original, owner-supplied source models must never be committed.
 assets/raw/*
 !assets/raw/.gitkeep
+
+# Asset pipeline workspaces (never committed): dev fixtures + pipeline logs
+assets/fixtures/

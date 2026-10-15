@@ -5,31 +5,40 @@
  * `assets/raw/` directory and are NEVER committed. Only the optimized output in
  * `public/` is committed.
  *
+ * The owner's link list was ordered differently than the files it resolves to
+ * (verified in assets/reports/pipeline.log: node names `Dirt road scene.fbx`,
+ * `scorpio_n.fbx`, `Lambo T M`). The mapping below is the verified one.
+ *
  * Credits / licenses: docs/ASSET_LICENSES.md
  */
 
-export const RAW_DIR = 'assets/raw';
+// `MAXMOTORS_RAW_DIR` lets the dev fixtures run the pipeline locally, where the
+// owner's file host is not reachable (see scripts/assets/dev-fixtures.mjs).
+export const RAW_DIR = process.env.MAXMOTORS_RAW_DIR || 'assets/raw';
 export const REPORT_DIR = 'assets/reports';
 
-/** Source downloads. Order matters only for documentation. */
+/** Source downloads. */
 export const SOURCE_MODELS = [
   {
     id: 'sikandar-suv',
     file: 'scorpio-n.glb',
-    url: 'https://files.catbox.moe/d9datv.glb',
+    url: 'https://files.catbox.moe/88sc50.glb',
     label: '2022 Mahindra Scorpio-N (BHP3D / Modding Beast, CC BY 4.0)',
+    note: 'Owner link 2. Scene root `scorpio_n.fbx`, 1.35M triangles.',
   },
   {
     id: 'forest-dirt-trail',
     file: 'forest-dirt-road.glb',
-    url: 'https://files.catbox.moe/88sc50.glb',
+    url: 'https://files.catbox.moe/d9datv.glb',
     label: 'Dirt Road Through Forest (99.Miles, CC BY 4.0)',
+    note: 'Owner link 1. Scene root `Dirt road scene.fbx`, ~550 m across.',
   },
   {
     id: 'aurora-v12',
     file: 'terzo-millennio.glb',
     url: 'https://files.catbox.moe/phz6v9.glb',
     label: 'Lamborghini Terzo Millennio (SDC PERFORMANCE / Oxo, CC BY-NC 4.0)',
+    note: 'Owner link 3. Scene root `Lambo T M`, front faces +Z in the source.',
   },
 ];
 
@@ -51,10 +60,10 @@ export const ASSET_TARGETS = {
     textureSize: 2048,
     textureQuality: 80,
     maxTextureBytes: 9 * 1024 * 1024,
-    // Real-world Scorpio-N length, used to scale the visual onto the physics box.
+    simplifyError: 0.006,
+    // Real-world Scorpio-N length; the model is already 4.67 m long.
     targetLengthMeters: 4.66,
-    // Node names that must be dropped from the shipped asset (brand badges/decals).
-    stripNodePatterns: ['badge', 'logo', 'emblem', 'mahindra', 'decal', 'plate'],
+    stripNodePatterns: ['badge', 'logo', 'emblem', 'mahindra', 'decal'],
     stripMaterialPatterns: ['badge', 'logo', 'emblem', 'mahindra', 'decal'],
   },
   'aurora-v12': {
@@ -67,21 +76,25 @@ export const ASSET_TARGETS = {
     textureSize: 2048,
     textureQuality: 78,
     maxTextureBytes: 5 * 1024 * 1024,
+    simplifyError: 0.004,
+    // Source model is 3.56 m long; scale it up to the real 4.5 m supercar size.
     targetLengthMeters: 4.5,
-    stripNodePatterns: ['badge', 'logo', 'emblem', 'lamborghini', 'decal', 'plate'],
+    stripNodePatterns: ['badge', 'logo', 'emblem', 'lamborghini', 'decal'],
     stripMaterialPatterns: ['badge', 'logo', 'emblem', 'lamborghini', 'decal'],
   },
   'forest-dirt-trail': {
     source: 'forest-dirt-road.glb',
     output: 'public/tracks/forest-dirt-trail.glb',
     manifest: 'public/tracks/forest-dirt-trail.manifest.json',
+    terrainData: 'public/tracks/forest-dirt-trail.terrain.json',
     kind: 'track',
     maxBytes: 20 * 1024 * 1024,
     maxTriangles: 150_000,
-    textureSize: 2048,
-    textureQuality: 78,
-    maxTextureBytes: 16 * 1024 * 1024,
-    targetLengthMeters: 180,
+    // 70 source images (~50 MB) drive the budget here: 1K is plenty for foliage.
+    textureSize: 1024,
+    textureQuality: 74,
+    maxTextureBytes: 14 * 1024 * 1024,
+    simplifyError: 0.01,
     stripNodePatterns: [],
     stripMaterialPatterns: [],
   },
@@ -89,18 +102,12 @@ export const ASSET_TARGETS = {
 
 /** Poly Haven CC0 environment textures. First slug that resolves wins. */
 export const POLYHAVEN_TEXTURE_SLUGS = ['asphalt_02', 'asphalt_03', 'asphalt_04', 'asphalt_01'];
-export const POLYHAVEN_TEXTURE_MAPS = [
-  { slot: 'diffuse', suffix: 'diff_2k.jpg', extension: 'jpg' },
-  { slot: 'normal', suffix: 'nor_gl_2k.jpg', extension: 'jpg' },
-  { slot: 'roughness', suffix: 'rough_2k.jpg', extension: 'jpg' },
-  { slot: 'arm', suffix: 'arm_2k.jpg', extension: 'jpg' },
-  { slot: 'displacement', suffix: 'disp_2k.png', extension: 'png' },
-];
 export const POLYHAVEN_TEXTURE_BASE = 'https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k';
 export const TEXTURE_OUTPUT_DIR = 'public/textures';
 
-/** Outdoor HDRIs are fetched at runtime from the Poly Haven CDN (see game.js). */
-export const HDRI_CANDIDATES = [
-  'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/4k/lot_01_4k.hdr',
-  'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/lot_01_2k.hdr',
-];
+/** Outdoor HDRI, fetched at runtime (PC 4K / mobile 1K) — see src/game/environment.js */
+export const HDRI_URLS = {
+  desktop: 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/4k/kloppenheim_06_puresky_4k.hdr',
+  mobile: 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/kloppenheim_06_puresky_1k.hdr',
+  fallback: 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/lot_01_2k.hdr',
+};
