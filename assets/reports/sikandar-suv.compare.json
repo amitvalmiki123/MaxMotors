@@ -1,0 +1,134 @@
+{
+  "id": "sikandar-suv",
+  "source": "scorpio-n.glb",
+  "optimized": "public/models/sikandar-suv.glb",
+  "views": {
+    "front34": {
+      "optimized": {
+        "iou": 0.9781,
+        "meanDelta": 20.86,
+        "coverage": [
+          0.1477,
+          0.1456
+        ]
+      },
+      "inGame": {
+        "iou": 0.9781,
+        "meanDelta": 29.38,
+        "coverage": [
+          0.1477,
+          0.1456
+        ]
+      }
+    },
+    "rear34": {
+      "optimized": {
+        "iou": 0.984,
+        "meanDelta": 16.06,
+        "coverage": [
+          0.1458,
+          0.144
+        ]
+      },
+      "inGame": {
+        "iou": 0.984,
+        "meanDelta": 24.73,
+        "coverage": [
+          0.1458,
+          0.144
+        ]
+      }
+    },
+    "side": {
+      "optimized": {
+        "iou": 0.9419,
+        "meanDelta": 14.34,
+        "coverage": [
+          0.1388,
+          0.1417
+        ]
+      },
+      "inGame": {
+        "iou": 0.9419,
+        "meanDelta": 23.21,
+        "coverage": [
+          0.1388,
+          0.1417
+        ]
+      }
+    }
+  },
+  "stats": {
+    "source": {
+      "meshes": 186,
+      "triangles": 1354283,
+      "materials": 43
+    },
+    "optimized": {
+      "meshes": 159,
+      "triangles": 95469,
+      "materials": 34
+    },
+    "inGame": {
+      "meshes": 159,
+      "triangles": 95469,
+      "materials": 35
+    }
+  },
+  "materials": {
+    "droppedByOptimizer": [
+      "boot.5",
+      "glass.001",
+      "glass.002",
+      "indicator_lf",
+      "indicator_rf",
+      "right_rear_light",
+      "scorpio_n_ext_1.2",
+      "scorpio_n_ext_chassis.3",
+      "scorpio_n_int_roof.4"
+    ],
+    "optimized": [
+      "breaklight_l",
+      "breaklight_r",
+      "foglight_l",
+      "foglight_m.0",
+      "foglight_r",
+      "glass",
+      "glass.003",
+      "glass.004",
+      "headlight_f.2",
+      "headlight_f.3",
+      "indicator_lm",
+      "indicator_lr",
+      "indicator_rm",
+      "indicator_rr",
+      "movsteer_1.0.3",
+      "movsteer_1.0.4",
+      "movsteer_1.0.5",
+      "primary",
+      "revlight_L",
+      "revlight_r",
+      "right_front_light",
+      "scorpio_n_int_body.1",
+      "scorpio_n_int_body.2",
+      "scorpio_n_int_dashboard.6",
+      "scorpio_n_int_seats-stiches.0",
+      "scorpio_n_int_sidewall.7",
+      "sunroof_m.1",
+      "taillight_r.5",
+      "taillight_r.6",
+      "taillight_r.7",
+      "wheel_rf.0",
+      "wheel_rf.1",
+      "wheel_rf.2",
+      "wheel_rf.3"
+    ]
+  },
+  "environment": {
+    "hdri": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloppenheim_06_puresky_2k.hdr",
+    "viewer": "hdri 2048x1024",
+    "chrome": "Chrome/155.0.8059.39",
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+  },
+  "generatedAt": "2026-10-15T15:49:24.360Z"
+}

@@ -29,6 +29,15 @@ export function createEngineAudio({ carId, tier } = {}) {
   let index = null;
   let currentCar = carId ?? null;
   let volume = tier?.mobile ? 0.5 : 0.7;
+  // Horn: its own gain straight to the output (engine load must not duck it),
+  // with an analyser so the HUD / tests can tell it is actually sounding.
+  let hornBuffer = null;
+  let hornSource = null;
+  let hornGain = null;
+  let hornAnalyser = null;
+  let hornHeld = false;
+  let hornStopTimer = 0;
+  let mutedNow = false;
 
   async function fetchIndex() {
     if (index) return index;
@@ -71,6 +80,51 @@ export function createEngineAudio({ carId, tier } = {}) {
     return loaded;
   }
 
+  async function loadHorn() {
+    if (hornBuffer) return;
+    const data = await fetchIndex();
+    const effect = data.effects?.find((entry) => entry.id === 'horn');
+    if (!effect) return;
+    const response = await fetch(effect.file);
+    if (!response.ok) throw new Error(`${effect.file} -> ${response.status}`);
+    hornBuffer = await context.decodeAudioData(await response.arrayBuffer());
+    hornGain = context.createGain();
+    hornGain.gain.value = 0;
+    hornAnalyser = context.createAnalyser();
+    hornAnalyser.fftSize = 1024;
+    hornGain.connect(hornAnalyser).connect(context.destination);
+  }
+
+  function applyHorn() {
+    if (!context || !hornBuffer || !hornGain) return;
+    const now = context.currentTime;
+    const sounding = hornHeld && !mutedNow;
+    if (sounding) {
+      window.clearTimeout(hornStopTimer);
+      if (!hornSource) {
+        hornSource = context.createBufferSource();
+        hornSource.buffer = hornBuffer;
+        hornSource.loop = true;
+        hornSource.connect(hornGain);
+        hornSource.start();
+      }
+      hornGain.gain.cancelScheduledValues(now);
+      hornGain.gain.setTargetAtTime(Math.min(1, volume * 0.85), now, 0.012);
+    } else if (hornSource) {
+      hornGain.gain.cancelScheduledValues(now);
+      hornGain.gain.setTargetAtTime(0, now, 0.035);
+      const source = hornSource;
+      hornSource = null;
+      hornStopTimer = window.setTimeout(() => {
+        try {
+          source.stop();
+        } catch {
+          /* already stopped */
+        }
+      }, 300);
+    }
+  }
+
   function startTyreNoise() {
     if (noiseSource) return;
     const frames = context.sampleRate * 2;
@@ -111,6 +165,8 @@ export function createEngineAudio({ carId, tier } = {}) {
           layers = await loadLayers();
         }
         startTyreNoise();
+        await loadHorn().catch((error) => console.info('MaxMotors horn unavailable:', error.message));
+        applyHorn();
         for (const layer of layers) {
           if (!layer.started) {
             layer.source.start(0, Math.random() * layer.loopSeconds * 0.5);
@@ -140,6 +196,24 @@ export function createEngineAudio({ carId, tier } = {}) {
     setVolume(value) {
       volume = Math.max(0, Math.min(1, value));
     },
+    /** H key / HORN button: true while held. */
+    setHorn(active) {
+      if (hornHeld === Boolean(active)) return;
+      hornHeld = Boolean(active);
+      applyHorn();
+    },
+    get hornHeld() {
+      return hornHeld;
+    },
+    /** RMS of the horn output (0 when silent) — proof it is audible. */
+    hornLevel() {
+      if (!hornAnalyser) return 0;
+      const data = new Float32Array(hornAnalyser.fftSize);
+      hornAnalyser.getFloatTimeDomainData(data);
+      let sum = 0;
+      for (const value of data) sum += value * value;
+      return Math.sqrt(sum / data.length);
+    },
     /**
      * @param {object} params
      * @param {number} params.rpm engine speed
@@ -149,6 +223,10 @@ export function createEngineAudio({ carId, tier } = {}) {
      * @param {boolean} params.muted
      */
     update({ rpm = 900, load = 0, speedKmh = 0, slip = 0, muted = false } = {}) {
+      if (mutedNow !== muted) {
+        mutedNow = muted;
+        applyHorn();
+      }
       if (!started || disposed || !context) return;
       const now = context.currentTime;
       const targetMaster = muted ? 0 : volume * (0.25 + load * 0.75);
@@ -190,6 +268,7 @@ export function createEngineAudio({ carId, tier } = {}) {
       }
       try {
         noiseSource?.stop();
+        hornSource?.stop();
       } catch {
         /* noop */
       }
@@ -207,6 +286,9 @@ function createSilentEngine() {
     unlock: async () => false,
     setCar: () => {},
     setVolume: () => {},
+    setHorn: () => {},
+    hornHeld: false,
+    hornLevel: () => 0,
     update: () => {},
     matchesLoop: () => true,
     dispose: () => {},

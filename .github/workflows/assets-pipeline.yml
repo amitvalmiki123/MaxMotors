@@ -89,6 +89,12 @@ jobs:
           set -o pipefail
           node scripts/assets/optimize-glb.mjs ${{ env.PIPELINE_ONLY != '' && format('--only {0}', env.PIPELINE_ONLY) || '' }} 2>&1 | tee -a "$LOG"
 
+      - name: Forest canopy census (source vs shipped islands)
+        if: env.PIPELINE_MODE != 'inspect' && steps.optimize.outcome == 'success'
+        run: |
+          set -o pipefail
+          node scripts/assets/forest-canopy.mjs ${{ env.PIPELINE_ONLY != '' && format('--only {0}', env.PIPELINE_ONLY) || '' }} 2>&1 | tee -a "$LOG"
+
       - name: Fetch Poly Haven CC0 asphalt PBR (2K)
         id: textures
         if: env.PIPELINE_MODE != 'inspect'
@@ -102,6 +108,13 @@ jobs:
         run: |
           set -o pipefail
           node scripts/assets/build-audio.mjs 2>&1 | tee -a "$LOG"
+
+      - name: Material audit (source vs optimized vs in-game, same HDRI)
+        id: compare
+        if: env.PIPELINE_MODE != 'inspect' && steps.optimize.outcome == 'success'
+        run: |
+          set -o pipefail
+          node scripts/assets/render-compare.mjs ${{ env.PIPELINE_ONLY != '' && format('--only {0}', env.PIPELINE_ONLY) || '' }} 2>&1 | tee -a "$LOG"
 
       - name: Report sizes
         if: always()

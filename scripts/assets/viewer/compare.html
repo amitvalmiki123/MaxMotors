@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>MaxMotors material audit viewer</title>
+    <style>
+      html, body { margin: 0; background: #0e1214; }
+      canvas { display: block; }
+    </style>
+    <!-- Bare viewer: the same three.js build and car loader the game ships. -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/node_modules/three/build/three.module.js",
+          "three/addons/": "/node_modules/three/examples/jsm/",
+          "three/examples/jsm/": "/node_modules/three/examples/jsm/",
+          "meshoptimizer": "/node_modules/meshoptimizer/index.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script type="module" src="/viewer/compare.js"></script>
+  </body>
+</html>

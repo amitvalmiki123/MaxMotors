@@ -2,7 +2,93 @@
   {
     "id": "sikandar-suv",
     "kind": "car",
-    "generatedAt": "2026-10-15T13:36:12.156Z",
+    "generatedAt": "2026-10-15T15:48:41.752Z",
+    "cockpit": {
+      "source": "steering-node",
+      "driverSide": "right",
+      "head": [
+        0.375,
+        1.425,
+        0.006
+      ],
+      "steeringWheel": {
+        "center": [
+          0.374,
+          1.176,
+          -0.408
+        ],
+        "axis": [
+          0.003,
+          0.338,
+          0.941
+        ],
+        "radius": 0.18,
+        "node": "steering_dummy",
+        "material": null
+      }
+    },
+    "openables": [
+      {
+        "kind": "door",
+        "node": "door_lf",
+        "style": "swing",
+        "axis": "y",
+        "angle": -1.0821041362364843,
+        "hinge": [
+          -1.083,
+          1.024,
+          -0.906
+        ]
+      },
+      {
+        "kind": "door",
+        "node": "door_rf",
+        "style": "swing",
+        "axis": "y",
+        "angle": 1.0821041362364843,
+        "hinge": [
+          1.083,
+          1.021,
+          -0.909
+        ]
+      },
+      {
+        "kind": "door",
+        "node": "door_rr",
+        "style": "swing",
+        "axis": "y",
+        "angle": 1.0821041362364843,
+        "hinge": [
+          0.924,
+          1.021,
+          0.116
+        ]
+      },
+      {
+        "kind": "door",
+        "node": "door_lr",
+        "style": "swing",
+        "axis": "y",
+        "angle": -1.0821041362364843,
+        "hinge": [
+          -0.944,
+          1.021,
+          0.116
+        ]
+      },
+      {
+        "kind": "boot",
+        "node": "boot",
+        "style": "boot",
+        "axis": "x",
+        "angle": -1.2566370614359172,
+        "hinge": [
+          -0.012,
+          1.763,
+          1.786
+        ]
+      }
+    ],
     "credits": {
       "inGameName": "Sikandar SUV",
       "title": "2022 Mahindra Scorpio-N",
@@ -18,10 +104,10 @@
     "units": "meters",
     "source": {
       "file": "assets/raw/scorpio-n.glb",
-      "triangles": 1329723,
+      "triangles": 1354283,
       "bounds": {
         "min": [
-          -1.078,
+          -1.076,
           0,
           -2.423
         ],
@@ -34,13 +120,13 @@
     },
     "output": {
       "file": "public/models/sikandar-suv.glb",
-      "bytes": 1707424,
-      "triangles": 95246,
+      "bytes": 2797056,
+      "triangles": 95510,
       "attempts": 1,
       "textureSizePx": 2048,
       "textureQuality": 80,
       "textureBytesBefore": 5210357,
-      "textureBytesAfter": 899514,
+      "textureBytesAfter": 1472382,
       "textureMemoryMB": 30.8,
       "triangleBudget": 100000,
       "overBudget": false,
@@ -51,13 +137,13 @@
       "yawDegrees": 0,
       "scale": 0.997379,
       "position": [
-        -0.0089,
-        0.0001,
+        -0.0101,
+        0.0002,
         0.0863
       ],
-      "frontConfidence": "naming(40)",
+      "frontConfidence": "naming(42)",
       "sourceSize": [
-        2.175,
+        2.172,
         1.843,
         4.672
       ],
@@ -65,18 +151,18 @@
     },
     "bounds": {
       "min": [
-        -1.085,
+        -1.083,
         0,
         -2.33
       ],
       "max": [
-        1.085,
+        1.083,
         1.838,
         2.33
       ]
     },
     "size": [
-      2.17,
+      2.166,
       1.838,
       4.66
     ],
@@ -84,7 +170,7 @@
       "detected": true,
       "count": 4,
       "wheelbase": 2.744,
-      "track": 1.622,
+      "track": 1.621,
       "radius": 0.379,
       "frontZ": -1.474,
       "rearZ": 1.27,
@@ -92,7 +178,7 @@
         {
           "corner": "front-left",
           "position": [
-            -0.82,
+            -0.821,
             0.379,
             -1.474
           ],
@@ -115,7 +201,7 @@
         {
           "corner": "front-right",
           "position": [
-            0.802,
+            0.8,
             0.379,
             -1.474
           ],
@@ -138,7 +224,7 @@
         {
           "corner": "rear-left",
           "position": [
-            -0.82,
+            -0.821,
             0.379,
             1.27
           ],
@@ -161,7 +247,7 @@
         {
           "corner": "rear-right",
           "position": [
-            0.802,
+            0.8,
             0.379,
             1.27
           ],
@@ -191,20 +277,14 @@
       "interiorSkipped": "glass is transparent",
       "flatDecalRemoved": [
         "movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005)",
-        "scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.008)",
-        "scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.424x0.105x0.003)",
-        "headlight_led_right front light_0 (0.047x0.054x0.015)",
-        "taillight_r_taillight_r.7_0 (0.041x0.006x0.035)",
-        "scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308)",
+        "scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.001x0.002x0.002)",
+        "scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.424x0.115x0.004)",
+        "scorpio_n_int_seat_reck_movsteer_1.0.3_0 (0.008x0.011x0.028)",
         "scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002)",
-        "roof_lights_right front light_0 (0.157x0.016x0.060)",
         "scorpio_n_int_console_movsteer_1.0.3_0 (0.009x0.001x0.009)",
         "int_door_rf_movsteer_1.0.3_0 (0.009x0.001x0.010)",
-        "indicator_rm_indicator rm_0 (0.108x0.017x0.126)",
         "int_door_rr_movsteer_1.0.3_0 (0.008x0.001x0.007)",
-        "boot_scorpio_n_ext_1.2_0 (0.467x0.112x0.010)",
-        "boot_boot.5_0 (0.466x0.011x0.055)",
-        "breaklight_mesh_headlight_f.2_0 (0.400x0.025x0.011)"
+        "boot_scorpio_n_ext_1.2_0 (0.471x0.112x0.010)"
       ]
     },
     "materials": [
@@ -349,7 +429,7 @@
         ]
       },
       {
-        "name": "indicator_lf",
+        "name": "right_front_light",
         "alphaMode": "OPAQUE",
         "doubleSided": true,
         "emissive": false,
@@ -375,6 +455,49 @@
           0.047
         ],
         "textures": []
+      },
+      {
+        "name": "foglight_m.0",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "foglight_r",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "foglight_l",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
       },
       {
         "name": "taillight_r.5",
@@ -403,17 +526,47 @@
         "textures": []
       },
       {
-        "name": "glass.001",
-        "alphaMode": "BLEND",
+        "name": "taillight_r.7",
+        "alphaMode": "OPAQUE",
         "doubleSided": true,
         "emissive": false,
         "baseColor": [
-          0.937,
-          0.937,
-          0.937,
-          0.047
+          0.894,
+          0.894,
+          0.894,
+          1
         ],
         "textures": []
+      },
+      {
+        "name": "indicator_lr",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "indicator_rr",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
       },
       {
         "name": "breaklight_l",
@@ -431,17 +584,49 @@
         ]
       },
       {
-        "name": "glass.002",
-        "alphaMode": "BLEND",
+        "name": "breaklight_r",
+        "alphaMode": "OPAQUE",
         "doubleSided": true,
         "emissive": false,
         "baseColor": [
-          0.8,
-          0.8,
-          0.8,
-          0.047
+          1,
+          1,
+          1,
+          1
         ],
-        "textures": []
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "revlight_L",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "revlight_r",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
       },
       {
         "name": "glass.003",
@@ -541,19 +726,110 @@
           1
         ],
         "textures": []
+      },
+      {
+        "name": "indicator_lm",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "indicator_rm",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "glass.004",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          0,
+          0,
+          0.047
+        ],
+        "textures": []
       }
     ],
     "stats": {
-      "nodes": 234,
-      "meshes": 150,
-      "materials": 24,
+      "nodes": 233,
+      "meshes": 159,
+      "materials": 34,
       "textures": 10
     }
   },
   {
     "id": "aurora-v12",
     "kind": "car",
-    "generatedAt": "2026-10-15T13:36:12.763Z",
+    "generatedAt": "2026-10-15T15:48:42.930Z",
+    "cockpit": {
+      "source": "estimate",
+      "driverSide": "left",
+      "head": [
+        -0.38,
+        0.76,
+        -0.315
+      ],
+      "steeringWheel": {
+        "center": [
+          -0.38,
+          0.56,
+          -0.735
+        ],
+        "axis": [
+          0,
+          0.375,
+          0.927
+        ],
+        "radius": 0.17
+      }
+    },
+    "openables": [
+      {
+        "kind": "door",
+        "node": "detach_door_L_60_63",
+        "style": "scissor",
+        "axis": "x",
+        "angle": -1.1868238913561442,
+        "hinge": [
+          -0.499,
+          0.478,
+          -1.065
+        ]
+      },
+      {
+        "kind": "door",
+        "node": "detach_door_R_60_67",
+        "style": "scissor",
+        "axis": "x",
+        "angle": -1.1868238913561442,
+        "hinge": [
+          0.426,
+          0.478,
+          -1.065
+        ]
+      }
+    ],
     "credits": {
       "inGameName": "Aurora V12",
       "title": "( FREE ) Lamborghini Terzo Millennio",
@@ -570,7 +846,7 @@
     "units": "meters",
     "source": {
       "file": "assets/raw/terzo-millennio.glb",
-      "triangles": 106111,
+      "triangles": 108327,
       "bounds": {
         "min": [
           -0.826,
@@ -586,28 +862,28 @@
     },
     "output": {
       "file": "public/models/aurora-v12.glb",
-      "bytes": 673704,
-      "triangles": 69894,
+      "bytes": 808492,
+      "triangles": 69910,
       "attempts": 1,
       "textureSizePx": 2048,
       "textureQuality": 78,
       "textureBytesBefore": 1464780,
-      "textureBytesAfter": 203262,
+      "textureBytesAfter": 354022,
       "textureMemoryMB": 18.3,
       "triangleBudget": 70000,
       "overBudget": false,
       "sizeBudgetBytes": 4194304
     },
     "transform": {
-      "yawRadians": 0,
-      "yawDegrees": 0,
+      "yawRadians": 3.141593,
+      "yawDegrees": 180,
       "scale": 1.266182,
       "position": [
-        -0.0098,
+        0.0098,
         -0.0546,
-        -0.0236
+        0.0236
       ],
-      "frontConfidence": "default(-Z)",
+      "frontConfidence": "config(+z) naming-lean 2",
       "sourceSize": [
         1.668,
         0.752,
@@ -638,15 +914,15 @@
       "wheelbase": 2.633,
       "track": 1.971,
       "radius": 0.278,
-      "frontZ": -1.34,
-      "rearZ": 1.293,
+      "frontZ": -1.293,
+      "rearZ": 1.34,
       "list": [
         {
-          "corner": "front-left",
+          "corner": "rear-right",
           "position": [
-            -0.986,
+            0.986,
             0.293,
-            -1.34
+            1.34
           ],
           "radius": 0.288,
           "width": 0.147,
@@ -665,11 +941,11 @@
           ]
         },
         {
-          "corner": "front-right",
+          "corner": "rear-left",
           "position": [
-            0.985,
+            -0.985,
             0.293,
-            -1.34
+            1.34
           ],
           "radius": 0.288,
           "width": 0.153,
@@ -688,11 +964,11 @@
           ]
         },
         {
-          "corner": "rear-left",
+          "corner": "front-right",
           "position": [
-            -0.941,
+            0.941,
             0.268,
-            1.293
+            -1.293
           ],
           "radius": 0.268,
           "width": 0.285,
@@ -713,11 +989,11 @@
           ]
         },
         {
-          "corner": "rear-right",
+          "corner": "front-left",
           "position": [
-            0.922,
+            -0.922,
             0.268,
-            1.293
+            -1.293
           ],
           "radius": 0.268,
           "width": 0.285,
@@ -789,7 +1065,6 @@
         "Object_153 (0.487x0.099x0.780)",
         "Object_161 (0.201x0.070x0.075)",
         "Object_163 (0.199x0.069x0.074)",
-        "Object_166 (1.217x0.034x0.064)",
         "Object_186 (0.087x0.451x0.451)",
         "Object_200 (0.091x0.451x0.451)",
         "Object_204 (0.054x0.035x0.055)",
@@ -1096,8 +1371,8 @@
       }
     ],
     "stats": {
-      "nodes": 130,
-      "meshes": 49,
+      "nodes": 131,
+      "meshes": 52,
       "materials": 21,
       "textures": 3
     }
@@ -1105,7 +1380,7 @@
   {
     "id": "forest-dirt-trail",
     "kind": "track",
-    "generatedAt": "2026-10-15T13:36:18.006Z",
+    "generatedAt": "2026-10-15T15:48:49.939Z",
     "credits": {
       "inGameName": "Forest Dirt Trail",
       "title": "Dirt Road Through Forest",

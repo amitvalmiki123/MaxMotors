@@ -24,7 +24,10 @@ import { ASSET_TARGETS, RAW_DIR, REPORT_DIR } from './config.mjs';
 import { clusterWheels, descriptorFromBounds } from '../../src/game/cars/wheel-clusters.js';
 import { buildTerrainGrid, classifyMaterial, collectTriangles, extractRoadPath, serializeTrail, writeOccupancyArtifacts } from './terrain.mjs';
 import { ensureDir, formatBytes, getNodeIO } from './gltf-io.mjs';
-import { weldByPosition } from './weld-position.mjs';
+import { recomputeCreaseNormals, snapPositions, weldByPosition } from './weld-position.mjs';
+import { computeCockpit, steeringColumnAxis } from '../../src/game/cars/cockpit.js';
+import { STEERING_NAME_PATTERN, isWheelName, openableKind } from '../../src/game/cars/names.js';
+import { planOpenable } from '../../src/game/cars/openables.js';
 
 const args = process.argv.slice(2);
 const onlyIndex = args.indexOf('--only');
@@ -195,13 +198,18 @@ function stripFlatDecals(document, target, kind = 'car') {
   const maxDimension = 0.16 * length;
   const maxFootprint = 0.03 * length * width;
   const protectedNames = /wing|spoiler|diffuser|splitter|mirror|handle|wiper|grill|vent|duct|camera|plate_?light|reflector/i;
+  // Lamps, glass and mirrors are functional even when a part is thin and small
+  // (an LED strip, a third brake light). Sketchfab exports name the *parent*
+  // node and call the mesh node `Object_N`, so ancestors are checked too.
+  const functionalNames = /light|lamp|(?:^|[^a-z])led(?:[^a-z]|$)|indicator|reflector|glass|window|mirror|handle|wiper/i;
   const removed = [];
 
   for (const node of document.getRoot().listNodes()) {
     const mesh = node.getMesh();
     if (!mesh) continue;
     const label = node.getName() || mesh.getName() || '';
-    if (protectedNames.test(label)) continue;
+    if (protectedNames.test(label) || functionalNames.test(label)) continue;
+    if (ancestorsOf(node).some((ancestor) => functionalNames.test(ancestor.getName() || ''))) continue;
     const triangles = countMeshTriangles(mesh);
     if (triangles > 3000) continue;
     const box = getBounds(node);
@@ -218,11 +226,15 @@ function stripFlatDecals(document, target, kind = 'car') {
   return removed;
 }
 
-async function compressTextures(document, { textureSize, quality }) {
+async function compressTextures(document, { textureSize, quality, colorQuality = quality }) {
   const normalTextures = new Set();
+  const colorTextures = new Set();
   for (const material of document.getRoot().listMaterials()) {
     const normal = material.getNormalTexture();
     if (normal) normalTextures.add(normal);
+    for (const texture of [material.getBaseColorTexture(), material.getEmissiveTexture()]) {
+      if (texture) colorTextures.add(texture);
+    }
   }
   let before = 0;
   let after = 0;
@@ -245,7 +257,7 @@ async function compressTextures(document, { textureSize, quality }) {
       }
       const encoded = normalTextures.has(texture)
         ? await pipeline.webp({ nearLossless: true, quality: Math.min(95, quality + 12) }).toBuffer()
-        : await pipeline.webp({ quality }).toBuffer();
+        : await pipeline.webp({ quality: colorTextures.has(texture) ? colorQuality : quality }).toBuffer();
       if (encoded.byteLength < image.byteLength) {
         texture.setImage(encoded).setMimeType('image/webp');
       }
@@ -296,7 +308,7 @@ function collectNodeCandidates(document) {
         min: box.min,
         max: box.max,
         // Node name only: this model reuses wheel *material* names on doors.
-        wheelish: /wheel|tyre|tire|rim|pneu|roue|jante/i.test(node.getName() || ''),
+        wheelish: isWheelName(node.getName()),
         ancestorIds: ancestors,
       }));
     }
@@ -330,6 +342,186 @@ function rotateY(vector, yaw) {
  * Normalizes the model into car space: -Z is forward, origin at the wheel
  * contact plane on the model's XZ centre, length scaled to `targetLengthMeters`.
  */
+/** Parent node of a node (gltf-transform lists the scene/root as parents too). */
+function parentNode(node) {
+  return node.listParents().find((parent) => parent.propertyType === 'Node') ?? null;
+}
+
+function ancestorsOf(node) {
+  const list = [];
+  for (let current = parentNode(node); current; current = parentNode(current)) list.push(current);
+  return list;
+}
+
+/** `Object_12`-style names say nothing; fall back to the nearest named ancestor. */
+const GENERIC_NODE_NAME = /^(object|mesh|node|primitive)?[_ .-]?\d+$/i;
+function meaningfulName(node) {
+  const own = node.getName() || '';
+  if (own && !GENERIC_NODE_NAME.test(own)) return own;
+  for (const ancestor of ancestorsOf(node)) {
+    const name = ancestor.getName() || '';
+    if (name && !GENERIC_NODE_NAME.test(name)) return name;
+  }
+  return own;
+}
+
+function transformPoint(point, matrix) {
+  const [x, y, z] = point;
+  return [
+    matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12],
+    matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13],
+    matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14],
+  ];
+}
+
+/** Sampled world-space vertices of some mesh nodes, mapped into game space. */
+function sampleGamePoints(nodes, placement, budget = 6000) {
+  const points = [];
+  const element = [];
+  for (const node of nodes) {
+    const mesh = node.getMesh();
+    if (!mesh) continue;
+    const matrix = node.getWorldMatrix();
+    for (const primitive of mesh.listPrimitives()) {
+      const position = primitive.getAttribute('POSITION');
+      if (!position) continue;
+      const count = position.getCount();
+      const step = Math.max(1, Math.floor(count / budget));
+      for (let index = 0; index < count; index += step) {
+        points.push(placement.toNormalized(transformPoint(position.getElement(index, element), matrix)));
+      }
+    }
+  }
+  return points;
+}
+
+function meshNodesUnder(node) {
+  const nodes = [];
+  node.traverse((child) => {
+    if (child.getMesh()) nodes.push(child);
+  });
+  return nodes;
+}
+
+/**
+ * Driver-head anchor + steering wheel for the cockpit camera. A steering wheel
+ * is found by node name (`steering_dummy` / `movsteer`) or, for exports that
+ * only name materials, by material (`Volant.003`).
+ */
+function collectCockpit(document, target, placement, bounds) {
+  const root = document.getRoot();
+  const named = root.listNodes().filter((node) => STEERING_NAME_PATTERN.test(node.getName() || '') && meshNodesUnder(node).length);
+  const outermost = named.filter((node) => !ancestorsOf(node).some((ancestor) => named.includes(ancestor)));
+  let steering = null;
+  if (outermost.length) {
+    const node = outermost[0];
+    const fit = steeringColumnAxis(sampleGamePoints(meshNodesUnder(node), placement));
+    if (fit) steering = { ...fit, node: node.getName(), material: null };
+  } else {
+    const byMaterial = root.listNodes().filter((node) => node.getMesh()?.listPrimitives()
+      .some((primitive) => STEERING_NAME_PATTERN.test(primitive.getMaterial()?.getName() || '')));
+    const fit = byMaterial.length ? steeringColumnAxis(sampleGamePoints(byMaterial, placement)) : null;
+    if (fit) {
+      const material = byMaterial[0].getMesh().listPrimitives()
+        .map((primitive) => primitive.getMaterial()?.getName() || '')
+        .find((name) => STEERING_NAME_PATTERN.test(name));
+      steering = { ...fit, node: null, material, meshNodes: byMaterial.map((node) => node.getName()) };
+    }
+  }
+  const cockpit = computeCockpit({ bounds, steering, driverSide: target.driverSide ?? 'left' });
+  if (steering && cockpit.steeringWheel) {
+    cockpit.steeringWheel.node = steering.node;
+    cockpit.steeringWheel.material = steering.material;
+    if (steering.meshNodes) cockpit.steeringWheel.meshNodes = steering.meshNodes;
+  }
+  return cockpit;
+}
+
+/** Doors / bonnet / boot that exist as separate named nodes, with hinge plans. */
+function collectOpenables(document, placement) {
+  const list = [];
+  for (const node of document.getRoot().listNodes()) {
+    const kind = openableKind(node.getName());
+    if (!kind || !meshNodesUnder(node).length) continue;
+    const box = getBounds(node);
+    const corners = [];
+    for (const x of [box.min[0], box.max[0]]) for (const y of [box.min[1], box.max[1]]) for (const z of [box.min[2], box.max[2]]) corners.push(placement.toNormalized([x, y, z]));
+    const min = [0, 1, 2].map((axis) => Math.min(...corners.map((point) => point[axis])));
+    const max = [0, 1, 2].map((axis) => Math.max(...corners.map((point) => point[axis])));
+    list.push({ kind, node: node.getName(), ...planOpenable({ kind, name: node.getName(), min, max }) });
+  }
+  return list;
+}
+
+/** meshopt's error is relative to each primitive's extent; 5% is the visual cap. */
+const MAX_CAR_SIMPLIFY_ERROR = 0.05;
+
+async function simplifyToward(document, budget, current, error) {
+  await document.transform(simplify({
+    simplifier: MeshoptSimplifier,
+    ratio: Math.max(0.02, Math.min(1, budget / current)),
+    error,
+    lockBorder: false,
+  }));
+  return countTriangles(document);
+}
+
+/**
+ * Car simplification that keeps UV seams and hard-edge normals intact.
+ *
+ *   1. snap near-coincident positions (0.1 mm) without merging vertices, then
+ *      weld only fully identical vertices: meshopt sees real seams and
+ *      collapses along them, keeping both sides' UVs and normals;
+ *   2. only if that cannot reach the budget, position-weld interior-only
+ *      primitives (their texel bands are not visible from outside);
+ *   3. last resort: the old position weld everywhere, loudly logged.
+ *
+ * The error never exceeds MAX_CAR_SIMPLIFY_ERROR in stages 1–2 (the old path
+ * escalated to 0.49, i.e. half a primitive's size, which crumpled the doors).
+ */
+async function simplifyCarToBudget(document, target, budget, trianglesBefore) {
+  let triangles = trianglesBefore;
+  const welded = new Set();
+  const snapped = snapPositions(document, { tolerance: 1e-4 });
+  await document.transform(weld());
+  console.log(`[optimize] seam snap 0.1 mm: ${snapped.toLocaleString()} vertices aligned (UVs + normals kept)`);
+  for (const error of [target.simplifyError ?? 0.005, 0.012, 0.025, MAX_CAR_SIMPLIFY_ERROR]) {
+    if (triangles <= budget) break;
+    const next = await simplifyToward(document, budget, triangles, error);
+    console.log(`[optimize] seam-aware simplify error ${error}: ${triangles.toLocaleString()} -> ${next.toLocaleString()} tris`);
+    triangles = next;
+  }
+  // Position welds, cheapest visual cost first. Every welded primitive gets
+  // crease-aware normals rebuilt at the end (the weld keeps arbitrary normals).
+  const hasTextures = (material) => Boolean(material && (material.getBaseColorTexture() || material.getNormalTexture()
+    || material.getMetallicRoughnessTexture() || material.getOcclusionTexture() || material.getEmissiveTexture()));
+  const stages = [
+    // Untextured (paint, rubber, glass, plain trim): UV seams carry nothing.
+    { label: 'untextured', filter: (primitive) => !hasTextures(primitive.getMaterial()), tolerance: 1e-4, error: MAX_CAR_SIMPLIFY_ERROR },
+    // Textured interior: a texel band on a seam is barely visible from outside.
+    { label: 'interior', filter: (primitive) => classifyMaterial(primitive.getMaterial(), { kind: 'car' }) === 'interior', tolerance: 1e-4, error: MAX_CAR_SIMPLIFY_ERROR },
+  ];
+  const extent = Math.max(1, ...sceneBounds(document).size);
+  for (const tolerance of [1e-4, extent * 0.0005, extent * 0.001, extent * 0.002]) {
+    stages.push({ label: `LAST RESORT everything ${tolerance.toFixed(4)} m (textured UV seams stretch)`, filter: null, tolerance, error: 0.08 });
+  }
+  for (const stage of stages) {
+    if (triangles <= budget) break;
+    const { merged, dropped, primitives } = weldByPosition(document, { tolerance: stage.tolerance, filter: stage.filter });
+    for (const primitive of primitives) welded.add(primitive);
+    if (!merged && !dropped) continue;
+    const next = await simplifyToward(document, budget, triangles, stage.error);
+    const log = stage.filter ? console.log : console.warn;
+    log(`[optimize] position weld (${stage.label}): merged ${merged.toLocaleString()} verts, dropped ${dropped.toLocaleString()} -> ${next.toLocaleString()} tris`);
+    triangles = next;
+  }
+  let added = 0;
+  for (const primitive of welded) added += recomputeCreaseNormals(document, primitive, { creaseAngle: 40 });
+  if (welded.size) console.log(`[optimize] crease-aware normals rebuilt on ${welded.size} welded primitives (+${added.toLocaleString()} split vertices)`);
+  if (triangles > budget) console.warn(`[optimize] car is still over its triangle budget: ${triangles.toLocaleString()} > ${budget.toLocaleString()}`);
+  return triangles;
+}
+
 function computeCarPlacement(document, target, bounds) {
   const longAxis = bounds.size[0] >= bounds.size[2] ? 0 : 2;
   const length = bounds.size[longAxis] || 1;
@@ -345,7 +537,7 @@ function computeCarPlacement(document, target, bounds) {
   let named = 0;
   for (const node of document.getRoot().listNodes()) {
     if (!node.getMesh()) continue;
-    const label = node.getName() || node.getMesh().getName() || '';
+    const label = meaningfulName(node) || node.getMesh().getName() || '';
     if (!label) continue;
     const box = getBounds(node);
     const center = [0, 1, 2].map((axis) => (box.min[axis] + box.max[axis]) / 2);
@@ -363,7 +555,11 @@ function computeCarPlacement(document, target, bounds) {
   // Ties default to -Z forward: that is what every car in the pack uses, and
   // guessing +Z would silently spin the shipped model 180°.
   const lean = frontScore - rearScore;
-  const frontSign = lean > 0 ? 1 : -1;
+  // An explicit `frontAxis` in config.mjs wins: the Terzo Millennio's front
+  // faces +Z in the source and its mesh nodes are all `Object_N`, so naming
+  // alone shipped it backwards (chase camera looking at the headlights).
+  const hinted = target.frontAxis === '+z' ? 1 : target.frontAxis === '-z' ? -1 : 0;
+  const frontSign = hinted || (lean > 0 ? 1 : -1);
   const frontDir = [0, 0, 0];
   frontDir[longAxis] = frontSign;
 
@@ -411,7 +607,7 @@ function computeCarPlacement(document, target, bounds) {
     pivot,
     position,
     toNormalized,
-    frontConfidence: lean !== 0 ? `naming(${named})` : 'default(-Z)',
+    frontConfidence: hinted ? `config(${target.frontAxis}) naming-lean ${lean}` : lean !== 0 ? `naming(${named})` : 'default(-Z)',
     wheelData,
   };
 }
@@ -419,7 +615,10 @@ function computeCarPlacement(document, target, bounds) {
 async function optimizeOnce(target, attempt) {
   const io = await getNodeIO();
   const document = await io.read(path.join(RAW_DIR, target.source));
-  await document.transform(dedup(), weld());
+  // Cars keep every uniquely named material: dedup used to fold per-lamp
+  // materials (revlight_L, foglight_r, indicator_rr, Volant.003 …) into one
+  // survivor, which erased the splits the runtime needs to tell lamps apart.
+  await document.transform(dedup(target.kind === 'car' ? { keepUniqueNames: true } : {}), weld());
 
   const strip = stripBrandAssets(document, target);
   const textureSize = Math.max(512, Math.round(target.textureSize * attempt.textureScale));
@@ -431,7 +630,9 @@ async function optimizeOnce(target, attempt) {
   // The triangle budget is the hard target: the allowed geometric error is
   // scaled up until the mesh fits, so a 341k-triangle model still lands inside
   // its documented limit instead of stopping at whatever ratio simplifies to.
-  if (trianglesBefore > triangleBudget) {
+  if (target.kind === 'car' && trianglesBefore > triangleBudget) {
+    trianglesAfter = await simplifyCarToBudget(document, target, triangleBudget, trianglesBefore);
+  } else if (trianglesBefore > triangleBudget) {
     let error = target.simplifyError ?? 0.005;
     for (let round = 0; round < 4 && trianglesAfter > triangleBudget; round += 1) {
       const ratio = Math.max(0.02, Math.min(1, triangleBudget / trianglesAfter));
@@ -494,7 +695,10 @@ async function optimizeOnce(target, attempt) {
     console.log(`[optimize] interior kept (${interior.skipped})`);
   }
 
-  const textureStats = await compressTextures(document, { textureSize, quality });
+  // Base colour / emissive carry the paint, glass tint and lamp detail the
+  // material audit compares; they get a higher WebP quality than data maps.
+  const colorQuality = target.baseColorQuality ? Math.max(quality, target.baseColorQuality + attempt.qualityDelta) : quality;
+  const textureStats = await compressTextures(document, { textureSize, quality, colorQuality });
   const textureMemory = estimateTextureMemoryMB(document);
   await document.transform(prune());
 
@@ -550,6 +754,7 @@ async function buildCarManifest(document, target, id, { strip, interior, flatDec
   const bounds = sceneBounds(document);
   const placement = computeCarPlacement(document, target, bounds);
   const { wheelData } = placement;
+  const openables = collectOpenables(document, placement);
 
   // Corner labels are re-derived in normalized space: after the yaw fix the
   // front of every car is -Z, so `front`/`rear` always mean the same thing.
@@ -594,10 +799,14 @@ async function buildCarManifest(document, target, id, { strip, interior, flatDec
     };
   })();
 
+  const cockpit = collectCockpit(document, target, placement, bounds3);
+
   return {
     id,
     kind: 'car',
     generatedAt: new Date().toISOString(),
+    cockpit,
+    openables,
     credits: CREDITS[id],
     units: 'meters',
     source: { file: `assets/raw/${target.source}`, triangles: trianglesBefore, bounds: { min: bounds.min.map((v) => Number(v.toFixed(3))), max: bounds.max.map((v) => Number(v.toFixed(3))) } },

@@ -1,0 +1,138 @@
+{
+  "id": "aurora-v12",
+  "source": "terzo-millennio.glb",
+  "optimized": "public/models/aurora-v12.glb",
+  "views": {
+    "front34": {
+      "optimized": {
+        "iou": 0.9647,
+        "meanDelta": 12.35,
+        "coverage": [
+          0.0798,
+          0.077
+        ]
+      },
+      "inGame": {
+        "iou": 0.9644,
+        "meanDelta": 29.77,
+        "coverage": [
+          0.0798,
+          0.077
+        ]
+      }
+    },
+    "rear34": {
+      "optimized": {
+        "iou": 0.9672,
+        "meanDelta": 8.92,
+        "coverage": [
+          0.0694,
+          0.0671
+        ]
+      },
+      "inGame": {
+        "iou": 0.9664,
+        "meanDelta": 26.92,
+        "coverage": [
+          0.0694,
+          0.0671
+        ]
+      }
+    },
+    "side": {
+      "optimized": {
+        "iou": 0.9914,
+        "meanDelta": 8.89,
+        "coverage": [
+          0.0658,
+          0.0652
+        ]
+      },
+      "inGame": {
+        "iou": 0.99,
+        "meanDelta": 25.25,
+        "coverage": [
+          0.0658,
+          0.0651
+        ]
+      }
+    }
+  },
+  "stats": {
+    "source": {
+      "meshes": 115,
+      "triangles": 108327,
+      "materials": 47
+    },
+    "optimized": {
+      "meshes": 52,
+      "triangles": 51263,
+      "materials": 21
+    },
+    "inGame": {
+      "meshes": 52,
+      "triangles": 51263,
+      "materials": 21
+    }
+  },
+  "materials": {
+    "droppedByOptimizer": [
+      "BASE",
+      "Blanc",
+      "Fer.001",
+      "Material",
+      "Material.002",
+      "Material.003",
+      "Material.018",
+      "Material.023",
+      "Material.025",
+      "Material.027",
+      "Material.028",
+      "Material.029",
+      "Material.030",
+      "Material.031",
+      "Material.032",
+      "Material.033",
+      "Material.034",
+      "Material.036",
+      "Material.037",
+      "Material.041",
+      "Material.042",
+      "Material.044",
+      "Material.049",
+      "Orange",
+      "Vert",
+      "Volant.003"
+    ],
+    "optimized": [
+      "Blanck",
+      "CARBONE",
+      "Carbone",
+      "Carosserie",
+      "Jantes",
+      "Jantes_I",
+      "Lumire_Orange",
+      "Lumire_blanche",
+      "Lumire_rouge",
+      "Material.001",
+      "Material.017",
+      "Material.026",
+      "Material.038",
+      "Material.039",
+      "Material.040",
+      "Rouge",
+      "Tire",
+      "Tire.001",
+      "Vitres",
+      "material",
+      "material_0"
+    ]
+  },
+  "environment": {
+    "hdri": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloppenheim_06_puresky_2k.hdr",
+    "viewer": "hdri 2048x1024",
+    "chrome": "Chrome/155.0.8059.39",
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+  },
+  "generatedAt": "2026-10-15T15:49:29.177Z"
+}

@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-15T13:36:12.661Z",
+  "generatedAt": "2026-10-15T15:48:42.779Z",
   "count": 3,
   "textures": [
     {
       "index": 0,
       "mimeType": "image/webp",
-      "bytes": 83366,
+      "bytes": 134734,
       "width": 1024,
       "height": 1024,
       "used": true,
@@ -19,7 +19,7 @@
     {
       "index": 1,
       "mimeType": "image/webp",
-      "bytes": 8520,
+      "bytes": 12896,
       "width": 1024,
       "height": 1024,
       "used": true,
@@ -34,7 +34,7 @@
     {
       "index": 2,
       "mimeType": "image/webp",
-      "bytes": 91196,
+      "bytes": 175526,
       "width": 1024,
       "height": 1024,
       "used": true,

@@ -26,7 +26,7 @@ const MAX_CORRIDOR_HALF_WIDTH = 9.5;
 const MIN_CORRIDOR_HALF_WIDTH = 4.5;
 const WALL_MARGIN = 2.5;
 
-function decodeHeights(encoded, expectedLength) {
+export function decodeHeights(encoded, expectedLength) {
   const binary = atob(encoded);
   const bytes = new Uint8Array(binary.length);
   for (let index = 0; index < binary.length; index += 1) bytes[index] = binary.charCodeAt(index);
@@ -36,8 +36,14 @@ function decodeHeights(encoded, expectedLength) {
   return heights;
 }
 
-function buildHeightfieldBody(terrain, material) {
-  const { cols, rows, cellSize, origin, heights, heightOffset } = terrain;
+export function buildHeightfieldBody(terrain, material) {
+  const { cols, rows, cellSize, origin, heightOffset } = terrain;
+  // `terrain.heights` is the base64 payload from the JSON. It used to be indexed
+  // as-is, which filled the heightfield with single characters ('A', '/', …):
+  // every raycast missed and the wheels never touched the trail.
+  const heights = typeof terrain.heights === 'string'
+    ? decodeHeights(terrain.heights, cols * rows)
+    : terrain.heights;
   // cannon's Heightfield lives in the local X/Y plane with heights along +Z, and
   // data[i][j] maps to (x = i, y = j). Rotating the body -90° about X turns local
   // +Z into world +Y and local +Y into world -Z, so rows are flipped here.
@@ -54,7 +60,11 @@ function buildHeightfieldBody(terrain, material) {
   const shape = new CANNON.Heightfield(matrix, { elementSize: cellSize });
   const body = new CANNON.Body({ mass: 0, material });
   body.addShape(shape);
-  body.position.set(origin[0], heightOffset, origin[2] + (rows - 1) * cellSize);
+  // The pipeline bakes `heightOffset` into every stored height (and the road
+  // path), see serializeTrail() in scripts/assets/terrain.mjs. Adding it again
+  // here sank the collider ~160 m under the spawn point.
+  void heightOffset;
+  body.position.set(origin[0], 0, origin[2] + (rows - 1) * cellSize);
   body.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
   body.updateAABB?.();
   return body;
@@ -106,6 +116,40 @@ function createPathIndexer(path) {
   };
 }
 
+/**
+ * Spawn on the first stretch of the trail where the ground under a car is
+ * flat and stays drivable for the next few centreline points. The traced path
+ * starts at the map edge, where the baked heightfield has 18–20 m steps (the
+ * far-terrain layer bleeds into the grid) — spawning on `path[0]` put a wheel
+ * over a 3.7 m drop.
+ */
+export function pickSpawnIndex(points, heightAt, { lookAhead = 6, maxRoughness = 0.35, maxSlope = 0.08 } = {}) {
+  const score = (index) => {
+    const point = points[index];
+    const ahead = points[Math.min(points.length - 1, index + 2)];
+    const behind = points[Math.max(0, index - 2)];
+    let dx = ahead.x - behind.x;
+    let dz = ahead.z - behind.z;
+    const length = Math.hypot(dx, dz) || 1;
+    dx /= length;
+    dz /= length;
+    const samples = [];
+    for (const along of [-1.6, 0, 1.6]) {
+      for (const side of [-1, 0, 1]) samples.push(heightAt(point.x + dx * along - dz * side, point.z + dz * along + dx * side));
+    }
+    const slope = (heightAt(point.x + dx * 3, point.z + dz * 3) - heightAt(point.x - dx * 3, point.z - dz * 3)) / 6;
+    return { roughness: Math.max(...samples) - Math.min(...samples), slope: Math.abs(slope) };
+  };
+  const scores = points.map((_, index) => score(index));
+  const smooth = (index) => scores[index].roughness < maxRoughness && scores[index].slope < maxSlope;
+  for (let index = 0; index < points.length - lookAhead; index += 1) {
+    let ok = true;
+    for (let step = 0; step <= lookAhead && ok; step += 1) ok = smooth(index + step);
+    if (ok) return index;
+  }
+  return scores.reduce((best, entry, index) => (entry.roughness < scores[best].roughness ? index : best), 0);
+}
+
 export async function createForestDirtTrail({ scene, physics, quality, onStatus = () => {}, manifestUrl = DEFAULT_MANIFEST_URL }) {
   const group = new THREE.Group();
   group.name = `track:${TRACK_ID}`;
@@ -152,20 +196,50 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
       triangles += (count / 3) * (object.isInstancedMesh ? object.count : 1);
     }
   });
+  // The terrain JSON (heights + road path) lives in the pipeline's shifted
+  // space: source height + `heightOffset`. The GLB still carries the source
+  // heights, so the visual scene is moved into the same space as the collider.
+  model.position.y = terrain.heightOffset ?? 0;
   group.add(model);
 
-  // Collider: the baked heightfield, plus the flat plane already in the physics
-  // world as a safety net far outside the trail.
-  const heightfieldBody = buildHeightfieldBody(terrain, physics.groundMaterial ?? physics.roadMaterial);
-  physics.world.addBody(heightfieldBody);
+  // Collider: the baked heightfield. It is only in the physics world while this
+  // track is active (see activate/deactivate): at true terrain heights it would
+  // otherwise intersect the test circuit, which shares the world origin.
+  const heightfieldBody = buildHeightfieldBody(terrain, physics.roadMaterial ?? physics.groundMaterial);
+  // The world's flat safety plane sits at y ≈ 0, above most of this terrain
+  // (-66 m … +11 m): a car spawned under it gets launched by the plane contact.
+  // While the forest is active the plane drops below the lowest terrain point.
+  const safetyPlaneY = (terrain.stats?.minHeight ?? -100) - 6;
+  let restorePlaneY = null;
+  let active = false;
+  const movePlane = (y) => {
+    const plane = physics.groundBody;
+    if (!plane) return;
+    plane.position.y = y;
+    plane.aabbNeedsUpdate = true;
+    plane.updateAABB?.();
+    if (physics.world.broadphase) physics.world.broadphase.dirty = true;
+  };
 
   const heights = decodeHeights(terrain.heights, terrain.cols * terrain.rows);
   const pathIndexer = createPathIndexer(terrain.path);
   const corridor = Math.max(MIN_CORRIDOR_HALF_WIDTH, Math.min(MAX_CORRIDOR_HALF_WIDTH, terrain.roadHalfWidth ?? 6));
 
-  const spawnPoint = pathIndexer.points[0];
-  const spawnDirection = pathIndexer.nearest(spawnPoint.x, spawnPoint.z).direction;
-  const spawnYaw = Math.atan2(-spawnDirection.x, -spawnDirection.z);
+  const heightAt = (x, z) => {
+    const { cols, rows, cellSize, origin } = terrain;
+    const fx = (x - origin[0]) / cellSize;
+    const fz = (z - origin[2]) / cellSize;
+    const ix = Math.max(0, Math.min(cols - 2, Math.floor(fx)));
+    const iz = Math.max(0, Math.min(rows - 2, Math.floor(fz)));
+    const tx = Math.max(0, Math.min(1, fx - ix));
+    const tz = Math.max(0, Math.min(1, fz - iz));
+    const at = (cx, cz) => heights[cz * cols + cx];
+    return (at(ix, iz) * (1 - tx) + at(ix + 1, iz) * tx) * (1 - tz) + (at(ix, iz + 1) * (1 - tx) + at(ix + 1, iz + 1) * tx) * tz;
+  };
+  const spawnIndex = pickSpawnIndex(pathIndexer.points, heightAt);
+  const spawnPoint = pathIndexer.points[spawnIndex];
+  const nextPoint = pathIndexer.points[Math.min(pathIndexer.points.length - 1, spawnIndex + 1)];
+  const spawnYaw = Math.atan2(-(nextPoint.x - spawnPoint.x), -(nextPoint.z - spawnPoint.z));
 
   const bounds = {
     halfWidth: corridor,
@@ -198,20 +272,9 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
       yaw: spawnYaw,
     },
     physics: { heightfieldBody },
-    /** Bilinear ground height, used for the contact shadow and dust height. */
-    groundHeightAt(x, z) {
-      const { cols, rows, cellSize, origin } = terrain;
-      const fx = (x - origin[0]) / cellSize;
-      const fz = (z - origin[2]) / cellSize;
-      const ix = Math.max(0, Math.min(cols - 2, Math.floor(fx)));
-      const iz = Math.max(0, Math.min(rows - 2, Math.floor(fz)));
-      const tx = Math.max(0, Math.min(1, fx - ix));
-      const tz = Math.max(0, Math.min(1, fz - iz));
-      const at = (cx, cz) => heights[Math.max(0, Math.min(rows - 1, cz)) * cols + Math.max(0, Math.min(cols - 1, cx))];
-      const top = at(ix, iz) * (1 - tx) + at(ix + 1, iz) * tx;
-      const bottom = at(ix, iz + 1) * (1 - tx) + at(ix + 1, iz + 1) * tx;
-      return top * (1 - tz) + bottom * tz;
-    },
+    spawnIndex,
+    /** Bilinear ground height: contact shadow, dust height, camera horizon. */
+    groundHeightAt: heightAt,
     stats: {
       meshes,
       triangles: Math.round(triangles),
@@ -228,10 +291,34 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
     setVisible(visible) {
       group.visible = visible;
     },
+    /** The world ground plane would slice through the hills: the forest hides it. */
+    hidesWorldGround: true,
+    /** Puts the collider into the physics world (called by the game on select). */
+    activate() {
+      if (active) return;
+      active = true;
+      physics.world.addBody(heightfieldBody);
+      restorePlaneY = physics.groundBody?.position.y ?? null;
+      movePlane(safetyPlaneY);
+    },
+    deactivate() {
+      if (!active) return;
+      active = false;
+      physics.world.removeBody(heightfieldBody);
+      if (restorePlaneY !== null) movePlane(restorePlaneY);
+    },
+    get active() {
+      return active;
+    },
     /**
      * Soft walls: past the corridor the car is pulled back towards the trail and
      * scrubbed of speed. Deliberately a spring, not a collision, so brushing a
      * tree line slows you down instead of stopping the car dead.
+     *
+     * M4.5 Free Roam (deferred): same track, but this corridor spring is
+     * replaced by soft outer bounds at the heightfield edge
+     * (terrain.origin + (cols|rows - 1) * cellSize, minus a margin), and
+     * bounds.isOnTrack keeps deciding on-road vs off-road grip.
      */
     update(deltaTime, car) {
       if (!car?.chassisBody) return;
@@ -260,7 +347,7 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
       wallEvents += 1;
     },
     dispose() {
-      physics.world.removeBody(heightfieldBody);
+      this.deactivate();
       group.traverse((object) => {
         if (!object.isMesh && !object.isInstancedMesh) return;
         object.geometry?.dispose();

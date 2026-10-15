@@ -11,6 +11,13 @@ export const VEHICLE_CONFIG = Object.freeze({
   handbrakeForce: 11500,
 });
 
+/**
+ * Rear-axle grip multiplier while the handbrake (SPACE) is held, so a handbrake
+ * turn actually rotates the car into a slide. Nothing else changes: off the
+ * handbrake every wheel keeps the M1/M2 grip.
+ */
+export const HANDBRAKE_REAR_GRIP = 0.6;
+
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 function toVector3(value, fallback) {
@@ -192,9 +199,10 @@ export function stepVehicle(physics, rawInput = {}, deltaTime = FIXED_TIME_STEP)
   const suspensionScale = surface?.suspensionScale ?? 1;
   const baseFriction = config.frictionSlip;
   const baseStiffness = (config.suspension?.suspensionStiffness ?? 34) * suspensionScale;
+  const rearGrip = input.handbrake ? HANDBRAKE_REAR_GRIP : 1;
   for (let index = 0; index < vehicle.wheelInfos.length; index += 1) {
     const wheel = vehicle.wheelInfos[index];
-    wheel.frictionSlip = baseFriction * frictionScale;
+    wheel.frictionSlip = baseFriction * frictionScale * (index >= 2 ? rearGrip : 1);
     wheel.suspensionStiffness = baseStiffness;
   }
 
@@ -224,8 +232,13 @@ export function stepVehicle(physics, rawInput = {}, deltaTime = FIXED_TIME_STEP)
   }
 
   if (input.handbrake) {
-    rearBrake = Math.max(rearBrake, config.handbrakeForce);
-    frontBrake = Math.max(frontBrake, 900);
+    // cannon-es reads `brake` as a per-step impulse cap (N·s), not a force: the
+    // raw handbrake value stopped the car from 60 km/h in ONE step and pitched
+    // the rear wheels off the ground, so no grip setting could ever slide it.
+    // While SPACE is held the handbrake is applied as force × step on the rear
+    // axle only (front wheels keep rolling so they can steer), and the rear
+    // loses some grip (HANDBRAKE_REAR_GRIP): the tail steps out into a drift.
+    rearBrake = Math.max(rearBrake, config.handbrakeForce * FIXED_TIME_STEP);
   }
 
   vehicle.applyEngineForce(engineForce, 2);

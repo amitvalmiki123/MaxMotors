@@ -9,6 +9,7 @@
  *     walls of Forest Dirt Trail,
  *   - a height grid the game turns into a cannon-es Heightfield collider.
  */
+import { isWheelName } from '../../src/game/cars/names.js';
 import { Buffer } from 'node:buffer';
 import sharp from 'sharp';
 
@@ -31,9 +32,9 @@ export function classifyMaterial(material, { kind = 'car' } = {}) {
   const name = (material?.getName?.() ?? '').toLowerCase();
   const alpha = material?.getAlphaMode?.() ?? 'OPAQUE';
   if (!name && alpha === 'MASK') return 'cutout';
-  if (/wheel|tyre|tire|rim|pneu|jante|roue/.test(name)) return 'wheel';
+  if (isWheelName(name)) return 'wheel';
   if (/light|lamp|led|beam|emissive|lum|feu/.test(name)) return 'light';
-  if (/interior|seat|cabin|dash|steer/.test(name)) return 'interior';
+  if (/interior|seat|cabin|dash|steer|(?:^|[^a-z])int_/.test(name)) return 'interior';
   if (GROUND_PATTERN.test(name)) return 'terrain';
   if (/badge|logo|emblem|decal|plate/.test(name)) return 'badge';
   if (/glass|window|wind|transparent|screen|vitres/.test(name)) return 'glass';

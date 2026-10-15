@@ -47,3 +47,36 @@ test('service brake slows a moving vehicle and reset restores its spawn state', 
   );
   assert.ok(getVehicleTelemetry(physics).speedKmh < 0.01);
 });
+
+test('handbrake drift: SPACE-held rear grip cut rotates the car into a slide, never lifts it', async () => {
+  const { getCar } = await import('../src/game/cars/catalog.js');
+  const { HANDBRAKE_REAR_GRIP } = await import('../src/game/physics.js');
+  const yawOf = (q) => Math.atan2(2 * (q.w * q.y + q.x * q.z), 1 - 2 * (q.y * q.y + q.x * q.x));
+  for (const carId of ['aurora-v12', 'sikandar-suv']) {
+    const physics = createVehiclePhysics({ preset: getCar(carId).physics });
+    resetVehicle(physics, { position: { x: 0, y: 1.02, z: 0 }, yaw: 0 });
+    while (getVehicleTelemetry(physics).speedKmh < 65) stepVehicle(physics, { throttle: 1 }, 1 / 60);
+    // Off the handbrake every wheel keeps the preset grip.
+    assert.ok(physics.vehicle.wheelInfos.every((wheel) => wheel.frictionSlip === physics.config.frictionSlip));
+    let peakSlip = 0;
+    let airborne = 0;
+    const script = [
+      ...Array(15).fill({ throttle: 1, steer: -1 }),
+      ...Array(24).fill({ throttle: 1, steer: -1, handbrake: true }),
+      ...Array(60).fill({ throttle: 1, steer: 0.4 }),
+    ];
+    for (const input of script) {
+      stepVehicle(physics, input, 1 / 60);
+      if (input.handbrake) assert.equal(physics.vehicle.wheelInfos[2].frictionSlip, physics.config.frictionSlip * HANDBRAKE_REAR_GRIP);
+      const velocity = physics.chassisBody.velocity;
+      const speed = Math.hypot(velocity.x, velocity.z);
+      const yaw = yawOf(physics.chassisBody.quaternion);
+      if (speed > 2) peakSlip = Math.max(peakSlip, Math.acos(Math.min(1, (-Math.sin(yaw) * velocity.x - Math.cos(yaw) * velocity.z) / speed)) * 180 / Math.PI);
+      if (physics.vehicle.wheelInfos.every((wheel) => wheel.suspensionForce === 0)) airborne += 1;
+    }
+    assert.ok(peakSlip > 20 && peakSlip < 60, `${carId}: peak slip ${peakSlip.toFixed(1)}° should be a drift, not grip or a spin`);
+    assert.equal(airborne, 0, `${carId}: the handbrake must not pitch the car off the ground`);
+    assert.ok(getVehicleTelemetry(physics).speedKmh > 25, `${carId}: a drift keeps its momentum`);
+    assert.ok(physics.vehicle.wheelInfos.every((wheel) => wheel.frictionSlip === physics.config.frictionSlip), 'grip restored on release');
+  }
+});

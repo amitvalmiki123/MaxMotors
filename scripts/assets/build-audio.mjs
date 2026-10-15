@@ -117,6 +117,38 @@ function synthesize({ referenceRpm, cylinders, cycles, brightness, noise, growl 
   return { samples, firingFrequency, duration };
 }
 
+/**
+ * Car horn: the classic dual-tone disc horn pair, a major third apart
+ * (420 Hz + 525 Hz, 4:5). Each tone is a harmonic-rich buzz with a resonance
+ * near 2.4 kHz (the trumpet "blare"), then soft-clipped for the brassy edge.
+ * Both tones complete whole cycles in 0.4 s, so the loop is seamless; the game
+ * shapes attack/release with a gain envelope while H is held.
+ */
+export const HORN = Object.freeze({ frequencies: [420, 525], seconds: 0.4, formantHz: 2400 });
+
+export function synthesizeHorn({ frequencies = HORN.frequencies, seconds = HORN.seconds, formantHz = HORN.formantHz } = {}) {
+  const total = Math.round(seconds * SAMPLE_RATE);
+  const samples = new Float32Array(total);
+  const partials = [];
+  for (const [tone, frequency] of frequencies.entries()) {
+    for (let harmonic = 1; harmonic * frequency < 6500; harmonic += 1) {
+      const resonance = 1 / (1 + ((harmonic * frequency - formantHz) / 1300) ** 2);
+      partials.push({ frequency: frequency * harmonic, amplitude: (1 / harmonic) * (0.3 + 0.7 * resonance), phase: harmonic * 0.7 + tone * 1.3 });
+    }
+  }
+  for (let index = 0; index < total; index += 1) {
+    const time = index / SAMPLE_RATE;
+    let value = 0;
+    for (const partial of partials) value += partial.amplitude * Math.sin(2 * Math.PI * partial.frequency * time + partial.phase);
+    samples[index] = Math.tanh(value * 0.85);
+  }
+  let peak = 0;
+  for (const sample of samples) peak = Math.max(peak, Math.abs(sample));
+  const gain = peak > 0 ? 0.707 / peak : 1;
+  for (let index = 0; index < samples.length; index += 1) samples[index] *= gain;
+  return { samples, seconds: total / SAMPLE_RATE };
+}
+
 async function main() {
   await mkdir(OUTPUT_DIR, { recursive: true });
   const index = { generatedAt: new Date().toISOString(), license: 'CC0 1.0', sampleRate: SAMPLE_RATE, engines: [] };
@@ -140,11 +172,24 @@ async function main() {
     index.engines.push({ id, label: profile.label, cylinders: profile.cylinders, layers });
   }
 
+  const horn = synthesizeHorn();
+  await writeFile(path.join(OUTPUT_DIR, 'horn.wav'), writeWav(horn.samples, SAMPLE_RATE));
+  index.effects = [{
+    id: 'horn',
+    file: `/${path.relative('public', path.join(OUTPUT_DIR, 'horn.wav')).replaceAll('\\', '/')}`,
+    loopSeconds: horn.seconds,
+    frequenciesHz: HORN.frequencies,
+    bytes: horn.samples.length * 2 + 44,
+  }];
+  console.log(`[audio] horn: ${horn.seconds}s dual-tone ${HORN.frequencies.join(' + ')} Hz`);
+
   await writeFile(path.join(OUTPUT_DIR, 'engine.index.json'), `${JSON.stringify(index, null, 2)}\n`);
   console.log(`[audio] wrote ${path.join(OUTPUT_DIR, 'engine.index.json')}`);
 }
 
-main().catch((error) => {
-  console.error('[audio] FATAL:', error.message);
-  process.exitCode = 1;
-});
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((error) => {
+    console.error('[audio] FATAL:', error.message);
+    process.exitCode = 1;
+  });
+}
