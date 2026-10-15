@@ -19,6 +19,12 @@ on:
         required: false
         default: ''
         type: string
+  # Rebuilds whenever the pipeline itself changes (the source GLBs are not in
+  # the repository, so this is the only way to reproduce the shipped output).
+  push:
+    paths:
+      - '.github/workflows/assets-pipeline.yml'
+      - 'scripts/assets/**'
 
 permissions:
   contents: write
@@ -31,6 +37,9 @@ jobs:
   pipeline:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      PIPELINE_MODE: ${{ github.event.inputs.mode || 'build' }}
+      PIPELINE_ONLY: ${{ github.event.inputs.only || '' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,21 +55,21 @@ jobs:
         run: npm ci
 
       - name: Fetch source models into assets/raw (ignored, never committed)
-        run: node scripts/assets/fetch-sources.mjs ${{ github.event.inputs.only != '' && format('--only {0}', github.event.inputs.only) || '' }}
+        run: node scripts/assets/fetch-sources.mjs ${{ env.PIPELINE_ONLY != '' && format('--only {0}', env.PIPELINE_ONLY) || '' }}
 
       - name: Inspect sources (node tree, wheel candidates, occupancy maps)
         run: node scripts/assets/inspect-glb.mjs
 
       - name: Optimize GLBs into public/
-        if: github.event.inputs.mode == 'build'
-        run: node scripts/assets/optimize-glb.mjs ${{ github.event.inputs.only != '' && format('--only {0}', github.event.inputs.only) || '' }}
+        if: env.PIPELINE_MODE != 'inspect'
+        run: node scripts/assets/optimize-glb.mjs ${{ env.PIPELINE_ONLY != '' && format('--only {0}', env.PIPELINE_ONLY) || '' }}
 
       - name: Fetch Poly Haven CC0 asphalt PBR (2K)
-        if: github.event.inputs.mode == 'build'
+        if: env.PIPELINE_MODE != 'inspect'
         run: node scripts/assets/fetch-environment.mjs
 
       - name: Generate CC0 engine loops
-        if: github.event.inputs.mode == 'build'
+        if: env.PIPELINE_MODE != 'inspect'
         run: node scripts/assets/build-audio.mjs
 
       - name: Report sizes
@@ -80,6 +89,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nothing to commit."
           else
-            git commit -m "chore(assets): pipeline output (${{ github.event.inputs.mode }}) [skip ci]"
+            git commit -m "chore(assets): pipeline output (${{ env.PIPELINE_MODE }}) [skip ci]"
             git push origin HEAD:${{ github.ref_name }}
           fi
