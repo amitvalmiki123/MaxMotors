@@ -1,7 +1,7 @@
 {
   "id": "aurora-v12",
   "kind": "car",
-  "generatedAt": "2026-10-15T08:29:24.164Z",
+  "generatedAt": "2026-10-15T08:50:53.799Z",
   "credits": {
     "inGameName": "Aurora V12",
     "title": "( FREE ) Lamborghini Terzo Millennio",
@@ -23,168 +23,163 @@
       "min": [
         -0.826,
         0.011,
-        -1.718
+        -1.758
       ],
       "max": [
         0.842,
         0.764,
-        1.722
+        1.796
       ]
     }
   },
   "output": {
     "file": "public/models/aurora-v12.glb",
-    "bytes": 279212,
-    "triangles": 69962,
+    "bytes": 673704,
+    "triangles": 69894,
     "attempts": 1,
     "textureSizePx": 2048,
     "textureQuality": 78,
     "textureBytesBefore": 1464780,
-    "textureBytesAfter": 203262
+    "textureBytesAfter": 203262,
+    "textureMemoryMB": 18.3
   },
   "transform": {
     "yawRadians": 0,
     "yawDegrees": 0,
-    "scale": 1.308395,
+    "scale": 1.266182,
     "position": [
-      -0.0101,
-      -0.0564,
-      -0.0028
+      -0.0098,
+      -0.0546,
+      -0.0236
     ],
     "frontConfidence": "default(-Z)",
     "sourceSize": [
       1.668,
       0.752,
-      3.439
+      3.554
     ],
     "longAxis": "z"
   },
   "bounds": {
     "min": [
-      -1.091,
-      -0.041,
+      -1.056,
+      -0.04,
       -2.25
     ],
     "max": [
-      1.091,
-      0.943,
+      1.056,
+      0.912,
       2.25
     ]
   },
   "size": [
-    2.182,
-    0.984,
+    2.112,
+    0.952,
     4.5
   ],
   "wheels": {
     "detected": true,
     "count": 4,
-    "wheelbase": 2.743,
-    "track": 1.933,
-    "radius": 0.287,
-    "frontZ": -1.385,
-    "rearZ": 1.358,
+    "wheelbase": 2.633,
+    "track": 1.971,
+    "radius": 0.278,
+    "frontZ": -1.34,
+    "rearZ": 1.293,
     "list": [
       {
         "corner": "front-left",
         "position": [
-          -0.858,
-          0.311,
-          -1.407
+          -0.986,
+          0.293,
+          -1.34
         ],
-        "radius": 0.298,
-        "width": 0.421,
+        "radius": 0.288,
+        "width": 0.147,
         "axleAxis": "x",
         "source": "shape",
         "confidence": 1,
         "members": [
           "Object_181",
           "Object_184",
-          "Object_179",
-          "Object_177",
-          "Object_94"
+          "Object_179"
         ],
         "memberPaths": [
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_rims_LOD2_98/Object_181",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100/Object_184",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_emissive_ID_rims_LOD2_97/Object_179",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_details_normal_LOD2_96/Object_177",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_thirdlight_LOD2_53/Object_94"
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_99#0/wheelFR_rims_LOD2_98#0/Object_181#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_motion_102#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100#0/Object_184#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_99#0/wheelFR_emissive_ID_rims_LOD2_97#0/Object_179#0"
         ]
       },
       {
         "corner": "front-right",
         "position": [
-          0.96,
-          0.303,
-          -1.363
+          0.985,
+          0.293,
+          -1.34
         ],
-        "radius": 0.298,
-        "width": 0.439,
+        "radius": 0.288,
+        "width": 0.153,
         "axleAxis": "x",
         "source": "shape",
         "confidence": 1,
         "members": [
           "Object_195",
           "Object_198",
-          "Object_193",
-          "Object_191"
+          "Object_193"
         ],
         "memberPaths": [
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_rims_LOD2_2_108/Object_195",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110/Object_198",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_emissive_ID_rims_LOD2_2_107/Object_193",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_details_normal_LOD2_2_106/Object_191"
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_2_109#0/wheelFR_rims_LOD2_2_108#0/Object_195#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_motion_2_112#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110#0/Object_198#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_2_109#0/wheelFR_emissive_ID_rims_LOD2_2_107#0/Object_193#0"
         ]
       },
       {
         "corner": "rear-left",
         "position": [
-          -0.973,
-          0.277,
-          1.358
+          -0.941,
+          0.268,
+          1.293
         ],
-        "radius": 0.277,
-        "width": 0.295,
+        "radius": 0.268,
+        "width": 0.285,
         "axleAxis": "x",
         "source": "shape",
         "confidence": 1,
         "members": [
           "Object_30",
           "Object_33",
-          "Object_28",
-          "Object_26"
+          "Object_26",
+          "Object_28"
         ],
         "memberPaths": [
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_rims_LOD2_3_13/Object_30",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15/Object_33",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_emissive_ID_rims_LOD2_3_12/Object_28",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_details_normal_LOD2_3_11/Object_26"
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_rims_LOD2_3_13#0/Object_30#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_motion_3_17#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15#0/Object_33#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_details_normal_LOD2_3_11#0/Object_26#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_emissive_ID_rims_LOD2_3_12#0/Object_28#0"
         ]
       },
       {
         "corner": "rear-right",
         "position": [
-          0.953,
-          0.277,
-          1.358
+          0.922,
+          0.268,
+          1.293
         ],
-        "radius": 0.277,
-        "width": 0.295,
+        "radius": 0.268,
+        "width": 0.285,
         "axleAxis": "x",
         "source": "shape",
         "confidence": 1,
         "members": [
           "Object_44",
           "Object_47",
-          "Object_42",
-          "Object_40"
+          "Object_40",
+          "Object_42"
         ],
         "memberPaths": [
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_rims_LOD2_4_23/Object_44",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25/Object_47",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_emissive_ID_rims_LOD2_4_22/Object_42",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_details_normal_LOD2_4_21/Object_40"
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_rims_LOD2_4_23#0/Object_44#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_motion_4_27#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25#0/Object_47#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_details_normal_LOD2_4_21#0/Object_40#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_emissive_ID_rims_LOD2_4_22#0/Object_42#0"
         ]
       }
     ]
@@ -209,63 +204,40 @@
       "Object_49 (0.061x0.419x0.419)",
       "Object_53 (0.642x0.038x0.247)",
       "Object_55 (0.639x0.002x0.244)",
-      "Object_62 (1.572x0.563x3.485)",
       "Object_64 (1.391x0.136x0.542)",
       "Object_66 (1.113x0.159x0.564)",
-      "Object_68 (1.609x0.715x3.554)",
-      "Object_69 (0.784x0.270x0.685)",
       "Object_73 (0.111x0.111x0.574)",
-      "Object_74 (1.494x0.310x1.178)",
       "Object_75 (1.549x0.048x0.196)",
-      "Object_76 (1.592x0.716x3.483)",
       "Object_77 (0.601x0.018x0.213)",
       "Object_78 (1.534x0.013x0.039)",
       "Object_79 (1.513x0.012x0.036)",
       "Object_80 (0.265x0.028x0.023)",
-      "Object_81 (0.903x0.613x0.957)",
-      "Object_82 (0.994x0.681x1.971)",
-      "Object_83 (1.010x0.513x1.907)",
       "Object_84 (1.604x0.029x0.266)",
-      "Object_86 (1.570x0.699x3.429)",
       "Object_87 (0.568x0.140x1.231)",
       "Object_88 (0.040x0.020x0.075)",
       "Object_90 (0.300x0.206x1.228)",
       "Object_92 (1.393x0.110x0.282)",
-      "Object_96 (1.578x0.345x2.357)",
-      "Object_98 (1.079x0.470x2.228)",
       "Object_100 (1.018x0.077x2.538)",
-      "Object_106 (0.327x0.354x0.793)",
-      "Object_108 (0.412x0.508x0.880)",
       "Object_110 (0.207x0.285x0.743)",
       "Object_113 (0.188x0.184x0.793)",
       "Object_114 (0.043x0.088x0.551)",
-      "Object_116 (0.413x0.508x0.880)",
       "Object_118 (0.207x0.285x0.743)",
-      "Object_123 (0.270x0.360x1.551)",
       "Object_125 (0.163x0.285x1.699)",
       "Object_127 (0.072x0.021x0.401)",
       "Object_128 (0.027x0.187x0.120)",
-      "Object_130 (0.289x0.404x1.670)",
-      "Object_132 (0.299x0.344x0.458)",
       "Object_135 (0.172x0.286x1.696)",
-      "Object_137 (0.269x0.360x1.551)",
       "Object_139 (0.163x0.285x1.699)",
       "Object_141 (0.067x0.022x0.400)",
       "Object_142 (0.028x0.187x0.120)",
-      "Object_144 (0.289x0.404x1.670)",
-      "Object_146 (0.299x0.344x0.458)",
       "Object_149 (0.696x0.193x1.227)",
       "Object_151 (0.695x0.179x1.227)",
       "Object_153 (0.487x0.099x0.780)",
-      "Object_156 (1.403x0.529x0.986)",
-      "Object_158 (1.416x0.448x0.564)",
       "Object_161 (0.201x0.070x0.075)",
       "Object_163 (0.199x0.069x0.074)",
       "Object_166 (1.217x0.034x0.064)",
       "Object_186 (0.087x0.451x0.451)",
       "Object_200 (0.091x0.451x0.451)",
       "Object_204 (0.054x0.035x0.055)",
-      "Object_208 (0.176x0.104x0.138)",
       "Object_209 (0.161x0.013x0.013)",
       "Object_210 (0.117x0.014x0.014)",
       "Object_212 (0.068x0.042x0.061)",
@@ -284,6 +256,62 @@
     ]
   },
   "materials": [
+    {
+      "name": "material_0",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        0.01,
+        0.01,
+        0.01,
+        1
+      ],
+      "textures": []
+    },
+    {
+      "name": "Carosserie",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        0.067,
+        0.067,
+        0.067,
+        1
+      ],
+      "textures": []
+    },
+    {
+      "name": "Blanck",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        0.227,
+        0.227,
+        0.227,
+        1
+      ],
+      "textures": [
+        "baseColor"
+      ]
+    },
+    {
+      "name": "CARBONE",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "textures": [
+        "baseColor"
+      ]
+    },
     {
       "name": "Jantes_I",
       "alphaMode": "OPAQUE",
@@ -324,6 +352,84 @@
       "textures": []
     },
     {
+      "name": "material",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        0.036,
+        0.035,
+        0.035,
+        1
+      ],
+      "textures": []
+    },
+    {
+      "name": "Material.001",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        0.142,
+        0.142,
+        0.142,
+        1
+      ],
+      "textures": []
+    },
+    {
+      "name": "Rouge",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "textures": []
+    },
+    {
+      "name": "Material.038",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        0.009,
+        0.009,
+        0.009,
+        1
+      ],
+      "textures": []
+    },
+    {
+      "name": "Material.039",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        0.02,
+        0.02,
+        0.02,
+        1
+      ],
+      "textures": []
+    },
+    {
+      "name": "Material.040",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        0.263,
+        0.263,
+        0.263,
+        1
+      ],
+      "textures": []
+    },
+    {
       "name": "Lumire_rouge",
       "alphaMode": "OPAQUE",
       "doubleSided": true,
@@ -332,6 +438,19 @@
         1,
         0,
         0,
+        1
+      ],
+      "textures": []
+    },
+    {
+      "name": "Material.017",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        0.057,
+        0.057,
+        0.057,
         1
       ],
       "textures": []
@@ -393,6 +512,21 @@
       ]
     },
     {
+      "name": "Carbone",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "textures": [
+        "baseColor"
+      ]
+    },
+    {
       "name": "Material.026",
       "alphaMode": "BLEND",
       "doubleSided": true,
@@ -407,9 +541,9 @@
     }
   ],
   "stats": {
-    "nodes": 86,
-    "meshes": 26,
-    "materials": 9,
-    "textures": 1
+    "nodes": 130,
+    "meshes": 49,
+    "materials": 21,
+    "textures": 3
   }
 }

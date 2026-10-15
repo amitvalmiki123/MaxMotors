@@ -1,7 +1,7 @@
 {
   "id": "forest-dirt-trail",
   "kind": "track",
-  "generatedAt": "2026-10-15T08:29:43.752Z",
+  "generatedAt": "2026-10-15T08:51:09.385Z",
   "credits": {
     "inGameName": "Forest Dirt Trail",
     "title": "Dirt Road Through Forest",
@@ -20,13 +20,13 @@
   },
   "output": {
     "file": "public/tracks/forest-dirt-trail.glb",
-    "bytes": 16006088,
-    "triangles": 136832,
+    "bytes": 11244312,
+    "triangles": 135544,
     "attempts": 2,
-    "textureSizePx": 768,
-    "textureQuality": 66,
+    "textureSizePx": 512,
+    "textureQuality": 68,
     "textureBytesBefore": 53122492,
-    "textureBytesAfter": 12414014
+    "textureBytesAfter": 7675069
   },
   "transform": {
     "yawRadians": 0,
@@ -45,28 +45,28 @@
       -346.552
     ],
     "max": [
-      346.436,
+      324.405,
       207.469,
       199.841
     ]
   },
   "size": [
-    547.758,
+    525.727,
     111.23,
     546.393
   ],
   "terrain": {
     "file": "public/tracks/forest-dirt-trail.terrain.json",
     "cellSize": 2,
-    "cols": 274,
+    "cols": 263,
     "rows": 274,
-    "heightOffset": -162.83,
+    "heightOffset": -162.446,
     "roadHalfWidth": 12.024,
-    "roadPoints": 42,
-    "roadCoverage": 0.0178,
+    "roadPoints": 82,
+    "roadCoverage": 0.0185,
     "heights": {
-      "minHeight": null,
-      "maxHeight": null
+      "minHeight": -66.041,
+      "maxHeight": 11.09
     }
   },
   "strip": {

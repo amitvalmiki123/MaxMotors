@@ -1,5 +1,5 @@
-mode=build only='' ref=arena/6900dcad-maxmotors sha=c981a904f7d4b1e943b74ab610ff1532613b80f3
-runner=Linux runnervm8k3b6 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+mode=build only='' ref=arena/6900dcad-maxmotors sha=480f1abac559dedbe5fafdf98d1a12982981188b
+runner=Linux runnervmmprz5 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
 
 added 45 packages, and audited 46 packages in 2s
 
@@ -21,17 +21,21 @@ found 0 vulnerabilities
         materials: material_0 | Carosserie | Orange | Blanck | CARBONE | Jantes_I | Lumire_Orange | Jantes | material | Material.001 | Rouge | Vert
 [fetch] wrote assets/source-summary.json (3 entries)
 [inspect] sikandar-suv: tris=1,354,283 nodes=269 materials=43 textures=19 (5.0 MB) bounds=2.176 x 1.847 x 4.673
-          wheel clusters: front-left@-0.49/0.79/-0.70 r=0.44 | front-right@0.47/0.80/-0.59 r=0.60 | rear-left@-0.75/0.73/0.87 r=0.54 | rear-right@0.52/0.75/0.92 r=0.54
+          wheel clusters: front-left@-0.81/0.38/-1.56 r=0.38 | front-right@0.81/0.38/-1.56 r=0.38 | rear-left@-0.81/0.38/1.19 r=0.38 | rear-right@0.81/0.38/1.19 r=0.38
 [inspect] aurora-v12: tris=108,327 nodes=247 materials=47 textures=6 (1.4 MB) bounds=2.647 x 0.752 x 3.556
-          wheel clusters: front-left@-0.73/0.27/-0.97 r=0.23 | front-right@0.69/0.28/-1.00 r=0.23 | rear-left@-0.83/0.27/0.66 r=0.37 | rear-right@0.34/0.23/0.92 r=0.37
+          wheel clusters: front-left@-0.77/0.28/-1.04 r=0.23 | front-right@0.78/0.28/-1.04 r=0.23 | rear-left@-0.74/0.25/1.04 r=0.21 | rear-right@0.75/0.25/1.04 r=0.21
 [inspect] forest-dirt-trail: tris=341,109 nodes=56 materials=26 textures=70 (50.7 MB) bounds=551.19 x 111.23 x 547.97
           wheel clusters: none
           terrain: 276x274 @ 2.00m, road half-width 11.902 m, coverage 1.77%
 [inspect] reports written to assets/reports
-[optimize] flat badge plaques removed (31): movsteer_1.0_movsteer_1.0.3_0 (0.286x0.048x0.050), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.427x0.115x0.004), headlight_f_headlight_f.3_0 (1.203x0.013x0.027), indicator_lf.001_indicator lf_0 (0.209x0.039x0.099), indicator_rf.001_indicator rf_0 (0.209x0.039x0.099), taillight_r_headlight_f.3_0 (1.363x0.001x0.001), taillight_r_taillight_r.6_0 (1.505x0.054x0.060), …
+[optimize] simplify pass 1: ratio 0.075 error 0.0060 -> 240,146 tris
+[optimize] simplify pass 2: ratio 0.416 error 0.0180 -> 202,334 tris
+[optimize] simplify pass 3: ratio 0.494 error 0.0540 -> 191,751 tris
+[optimize] simplify pass 4: ratio 0.522 error 0.1620 -> 188,984 tris
+[optimize] flat badge plaques removed (17): movsteer_1.0_movsteer_1.0.3_0 (0.134x0.015x0.030), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.426x0.105x0.004), taillight_r_taillight_r.7_0 (0.044x0.006x0.035), scorpio_n_int_seat_reck_movsteer_1.0.3_0 (0.008x0.011x0.028), scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308), scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002), scorpio_n_int_console_movsteer_1.0.3_0 (0.009x0.001x0.009), …
 [optimize] interior kept (glass is transparent)
-prune: Removed types... Node (11), Mesh (31), Primitive (41), TextureInfo (20), Material (4), Texture (10), Accessor (194)
-prune: Removed types... Accessor (541)
+prune: Removed types... Node (7), Mesh (17), Primitive (27), TextureInfo (20), Material (4), Texture (9), Accessor (138)
+prune: Removed types... Accessor (589)
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
@@ -77,12 +81,16 @@ quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
-prune: Removed types... Accessor (208)
-[optimize] sikandar-suv attempt 1: 3.5 MB (limit 8.0 MB) | tris 210,167 (limit 100,000) | textures 878 KB @2048px q80
-[optimize] flat badge plaques removed (31): movsteer_1.0_movsteer_1.0.3_0 (0.286x0.048x0.050), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.427x0.115x0.004), headlight_f_headlight_f.3_0 (1.203x0.013x0.027), indicator_lf.001_indicator lf_0 (0.209x0.039x0.099), indicator_rf.001_indicator rf_0 (0.209x0.039x0.099), taillight_r_headlight_f.3_0 (1.363x0.001x0.001), taillight_r_taillight_r.6_0 (1.505x0.054x0.060), …
+prune: Removed types... Accessor (232)
+[optimize] sikandar-suv attempt 1: 3.3 MB (limit 8.0 MB) | tris 188,984 (limit 100,000) | textures 878 KB @2048px q80 | GPU 31 MB (limit 128)
+[optimize] simplify pass 1: ratio 0.068 error 0.0060 -> 237,592 tris
+[optimize] simplify pass 2: ratio 0.379 error 0.0180 -> 201,027 tris
+[optimize] simplify pass 3: ratio 0.448 error 0.0540 -> 191,426 tris
+[optimize] simplify pass 4: ratio 0.470 error 0.1620 -> 188,870 tris
+[optimize] flat badge plaques removed (19): movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.426x0.105x0.004), headlight_led_right front light_0 (0.059x0.054x0.017), taillight_r_taillight_r.7_0 (0.044x0.006x0.035), scorpio_n_int_seat_reck_movsteer_1.0.3_0 (0.008x0.011x0.028), scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308), scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002), …
 [optimize] interior kept (glass is transparent)
-prune: Removed types... Node (11), Mesh (31), Primitive (41), TextureInfo (20), Material (4), Texture (10), Accessor (194)
-prune: Removed types... Accessor (541)
+prune: Removed types... Node (11), Mesh (19), Primitive (29), TextureInfo (25), Material (5), Texture (9), Accessor (144)
+prune: Removed types... Accessor (578)
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
@@ -128,12 +136,16 @@ quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
-prune: Removed types... Accessor (208)
-[optimize] sikandar-suv attempt 2: 3.3 MB (limit 8.0 MB) | tris 209,883 (limit 100,000) | textures 732 KB @1536px q72
-[optimize] flat badge plaques removed (31): movsteer_1.0_movsteer_1.0.3_0 (0.286x0.048x0.050), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.427x0.115x0.004), headlight_f_headlight_f.3_0 (1.203x0.013x0.027), indicator_lf.001_indicator lf_0 (0.209x0.039x0.099), indicator_rf.001_indicator rf_0 (0.209x0.039x0.099), taillight_r_headlight_f.3_0 (1.363x0.001x0.001), taillight_r_taillight_r.6_0 (1.505x0.054x0.060), …
+prune: Removed types... Accessor (227)
+[optimize] sikandar-suv attempt 2: 3.2 MB (limit 8.0 MB) | tris 188,870 (limit 100,000) | textures 732 KB @1536px q72 | GPU 31 MB (limit 128)
+[optimize] simplify pass 1: ratio 0.060 error 0.0060 -> 235,479 tris
+[optimize] simplify pass 2: ratio 0.340 error 0.0180 -> 200,346 tris
+[optimize] simplify pass 3: ratio 0.399 error 0.0540 -> 191,190 tris
+[optimize] simplify pass 4: ratio 0.418 error 0.1620 -> 188,768 tris
+[optimize] flat badge plaques removed (20): movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.426x0.105x0.004), headlight_led_right front light_0 (0.059x0.054x0.015), taillight_r_taillight_r.7_0 (0.041x0.001x0.023), scorpio_n_int_seat_reck_movsteer_1.0.3_0 (0.008x0.011x0.028), scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308), scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002), …
 [optimize] interior kept (glass is transparent)
-prune: Removed types... Node (11), Mesh (31), Primitive (41), TextureInfo (20), Material (4), Texture (10), Accessor (194)
-prune: Removed types... Accessor (541)
+prune: Removed types... Node (11), Mesh (20), Primitive (30), TextureInfo (30), Material (6), Texture (9), Accessor (148)
+prune: Removed types... Accessor (574)
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
@@ -179,12 +191,16 @@ quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
-prune: Removed types... Accessor (208)
-[optimize] sikandar-suv attempt 3: 3.3 MB (limit 8.0 MB) | tris 209,949 (limit 100,000) | textures 703 KB @1024px q68
-[optimize] flat badge plaques removed (31): movsteer_1.0_movsteer_1.0.3_0 (0.286x0.048x0.050), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.427x0.115x0.004), headlight_f_headlight_f.3_0 (1.203x0.013x0.027), indicator_lf.001_indicator lf_0 (0.209x0.039x0.099), indicator_rf.001_indicator rf_0 (0.209x0.039x0.099), taillight_r_headlight_f.3_0 (1.363x0.001x0.001), taillight_r_taillight_r.6_0 (1.505x0.054x0.060), …
+prune: Removed types... Accessor (225)
+[optimize] sikandar-suv attempt 3: 3.1 MB (limit 8.0 MB) | tris 188,768 (limit 100,000) | textures 703 KB @1024px q68 | GPU 31 MB (limit 128)
+[optimize] simplify pass 1: ratio 0.053 error 0.0060 -> 233,823 tris
+[optimize] simplify pass 2: ratio 0.299 error 0.0180 -> 200,071 tris
+[optimize] simplify pass 3: ratio 0.350 error 0.0540 -> 191,126 tris
+[optimize] simplify pass 4: ratio 0.366 error 0.1620 -> 188,775 tris
+[optimize] flat badge plaques removed (20): movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.426x0.105x0.004), headlight_led_right front light_0 (0.059x0.054x0.015), taillight_r_taillight_r.7_0 (0.041x0.001x0.023), scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308), scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002), roof_lights_right front light_0 (0.160x0.016x0.060), …
 [optimize] interior kept (glass is transparent)
-prune: Removed types... Node (11), Mesh (31), Primitive (41), TextureInfo (20), Material (4), Texture (10), Accessor (194)
-prune: Removed types... Accessor (541)
+prune: Removed types... Node (22), Mesh (20), Primitive (30), TextureInfo (35), Material (7), Texture (9), Accessor (138)
+prune: Removed types... Accessor (555)
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
@@ -230,19 +246,29 @@ quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
-prune: Removed types... Accessor (208)
-[optimize] sikandar-suv attempt 4: 3.1 MB (limit 8.0 MB) | tris 209,941 (limit 100,000) | textures 474 KB @768px q64
-[optimize] sikandar-suv shipped textures: 9 used, 0 unused
-[optimize] sikandar-suv -> public/models/sikandar-suv.glb 3.1 MB | 209,941 tris | {"detected":true,"count":4,"wheelbase":1.427,"track":1.333,"radius":0.519,"frontZ":-0.501,"rearZ":0.926,"list":[{"corner":"front-left","position":[-0.481,0.613,-0.521],"radius":0.432,"width":0.264,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.003_wheel_rf.2_0","wheel_rf.003_wheel_rf.1_0","int_door_lf_wheel_rf.2_0","int_door_lf_movsteer_1.0.5_0","scorpio_n_int_console_scorpio_n_int_seats-stiches.0_0","scorpio_n_int_console_movsteer_1.0.3_0","scorpio_n_int_console_scorpio_n_int_dashboard.6_0"],"memberPaths":["/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.003/wheel_rf.003_wheel_rf.2_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.003/wheel_rf.003_wheel_rf.1_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_lf_dummy/door_lf/int_door_lf/int_door_lf_wheel_rf.2_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_lf_dummy/door_lf/int_door_lf/int_door_lf_movsteer_1.0.5_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_scorpio_n_int_seats-stiches.0_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_movsteer_1.0.3_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_scorpio_n_int_dashboard.6_0"]},{"corner":"front-right","position":[0.461,0.619,-0.481],"radius":0.578,"width":0.35,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf_wheel_rf.2_0","wheel_rf_wheel_rf.1_0","door_rf_wheel_rf.1_0","int_door_rf_wheel_rf.2_0","int_door_rf_movsteer_1.0.5_0","scorpio_n_int_console_wheel_rf.0_0","scorpio_n_int_console_taillight_r.6_0","scorpio_n_int_console_movsteer_1.0.5_0"],"memberPaths":["/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf/wheel_rf_wheel_rf.2_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf/wheel_rf_wheel_rf.1_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_rf_dummy/door_rf/door_rf_wheel_rf.1_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_rf_dummy/door_rf/int_door_rf/int_door_rf_wheel_rf.2_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_rf_dummy/door_rf/int_door_rf/int_door_rf_movsteer_1.0.5_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_wheel_rf.0_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_taillight_r.6_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_movsteer_1.0.5_0"]},{"corner":"rear-left","position":[-0.821,0.534,0.847],"radius":0.534,"width":0.264,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.002_wheel_rf.2_0","wheel_rf.002_wheel_rf.1_0","door_lr_wheel_rf.1_0","int_door_lr_movsteer_1.0.5_0"],"memberPaths":["/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.002/wheel_rf.002_wheel_rf.2_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.002/wheel_rf.002_wheel_rf.1_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_lr_dummy/door_lr/door_lr_wheel_rf.1_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_lr_dummy/door_lr/int_door_lr/int_door_lr_movsteer_1.0.5_0"]},{"corner":"rear-right","position":[0.512,0.579,1.006],"radius":0.531,"width":0.264,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.001_wheel_rf.2_0","wheel_rf.001_wheel_rf.1_0","door_rr_wheel_rf.1_0","int_door_rr_movsteer_1.0.5_0","scorpio_n_int_seat_reck_wheel_rf.3_0","scorpio_n_int_seat_reck_movsteer_1.0.3_0"],"memberPaths":["/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.001/wheel_rf.001_wheel_rf.2_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.001/wheel_rf.001_wheel_rf.1_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_rr_dummy/door_rr/door_rr_wheel_rf.1_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_rr_dummy/door_rr/int_door_rr/int_door_rr_movsteer_1.0.5_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_seat_reck/scorpio_n_int_seat_reck_wheel_rf.3_0","/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_seat_reck/scorpio_n_int_seat_reck_movsteer_1.0.3_0"]}]}
-[optimize] flat badge plaques removed (83): Object_4 (1.280x0.045x0.373), Object_8 (0.021x0.035x0.205), Object_10 (0.049x0.092x0.379), Object_14 (0.020x0.034x0.192), Object_16 (0.049x0.092x0.379), Object_18 (0.074x0.214x0.657), Object_20 (0.074x0.211x0.654), Object_35 (0.061x0.419x0.419), …
+prune: Removed types... Accessor (218)
+[optimize] sikandar-suv attempt 4: 2.9 MB (limit 8.0 MB) | tris 188,775 (limit 100,000) | textures 474 KB @768px q64 | GPU 24 MB (limit 128)
+[optimize] sikandar-suv shipped textures: 10 used, 0 unused
+[optimize] sikandar-suv -> public/models/sikandar-suv.glb 2.9 MB | 188,775 tris | {"detected":true,"count":4,"wheelbase":2.744,"track":1.622,"radius":0.379,"frontZ":-1.474,"rearZ":1.27,"list":[{"corner":"front-left","position":[-0.82,0.379,-1.474],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.003_wheel_rf.2_0","wheel_rf.003_wheel_rf.1_0","wheel_rf.003_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.0_0#0"]},{"corner":"front-right","position":[0.802,0.379,-1.474],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf_wheel_rf.2_0","wheel_rf_wheel_rf.1_0","wheel_rf_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.0_0#0"]},{"corner":"rear-left","position":[-0.82,0.379,1.27],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.002_wheel_rf.2_0","wheel_rf.002_wheel_rf.1_0","wheel_rf.002_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.0_0#0"]},{"corner":"rear-right","position":[0.802,0.379,1.27],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.001_wheel_rf.2_0","wheel_rf.001_wheel_rf.1_0","wheel_rf.001_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.0_0#0"]}]}
+[optimize] simplify pass 1: ratio 0.660 error 0.0040 -> 70,531 tris
+[optimize] simplify pass 2: ratio 0.992 error 0.0120 -> 69,894 tris
+[optimize] flat badge plaques removed (60): Object_4 (1.280x0.045x0.373), Object_8 (0.021x0.035x0.205), Object_10 (0.049x0.092x0.379), Object_14 (0.020x0.034x0.192), Object_16 (0.049x0.092x0.379), Object_18 (0.074x0.214x0.657), Object_20 (0.074x0.211x0.654), Object_35 (0.061x0.419x0.419), …
 [optimize] interior kept (glass is transparent)
-prune: Removed types... Node (77), Mesh (85), Primitive (89), TextureInfo (190), Material (38), Texture (5), Accessor (410)
-prune: Removed types... Accessor (80)
-prune: Removed types... Accessor (28)
-[optimize] aurora-v12 attempt 1: 273 KB (limit 4.0 MB) | tris 69,962 (limit 70,000) | textures 198 KB @2048px q78
-[optimize] aurora-v12 shipped textures: 1 used, 0 unused
-[optimize] aurora-v12 -> public/models/aurora-v12.glb 273 KB | 69,962 tris | {"detected":true,"count":4,"wheelbase":2.743,"track":1.933,"radius":0.287,"frontZ":-1.385,"rearZ":1.358,"list":[{"corner":"front-left","position":[-0.858,0.311,-1.407],"radius":0.298,"width":0.421,"axleAxis":"x","source":"shape","confidence":1,"members":["Object_181","Object_184","Object_179","Object_177","Object_94"],"memberPaths":["/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_rims_LOD2_98/Object_181","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100/Object_184","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_emissive_ID_rims_LOD2_97/Object_179","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_details_normal_LOD2_96/Object_177","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_thirdlight_LOD2_53/Object_94"]},{"corner":"front-right","position":[0.96,0.303,-1.363],"radius":0.298,"width":0.439,"axleAxis":"x","source":"shape","confidence":1,"members":["Object_195","Object_198","Object_193","Object_191"],"memberPaths":["/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_rims_LOD2_2_108/Object_195","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110/Object_198","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_emissive_ID_rims_LOD2_2_107/Object_193","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_details_normal_LOD2_2_106/Object_191"]},{"corner":"rear-left","position":[-0.973,0.277,1.358],"radius":0.277,"width":0.295,"axleAxis":"x","source":"shape","confidence":1,"members":["Object_30","Object_33","Object_28","Object_26"],"memberPaths":["/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_rims_LOD2_3_13/Object_30","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15/Object_33","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_emissive_ID_rims_LOD2_3_12/Object_28","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_details_normal_LOD2_3_11/Object_26"]},{"corner":"rear-right","position":[0.953,0.277,1.358],"radius":0.277,"width":0.295,"axleAxis":"x","source":"shape","confidence":1,"members":["Object_44","Object_47","Object_42","Object_40"],"memberPaths":["/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_rims_LOD2_4_23/Object_44","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25/Object_47","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_emissive_ID_rims_LOD2_4_22/Object_42","/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_details_normal_LOD2_4_21/Object_40"]}]}
-prune: Removed types... Accessor (152)
+prune: Removed types... Node (56), Mesh (62), Primitive (66), TextureInfo (130), Material (26), Texture (3), Accessor (336)
+prune: Removed types... Accessor (154)
+quantize: Skipping TEXCOORD_0; out of [0,1] range.
+quantize: Skipping TEXCOORD_0; out of [0,1] range.
+quantize: Skipping TEXCOORD_0; out of [0,1] range.
+quantize: Skipping TEXCOORD_0; out of [0,1] range.
+prune: Removed types... Accessor (52)
+[optimize] aurora-v12 attempt 1: 658 KB (limit 4.0 MB) | tris 69,894 (limit 70,000) | textures 198 KB @2048px q78 | GPU 18 MB (limit 96)
+[optimize] aurora-v12 shipped textures: 3 used, 0 unused
+[optimize] aurora-v12 -> public/models/aurora-v12.glb 658 KB | 69,894 tris | {"detected":true,"count":4,"wheelbase":2.633,"track":1.971,"radius":0.278,"frontZ":-1.34,"rearZ":1.293,"list":[{"corner":"front-left","position":[-0.986,0.293,-1.34],"radius":0.288,"width":0.147,"axleAxis":"x","source":"shape","confidence":1,"members":["Object_181","Object_184","Object_179"],"memberPaths":["/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_99#0/wheelFR_rims_LOD2_98#0/Object_181#0","/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_motion_102#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100#0/Object_184#0","/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_99#0/wheelFR_emissive_ID_rims_LOD2_97#0/Object_179#0"]},{"corner":"front-right","position":[0.985,0.293,-1.34],"radius":0.288,"width":0.153,"axleAxis":"x","source":"shape","confidence":1,"members":["Object_195","Object_198","Object_193"],"memberPaths":["/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_2_109#0/wheelFR_rims_LOD2_2_108#0/Object_195#0","/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_motion_2_112#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110#0/Object_198#0","/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_2_109#0/wheelFR_emissive_ID_rims_LOD2_2_107#0/Object_193#0"]},{"corner":"rear-left","position":[-0.941,0.268,1.293],"radius":0.268,"width":0.285,"axleAxis":"x","source":"shape","confidence":1,"members":["Object_30","Object_33","Object_26","Object_28"],"memberPaths":["/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_rims_LOD2_3_13#0/Object_30#0","/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_motion_3_17#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15#0/Object_33#0","/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_details_normal_LOD2_3_11#0/Object_26#0","/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_emissive_ID_rims_LOD2_3_12#0/Object_28#0"]},{"corner":"rear-right","position":[0.922,0.268,1.293],"radius":0.268,"width":0.285,"axleAxis":"x","source":"shape","confidence":1,"members":["Object_44","Object_47","Object_40","Object_42"],"memberPaths":["/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_rims_LOD2_4_23#0/Object_44#0","/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_motion_4_27#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25#0/Object_47#0","/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_details_normal_LOD2_4_21#0/Object_40#0","/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_emissive_ID_rims_LOD2_4_22#0/Object_42#0"]}]}
+[optimize] simplify pass 1: ratio 0.440 error 0.0100 -> 171,473 tris
+[optimize] simplify pass 2: ratio 0.875 error 0.0300 -> 155,104 tris
+[optimize] simplify pass 3: ratio 0.967 error 0.0900 -> 151,364 tris
+[optimize] simplify pass 4: ratio 0.991 error 0.2700 -> 150,366 tris
+prune: Removed types... Accessor (190)
 instance: No meshes with >=4 parent nodes were found.
 prune: Removed types... Accessor (159)
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
@@ -270,8 +296,12 @@ quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 prune: Removed types... Accessor (60)
-[optimize] forest-dirt-trail attempt 1: 25.1 MB (limit 20.0 MB) | tris 151,388 (limit 150,000) | textures 21.5 MB @1024px q74
-prune: Removed types... Accessor (152)
+[optimize] forest-dirt-trail attempt 1: 11.1 MB (limit 20.0 MB) | tris 150,366 (limit 150,000) | textures 7.5 MB @512px q76 | GPU 53 MB (limit 150)
+[optimize] simplify pass 1: ratio 0.396 error 0.0100 -> 158,569 tris
+[optimize] simplify pass 2: ratio 0.851 error 0.0300 -> 141,136 tris
+[optimize] simplify pass 3: ratio 0.957 error 0.0900 -> 136,810 tris
+[optimize] simplify pass 4: ratio 0.987 error 0.2700 -> 135,544 tris
+prune: Removed types... Accessor (190)
 instance: No meshes with >=4 parent nodes were found.
 prune: Removed types... Accessor (159)
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
@@ -299,10 +329,10 @@ quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 prune: Removed types... Accessor (60)
-[optimize] forest-dirt-trail attempt 2: 15.3 MB (limit 20.0 MB) | tris 136,832 (limit 150,000) | textures 11.8 MB @768px q66
+[optimize] forest-dirt-trail attempt 2: 10.7 MB (limit 20.0 MB) | tris 135,544 (limit 150,000) | textures 7.3 MB @512px q68 | GPU 53 MB (limit 150)
 [optimize] forest-dirt-trail shipped textures: 70 used, 0 unused
-[optimize] forest-dirt-trail terrain: road 42 pts, half-width 12.02 m, coverage 1.78%, grid 274x274 @ 2.00 m, offset -162.83
-[optimize] forest-dirt-trail -> public/tracks/forest-dirt-trail.glb 15.3 MB | 136,832 tris | {"file":"public/tracks/forest-dirt-trail.terrain.json","cellSize":2,"cols":274,"rows":274,"heightOffset":-162.83,"roadHalfWidth":12.024,"roadPoints":42,"roadCoverage":0.0178,"heights":{"minHeight":null,"maxHeight":null}}
+[optimize] forest-dirt-trail terrain: road 82 pts, half-width 12.02 m, coverage 1.85%, grid 263x274 @ 2.00 m, offset -162.45
+[optimize] forest-dirt-trail -> public/tracks/forest-dirt-trail.glb 10.7 MB | 135,544 tris | {"file":"public/tracks/forest-dirt-trail.terrain.json","cellSize":2,"cols":263,"rows":274,"heightOffset":-162.446,"roadHalfWidth":12.024,"roadPoints":82,"roadCoverage":0.0185,"heights":{"minHeight":-66.041,"maxHeight":11.09}}
 [optimize] done: 3 assets
 [env] asphalt_02: diffuse -> public/textures/asphalt_diffuse_2k.jpg (2.9 MB, 2048x2048)
 [env] asphalt_02: normal -> public/textures/asphalt_normal_2k.jpg (4.7 MB, 2048x2048)
@@ -316,76 +346,76 @@ prune: Removed types... Accessor (60)
 --- public/ tree ---
 8.0K	public/cars
 360K	public/audio
-3.4M	public/models
+3.6M	public/models
 9.0M	public/textures
-16M	public/tracks
-29M	public
+11M	public/tracks
+24M	public
 --- files ---
 assets/reports:
-total 14352
-drwxr-xr-x 2 runner runner    4096 Oct 15 08:29 .
-drwxr-xr-x 4 runner runner    4096 Oct 15 08:29 ..
--rw-r--r-- 1 runner runner    2271 Oct 15 08:29 SUMMARY.md
--rw-r--r-- 1 runner runner   99832 Oct 15 08:29 aurora-v12.report.json
--rw-r--r-- 1 runner runner   39528 Oct 15 08:29 aurora-v12.shipped-textures.png
--rw-r--r-- 1 runner runner    4473 Oct 15 08:29 aurora-v12.side.png
--rw-r--r-- 1 runner runner     340 Oct 15 08:29 aurora-v12.textures.json
--rw-r--r-- 1 runner runner  287933 Oct 15 08:29 aurora-v12.textures.png
--rw-r--r-- 1 runner runner    5626 Oct 15 08:29 aurora-v12.top.png
--rw-r--r-- 1 runner runner   23963 Oct 15 08:29 aurora-v12.tree.txt
--rw-r--r-- 1 runner runner   63086 Oct 15 08:29 forest-dirt-trail.height.png
--rw-r--r-- 1 runner runner    4491 Oct 15 08:29 forest-dirt-trail.map.png
--rw-r--r-- 1 runner runner   76513 Oct 15 08:29 forest-dirt-trail.map.txt
--rw-r--r-- 1 runner runner   57885 Oct 15 08:29 forest-dirt-trail.report.json
--rw-r--r-- 1 runner runner 5205748 Oct 15 08:29 forest-dirt-trail.shipped-textures.png
--rw-r--r-- 1 runner runner    3018 Oct 15 08:29 forest-dirt-trail.side.png
--rw-r--r-- 1 runner runner   17364 Oct 15 08:29 forest-dirt-trail.textures.json
--rw-r--r-- 1 runner runner 6939973 Oct 15 08:29 forest-dirt-trail.textures.png
--rw-r--r-- 1 runner runner    3018 Oct 15 08:29 forest-dirt-trail.top.png
--rw-r--r-- 1 runner runner    7359 Oct 15 08:29 forest-dirt-trail.tree.txt
--rw-r--r-- 1 runner runner   32032 Oct 15 08:29 optimized-manifests.json
--rw-r--r-- 1 runner runner   29338 Oct 15 08:29 pipeline.log
--rw-r--r-- 1 runner runner  104207 Oct 15 08:29 sikandar-suv.report.json
--rw-r--r-- 1 runner runner  499757 Oct 15 08:29 sikandar-suv.shipped-textures.png
--rw-r--r-- 1 runner runner    8123 Oct 15 08:29 sikandar-suv.side.png
--rw-r--r-- 1 runner runner    2351 Oct 15 08:29 sikandar-suv.textures.json
--rw-r--r-- 1 runner runner 1025128 Oct 15 08:29 sikandar-suv.textures.png
--rw-r--r-- 1 runner runner   16827 Oct 15 08:29 sikandar-suv.top.png
--rw-r--r-- 1 runner runner   33668 Oct 15 08:29 sikandar-suv.tree.txt
--rw-r--r-- 1 runner runner   30322 Oct 15 08:29 source-summary.json
+total 14340
+drwxr-xr-x 2 runner runner    4096 Oct 15 08:44 .
+drwxr-xr-x 4 runner runner    4096 Oct 15 08:44 ..
+-rw-r--r-- 1 runner runner    2270 Oct 15 08:50 SUMMARY.md
+-rw-r--r-- 1 runner runner   99600 Oct 15 08:50 aurora-v12.report.json
+-rw-r--r-- 1 runner runner  119163 Oct 15 08:50 aurora-v12.shipped-textures.png
+-rw-r--r-- 1 runner runner    4451 Oct 15 08:50 aurora-v12.side.png
+-rw-r--r-- 1 runner runner     839 Oct 15 08:50 aurora-v12.textures.json
+-rw-r--r-- 1 runner runner  287933 Oct 15 08:50 aurora-v12.textures.png
+-rw-r--r-- 1 runner runner    5659 Oct 15 08:50 aurora-v12.top.png
+-rw-r--r-- 1 runner runner   23963 Oct 15 08:50 aurora-v12.tree.txt
+-rw-r--r-- 1 runner runner   60975 Oct 15 08:51 forest-dirt-trail.height.png
+-rw-r--r-- 1 runner runner    4359 Oct 15 08:51 forest-dirt-trail.map.png
+-rw-r--r-- 1 runner runner   73740 Oct 15 08:51 forest-dirt-trail.map.txt
+-rw-r--r-- 1 runner runner   58473 Oct 15 08:50 forest-dirt-trail.report.json
+-rw-r--r-- 1 runner runner 5104828 Oct 15 08:51 forest-dirt-trail.shipped-textures.png
+-rw-r--r-- 1 runner runner    3018 Oct 15 08:50 forest-dirt-trail.side.png
+-rw-r--r-- 1 runner runner   17344 Oct 15 08:51 forest-dirt-trail.textures.json
+-rw-r--r-- 1 runner runner 6939973 Oct 15 08:50 forest-dirt-trail.textures.png
+-rw-r--r-- 1 runner runner    3018 Oct 15 08:50 forest-dirt-trail.top.png
+-rw-r--r-- 1 runner runner    7359 Oct 15 08:50 forest-dirt-trail.tree.txt
+-rw-r--r-- 1 runner runner   30120 Oct 15 08:51 optimized-manifests.json
+-rw-r--r-- 1 runner runner   29292 Oct 15 08:51 pipeline.log
+-rw-r--r-- 1 runner runner  103300 Oct 15 08:50 sikandar-suv.report.json
+-rw-r--r-- 1 runner runner  509421 Oct 15 08:50 sikandar-suv.shipped-textures.png
+-rw-r--r-- 1 runner runner    8086 Oct 15 08:50 sikandar-suv.side.png
+-rw-r--r-- 1 runner runner    2595 Oct 15 08:50 sikandar-suv.textures.json
+-rw-r--r-- 1 runner runner 1025128 Oct 15 08:50 sikandar-suv.textures.png
+-rw-r--r-- 1 runner runner   16801 Oct 15 08:50 sikandar-suv.top.png
+-rw-r--r-- 1 runner runner   33668 Oct 15 08:50 sikandar-suv.tree.txt
+-rw-r--r-- 1 runner runner   30322 Oct 15 08:50 source-summary.json
 
 public/audio:
 total 364
-drwxr-xr-x 2 runner runner  4096 Oct 15 08:29 .
-drwxr-xr-x 7 runner runner  4096 Oct 15 08:29 ..
--rw-r--r-- 1 runner runner 88244 Oct 15 08:29 aurora-v10-high.wav
--rw-r--r-- 1 runner runner 88024 Oct 15 08:29 aurora-v10-low.wav
--rw-r--r-- 1 runner runner  1280 Oct 15 08:29 engine.index.json
--rw-r--r-- 1 runner runner 88244 Oct 15 08:29 sikandar-diesel-high.wav
--rw-r--r-- 1 runner runner 88244 Oct 15 08:29 sikandar-diesel-low.wav
+drwxr-xr-x 2 runner runner  4096 Oct 15 08:44 .
+drwxr-xr-x 7 runner runner  4096 Oct 15 08:44 ..
+-rw-r--r-- 1 runner runner 88244 Oct 15 08:51 aurora-v10-high.wav
+-rw-r--r-- 1 runner runner 88024 Oct 15 08:51 aurora-v10-low.wav
+-rw-r--r-- 1 runner runner  1280 Oct 15 08:51 engine.index.json
+-rw-r--r-- 1 runner runner 88244 Oct 15 08:51 sikandar-diesel-high.wav
+-rw-r--r-- 1 runner runner 88244 Oct 15 08:51 sikandar-diesel-low.wav
 
 public/models:
-total 3476
-drwxr-xr-x 2 runner runner    4096 Oct 15 08:29 .
-drwxr-xr-x 7 runner runner    4096 Oct 15 08:29 ..
--rw-r--r-- 1 runner runner  279212 Oct 15 08:29 aurora-v12.glb
--rw-r--r-- 1 runner runner   12163 Oct 15 08:29 aurora-v12.manifest.json
--rw-r--r-- 1 runner runner 3236924 Oct 15 08:29 sikandar-suv.glb
--rw-r--r-- 1 runner runner   15792 Oct 15 08:29 sikandar-suv.manifest.json
+total 3676
+drwxr-xr-x 2 runner runner    4096 Oct 15 08:44 .
+drwxr-xr-x 7 runner runner    4096 Oct 15 08:44 ..
+-rw-r--r-- 1 runner runner  673704 Oct 15 08:50 aurora-v12.glb
+-rw-r--r-- 1 runner runner   13770 Oct 15 08:50 aurora-v12.manifest.json
+-rw-r--r-- 1 runner runner 3049520 Oct 15 08:50 sikandar-suv.glb
+-rw-r--r-- 1 runner runner   12147 Oct 15 08:50 sikandar-suv.manifest.json
 
 public/textures:
 total 9120
-drwxr-xr-x 2 runner runner    4096 Oct 15 08:29 .
-drwxr-xr-x 7 runner runner    4096 Oct 15 08:29 ..
--rw-r--r-- 1 runner runner    1044 Oct 15 08:29 asphalt.index.json
--rw-r--r-- 1 runner runner 1299186 Oct 15 08:29 asphalt_arm_2k.jpg
--rw-r--r-- 1 runner runner 3075676 Oct 15 08:29 asphalt_diffuse_2k.jpg
--rw-r--r-- 1 runner runner 4943950 Oct 15 08:29 asphalt_normal_2k.jpg
+drwxr-xr-x 2 runner runner    4096 Oct 15 08:44 .
+drwxr-xr-x 7 runner runner    4096 Oct 15 08:44 ..
+-rw-r--r-- 1 runner runner    1044 Oct 15 08:51 asphalt.index.json
+-rw-r--r-- 1 runner runner 1299186 Oct 15 08:51 asphalt_arm_2k.jpg
+-rw-r--r-- 1 runner runner 3075676 Oct 15 08:51 asphalt_diffuse_2k.jpg
+-rw-r--r-- 1 runner runner 4943950 Oct 15 08:51 asphalt_normal_2k.jpg
 
 public/tracks:
-total 15844
-drwxr-xr-x 2 runner runner     4096 Oct 15 08:29 .
-drwxr-xr-x 7 runner runner     4096 Oct 15 08:29 ..
--rw-r--r-- 1 runner runner 16006088 Oct 15 08:29 forest-dirt-trail.glb
--rw-r--r-- 1 runner runner     1843 Oct 15 08:29 forest-dirt-trail.manifest.json
--rw-r--r-- 1 runner runner   201517 Oct 15 08:29 forest-dirt-trail.terrain.json
+total 11188
+drwxr-xr-x 2 runner runner     4096 Oct 15 08:44 .
+drwxr-xr-x 7 runner runner     4096 Oct 15 08:44 ..
+-rw-r--r-- 1 runner runner 11244312 Oct 15 08:51 forest-dirt-trail.glb
+-rw-r--r-- 1 runner runner     1847 Oct 15 08:51 forest-dirt-trail.manifest.json
+-rw-r--r-- 1 runner runner   194438 Oct 15 08:51 forest-dirt-trail.terrain.json

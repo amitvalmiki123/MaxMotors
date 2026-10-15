@@ -2,7 +2,7 @@
   "id": "aurora-v12",
   "source": "assets/raw/terzo-millennio.glb",
   "kind": "car",
-  "generatedAt": "2026-10-15T08:29:13.524Z",
+  "generatedAt": "2026-10-15T08:50:37.223Z",
   "stats": {
     "nodes": 247,
     "meshes": 115,
@@ -1219,89 +1219,79 @@
       {
         "corner": "front-left",
         "center": [
-          -0.7262009024462355,
-          0.2716417969626381,
-          -0.9703651065675062
+          -0.7696136850593661,
+          0.27504485453598415,
+          -1.0392811303661107
         ],
-        "radius": 0.2288053931038784,
-        "width": 0.32279558578150624,
+        "radius": 0.2277528266682698,
+        "hubRadius": 0.2277528266682698,
+        "width": 0.11580522134900184,
         "axleAxis": 0,
         "members": [
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_rims_LOD2_98/Object_181",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102/wheelFR_motion_rims_LOD2_101/Object_186",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_grid_LOD2_80/Object_146",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/post_dest.001_144/bone_wheel_FR_rotation.001_143/wheelFR.001_142/wheelFR_glass_LOD2_141/Object_241",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100/Object_184",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_emissive_ID_rims_LOD2_97/Object_179",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_details_normal_LOD2_96/Object_177"
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_99#0/wheelFR_rims_LOD2_98#0/Object_181#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_motion_102#0/wheelFR_motion_rims_LOD2_101#0/Object_186#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lamborghini_Terzo_Millennio_car_149#0/post_dest.001_144#0/bone_wheel_FR_rotation.001_143#0/wheelFR.001_142#0/wheelFR_glass_LOD2_141#0/Object_241#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_motion_102#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100#0/Object_184#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_99#0/wheelFR_emissive_ID_rims_LOD2_97#0/Object_179#0"
         ],
         "memberNames": [
           "Object_181",
           "Object_186",
-          "Object_146",
           "Object_241",
           "Object_184",
-          "Object_179",
-          "Object_177"
+          "Object_179"
         ],
-        "allMemberCount": 7,
+        "allMemberCount": 5,
         "source": "shape",
         "confidence": 1
       },
       {
         "corner": "front-right",
         "center": [
-          0.6889742821624748,
-          0.27529259913284476,
-          -0.9951804193374667
+          0.7837706467050793,
+          0.2750448545374653,
+          -1.0398170204080819
         ],
-        "radius": 0.22880536454456488,
-        "width": 0.33656123050268005,
+        "radius": 0.2277528266682619,
+        "hubRadius": 0.2277528266682619,
+        "width": 0.12074378730611757,
         "axleAxis": 0,
         "members": [
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_rims_LOD2_2_108/Object_195",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112/wheelFR_motion_rims_LOD2_2_111/Object_200",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_grid_LOD2_73/Object_132",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/ppst_sinis.001_148/bone_wheel_FR_rotation_2.001_147/wheelFR_2.001_146/wheelFR_glass_LOD2_2_145/Object_246",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110/Object_198",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_emissive_ID_rims_LOD2_2_107/Object_193",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_details_normal_LOD2_2_106/Object_191",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_thirdlight_LOD2_53/Object_94"
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_2_109#0/wheelFR_rims_LOD2_2_108#0/Object_195#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_motion_2_112#0/wheelFR_motion_rims_LOD2_2_111#0/Object_200#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lamborghini_Terzo_Millennio_car_149#0/ppst_sinis.001_148#0/bone_wheel_FR_rotation_2.001_147#0/wheelFR_2.001_146#0/wheelFR_glass_LOD2_2_145#0/Object_246#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_motion_2_112#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110#0/Object_198#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_2_109#0/wheelFR_emissive_ID_rims_LOD2_2_107#0/Object_193#0"
         ],
         "memberNames": [
           "Object_195",
           "Object_200",
-          "Object_132",
           "Object_246",
           "Object_198",
-          "Object_193",
-          "Object_191",
-          "Object_94"
+          "Object_193"
         ],
-        "allMemberCount": 8,
+        "allMemberCount": 5,
         "source": "shape",
         "confidence": 1
       },
       {
         "corner": "rear-left",
         "center": [
-          -0.8252806572147363,
-          0.27273682315723247,
-          0.6606571974507669
+          -0.7448371035194306,
+          0.254981335876913,
+          1.0401674846437068
         ],
-        "radius": 0.37161263806735184,
+        "radius": 0.21156392196643758,
+        "hubRadius": 0.21156392196643758,
         "width": 0.2258666681992072,
         "axleAxis": 0,
         "members": [
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_rims_LOD2_3_13/Object_30",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17/wheelFR_motion_rims_LOD2_3_16/Object_35",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_dest.001_136/bone_wheel_FR_rotation_3.001_135/wheelFR_3.001_134/wheelFR_glass_LOD2_3_133/Object_231",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15/Object_33",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_emissive_ID_rims_LOD2_3_12/Object_28",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_details_normal_LOD2_3_11/Object_26",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/detach_03_5_details_orange_accents_LOD2_10/Object_20",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_details_LOD2_78/Object_141",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_details_normal_LOD2_66/Object_118"
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_rims_LOD2_3_13#0/Object_30#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_motion_3_17#0/wheelFR_motion_rims_LOD2_3_16#0/Object_35#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lamborghini_Terzo_Millennio_car_149#0/anteriore_dest.001_136#0/bone_wheel_FR_rotation_3.001_135#0/wheelFR_3.001_134#0/wheelFR_glass_LOD2_3_133#0/Object_231#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_motion_3_17#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15#0/Object_33#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_emissive_ID_rims_LOD2_3_12#0/Object_28#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_details_normal_LOD2_3_11#0/Object_26#0"
         ],
         "memberNames": [
           "Object_30",
@@ -1309,41 +1299,30 @@
           "Object_231",
           "Object_33",
           "Object_28",
-          "Object_26",
-          "Object_20",
-          "Object_141",
-          "Object_118"
+          "Object_26"
         ],
-        "allMemberCount": 9,
+        "allMemberCount": 6,
         "source": "shape",
         "confidence": 1
       },
       {
         "corner": "rear-right",
         "center": [
-          0.34471792498367737,
-          0.2323013751886473,
-          0.9237284707036643
+          0.7450914459943706,
+          0.25498133587753624,
+          1.0398753997077268
         ],
-        "radius": 0.3716126390486561,
+        "radius": 0.2115639219664303,
+        "hubRadius": 0.2115639219664303,
         "width": 0.2258666802579541,
         "axleAxis": 0,
         "members": [
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_rims_LOD2_4_23/Object_44",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27/wheelFR_motion_rims_LOD2_4_26/Object_49",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_sins.001_140/bone_wheel_FR_rotation_4.001_139/wheelFR_4.001_138/wheelFR_glass_LOD2_4_137/Object_236",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25/Object_47",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_emissive_ID_rims_LOD2_4_22/Object_42",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_details_normal_LOD2_4_21/Object_40",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_details_LOD2_71/Object_127",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/detach_anim04_LOD_tiled_carbon_LOD16_9/Object_18",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_L_60_63/detach_door_L_60_details_normal_LOD2_62/Object_110",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_38/detach_lip_5_37/detach_lip_5_details_normal_LOD2_36/Object_55",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_38/detach_lip_5_37/detach_lip_5_details_LOD2_35/Object_53",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_73",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_220",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_222",
-          "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_217"
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_rims_LOD2_4_23#0/Object_44#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_motion_4_27#0/wheelFR_motion_rims_LOD2_4_26#0/Object_49#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lamborghini_Terzo_Millennio_car_149#0/anteriore_sins.001_140#0/bone_wheel_FR_rotation_4.001_139#0/wheelFR_4.001_138#0/wheelFR_glass_LOD2_4_137#0/Object_236#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_motion_4_27#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25#0/Object_47#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_emissive_ID_rims_LOD2_4_22#0/Object_42#0",
+          "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_details_normal_LOD2_4_21#0/Object_40#0"
         ],
         "memberNames": [
           "Object_44",
@@ -1351,32 +1330,28 @@
           "Object_236",
           "Object_47",
           "Object_42",
-          "Object_40",
-          "Object_127",
-          "Object_18",
-          "Object_110",
-          "Object_55",
-          "Object_53",
-          "Object_73",
-          "Object_220",
-          "Object_222",
-          "Object_217"
+          "Object_40"
         ],
-        "allMemberCount": 15,
+        "allMemberCount": 6,
         "source": "shape",
         "confidence": 1
       }
     ],
+    "radiusEstimate": {
+      "radius": 0.249,
+      "support": 0,
+      "pool": 0
+    },
     "complete": true,
-    "wheelbase": 1.775,
-    "track": 1.514,
-    "radius": 0.3,
-    "frontZ": -0.983,
-    "rearZ": 0.792
+    "wheelbase": 2.08,
+    "track": 1.553,
+    "radius": 0.22,
+    "frontZ": -1.04,
+    "rearZ": 1.04
   },
   "nodes": [
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_76",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_76#0",
       "name": "Object_76",
       "mesh": "Object_29",
       "triangles": 14572,
@@ -1406,7 +1381,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_LOD2_47/Object_68",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_carpaint_LOD2_47#0/Object_68#0",
       "name": "Object_68",
       "mesh": "Object_23",
       "triangles": 11232,
@@ -1436,7 +1411,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_208",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_208#0",
       "name": "Object_208",
       "mesh": "Object_94",
       "triangles": 6436,
@@ -1466,7 +1441,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint02_LOD2_44/Object_62",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_carpaint02_LOD2_44#0/Object_62#0",
       "name": "Object_62",
       "mesh": "Object_20",
       "triangles": 5686,
@@ -1496,7 +1471,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_normal_LOD2_50/Object_86",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_normal_LOD2_50#0/Object_86#0",
       "name": "Object_86",
       "mesh": "Object_38",
       "triangles": 4642,
@@ -1526,7 +1501,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_210",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_210#0",
       "name": "Object_210",
       "mesh": "Object_96",
       "triangles": 4536,
@@ -1556,7 +1531,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_93/glass_glass_LOD2_92/Object_167",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/glass_93#0/glass_glass_LOD2_92#0/Object_167#0",
       "name": "Object_167",
       "mesh": "Object_77",
       "triangles": 2610,
@@ -1586,7 +1561,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_rims_LOD2_3_13/Object_30",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_rims_LOD2_3_13#0/Object_30#0",
       "name": "Object_30",
       "mesh": "Object_9",
       "triangles": 2568,
@@ -1616,7 +1591,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_rims_LOD2_4_23/Object_44",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_rims_LOD2_4_23#0/Object_44#0",
       "name": "Object_44",
       "mesh": "Object_14",
       "triangles": 2568,
@@ -1646,7 +1621,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_rims_LOD2_98/Object_181",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_99#0/wheelFR_rims_LOD2_98#0/Object_181#0",
       "name": "Object_181",
       "mesh": "Object_83",
       "triangles": 2568,
@@ -1676,7 +1651,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_rims_LOD2_2_108/Object_195",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_2_109#0/wheelFR_rims_LOD2_2_108#0/Object_195#0",
       "name": "Object_195",
       "mesh": "Object_88",
       "triangles": 2568,
@@ -1706,7 +1681,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_diffuser_5_59/detach_diffuser_5_details_LOD2_58/Object_103",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_diffuser_5_59#0/detach_diffuser_5_details_LOD2_58#0/Object_103#0",
       "name": "Object_103",
       "mesh": "Object_47",
       "triangles": 2128,
@@ -1736,7 +1711,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Roues arri��re.003_128/Object_202",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Roues arri��re.003_128#0/Object_202#0",
       "name": "Object_202",
       "mesh": "Object_91",
       "triangles": 1836,
@@ -1766,7 +1741,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Roues arri��re.001_130/Object_206",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Roues arri��re.001_130#0/Object_206#0",
       "name": "Object_206",
       "mesh": "Object_93",
       "triangles": 1836,
@@ -1796,7 +1771,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_trunk_50_85/detach_trunk_50_carpaint_custom02_LOD2_82/Object_149",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_trunk_50_85#0/detach_trunk_50_carpaint_custom02_LOD2_82#0/Object_149#0",
       "name": "Object_149",
       "mesh": "Object_69",
       "triangles": 1802,
@@ -1826,7 +1801,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_214",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_214#0",
       "name": "Object_214",
       "mesh": "Object_100",
       "triangles": 1676,
@@ -1856,7 +1831,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_219",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_219#0",
       "name": "Object_219",
       "mesh": "Object_105",
       "triangles": 1624,
@@ -1886,7 +1861,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_detachable_95/glass_detachable_glass_LOD2_94/Object_172",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/glass_detachable_95#0/glass_detachable_glass_LOD2_94#0/Object_172#0",
       "name": "Object_172",
       "mesh": "Object_80",
       "triangles": 1358,
@@ -1916,7 +1891,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_emissive_ID_rims_LOD2_3_12/Object_28",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_emissive_ID_rims_LOD2_3_12#0/Object_28#0",
       "name": "Object_28",
       "mesh": "Object_8",
       "triangles": 1080,
@@ -1946,7 +1921,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_emissive_ID_rims_LOD2_4_22/Object_42",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_emissive_ID_rims_LOD2_4_22#0/Object_42#0",
       "name": "Object_42",
       "mesh": "Object_13",
       "triangles": 1080,
@@ -1976,7 +1951,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_emissive_ID_rims_LOD2_97/Object_179",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_99#0/wheelFR_emissive_ID_rims_LOD2_97#0/Object_179#0",
       "name": "Object_179",
       "mesh": "Object_82",
       "triangles": 1080,
@@ -2006,7 +1981,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_emissive_ID_rims_LOD2_2_107/Object_193",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_2_109#0/wheelFR_emissive_ID_rims_LOD2_2_107#0/Object_193#0",
       "name": "Object_193",
       "mesh": "Object_87",
       "triangles": 1080,
@@ -2036,7 +2011,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_38/detach_lip_5_37/detach_lip_5_details_LOD2_35/Object_53",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/bone_anim_front_38#0/detach_lip_5_37#0/detach_lip_5_details_LOD2_35#0/Object_53#0",
       "name": "Object_53",
       "mesh": "Object_17",
       "triangles": 1024,
@@ -2066,7 +2041,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/<Wheel.001_132/Object_225",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/<Wheel.001_132#0/Object_225#0",
       "name": "Object_225",
       "mesh": "Object_110",
       "triangles": 992,
@@ -2096,7 +2071,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_218",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_218#0",
       "name": "Object_218",
       "mesh": "Object_104",
       "triangles": 990,
@@ -2126,7 +2101,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_custom01_LOD2_46/Object_66",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_carpaint_custom01_LOD2_46#0/Object_66#0",
       "name": "Object_66",
       "mesh": "Object_22",
       "triangles": 988,
@@ -2156,7 +2131,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/emissive_mesh_88/emissive_mesh_emissive_mesh_exhaust_LOD6_86/Object_156",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/emissive_mesh_88#0/emissive_mesh_emissive_mesh_exhaust_LOD6_86#0/Object_156#0",
       "name": "Object_156",
       "mesh": "Object_72",
       "triangles": 982,
@@ -2186,7 +2161,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_211",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_211#0",
       "name": "Object_211",
       "mesh": "Object_97",
       "triangles": 936,
@@ -2216,7 +2191,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_neons_LOD2_51/Object_90",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_emissive_ID_neons_LOD2_51#0/Object_90#0",
       "name": "Object_90",
       "mesh": "Object_41",
       "triangles": 760,
@@ -2246,7 +2221,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_93/glass_glass_LOD2_92/Object_168",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/glass_93#0/glass_glass_LOD2_92#0/Object_168#0",
       "name": "Object_168",
       "mesh": "Object_78",
       "triangles": 750,
@@ -2276,7 +2251,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/detach_wing_10_carpaint_custom03_LOD2_0/Object_4",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/detach_wing_10_carpaint_custom03_LOD2_0#0/Object_4#0",
       "name": "Object_4",
       "mesh": "Object_0",
       "triangles": 742,
@@ -2306,7 +2281,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_carpaint_LOD2_70/Object_125",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_L_15_74#0/detach_skirt_L_15_carpaint_LOD2_70#0/Object_125#0",
       "name": "Object_125",
       "mesh": "Object_57",
       "triangles": 675,
@@ -2336,7 +2311,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_carpaint_LOD2_77/Object_139",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_R_15_81#0/detach_skirt_R_15_carpaint_LOD2_77#0/Object_139#0",
       "name": "Object_139",
       "mesh": "Object_64",
       "triangles": 675,
@@ -2366,7 +2341,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_details_normal_LOD2_3_11/Object_26",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_3_14#0/wheelFR_details_normal_LOD2_3_11#0/Object_26#0",
       "name": "Object_26",
       "mesh": "Object_7",
       "triangles": 610,
@@ -2396,7 +2371,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_details_normal_LOD2_4_21/Object_40",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_4_24#0/wheelFR_details_normal_LOD2_4_21#0/Object_40#0",
       "name": "Object_40",
       "mesh": "Object_12",
       "triangles": 610,
@@ -2426,7 +2401,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_details_normal_LOD2_96/Object_177",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_99#0/wheelFR_details_normal_LOD2_96#0/Object_177#0",
       "name": "Object_177",
       "mesh": "Object_81",
       "triangles": 610,
@@ -2456,7 +2431,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_details_normal_LOD2_2_106/Object_191",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_2_109#0/wheelFR_details_normal_LOD2_2_106#0/Object_191#0",
       "name": "Object_191",
       "mesh": "Object_86",
       "triangles": 610,
@@ -2486,7 +2461,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_74",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_74#0",
       "name": "Object_74",
       "mesh": "Object_27",
       "triangles": 596,
@@ -2516,7 +2491,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_221",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_221#0",
       "name": "Object_221",
       "mesh": "Object_107",
       "triangles": 580,
@@ -2546,7 +2521,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_carpaint03_LOD2_69/Object_123",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_L_15_74#0/detach_skirt_L_15_carpaint03_LOD2_69#0/Object_123#0",
       "name": "Object_123",
       "mesh": "Object_56",
       "triangles": 579,
@@ -2576,7 +2551,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_carpaint03_LOD2_76/Object_137",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_R_15_81#0/detach_skirt_R_15_carpaint03_LOD2_76#0/Object_137#0",
       "name": "Object_137",
       "mesh": "Object_63",
       "triangles": 579,
@@ -2606,7 +2581,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_93/glass_glass_LOD2_92/Object_169",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/glass_93#0/glass_glass_LOD2_92#0/Object_169#0",
       "name": "Object_169",
       "mesh": "Object_79",
       "triangles": 548,
@@ -2636,7 +2611,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_carbon_LOD2_45/Object_64",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_carpaint_carbon_LOD2_45#0/Object_64#0",
       "name": "Object_64",
       "mesh": "Object_21",
       "triangles": 504,
@@ -2666,7 +2641,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_75",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_75#0",
       "name": "Object_75",
       "mesh": "Object_28",
       "triangles": 492,
@@ -2696,7 +2671,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_trunk_50_85/detach_trunk_50_details_normal_LOD2_83/Object_151",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_trunk_50_85#0/detach_trunk_50_details_normal_LOD2_83#0/Object_151#0",
       "name": "Object_151",
       "mesh": "Object_70",
       "triangles": 476,
@@ -2726,7 +2701,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_L_60_63/detach_door_L_60_details_LOD2_61/Object_108",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_door_L_60_63#0/detach_door_L_60_details_LOD2_61#0/Object_108#0",
       "name": "Object_108",
       "mesh": "Object_49",
       "triangles": 469,
@@ -2756,7 +2731,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_details_LOD2_65/Object_116",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_door_R_60_67#0/detach_door_R_60_details_LOD2_65#0/Object_116#0",
       "name": "Object_116",
       "mesh": "Object_53",
       "triangles": 469,
@@ -2786,7 +2761,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/front_piston_91/front_piston_details_LOD2_89/Object_161",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/front_piston_91#0/front_piston_details_LOD2_89#0/Object_161#0",
       "name": "Object_161",
       "mesh": "Object_74",
       "triangles": 460,
@@ -2816,7 +2791,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_215",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_215#0",
       "name": "Object_215",
       "mesh": "Object_101",
       "triangles": 458,
@@ -2846,7 +2821,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17/wheelFR_motion_rims_LOD2_3_16/Object_35",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_motion_3_17#0/wheelFR_motion_rims_LOD2_3_16#0/Object_35#0",
       "name": "Object_35",
       "mesh": "Object_11",
       "triangles": 432,
@@ -2876,7 +2851,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27/wheelFR_motion_rims_LOD2_4_26/Object_49",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_motion_4_27#0/wheelFR_motion_rims_LOD2_4_26#0/Object_49#0",
       "name": "Object_49",
       "mesh": "Object_16",
       "triangles": 432,
@@ -2906,7 +2881,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102/wheelFR_motion_rims_LOD2_101/Object_186",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_motion_102#0/wheelFR_motion_rims_LOD2_101#0/Object_186#0",
       "name": "Object_186",
       "mesh": "Object_85",
       "triangles": 432,
@@ -2936,7 +2911,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112/wheelFR_motion_rims_LOD2_2_111/Object_200",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_motion_2_112#0/wheelFR_motion_rims_LOD2_2_111#0/Object_200#0",
       "name": "Object_200",
       "mesh": "Object_90",
       "triangles": 432,
@@ -2966,7 +2941,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_tiled_carbon_LOD2_55/Object_98",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_tiled_carbon_LOD2_55#0/Object_98#0",
       "name": "Object_98",
       "mesh": "Object_45",
       "triangles": 410,
@@ -2996,7 +2971,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_82",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_82#0",
       "name": "Object_82",
       "mesh": "Object_35",
       "triangles": 398,
@@ -3026,7 +3001,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_dest.001_136/bone_wheel_FR_rotation_3.001_135/wheelFR_3.001_134/wheelFR_glass_LOD2_3_133/Object_231",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lamborghini_Terzo_Millennio_car_149#0/anteriore_dest.001_136#0/bone_wheel_FR_rotation_3.001_135#0/wheelFR_3.001_134#0/wheelFR_glass_LOD2_3_133#0/Object_231#0",
       "name": "Object_231",
       "mesh": "Object_111",
       "triangles": 384,
@@ -3056,7 +3031,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_sins.001_140/bone_wheel_FR_rotation_4.001_139/wheelFR_4.001_138/wheelFR_glass_LOD2_4_137/Object_236",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lamborghini_Terzo_Millennio_car_149#0/anteriore_sins.001_140#0/bone_wheel_FR_rotation_4.001_139#0/wheelFR_4.001_138#0/wheelFR_glass_LOD2_4_137#0/Object_236#0",
       "name": "Object_236",
       "mesh": "Object_112",
       "triangles": 384,
@@ -3086,7 +3061,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/post_dest.001_144/bone_wheel_FR_rotation.001_143/wheelFR.001_142/wheelFR_glass_LOD2_141/Object_241",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lamborghini_Terzo_Millennio_car_149#0/post_dest.001_144#0/bone_wheel_FR_rotation.001_143#0/wheelFR.001_142#0/wheelFR_glass_LOD2_141#0/Object_241#0",
       "name": "Object_241",
       "mesh": "Object_113",
       "triangles": 384,
@@ -3116,7 +3091,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/ppst_sinis.001_148/bone_wheel_FR_rotation_2.001_147/wheelFR_2.001_146/wheelFR_glass_LOD2_2_145/Object_246",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lamborghini_Terzo_Millennio_car_149#0/ppst_sinis.001_148#0/bone_wheel_FR_rotation_2.001_147#0/wheelFR_2.001_146#0/wheelFR_glass_LOD2_2_145#0/Object_246#0",
       "name": "Object_246",
       "mesh": "Object_114",
       "triangles": 384,
@@ -3146,7 +3121,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_216",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_216#0",
       "name": "Object_216",
       "mesh": "Object_102",
       "triangles": 370,
@@ -3176,7 +3151,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_trunk_50_85/detach_trunk_50_tiled_carbon_LOD2_84/Object_153",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_trunk_50_85#0/detach_trunk_50_tiled_carbon_LOD2_84#0/Object_153#0",
       "name": "Object_153",
       "mesh": "Object_71",
       "triangles": 336,
@@ -3206,7 +3181,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_normal_LOD2_50/Object_87",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_normal_LOD2_50#0/Object_87#0",
       "name": "Object_87",
       "mesh": "Object_39",
       "triangles": 325,
@@ -3236,7 +3211,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15/Object_33",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_dest_20#0/bone_wheel_FR_rotation_3_19#0/wheelFR_motion_3_17#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15#0/Object_33#0",
       "name": "Object_33",
       "mesh": "Object_10",
       "triangles": 320,
@@ -3266,7 +3241,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25/Object_47",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/anteriore_sins_30#0/bone_wheel_FR_rotation_4_29#0/wheelFR_motion_4_27#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25#0/Object_47#0",
       "name": "Object_47",
       "mesh": "Object_15",
       "triangles": 320,
@@ -3296,7 +3271,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100/Object_184",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/post_dest_105#0/bone_wheel_FR_rotation_104#0/wheelFR_motion_102#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100#0/Object_184#0",
       "name": "Object_184",
       "mesh": "Object_84",
       "triangles": 320,
@@ -3326,7 +3301,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110/Object_198",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/ppst_sinis_115#0/bone_wheel_FR_rotation_2_114#0/wheelFR_motion_2_112#0/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110#0/Object_198#0",
       "name": "Object_198",
       "mesh": "Object_89",
       "triangles": 320,
@@ -3356,7 +3331,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_L_60_63/detach_door_L_60_carpaint_LOD2_60/Object_106",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_door_L_60_63#0/detach_door_L_60_carpaint_LOD2_60#0/Object_106#0",
       "name": "Object_106",
       "mesh": "Object_48",
       "triangles": 313,
@@ -3386,7 +3361,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_details_LOD2_71/Object_127",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_L_15_74#0/detach_skirt_L_15_details_LOD2_71#0/Object_127#0",
       "name": "Object_127",
       "mesh": "Object_58",
       "triangles": 308,
@@ -3416,7 +3391,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_details_LOD2_78/Object_141",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_R_15_81#0/detach_skirt_R_15_details_LOD2_78#0/Object_141#0",
       "name": "Object_141",
       "mesh": "Object_65",
       "triangles": 308,
@@ -3446,7 +3421,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_81",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_81#0",
       "name": "Object_81",
       "mesh": "Object_34",
       "triangles": 300,
@@ -3476,7 +3451,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_rear_LOD2_52/Object_92",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_emissive_ID_rear_LOD2_52#0/Object_92#0",
       "name": "Object_92",
       "mesh": "Object_42",
       "triangles": 290,
@@ -3506,7 +3481,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_LOD2_47/Object_69",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_carpaint_LOD2_47#0/Object_69#0",
       "name": "Object_69",
       "mesh": "Object_24",
       "triangles": 284,
@@ -3536,7 +3511,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_piston_41/piston_moving_40/piston_moving_details_LOD2_39/Object_59",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/bone_anim_front_piston_41#0/piston_moving_40#0/piston_moving_details_LOD2_39#0/Object_59#0",
       "name": "Object_59",
       "mesh": "Object_19",
       "triangles": 280,
@@ -3566,7 +3541,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_83",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_83#0",
       "name": "Object_83",
       "mesh": "Object_36",
       "triangles": 278,
@@ -3596,7 +3571,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/detach_anim04_LOD_tiled_carbon_LOD16_9/Object_18",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/detach_anim04_LOD_tiled_carbon_LOD16_9#0/Object_18#0",
       "name": "Object_18",
       "mesh": "Object_5",
       "triangles": 276,
@@ -3626,7 +3601,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/detach_03_5_details_orange_accents_LOD2_10/Object_20",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/detach_03_5_details_orange_accents_LOD2_10#0/Object_20#0",
       "name": "Object_20",
       "mesh": "Object_6",
       "triangles": 272,
@@ -3656,7 +3631,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_217",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_217#0",
       "name": "Object_217",
       "mesh": "Object_103",
       "triangles": 262,
@@ -3686,7 +3661,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_209",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_209#0",
       "name": "Object_209",
       "mesh": "Object_95",
       "triangles": 260,
@@ -3716,7 +3691,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/emissive_mesh_88/emissive_mesh_emissive_mesh_static_LOD6_87/Object_158",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/emissive_mesh_88#0/emissive_mesh_emissive_mesh_static_LOD6_87#0/Object_158#0",
       "name": "Object_158",
       "mesh": "Object_73",
       "triangles": 252,
@@ -3746,7 +3721,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/<Wheel.002_129/Object_204",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/<Wheel.002_129#0/Object_204#0",
       "name": "Object_204",
       "mesh": "Object_92",
       "triangles": 248,
@@ -3776,7 +3751,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_77",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_77#0",
       "name": "Object_77",
       "mesh": "Object_30",
       "triangles": 246,
@@ -3806,7 +3781,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_84",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_84#0",
       "name": "Object_84",
       "mesh": "Object_37",
       "triangles": 236,
@@ -3836,7 +3811,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_212",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_212#0",
       "name": "Object_212",
       "mesh": "Object_98",
       "triangles": 224,
@@ -3866,7 +3841,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_underside_LOD2_56/Object_100",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_underside_LOD2_56#0/Object_100#0",
       "name": "Object_100",
       "mesh": "Object_46",
       "triangles": 190,
@@ -3896,7 +3871,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_carpaint_LOD2_64/Object_113",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_door_R_60_67#0/detach_door_R_60_carpaint_LOD2_64#0/Object_113#0",
       "name": "Object_113",
       "mesh": "Object_51",
       "triangles": 185,
@@ -3926,7 +3901,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_73",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_73#0",
       "name": "Object_73",
       "mesh": "Object_26",
       "triangles": 159,
@@ -3956,7 +3931,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_222",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_222#0",
       "name": "Object_222",
       "mesh": "Object_108",
       "triangles": 152,
@@ -3986,7 +3961,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_L_anim_4/detach_anim02_3/detach_anim02_tiled_carbon_LOD2_2/Object_10",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/top_wing_L_anim_4#0/detach_anim02_3#0/detach_anim02_tiled_carbon_LOD2_2#0/Object_10#0",
       "name": "Object_10",
       "mesh": "Object_2",
       "triangles": 140,
@@ -4016,7 +3991,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_R_anim_8/detach_anim03_7/detach_anim03_tiled_carbon_LOD2_6/Object_16",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/top_wing_R_anim_8#0/detach_anim03_7#0/detach_anim03_tiled_carbon_LOD2_6#0/Object_16#0",
       "name": "Object_16",
       "mesh": "Object_4",
       "triangles": 140,
@@ -4046,7 +4021,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_carpaint_LOD2_64/Object_114",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_door_R_60_67#0/detach_door_R_60_carpaint_LOD2_64#0/Object_114#0",
       "name": "Object_114",
       "mesh": "Object_52",
       "triangles": 128,
@@ -4076,7 +4051,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/front_piston_91/front_piston_details_LOD4_90/Object_163",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/front_piston_91#0/front_piston_details_LOD4_90#0/Object_163#0",
       "name": "Object_163",
       "mesh": "Object_75",
       "triangles": 126,
@@ -4106,7 +4081,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_details_normal_LOD2_72/Object_130",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_L_15_74#0/detach_skirt_L_15_details_normal_LOD2_72#0/Object_130#0",
       "name": "Object_130",
       "mesh": "Object_60",
       "triangles": 123,
@@ -4136,7 +4111,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_details_normal_LOD2_79/Object_144",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_R_15_81#0/detach_skirt_R_15_details_normal_LOD2_79#0/Object_144#0",
       "name": "Object_144",
       "mesh": "Object_67",
       "triangles": 123,
@@ -4166,7 +4141,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_carpaint02_LOD2_68/Object_121",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_L_15_74#0/detach_skirt_L_15_carpaint02_LOD2_68#0/Object_121#0",
       "name": "Object_121",
       "mesh": "Object_55",
       "triangles": 117,
@@ -4196,7 +4171,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_carpaint02_LOD2_75/Object_135",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_R_15_81#0/detach_skirt_R_15_carpaint02_LOD2_75#0/Object_135#0",
       "name": "Object_135",
       "mesh": "Object_62",
       "triangles": 117,
@@ -4226,7 +4201,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_normal_LOD2_48/Object_71",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_carpaint_normal_LOD2_48#0/Object_71#0",
       "name": "Object_71",
       "mesh": "Object_25",
       "triangles": 106,
@@ -4256,7 +4231,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_80",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_80#0",
       "name": "Object_80",
       "mesh": "Object_33",
       "triangles": 94,
@@ -4286,7 +4261,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_grid_LOD2_54/Object_96",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_grid_LOD2_54#0/Object_96#0",
       "name": "Object_96",
       "mesh": "Object_44",
       "triangles": 80,
@@ -4316,7 +4291,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_thirdlight_LOD2_53/Object_94",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_emissive_ID_thirdlight_LOD2_53#0/Object_94#0",
       "name": "Object_94",
       "mesh": "Object_43",
       "triangles": 64,
@@ -4346,7 +4321,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_L_60_63/detach_door_L_60_details_normal_LOD2_62/Object_110",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_door_L_60_63#0/detach_door_L_60_details_normal_LOD2_62#0/Object_110#0",
       "name": "Object_110",
       "mesh": "Object_50",
       "triangles": 59,
@@ -4376,7 +4351,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_details_normal_LOD2_66/Object_118",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_door_R_60_67#0/detach_door_R_60_details_normal_LOD2_66#0/Object_118#0",
       "name": "Object_118",
       "mesh": "Object_54",
       "triangles": 59,
@@ -4406,7 +4381,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_L_anim_4/detach_anim02_3/detach_anim02_details_LOD2_1/Object_8",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/top_wing_L_anim_4#0/detach_anim02_3#0/detach_anim02_details_LOD2_1#0/Object_8#0",
       "name": "Object_8",
       "mesh": "Object_1",
       "triangles": 54,
@@ -4436,7 +4411,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_38/detach_lip_5_37/detach_lip_5_details_normal_LOD2_36/Object_55",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/bone_anim_front_38#0/detach_lip_5_37#0/detach_lip_5_details_normal_LOD2_36#0/Object_55#0",
       "name": "Object_55",
       "mesh": "Object_18",
       "triangles": 52,
@@ -4466,7 +4441,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_93/glass_glass_LOD2_92/Object_166",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/glass_93#0/glass_glass_LOD2_92#0/Object_166#0",
       "name": "Object_166",
       "mesh": "Object_76",
       "triangles": 48,
@@ -4496,7 +4471,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_R_anim_8/detach_anim03_7/detach_anim03_details_LOD2_5/Object_14",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/top_wing_R_anim_8#0/detach_anim03_7#0/detach_anim03_details_LOD2_5#0/Object_14#0",
       "name": "Object_14",
       "mesh": "Object_3",
       "triangles": 47,
@@ -4526,7 +4501,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_details_LOD2_71/Object_128",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_L_15_74#0/detach_skirt_L_15_details_LOD2_71#0/Object_128#0",
       "name": "Object_128",
       "mesh": "Object_59",
       "triangles": 28,
@@ -4556,7 +4531,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_details_LOD2_78/Object_142",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_R_15_81#0/detach_skirt_R_15_details_LOD2_78#0/Object_142#0",
       "name": "Object_142",
       "mesh": "Object_66",
       "triangles": 28,
@@ -4586,7 +4561,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_213",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_213#0",
       "name": "Object_213",
       "mesh": "Object_99",
       "triangles": 28,
@@ -4616,7 +4591,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_78",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_78#0",
       "name": "Object_78",
       "mesh": "Object_31",
       "triangles": 20,
@@ -4646,7 +4621,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_79",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_LOD2_49#0/Object_79#0",
       "name": "Object_79",
       "mesh": "Object_32",
       "triangles": 20,
@@ -4676,7 +4651,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_normal_LOD2_50/Object_88",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/chassis_57#0/chassis_details_normal_LOD2_50#0/Object_88#0",
       "name": "Object_88",
       "mesh": "Object_40",
       "triangles": 18,
@@ -4706,7 +4681,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_grid_LOD2_73/Object_132",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_L_15_74#0/detach_skirt_L_15_grid_LOD2_73#0/Object_132#0",
       "name": "Object_132",
       "mesh": "Object_61",
       "triangles": 18,
@@ -4736,7 +4711,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_grid_LOD2_80/Object_146",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Lambo T M_126#0/detach_skirt_R_15_81#0/detach_skirt_R_15_grid_LOD2_80#0/Object_146#0",
       "name": "Object_146",
       "mesh": "Object_68",
       "triangles": 18,
@@ -4766,7 +4741,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_220",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_220#0",
       "name": "Object_220",
       "mesh": "Object_106",
       "triangles": 18,
@@ -4796,7 +4771,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_223",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/Circle.003_131#0/Object_223#0",
       "name": "Object_223",
       "mesh": "Object_109",
       "triangles": 18,
@@ -4826,7 +4801,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model",
+      "path": "/Sketchfab_model#0",
       "name": "Sketchfab_model",
       "mesh": null,
       "triangles": 0,
@@ -4854,7 +4829,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/root",
+      "path": "/Sketchfab_model#0/root#0",
       "name": "root",
       "mesh": null,
       "triangles": 0,
@@ -4882,7 +4857,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0",
       "name": "GLTF_SceneRootNode",
       "mesh": null,
       "triangles": 0,
@@ -4910,7 +4885,7 @@
       "childCount": 12
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/detach_wing_10_carpaint_custom03_LOD2_0",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/detach_wing_10_carpaint_custom03_LOD2_0#0",
       "name": "detach_wing_10_carpaint_custom03_LOD2_0",
       "mesh": null,
       "triangles": 0,
@@ -4938,7 +4913,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_L_anim_4",
+      "path": "/Sketchfab_model#0/root#0/GLTF_SceneRootNode#0/top_wing_L_anim_4#0",
       "name": "top_wing_L_anim_4",
       "mesh": null,
       "triangles": 0,

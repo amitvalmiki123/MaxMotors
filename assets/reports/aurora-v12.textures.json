@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-10-15T08:32:24.831Z",
-  "count": 2,
+  "generatedAt": "2026-10-15T08:50:53.616Z",
+  "count": 3,
   "textures": [
     {
       "index": 0,
       "mimeType": "image/webp",
-      "bytes": 9114,
-      "width": 512,
-      "height": 512,
+      "bytes": 83366,
+      "width": 1024,
+      "height": 1024,
       "used": true,
       "materials": [
-        "Carosserie"
+        "Blanck"
       ],
       "slots": [
         "baseColor"
@@ -19,12 +19,28 @@
     {
       "index": 1,
       "mimeType": "image/webp",
-      "bytes": 8312,
-      "width": 512,
-      "height": 512,
+      "bytes": 8520,
+      "width": 1024,
+      "height": 1024,
       "used": true,
       "materials": [
-        "Tire"
+        "CARBONE",
+        "Carbone"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 2,
+      "mimeType": "image/webp",
+      "bytes": 91196,
+      "width": 1024,
+      "height": 1024,
+      "used": true,
+      "materials": [
+        "Tire",
+        "Tire.001"
       ],
       "slots": [
         "baseColor"

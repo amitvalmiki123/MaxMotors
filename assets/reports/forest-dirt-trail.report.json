@@ -2,7 +2,7 @@
   "id": "forest-dirt-trail",
   "source": "assets/raw/forest-dirt-road.glb",
   "kind": "track",
-  "generatedAt": "2026-10-15T08:29:15.397Z",
+  "generatedAt": "2026-10-15T08:50:40.094Z",
   "stats": {
     "nodes": 56,
     "meshes": 27,
@@ -1223,6 +1223,11 @@
   ],
   "wheelClusters": {
     "wheels": [],
+    "radiusEstimate": {
+      "radius": 38.583,
+      "support": 0,
+      "pool": 0
+    },
     "complete": false,
     "wheelbase": null,
     "track": null,
@@ -1232,7 +1237,7 @@
   },
   "nodes": [
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.006/Background_Tree_Atlas.006_Trunk_Oak_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.006#0/Background_Tree_Atlas.006_Trunk_Oak_0#0",
       "name": "Background_Tree_Atlas.006_Trunk_Oak_0",
       "mesh": "Background_Tree_Atlas.006_Trunk_Oak_0",
       "triangles": 70153,
@@ -1262,7 +1267,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.001/Background_Tree_Atlas.001_Background_Tree_Atlas_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.001#0/Background_Tree_Atlas.001_Background_Tree_Atlas_0#0",
       "name": "Background_Tree_Atlas.001_Background_Tree_Atlas_0",
       "mesh": "Background_Tree_Atlas.001_Background_Tree_Atlas_0",
       "triangles": 58972,
@@ -1292,7 +1297,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.001/Background_Tree_Atlas.001_Background_Tree_Atlas_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.001#0/Background_Tree_Atlas.001_Background_Tree_Atlas_0#1",
       "name": "Background_Tree_Atlas.001_Background_Tree_Atlas_0",
       "mesh": "Background_Tree_Atlas.001_Background_Tree_Atlas_0",
       "triangles": 34831,
@@ -1322,7 +1327,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.011/Background_Tree_Atlas.011_Grass_Vegetation_Green_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.011#0/Background_Tree_Atlas.011_Grass_Vegetation_Green_0#0",
       "name": "Background_Tree_Atlas.011_Grass_Vegetation_Green_0",
       "mesh": "Background_Tree_Atlas.011_Grass_Vegetation_Green_0",
       "triangles": 26126,
@@ -1352,7 +1357,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.013/Background_Tree_Atlas.013_Rock_Decal_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.013#0/Background_Tree_Atlas.013_Rock_Decal_0#0",
       "name": "Background_Tree_Atlas.013_Rock_Decal_0",
       "mesh": "Background_Tree_Atlas.013_Rock_Decal_0",
       "triangles": 20529,
@@ -1382,7 +1387,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.010/Background_Tree_Atlas.010_Grass_Vegetation_Dry_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.010#0/Background_Tree_Atlas.010_Grass_Vegetation_Dry_0#0",
       "name": "Background_Tree_Atlas.010_Grass_Vegetation_Dry_0",
       "mesh": "Background_Tree_Atlas.010_Grass_Vegetation_Dry_0",
       "triangles": 16726,
@@ -1412,7 +1417,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.004/Background_Tree_Atlas.004_Trunk_Birch_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.004#0/Background_Tree_Atlas.004_Trunk_Birch_0#0",
       "name": "Background_Tree_Atlas.004_Trunk_Birch_0",
       "mesh": "Background_Tree_Atlas.004_Trunk_Birch_0",
       "triangles": 12921,
@@ -1442,7 +1447,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.012/Background_Tree_Atlas.012_Fallen_Maple_Leaves_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.012#0/Background_Tree_Atlas.012_Fallen_Maple_Leaves_0#0",
       "name": "Background_Tree_Atlas.012_Fallen_Maple_Leaves_0",
       "mesh": "Background_Tree_Atlas.012_Fallen_Maple_Leaves_0",
       "triangles": 11505,
@@ -1472,7 +1477,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.021/Background_Tree_Atlas.021_Aerial_Grass_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.021#0/Background_Tree_Atlas.021_Aerial_Grass_0#0",
       "name": "Background_Tree_Atlas.021_Aerial_Grass_0",
       "mesh": "Background_Tree_Atlas.021_Aerial_Grass_0",
       "triangles": 10729,
@@ -1502,7 +1507,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.019/Background_Tree_Atlas.019_Sloped_Rock_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.019#0/Background_Tree_Atlas.019_Sloped_Rock_0#0",
       "name": "Background_Tree_Atlas.019_Sloped_Rock_0",
       "mesh": "Background_Tree_Atlas.019_Sloped_Rock_0",
       "triangles": 10287,
@@ -1532,7 +1537,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.025/Background_Tree_Atlas.025_Dirt_Road_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.025#0/Background_Tree_Atlas.025_Dirt_Road_0#0",
       "name": "Background_Tree_Atlas.025_Dirt_Road_0",
       "mesh": "Background_Tree_Atlas.025_Dirt_Road_0",
       "triangles": 10052,
@@ -1562,7 +1567,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.009/Background_Tree_Atlas.009_Forest_Bush_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.009#0/Background_Tree_Atlas.009_Forest_Bush_0#0",
       "name": "Background_Tree_Atlas.009_Forest_Bush_0",
       "mesh": "Background_Tree_Atlas.009_Forest_Bush_0",
       "triangles": 8570,
@@ -1592,7 +1597,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.022/Background_Tree_Atlas.022_Tall_Cliff_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.022#0/Background_Tree_Atlas.022_Tall_Cliff_0#0",
       "name": "Background_Tree_Atlas.022_Tall_Cliff_0",
       "mesh": "Background_Tree_Atlas.022_Tall_Cliff_0",
       "triangles": 7820,
@@ -1622,7 +1627,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.007/Background_Tree_Atlas.007_Fallen_Generic_Leaves_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.007#0/Background_Tree_Atlas.007_Fallen_Generic_Leaves_0#0",
       "name": "Background_Tree_Atlas.007_Fallen_Generic_Leaves_0",
       "mesh": "Background_Tree_Atlas.007_Fallen_Generic_Leaves_0",
       "triangles": 7649,
@@ -1652,7 +1657,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.024/Background_Tree_Atlas.024_Grass_Close_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.024#0/Background_Tree_Atlas.024_Grass_Close_0#0",
       "name": "Background_Tree_Atlas.024_Grass_Close_0",
       "mesh": "Background_Tree_Atlas.024_Grass_Close_0",
       "triangles": 7328,
@@ -1682,7 +1687,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.015/Background_Tree_Atlas.015_Dirt_Road_Trails_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.015#0/Background_Tree_Atlas.015_Dirt_Road_Trails_0#0",
       "name": "Background_Tree_Atlas.015_Dirt_Road_Trails_0",
       "mesh": "Background_Tree_Atlas.015_Dirt_Road_Trails_0",
       "triangles": 5292,
@@ -1712,7 +1717,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.026/Background_Tree_Atlas.026_Broken_Rocks_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.026#0/Background_Tree_Atlas.026_Broken_Rocks_0#0",
       "name": "Background_Tree_Atlas.026_Broken_Rocks_0",
       "mesh": "Background_Tree_Atlas.026_Broken_Rocks_0",
       "triangles": 4228,
@@ -1742,7 +1747,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.017/Background_Tree_Atlas.017_Puddle_Streaks_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.017#0/Background_Tree_Atlas.017_Puddle_Streaks_0#0",
       "name": "Background_Tree_Atlas.017_Puddle_Streaks_0",
       "mesh": "Background_Tree_Atlas.017_Puddle_Streaks_0",
       "triangles": 3693,
@@ -1772,7 +1777,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.008/Background_Tree_Atlas.008_Ground_Dirt_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.008#0/Background_Tree_Atlas.008_Ground_Dirt_0#0",
       "name": "Background_Tree_Atlas.008_Ground_Dirt_0",
       "mesh": "Background_Tree_Atlas.008_Ground_Dirt_0",
       "triangles": 3487,
@@ -1802,7 +1807,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.016/Background_Tree_Atlas.016_Road_Edge_Gravel_Dusty_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.016#0/Background_Tree_Atlas.016_Road_Edge_Gravel_Dusty_0#0",
       "name": "Background_Tree_Atlas.016_Road_Edge_Gravel_Dusty_0",
       "mesh": "Background_Tree_Atlas.016_Road_Edge_Gravel_Dusty_0",
       "triangles": 3126,
@@ -1832,7 +1837,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.020/Background_Tree_Atlas.020_Terrain_Far_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.020#0/Background_Tree_Atlas.020_Terrain_Far_0#0",
       "name": "Background_Tree_Atlas.020_Terrain_Far_0",
       "mesh": "Background_Tree_Atlas.020_Terrain_Far_0",
       "triangles": 2644,
@@ -1862,7 +1867,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.014/Background_Tree_Atlas.014_Mud_Pile_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.014#0/Background_Tree_Atlas.014_Mud_Pile_0#0",
       "name": "Background_Tree_Atlas.014_Mud_Pile_0",
       "mesh": "Background_Tree_Atlas.014_Mud_Pile_0",
       "triangles": 1509,
@@ -1892,7 +1897,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.023/Background_Tree_Atlas.023_Cobblestone_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.023#0/Background_Tree_Atlas.023_Cobblestone_0#0",
       "name": "Background_Tree_Atlas.023_Cobblestone_0",
       "mesh": "Background_Tree_Atlas.023_Cobblestone_0",
       "triangles": 905,
@@ -1922,7 +1927,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.005/Background_Tree_Atlas.005_Wood_Log_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.005#0/Background_Tree_Atlas.005_Wood_Log_0#0",
       "name": "Background_Tree_Atlas.005_Wood_Log_0",
       "mesh": "Background_Tree_Atlas.005_Wood_Log_0",
       "triangles": 882,
@@ -1952,7 +1957,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.018/Background_Tree_Atlas.018_Wood_Fence_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.018#0/Background_Tree_Atlas.018_Wood_Fence_0#0",
       "name": "Background_Tree_Atlas.018_Wood_Fence_0",
       "mesh": "Background_Tree_Atlas.018_Wood_Fence_0",
       "triangles": 668,
@@ -1982,7 +1987,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.003/Background_Tree_Atlas.003_Dirt_Road_Bare_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.003#0/Background_Tree_Atlas.003_Dirt_Road_Bare_0#0",
       "name": "Background_Tree_Atlas.003_Dirt_Road_Bare_0",
       "mesh": "Background_Tree_Atlas.003_Dirt_Road_Bare_0",
       "triangles": 395,
@@ -2012,7 +2017,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.002/Background_Tree_Atlas.002_Metal_Fence_0",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.002#0/Background_Tree_Atlas.002_Metal_Fence_0#0",
       "name": "Background_Tree_Atlas.002_Metal_Fence_0",
       "mesh": "Background_Tree_Atlas.002_Metal_Fence_0",
       "triangles": 82,
@@ -2042,7 +2047,7 @@
       "childCount": 0
     },
     {
-      "path": "/Sketchfab_model",
+      "path": "/Sketchfab_model#0",
       "name": "Sketchfab_model",
       "mesh": null,
       "triangles": 0,
@@ -2070,7 +2075,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0",
       "name": "Dirt road scene.fbx",
       "mesh": null,
       "triangles": 0,
@@ -2098,7 +2103,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0",
       "name": "RootNode",
       "mesh": null,
       "triangles": 0,
@@ -2126,7 +2131,7 @@
       "childCount": 26
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.001",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.001#0",
       "name": "Background_Tree_Atlas.001",
       "mesh": null,
       "triangles": 0,
@@ -2154,7 +2159,7 @@
       "childCount": 2
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.002",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.002#0",
       "name": "Background_Tree_Atlas.002",
       "mesh": null,
       "triangles": 0,
@@ -2182,7 +2187,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.003",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.003#0",
       "name": "Background_Tree_Atlas.003",
       "mesh": null,
       "triangles": 0,
@@ -2210,7 +2215,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.004",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.004#0",
       "name": "Background_Tree_Atlas.004",
       "mesh": null,
       "triangles": 0,
@@ -2238,7 +2243,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.005",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.005#0",
       "name": "Background_Tree_Atlas.005",
       "mesh": null,
       "triangles": 0,
@@ -2266,7 +2271,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.006",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.006#0",
       "name": "Background_Tree_Atlas.006",
       "mesh": null,
       "triangles": 0,
@@ -2294,7 +2299,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.007",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.007#0",
       "name": "Background_Tree_Atlas.007",
       "mesh": null,
       "triangles": 0,
@@ -2322,7 +2327,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.008",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.008#0",
       "name": "Background_Tree_Atlas.008",
       "mesh": null,
       "triangles": 0,
@@ -2350,7 +2355,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.009",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.009#0",
       "name": "Background_Tree_Atlas.009",
       "mesh": null,
       "triangles": 0,
@@ -2378,7 +2383,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.010",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.010#0",
       "name": "Background_Tree_Atlas.010",
       "mesh": null,
       "triangles": 0,
@@ -2406,7 +2411,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.011",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.011#0",
       "name": "Background_Tree_Atlas.011",
       "mesh": null,
       "triangles": 0,
@@ -2434,7 +2439,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.012",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.012#0",
       "name": "Background_Tree_Atlas.012",
       "mesh": null,
       "triangles": 0,
@@ -2462,7 +2467,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.013",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.013#0",
       "name": "Background_Tree_Atlas.013",
       "mesh": null,
       "triangles": 0,
@@ -2490,7 +2495,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.014",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.014#0",
       "name": "Background_Tree_Atlas.014",
       "mesh": null,
       "triangles": 0,
@@ -2518,7 +2523,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.015",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.015#0",
       "name": "Background_Tree_Atlas.015",
       "mesh": null,
       "triangles": 0,
@@ -2546,7 +2551,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.016",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.016#0",
       "name": "Background_Tree_Atlas.016",
       "mesh": null,
       "triangles": 0,
@@ -2574,7 +2579,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.017",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.017#0",
       "name": "Background_Tree_Atlas.017",
       "mesh": null,
       "triangles": 0,
@@ -2602,7 +2607,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.018",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.018#0",
       "name": "Background_Tree_Atlas.018",
       "mesh": null,
       "triangles": 0,
@@ -2630,7 +2635,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.019",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.019#0",
       "name": "Background_Tree_Atlas.019",
       "mesh": null,
       "triangles": 0,
@@ -2658,7 +2663,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.020",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.020#0",
       "name": "Background_Tree_Atlas.020",
       "mesh": null,
       "triangles": 0,
@@ -2686,7 +2691,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.021",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.021#0",
       "name": "Background_Tree_Atlas.021",
       "mesh": null,
       "triangles": 0,
@@ -2714,7 +2719,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.022",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.022#0",
       "name": "Background_Tree_Atlas.022",
       "mesh": null,
       "triangles": 0,
@@ -2742,7 +2747,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.023",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.023#0",
       "name": "Background_Tree_Atlas.023",
       "mesh": null,
       "triangles": 0,
@@ -2770,7 +2775,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.024",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.024#0",
       "name": "Background_Tree_Atlas.024",
       "mesh": null,
       "triangles": 0,
@@ -2798,7 +2803,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.025",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.025#0",
       "name": "Background_Tree_Atlas.025",
       "mesh": null,
       "triangles": 0,
@@ -2826,7 +2831,7 @@
       "childCount": 1
     },
     {
-      "path": "/Sketchfab_model/Dirt road scene.fbx/RootNode/Background_Tree_Atlas.026",
+      "path": "/Sketchfab_model#0/Dirt road scene.fbx#0/RootNode#0/Background_Tree_Atlas.026#0",
       "name": "Background_Tree_Atlas.026",
       "mesh": null,
       "triangles": 0,
@@ -2860,12 +2865,17 @@
     "rows": 274,
     "roadHalfWidth": 11.902,
     "roadCoverage": 0.0177,
-    "roadPoints": 42,
+    "roadPoints": 82,
     "pathPreview": [
       [
         -68.28,
         134.75,
         -75.13
+      ],
+      [
+        -68.28,
+        134.69,
+        -73.13
       ],
       [
         -69.28,
@@ -2874,8 +2884,18 @@
       ],
       [
         -69.28,
+        135.7,
+        -69.13
+      ],
+      [
+        -69.28,
         136.28,
         -67.13
+      ],
+      [
+        -42.28,
+        136.98,
+        -65.13
       ],
       [
         -37.28,
@@ -2883,9 +2903,19 @@
         -63.13
       ],
       [
+        -34.28,
+        138.55,
+        -61.13
+      ],
+      [
         -31.28,
         139.44,
         -59.13
+      ],
+      [
+        -29.28,
+        139.9,
+        -57.13
       ],
       [
         -27.28,
@@ -2893,9 +2923,19 @@
         -55.13
       ],
       [
+        -25.28,
+        140.6,
+        -53.13
+      ],
+      [
         -23.28,
         142.38,
         -51.13
+      ],
+      [
+        -22.28,
+        144.09,
+        -49.13
       ],
       [
         -20.28,
@@ -2903,9 +2943,19 @@
         -47.13
       ],
       [
+        52.72,
+        147.3,
+        -45.13
+      ],
+      [
         51.72,
         148.81,
         -43.13
+      ],
+      [
+        50.72,
+        150.28,
+        -41.13
       ],
       [
         49.72,
@@ -2913,54 +2963,9 @@
         -39.13
       ],
       [
-        48.72,
-        153.03,
-        -35.13
-      ],
-      [
-        65.72,
-        154.23,
-        -31.13
-      ],
-      [
-        67.72,
-        155.76,
-        -27.13
-      ],
-      [
-        68.72,
-        156.61,
-        -23.13
-      ],
-      [
-        70.72,
-        157.41,
-        -19.13
-      ],
-      [
-        70.72,
-        158.22,
-        -15.13
-      ],
-      [
-        72.72,
-        158.99,
-        -11.13
-      ],
-      [
-        74.72,
-        159.79,
-        -7.13
-      ],
-      [
-        77.72,
-        160.59,
-        -3.13
-      ],
-      [
-        79.72,
-        161.37,
-        0.87
+        49.72,
+        152.53,
+        -37.13
       ]
     ]
   }
