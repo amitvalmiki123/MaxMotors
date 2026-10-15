@@ -1,0 +1,86 @@
+{
+  "id": "forest-dirt-trail",
+  "kind": "track",
+  "generatedAt": "2026-10-15T08:29:43.752Z",
+  "credits": {
+    "inGameName": "Forest Dirt Trail",
+    "title": "Dirt Road Through Forest",
+    "authors": [
+      "99.Miles"
+    ],
+    "source": "https://sketchfab.com/99Miles",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "modified": "Optimized for MaxMotors (simplified geometry, instanced foliage, resized/re-encoded textures)."
+  },
+  "units": "meters",
+  "source": {
+    "file": "assets/raw/forest-dirt-road.glb",
+    "triangles": 341109
+  },
+  "output": {
+    "file": "public/tracks/forest-dirt-trail.glb",
+    "bytes": 16006088,
+    "triangles": 136832,
+    "attempts": 2,
+    "textureSizePx": 768,
+    "textureQuality": 66,
+    "textureBytesBefore": 53122492,
+    "textureBytesAfter": 12414014
+  },
+  "transform": {
+    "yawRadians": 0,
+    "scale": 1,
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "note": "track keeps source orientation; terrain JSON carries the vertical offset"
+  },
+  "bounds": {
+    "min": [
+      -201.322,
+      96.239,
+      -346.552
+    ],
+    "max": [
+      346.436,
+      207.469,
+      199.841
+    ]
+  },
+  "size": [
+    547.758,
+    111.23,
+    546.393
+  ],
+  "terrain": {
+    "file": "public/tracks/forest-dirt-trail.terrain.json",
+    "cellSize": 2,
+    "cols": 274,
+    "rows": 274,
+    "heightOffset": -162.83,
+    "roadHalfWidth": 12.024,
+    "roadPoints": 42,
+    "roadCoverage": 0.0178,
+    "heights": {
+      "minHeight": null,
+      "maxHeight": null
+    }
+  },
+  "strip": {
+    "removedNodes": [],
+    "removedMaterials": [],
+    "removedMeshes": [],
+    "interiorRemoved": [],
+    "interiorSkipped": null,
+    "flatDecalRemoved": []
+  },
+  "stats": {
+    "nodes": 56,
+    "meshes": 27,
+    "materials": 26,
+    "textures": 70
+  }
+}

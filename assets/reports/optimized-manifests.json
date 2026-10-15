@@ -2,7 +2,7 @@
   {
     "id": "sikandar-suv",
     "kind": "car",
-    "generatedAt": "2026-10-15T08:28:51.284Z",
+    "generatedAt": "2026-10-15T08:29:23.619Z",
     "credits": {
       "inGameName": "Sikandar SUV",
       "title": "2022 Mahindra Scorpio-N",
@@ -18,211 +18,238 @@
     "units": "meters",
     "source": {
       "file": "assets/raw/scorpio-n.glb",
-      "triangles": 156,
+      "triangles": 1329723,
       "bounds": {
         "min": [
-          -0.95,
+          -1.079,
           0,
-          -2.616
+          -2.423
         ],
         "max": [
-          0.95,
-          1.58,
-          2.616
+          1.097,
+          1.843,
+          2.25
         ]
       }
     },
     "output": {
-      "file": "/tmp/out2/models/sikandar-suv.glb",
-      "bytes": 25504,
-      "triangles": 156,
-      "attempts": 1,
-      "textureSizePx": 2048,
-      "textureQuality": 80,
-      "textureBytesBefore": 282958,
-      "textureBytesAfter": 26528
+      "file": "public/models/sikandar-suv.glb",
+      "bytes": 3236924,
+      "triangles": 209941,
+      "attempts": 4,
+      "textureSizePx": 768,
+      "textureQuality": 64,
+      "textureBytesBefore": 5210357,
+      "textureBytesAfter": 485434
     },
     "transform": {
       "yawRadians": 0,
       "yawDegrees": 0,
-      "scale": 0.890673,
+      "scale": 0.997379,
       "position": [
-        0,
-        0,
-        0
+        -0.0091,
+        -0.1713,
+        0.0863
       ],
-      "frontConfidence": "naming(4)",
+      "frontConfidence": "naming(36)",
       "sourceSize": [
-        1.9,
-        1.58,
-        5.232
+        2.176,
+        1.843,
+        4.672
       ],
       "longAxis": "z"
     },
     "bounds": {
       "min": [
-        -0.846,
-        0,
+        -1.085,
+        -0.171,
         -2.33
       ],
       "max": [
-        0.846,
-        1.407,
+        1.085,
+        1.667,
         2.33
       ]
     },
     "size": [
-      1.692,
-      1.407,
+      2.17,
+      1.838,
       4.66
     ],
     "wheels": {
       "detected": true,
       "count": 4,
-      "wheelbase": 3.984,
-      "track": 1.426,
-      "radius": 0.338,
-      "frontZ": -1.992,
-      "rearZ": 1.992,
+      "wheelbase": 1.427,
+      "track": 1.333,
+      "radius": 0.519,
+      "frontZ": -0.501,
+      "rearZ": 0.926,
       "list": [
         {
           "corner": "front-left",
           "position": [
-            -0.713,
-            0.338,
-            -1.992
+            -0.481,
+            0.613,
+            -0.521
           ],
-          "radius": 0.338,
-          "width": 0.232,
+          "radius": 0.432,
+          "width": 0.264,
           "axleAxis": "x",
           "source": "name+shape",
-          "confidence": 0.5,
+          "confidence": 1,
           "members": [
-            "wheel_fl"
+            "wheel_rf.003_wheel_rf.2_0",
+            "wheel_rf.003_wheel_rf.1_0",
+            "int_door_lf_wheel_rf.2_0",
+            "int_door_lf_movsteer_1.0.5_0",
+            "scorpio_n_int_console_scorpio_n_int_seats-stiches.0_0",
+            "scorpio_n_int_console_movsteer_1.0.3_0",
+            "scorpio_n_int_console_scorpio_n_int_dashboard.6_0"
           ],
           "memberPaths": [
-            "/ModelRoot/wheel_f_dummy/wheel_fl"
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.003/wheel_rf.003_wheel_rf.2_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.003/wheel_rf.003_wheel_rf.1_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_lf_dummy/door_lf/int_door_lf/int_door_lf_wheel_rf.2_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_lf_dummy/door_lf/int_door_lf/int_door_lf_movsteer_1.0.5_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_scorpio_n_int_seats-stiches.0_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_movsteer_1.0.3_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_scorpio_n_int_dashboard.6_0"
           ]
         },
         {
           "corner": "front-right",
           "position": [
-            0.713,
-            0.338,
-            -1.992
+            0.461,
+            0.619,
+            -0.481
           ],
-          "radius": 0.338,
-          "width": 0.232,
+          "radius": 0.578,
+          "width": 0.35,
           "axleAxis": "x",
           "source": "name+shape",
-          "confidence": 0.5,
+          "confidence": 1,
           "members": [
-            "wheel_fr"
+            "wheel_rf_wheel_rf.2_0",
+            "wheel_rf_wheel_rf.1_0",
+            "door_rf_wheel_rf.1_0",
+            "int_door_rf_wheel_rf.2_0",
+            "int_door_rf_movsteer_1.0.5_0",
+            "scorpio_n_int_console_wheel_rf.0_0",
+            "scorpio_n_int_console_taillight_r.6_0",
+            "scorpio_n_int_console_movsteer_1.0.5_0"
           ],
           "memberPaths": [
-            "/ModelRoot/wheel_f_dummy/wheel_fr"
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf/wheel_rf_wheel_rf.2_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf/wheel_rf_wheel_rf.1_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_rf_dummy/door_rf/door_rf_wheel_rf.1_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_rf_dummy/door_rf/int_door_rf/int_door_rf_wheel_rf.2_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_rf_dummy/door_rf/int_door_rf/int_door_rf_movsteer_1.0.5_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_wheel_rf.0_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_taillight_r.6_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_console/scorpio_n_int_console_movsteer_1.0.5_0"
           ]
         },
         {
           "corner": "rear-left",
           "position": [
-            -0.713,
-            0.338,
-            1.992
+            -0.821,
+            0.534,
+            0.847
           ],
-          "radius": 0.338,
-          "width": 0.232,
+          "radius": 0.534,
+          "width": 0.264,
           "axleAxis": "x",
           "source": "name+shape",
-          "confidence": 0.5,
+          "confidence": 1,
           "members": [
-            "wheel_rl"
+            "wheel_rf.002_wheel_rf.2_0",
+            "wheel_rf.002_wheel_rf.1_0",
+            "door_lr_wheel_rf.1_0",
+            "int_door_lr_movsteer_1.0.5_0"
           ],
           "memberPaths": [
-            "/ModelRoot/wheel_r_dummy/wheel_rl"
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.002/wheel_rf.002_wheel_rf.2_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.002/wheel_rf.002_wheel_rf.1_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_lr_dummy/door_lr/door_lr_wheel_rf.1_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_lr_dummy/door_lr/int_door_lr/int_door_lr_movsteer_1.0.5_0"
           ]
         },
         {
           "corner": "rear-right",
           "position": [
-            0.713,
-            0.338,
-            1.992
+            0.512,
+            0.579,
+            1.006
           ],
-          "radius": 0.338,
-          "width": 0.232,
+          "radius": 0.531,
+          "width": 0.264,
           "axleAxis": "x",
           "source": "name+shape",
-          "confidence": 0.5,
+          "confidence": 1,
           "members": [
-            "wheel_rr"
+            "wheel_rf.001_wheel_rf.2_0",
+            "wheel_rf.001_wheel_rf.1_0",
+            "door_rr_wheel_rf.1_0",
+            "int_door_rr_movsteer_1.0.5_0",
+            "scorpio_n_int_seat_reck_wheel_rf.3_0",
+            "scorpio_n_int_seat_reck_movsteer_1.0.3_0"
           ],
           "memberPaths": [
-            "/ModelRoot/wheel_r_dummy/wheel_rr"
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.001/wheel_rf.001_wheel_rf.2_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/wheel_rf_dummy/wheel_rf.001/wheel_rf.001_wheel_rf.1_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_rr_dummy/door_rr/door_rr_wheel_rf.1_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/door_rr_dummy/door_rr/int_door_rr/int_door_rr_movsteer_1.0.5_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_seat_reck/scorpio_n_int_seat_reck_wheel_rf.3_0",
+            "/Sketchfab_model/scorpio_n.fbx/RootNode/Scorpio-N22/chassis_dummy/chassis/scorpio_n_int_seat_reck/scorpio_n_int_seat_reck_movsteer_1.0.3_0"
           ]
         }
       ]
     },
     "strip": {
-      "removedNodes": [
-        "Badge_Logo_Decal"
-      ],
-      "removedMaterials": [
-        "Logo_Emblem"
-      ],
-      "removedMeshes": [
-        "Badge_Logo_Decal"
-      ],
+      "removedNodes": [],
+      "removedMaterials": [],
+      "removedMeshes": [],
       "interiorRemoved": [],
-      "interiorSkipped": null,
+      "interiorSkipped": "glass is transparent",
       "flatDecalRemoved": [
-        "detail_trim_0 (1.850x0.030x0.020)",
-        "detail_trim_1 (1.850x0.030x0.020)",
-        "detail_trim_2 (1.850x0.030x0.020)",
-        "detail_trim_3 (1.850x0.030x0.020)",
-        "detail_trim_4 (1.850x0.030x0.020)",
-        "detail_trim_5 (1.850x0.030x0.020)",
-        "detail_trim_6 (1.850x0.030x0.020)",
-        "detail_trim_7 (1.850x0.030x0.020)",
-        "detail_trim_8 (1.850x0.030x0.020)",
-        "detail_trim_9 (1.850x0.030x0.020)",
-        "detail_trim_10 (1.850x0.030x0.020)",
-        "detail_trim_11 (1.850x0.030x0.020)",
-        "detail_trim_12 (1.850x0.030x0.020)",
-        "detail_trim_13 (1.850x0.030x0.020)",
-        "detail_trim_14 (1.850x0.030x0.020)",
-        "detail_trim_15 (1.850x0.030x0.020)",
-        "detail_trim_16 (1.850x0.030x0.020)",
-        "detail_trim_17 (1.850x0.030x0.020)",
-        "detail_trim_18 (1.850x0.030x0.020)",
-        "detail_trim_19 (1.850x0.030x0.020)",
-        "detail_trim_20 (1.850x0.030x0.020)",
-        "detail_trim_21 (1.850x0.030x0.020)",
-        "detail_trim_22 (1.850x0.030x0.020)",
-        "detail_trim_23 (1.850x0.030x0.020)",
-        "detail_trim_24 (1.850x0.030x0.020)",
-        "detail_trim_25 (1.850x0.030x0.020)",
-        "detail_trim_26 (1.850x0.030x0.020)",
-        "detail_trim_27 (1.850x0.030x0.020)",
-        "detail_trim_28 (1.850x0.030x0.020)",
-        "detail_trim_29 (1.850x0.030x0.020)",
-        "detail_trim_30 (1.850x0.030x0.020)",
-        "detail_trim_31 (1.850x0.030x0.020)",
-        "detail_trim_32 (1.850x0.030x0.020)",
-        "detail_trim_33 (1.850x0.030x0.020)",
-        "detail_trim_34 (1.850x0.030x0.020)",
-        "detail_trim_35 (1.850x0.030x0.020)",
-        "detail_trim_36 (1.850x0.030x0.020)",
-        "detail_trim_37 (1.850x0.030x0.020)",
-        "detail_trim_38 (1.850x0.030x0.020)",
-        "detail_trim_39 (1.850x0.030x0.020)"
+        "movsteer_1.0_movsteer_1.0.3_0 (0.286x0.048x0.050)",
+        "scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009)",
+        "scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.427x0.115x0.004)",
+        "headlight_f_headlight_f.3_0 (1.203x0.013x0.027)",
+        "indicator_lf.001_indicator lf_0 (0.209x0.039x0.099)",
+        "indicator_rf.001_indicator rf_0 (0.209x0.039x0.099)",
+        "taillight_r_headlight_f.3_0 (1.363x0.001x0.001)",
+        "taillight_r_taillight_r.6_0 (1.505x0.054x0.060)",
+        "indicator_lr.001_indicator lr_0 (0.137x0.029x0.193)",
+        "indicator_rr.001_indicator rr_0 (0.137x0.020x0.170)",
+        "reverselight_l_revlight L_0 (0.109x0.097x0.052)",
+        "reverselight_r_revlight r_0 (0.109x0.097x0.052)",
+        "scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308)",
+        "scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002)",
+        "speedo_lights_right front light_0 (0.288x0.086x0.039)",
+        "door_lf_headlight_f.2_0 (0.120x0.060x0.171)",
+        "int_door_lf_movsteer_1.0.3_0 (0.009x0.001x0.010)",
+        "int_door_lf_headlight_f.2_0 (0.052x0.781x0.254)",
+        "indicator_lm_indicator lm_0 (0.087x0.025x0.136)",
+        "door_rf_headlight_f.2_0 (0.139x0.062x0.153)",
+        "int_door_rf_movsteer_1.0.3_0 (0.032x0.011x0.194)",
+        "int_door_rf_headlight_f.2_0 (0.052x0.781x0.254)",
+        "indicator_rm_indicator rm_0 (0.108x0.025x0.126)",
+        "int_door_rr_movsteer_1.0.3_0 (0.009x0.001x0.010)",
+        "int_door_rr_headlight_f.2_0 (0.020x0.213x0.235)",
+        "int_door_lr_movsteer_1.0.3_0 (0.009x0.001x0.010)",
+        "int_door_lr_headlight_f.2_0 (0.020x0.213x0.235)",
+        "boot_scorpio_n_ext_1.2_0 (0.480x0.114x0.010)",
+        "breaklight_ml_breaklight r_0 (0.321x0.012x0.008)",
+        "breaklight_mesh_headlight_f.2_0 (0.440x0.037x0.039)",
+        "breaklight_mesh_taillight_r.5_0 (0.388x0.024x0.019)"
       ]
     },
     "materials": [
       {
-        "name": "Carosserie",
+        "name": "wheel_rf.3",
         "alphaMode": "OPAQUE",
-        "doubleSided": false,
+        "doubleSided": true,
         "emissive": false,
         "baseColor": [
           1,
@@ -235,9 +262,48 @@
         ]
       },
       {
-        "name": "Tire",
+        "name": "wheel_rf.1",
         "alphaMode": "OPAQUE",
-        "doubleSided": false,
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.175,
+          0.223,
+          0.258,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "wheel_rf.2",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "wheel_rf.0",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.007,
+          0.007,
+          0.007,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "movsteer_1.0.5",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
         "emissive": false,
         "baseColor": [
           1,
@@ -250,30 +316,306 @@
         ]
       },
       {
-        "name": "Vitres",
-        "alphaMode": "OPAQUE",
-        "doubleSided": false,
+        "name": "movsteer_1.0.3",
+        "alphaMode": "MASK",
+        "doubleSided": true,
         "emissive": false,
         "baseColor": [
-          0.2,
-          0.3,
-          0.35,
+          1,
+          1,
+          1,
           1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "movsteer_1.0.4",
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "primary",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.014,
+          0.047,
+          0.004,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "headlight_f.2",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.024,
+          0.024,
+          0.024,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "indicator_lf",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "glass",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.499,
+          0.499,
+          0.499,
+          0.047
+        ],
+        "textures": []
+      },
+      {
+        "name": "taillight_r.5",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "taillight_r.6",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.8,
+          0.8,
+          0.8,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "glass.001",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.937,
+          0.937,
+          0.937,
+          0.047
+        ],
+        "textures": []
+      },
+      {
+        "name": "taillight_r.7",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.894,
+          0.894,
+          0.894,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "breaklight_l",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "glass.002",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.8,
+          0.8,
+          0.8,
+          0.047
+        ],
+        "textures": []
+      },
+      {
+        "name": "glass.003",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          0,
+          0,
+          0.425
+        ],
+        "textures": []
+      },
+      {
+        "name": "scorpio_n_int_sidewall.7",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.823,
+          0.578,
+          0.434,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "scorpio_n_int_body.1",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "scorpio_n_int_body.2",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "scorpio_n_int_dashboard.6",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "scorpio_n_int_seats-stiches.0",
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "sunroof_m.1",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.665,
+          0.617,
+          0.584,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "boot.5",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          0.112,
+          0,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "glass.004",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          1,
+          0,
+          0,
+          0.047
         ],
         "textures": []
       }
     ],
     "stats": {
-      "nodes": 13,
-      "meshes": 4,
-      "materials": 3,
-      "textures": 2
+      "nodes": 227,
+      "meshes": 144,
+      "materials": 26,
+      "textures": 9
     }
   },
   {
     "id": "aurora-v12",
     "kind": "car",
-    "generatedAt": "2026-10-15T08:28:51.405Z",
+    "generatedAt": "2026-10-15T08:29:24.164Z",
     "credits": {
       "inGameName": "Aurora V12",
       "title": "( FREE ) Lamborghini Terzo Millennio",
@@ -290,226 +632,369 @@
     "units": "meters",
     "source": {
       "file": "assets/raw/terzo-millennio.glb",
-      "triangles": 156,
+      "triangles": 106111,
       "bounds": {
         "min": [
-          -0.95,
-          0,
-          -2.12
+          -0.826,
+          0.011,
+          -1.718
         ],
         "max": [
-          0.95,
-          1.4,
-          2.12
+          0.842,
+          0.764,
+          1.722
         ]
       }
     },
     "output": {
-      "file": "/tmp/out2/models/aurora-v12.glb",
-      "bytes": 24724,
-      "triangles": 156,
+      "file": "public/models/aurora-v12.glb",
+      "bytes": 279212,
+      "triangles": 69962,
       "attempts": 1,
       "textureSizePx": 2048,
       "textureQuality": 78,
-      "textureBytesBefore": 282958,
-      "textureBytesAfter": 25382
+      "textureBytesBefore": 1464780,
+      "textureBytesAfter": 203262
     },
     "transform": {
-      "yawRadians": 3.141593,
-      "yawDegrees": 180,
-      "scale": 1.061321,
+      "yawRadians": 0,
+      "yawDegrees": 0,
+      "scale": 1.308395,
       "position": [
-        0,
-        0,
-        0
+        -0.0101,
+        -0.0564,
+        -0.0028
       ],
-      "frontConfidence": "naming(4)",
+      "frontConfidence": "default(-Z)",
       "sourceSize": [
-        1.9,
-        1.4,
-        4.24
+        1.668,
+        0.752,
+        3.439
       ],
       "longAxis": "z"
     },
     "bounds": {
       "min": [
-        -1.008,
-        0,
+        -1.091,
+        -0.041,
         -2.25
       ],
       "max": [
-        1.008,
-        1.486,
+        1.091,
+        0.943,
         2.25
       ]
     },
     "size": [
-      2.016,
-      1.486,
+      2.182,
+      0.984,
       4.5
     ],
     "wheels": {
       "detected": true,
       "count": 4,
-      "wheelbase": 4.076,
-      "track": 1.698,
-      "radius": 0.212,
-      "frontZ": -2.038,
-      "rearZ": 2.038,
+      "wheelbase": 2.743,
+      "track": 1.933,
+      "radius": 0.287,
+      "frontZ": -1.385,
+      "rearZ": 1.358,
       "list": [
         {
-          "corner": "rear-right",
+          "corner": "front-left",
           "position": [
-            0.849,
-            0.212,
-            2.038
+            -0.858,
+            0.311,
+            -1.407
           ],
-          "radius": 0.212,
-          "width": 0.276,
+          "radius": 0.298,
+          "width": 0.421,
           "axleAxis": "x",
-          "source": "name+shape",
-          "confidence": 0.5,
+          "source": "shape",
+          "confidence": 1,
           "members": [
-            "wheel_rl"
+            "Object_181",
+            "Object_184",
+            "Object_179",
+            "Object_177",
+            "Object_94"
           ],
           "memberPaths": [
-            "/ModelRoot/wheel_r_dummy/wheel_rl"
-          ]
-        },
-        {
-          "corner": "rear-left",
-          "position": [
-            -0.849,
-            0.212,
-            2.038
-          ],
-          "radius": 0.212,
-          "width": 0.276,
-          "axleAxis": "x",
-          "source": "name+shape",
-          "confidence": 0.5,
-          "members": [
-            "wheel_rr"
-          ],
-          "memberPaths": [
-            "/ModelRoot/wheel_r_dummy/wheel_rr"
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_rims_LOD2_98/Object_181",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100/Object_184",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_emissive_ID_rims_LOD2_97/Object_179",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_details_normal_LOD2_96/Object_177",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_thirdlight_LOD2_53/Object_94"
           ]
         },
         {
           "corner": "front-right",
           "position": [
-            0.849,
-            0.212,
-            -2.038
+            0.96,
+            0.303,
+            -1.363
           ],
-          "radius": 0.212,
-          "width": 0.276,
+          "radius": 0.298,
+          "width": 0.439,
           "axleAxis": "x",
-          "source": "name+shape",
-          "confidence": 0.5,
+          "source": "shape",
+          "confidence": 1,
           "members": [
-            "wheel_fl"
+            "Object_195",
+            "Object_198",
+            "Object_193",
+            "Object_191"
           ],
           "memberPaths": [
-            "/ModelRoot/wheel_f_dummy/wheel_fl"
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_rims_LOD2_2_108/Object_195",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110/Object_198",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_emissive_ID_rims_LOD2_2_107/Object_193",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_details_normal_LOD2_2_106/Object_191"
           ]
         },
         {
-          "corner": "front-left",
+          "corner": "rear-left",
           "position": [
-            -0.849,
-            0.212,
-            -2.038
+            -0.973,
+            0.277,
+            1.358
           ],
-          "radius": 0.212,
-          "width": 0.276,
+          "radius": 0.277,
+          "width": 0.295,
           "axleAxis": "x",
-          "source": "name+shape",
-          "confidence": 0.5,
+          "source": "shape",
+          "confidence": 1,
           "members": [
-            "wheel_fr"
+            "Object_30",
+            "Object_33",
+            "Object_28",
+            "Object_26"
           ],
           "memberPaths": [
-            "/ModelRoot/wheel_f_dummy/wheel_fr"
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_rims_LOD2_3_13/Object_30",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15/Object_33",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_emissive_ID_rims_LOD2_3_12/Object_28",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_details_normal_LOD2_3_11/Object_26"
+          ]
+        },
+        {
+          "corner": "rear-right",
+          "position": [
+            0.953,
+            0.277,
+            1.358
+          ],
+          "radius": 0.277,
+          "width": 0.295,
+          "axleAxis": "x",
+          "source": "shape",
+          "confidence": 1,
+          "members": [
+            "Object_44",
+            "Object_47",
+            "Object_42",
+            "Object_40"
+          ],
+          "memberPaths": [
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_rims_LOD2_4_23/Object_44",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25/Object_47",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_emissive_ID_rims_LOD2_4_22/Object_42",
+            "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_details_normal_LOD2_4_21/Object_40"
           ]
         }
       ]
     },
     "strip": {
       "removedNodes": [
-        "Badge_Logo_Decal"
+        "Lamborghini_Terzo_Millennio_car_149"
       ],
-      "removedMaterials": [
-        "Logo_Emblem"
-      ],
-      "removedMeshes": [
-        "Badge_Logo_Decal"
-      ],
+      "removedMaterials": [],
+      "removedMeshes": [],
       "interiorRemoved": [],
-      "interiorSkipped": null,
+      "interiorSkipped": "glass is transparent",
       "flatDecalRemoved": [
-        "detail_trim_0 (1.850x0.030x0.020)",
-        "detail_trim_1 (1.850x0.030x0.020)",
-        "detail_trim_2 (1.850x0.030x0.020)",
-        "detail_trim_3 (1.850x0.030x0.020)",
-        "detail_trim_4 (1.850x0.030x0.020)",
-        "detail_trim_5 (1.850x0.030x0.020)",
-        "detail_trim_6 (1.850x0.030x0.020)",
-        "detail_trim_7 (1.850x0.030x0.020)",
-        "detail_trim_8 (1.850x0.030x0.020)",
-        "detail_trim_9 (1.850x0.030x0.020)",
-        "detail_trim_10 (1.850x0.030x0.020)",
-        "detail_trim_11 (1.850x0.030x0.020)",
-        "detail_trim_12 (1.850x0.030x0.020)",
-        "detail_trim_13 (1.850x0.030x0.020)",
-        "detail_trim_14 (1.850x0.030x0.020)",
-        "detail_trim_15 (1.850x0.030x0.020)",
-        "detail_trim_16 (1.850x0.030x0.020)",
-        "detail_trim_17 (1.850x0.030x0.020)",
-        "detail_trim_18 (1.850x0.030x0.020)",
-        "detail_trim_19 (1.850x0.030x0.020)",
-        "detail_trim_20 (1.850x0.030x0.020)",
-        "detail_trim_21 (1.850x0.030x0.020)",
-        "detail_trim_22 (1.850x0.030x0.020)",
-        "detail_trim_23 (1.850x0.030x0.020)",
-        "detail_trim_24 (1.850x0.030x0.020)",
-        "detail_trim_25 (1.850x0.030x0.020)",
-        "detail_trim_26 (1.850x0.030x0.020)",
-        "detail_trim_27 (1.850x0.030x0.020)",
-        "detail_trim_28 (1.850x0.030x0.020)",
-        "detail_trim_29 (1.850x0.030x0.020)",
-        "detail_trim_30 (1.850x0.030x0.020)",
-        "detail_trim_31 (1.850x0.030x0.020)",
-        "detail_trim_32 (1.850x0.030x0.020)",
-        "detail_trim_33 (1.850x0.030x0.020)",
-        "detail_trim_34 (1.850x0.030x0.020)",
-        "detail_trim_35 (1.850x0.030x0.020)",
-        "detail_trim_36 (1.850x0.030x0.020)",
-        "detail_trim_37 (1.850x0.030x0.020)",
-        "detail_trim_38 (1.850x0.030x0.020)",
-        "detail_trim_39 (1.850x0.030x0.020)"
+        "Object_4 (1.280x0.045x0.373)",
+        "Object_8 (0.021x0.035x0.205)",
+        "Object_10 (0.049x0.092x0.379)",
+        "Object_14 (0.020x0.034x0.192)",
+        "Object_16 (0.049x0.092x0.379)",
+        "Object_18 (0.074x0.214x0.657)",
+        "Object_20 (0.074x0.211x0.654)",
+        "Object_35 (0.061x0.419x0.419)",
+        "Object_49 (0.061x0.419x0.419)",
+        "Object_53 (0.642x0.038x0.247)",
+        "Object_55 (0.639x0.002x0.244)",
+        "Object_62 (1.572x0.563x3.485)",
+        "Object_64 (1.391x0.136x0.542)",
+        "Object_66 (1.113x0.159x0.564)",
+        "Object_68 (1.609x0.715x3.554)",
+        "Object_69 (0.784x0.270x0.685)",
+        "Object_73 (0.111x0.111x0.574)",
+        "Object_74 (1.494x0.310x1.178)",
+        "Object_75 (1.549x0.048x0.196)",
+        "Object_76 (1.592x0.716x3.483)",
+        "Object_77 (0.601x0.018x0.213)",
+        "Object_78 (1.534x0.013x0.039)",
+        "Object_79 (1.513x0.012x0.036)",
+        "Object_80 (0.265x0.028x0.023)",
+        "Object_81 (0.903x0.613x0.957)",
+        "Object_82 (0.994x0.681x1.971)",
+        "Object_83 (1.010x0.513x1.907)",
+        "Object_84 (1.604x0.029x0.266)",
+        "Object_86 (1.570x0.699x3.429)",
+        "Object_87 (0.568x0.140x1.231)",
+        "Object_88 (0.040x0.020x0.075)",
+        "Object_90 (0.300x0.206x1.228)",
+        "Object_92 (1.393x0.110x0.282)",
+        "Object_96 (1.578x0.345x2.357)",
+        "Object_98 (1.079x0.470x2.228)",
+        "Object_100 (1.018x0.077x2.538)",
+        "Object_106 (0.327x0.354x0.793)",
+        "Object_108 (0.412x0.508x0.880)",
+        "Object_110 (0.207x0.285x0.743)",
+        "Object_113 (0.188x0.184x0.793)",
+        "Object_114 (0.043x0.088x0.551)",
+        "Object_116 (0.413x0.508x0.880)",
+        "Object_118 (0.207x0.285x0.743)",
+        "Object_123 (0.270x0.360x1.551)",
+        "Object_125 (0.163x0.285x1.699)",
+        "Object_127 (0.072x0.021x0.401)",
+        "Object_128 (0.027x0.187x0.120)",
+        "Object_130 (0.289x0.404x1.670)",
+        "Object_132 (0.299x0.344x0.458)",
+        "Object_135 (0.172x0.286x1.696)",
+        "Object_137 (0.269x0.360x1.551)",
+        "Object_139 (0.163x0.285x1.699)",
+        "Object_141 (0.067x0.022x0.400)",
+        "Object_142 (0.028x0.187x0.120)",
+        "Object_144 (0.289x0.404x1.670)",
+        "Object_146 (0.299x0.344x0.458)",
+        "Object_149 (0.696x0.193x1.227)",
+        "Object_151 (0.695x0.179x1.227)",
+        "Object_153 (0.487x0.099x0.780)",
+        "Object_156 (1.403x0.529x0.986)",
+        "Object_158 (1.416x0.448x0.564)",
+        "Object_161 (0.201x0.070x0.075)",
+        "Object_163 (0.199x0.069x0.074)",
+        "Object_166 (1.217x0.034x0.064)",
+        "Object_186 (0.087x0.451x0.451)",
+        "Object_200 (0.091x0.451x0.451)",
+        "Object_204 (0.054x0.035x0.055)",
+        "Object_208 (0.176x0.104x0.138)",
+        "Object_209 (0.161x0.013x0.013)",
+        "Object_210 (0.117x0.014x0.014)",
+        "Object_212 (0.068x0.042x0.061)",
+        "Object_213 (0.059x0.036x0.054)",
+        "Object_214 (0.176x0.081x0.085)",
+        "Object_215 (0.063x0.041x0.065)",
+        "Object_216 (0.151x0.054x0.191)",
+        "Object_217 (0.156x0.074x0.295)",
+        "Object_218 (0.007x0.020x0.020)",
+        "Object_219 (0.053x0.006x0.001)",
+        "Object_220 (0.100x0.042x0.393)",
+        "Object_221 (0.116x0.025x0.192)",
+        "Object_222 (0.140x0.074x0.342)",
+        "Object_223 (0.045x0.053x0.014)",
+        "Object_225 (1.539x0.055x2.111)"
       ]
     },
     "materials": [
       {
-        "name": "Carosserie",
+        "name": "Jantes_I",
         "alphaMode": "OPAQUE",
-        "doubleSided": false,
+        "doubleSided": true,
         "emissive": false,
         "baseColor": [
+          0.1,
+          0.09,
+          0.09,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "Lumire_Orange",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": true,
+        "baseColor": [
           1,
+          0.172,
+          0,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "Jantes",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.111,
+          0.111,
+          0.111,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "Lumire_rouge",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": true,
+        "baseColor": [
           1,
+          0,
+          0,
+          1
+        ],
+        "textures": []
+      },
+      {
+        "name": "Vitres",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.003,
+          0.003,
+          0.003,
+          0.797
+        ],
+        "textures": []
+      },
+      {
+        "name": "Lumire_blanche",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": true,
+        "baseColor": [
+          0.398,
+          0.901,
           1,
           1
         ],
-        "textures": [
-          "baseColor"
-        ]
+        "textures": []
       },
       {
         "name": "Tire",
         "alphaMode": "OPAQUE",
-        "doubleSided": false,
+        "doubleSided": true,
+        "emissive": false,
+        "baseColor": [
+          0.37,
+          0.37,
+          0.37,
+          1
+        ],
+        "textures": [
+          "baseColor"
+        ]
+      },
+      {
+        "name": "Tire.001",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
         "emissive": false,
         "baseColor": [
           1,
@@ -522,30 +1007,30 @@
         ]
       },
       {
-        "name": "Vitres",
-        "alphaMode": "OPAQUE",
-        "doubleSided": false,
+        "name": "Material.026",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
         "emissive": false,
         "baseColor": [
-          0.2,
-          0.3,
-          0.35,
-          1
+          1,
+          1,
+          1,
+          0.066
         ],
         "textures": []
       }
     ],
     "stats": {
-      "nodes": 13,
-      "meshes": 4,
-      "materials": 3,
-      "textures": 2
+      "nodes": 86,
+      "meshes": 26,
+      "materials": 9,
+      "textures": 1
     }
   },
   {
     "id": "forest-dirt-trail",
     "kind": "track",
-    "generatedAt": "2026-10-15T08:28:51.842Z",
+    "generatedAt": "2026-10-15T08:29:43.752Z",
     "credits": {
       "inGameName": "Forest Dirt Trail",
       "title": "Dirt Road Through Forest",
@@ -560,17 +1045,17 @@
     "units": "meters",
     "source": {
       "file": "assets/raw/forest-dirt-road.glb",
-      "triangles": 834
+      "triangles": 341109
     },
     "output": {
-      "file": "/tmp/out2/tracks/forest-dirt-trail.glb",
-      "bytes": 33372,
-      "triangles": 834,
-      "attempts": 1,
-      "textureSizePx": 1024,
-      "textureQuality": 74,
-      "textureBytesBefore": 191589,
-      "textureBytesAfter": 15256
+      "file": "public/tracks/forest-dirt-trail.glb",
+      "bytes": 16006088,
+      "triangles": 136832,
+      "attempts": 2,
+      "textureSizePx": 768,
+      "textureQuality": 66,
+      "textureBytesBefore": 53122492,
+      "textureBytesAfter": 12414014
     },
     "transform": {
       "yawRadians": 0,
@@ -584,33 +1069,33 @@
     },
     "bounds": {
       "min": [
-        -240,
-        -1.2,
-        -240
+        -201.322,
+        96.239,
+        -346.552
       ],
       "max": [
-        240,
-        3.187,
-        240
+        346.436,
+        207.469,
+        199.841
       ]
     },
     "size": [
-      480,
-      4.387,
-      480
+      547.758,
+      111.23,
+      546.393
     ],
     "terrain": {
-      "file": "/tmp/out2/tracks/forest-dirt-trail.terrain.json",
+      "file": "public/tracks/forest-dirt-trail.terrain.json",
       "cellSize": 2,
-      "cols": 240,
-      "rows": 240,
-      "heightOffset": -1.158,
-      "roadHalfWidth": 3.2,
-      "roadPoints": 61,
-      "roadCoverage": 0.0067,
+      "cols": 274,
+      "rows": 274,
+      "heightOffset": -162.83,
+      "roadHalfWidth": 12.024,
+      "roadPoints": 42,
+      "roadCoverage": 0.0178,
       "heights": {
-        "minHeight": -2.358,
-        "maxHeight": 2.028
+        "minHeight": null,
+        "maxHeight": null
       }
     },
     "strip": {
@@ -622,10 +1107,10 @@
       "flatDecalRemoved": []
     },
     "stats": {
-      "nodes": 4,
-      "meshes": 3,
-      "materials": 2,
-      "textures": 2
+      "nodes": 56,
+      "meshes": 27,
+      "materials": 26,
+      "textures": 70
     }
   }
 ]

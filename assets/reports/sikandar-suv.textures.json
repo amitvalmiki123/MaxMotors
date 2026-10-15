@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-10-15T08:28:51.248Z",
-  "count": 2,
+  "generatedAt": "2026-10-15T08:29:23.266Z",
+  "count": 9,
   "textures": [
     {
       "index": 0,
       "mimeType": "image/webp",
-      "bytes": 9540,
-      "width": 512,
-      "height": 512,
+      "bytes": 128,
+      "width": 128,
+      "height": 128,
       "used": true,
       "materials": [
-        "Carosserie"
+        "wheel_rf.3"
       ],
       "slots": [
         "baseColor"
@@ -19,12 +19,111 @@
     {
       "index": 1,
       "mimeType": "image/webp",
-      "bytes": 8610,
+      "bytes": 56280,
       "width": 512,
       "height": 512,
       "used": true,
       "materials": [
-        "Tire"
+        "movsteer_1.0.5"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 2,
+      "mimeType": "image/webp",
+      "bytes": 135814,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "movsteer_1.0.3"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 3,
+      "mimeType": "image/webp",
+      "bytes": 17862,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "movsteer_1.0.4"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 4,
+      "mimeType": "image/webp",
+      "bytes": 78878,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "indicator_lf",
+        "breaklight_l"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 5,
+      "mimeType": "image/webp",
+      "bytes": 41666,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "scorpio_n_int_body.1"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 6,
+      "mimeType": "image/webp",
+      "bytes": 14224,
+      "width": 256,
+      "height": 256,
+      "used": true,
+      "materials": [
+        "scorpio_n_int_body.2"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 7,
+      "mimeType": "image/webp",
+      "bytes": 114090,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "scorpio_n_int_dashboard.6"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 8,
+      "mimeType": "image/webp",
+      "bytes": 6282,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "scorpio_n_int_seats-stiches.0"
       ],
       "slots": [
         "baseColor"

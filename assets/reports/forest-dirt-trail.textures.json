@@ -1,13 +1,911 @@
 {
-  "generatedAt": "2026-10-15T08:28:51.748Z",
-  "count": 2,
+  "generatedAt": "2026-10-15T08:29:42.933Z",
+  "count": 70,
   "textures": [
     {
       "index": 0,
       "mimeType": "image/webp",
-      "bytes": 8016,
+      "bytes": 259570,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Background_Tree_Atlas"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 1,
+      "mimeType": "image/webp",
+      "bytes": 1804,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Background_Tree_Atlas"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 2,
+      "mimeType": "image/webp",
+      "bytes": 26014,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Background_Tree_Atlas"
+      ],
+      "slots": [
+        "emissive"
+      ]
+    },
+    {
+      "index": 3,
+      "mimeType": "image/webp",
+      "bytes": 187142,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Background_Tree_Atlas"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 4,
+      "mimeType": "image/webp",
+      "bytes": 137692,
+      "width": 768,
+      "height": 384,
+      "used": true,
+      "materials": [
+        "Metal_Fence"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 5,
+      "mimeType": "image/webp",
+      "bytes": 1008,
+      "width": 256,
+      "height": 128,
+      "used": true,
+      "materials": [
+        "Metal_Fence"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 6,
+      "mimeType": "image/webp",
+      "bytes": 146644,
+      "width": 768,
+      "height": 384,
+      "used": true,
+      "materials": [
+        "Metal_Fence"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 7,
+      "mimeType": "image/webp",
+      "bytes": 80930,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Dirt_Road_Bare"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 8,
+      "mimeType": "image/webp",
+      "bytes": 14882,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Dirt_Road_Bare"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 9,
+      "mimeType": "image/webp",
+      "bytes": 1022326,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Dirt_Road_Bare"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 10,
+      "mimeType": "image/webp",
+      "bytes": 15558,
+      "width": 96,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Trunk_Birch"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 11,
+      "mimeType": "image/webp",
+      "bytes": 6168,
+      "width": 96,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Trunk_Birch"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 12,
+      "mimeType": "image/webp",
+      "bytes": 82140,
+      "width": 96,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Trunk_Birch"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 13,
+      "mimeType": "image/webp",
+      "bytes": 50286,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Wood_Log"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 14,
+      "mimeType": "image/webp",
+      "bytes": 12562,
+      "width": 96,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Trunk_Oak"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 15,
+      "mimeType": "image/webp",
+      "bytes": 1342,
+      "width": 96,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Trunk_Oak"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 16,
+      "mimeType": "image/webp",
+      "bytes": 120538,
+      "width": 96,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Trunk_Oak"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 17,
+      "mimeType": "image/webp",
+      "bytes": 13438,
       "width": 512,
       "height": 512,
+      "used": true,
+      "materials": [
+        "Fallen_Generic_Leaves"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 18,
+      "mimeType": "image/webp",
+      "bytes": 3120,
+      "width": 256,
+      "height": 256,
+      "used": true,
+      "materials": [
+        "Fallen_Generic_Leaves"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 19,
+      "mimeType": "image/webp",
+      "bytes": 199486,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Fallen_Generic_Leaves"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 20,
+      "mimeType": "image/webp",
+      "bytes": 132412,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Ground_Dirt"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 21,
+      "mimeType": "image/webp",
+      "bytes": 72294,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Ground_Dirt"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 22,
+      "mimeType": "image/webp",
+      "bytes": 928536,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Ground_Dirt"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 23,
+      "mimeType": "image/webp",
+      "bytes": 10208,
+      "width": 256,
+      "height": 256,
+      "used": true,
+      "materials": [
+        "Forest_Bush"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 24,
+      "mimeType": "image/webp",
+      "bytes": 46680,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Forest_Bush"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 25,
+      "mimeType": "image/webp",
+      "bytes": 25796,
+      "width": 256,
+      "height": 256,
+      "used": true,
+      "materials": [
+        "Grass_Vegetation_Dry"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 26,
+      "mimeType": "image/webp",
+      "bytes": 1306,
+      "width": 256,
+      "height": 256,
+      "used": true,
+      "materials": [
+        "Grass_Vegetation_Dry",
+        "Grass_Vegetation_Green"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 27,
+      "mimeType": "image/webp",
+      "bytes": 22572,
+      "width": 256,
+      "height": 256,
+      "used": true,
+      "materials": [
+        "Grass_Vegetation_Dry",
+        "Grass_Vegetation_Green"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 28,
+      "mimeType": "image/webp",
+      "bytes": 26424,
+      "width": 256,
+      "height": 256,
+      "used": true,
+      "materials": [
+        "Grass_Vegetation_Green"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 29,
+      "mimeType": "image/webp",
+      "bytes": 181052,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Fallen_Maple_Leaves"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 30,
+      "mimeType": "image/webp",
+      "bytes": 3354,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Fallen_Maple_Leaves"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 31,
+      "mimeType": "image/webp",
+      "bytes": 660312,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Fallen_Maple_Leaves"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 32,
+      "mimeType": "image/webp",
+      "bytes": 499022,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Rock_Decal"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 33,
+      "mimeType": "image/webp",
+      "bytes": 56630,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Rock_Decal"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 34,
+      "mimeType": "image/webp",
+      "bytes": 241478,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Rock_Decal"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 35,
+      "mimeType": "image/webp",
+      "bytes": 15628,
+      "width": 768,
+      "height": 384,
+      "used": true,
+      "materials": [
+        "Mud_Pile"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 36,
+      "mimeType": "image/webp",
+      "bytes": 3150,
+      "width": 512,
+      "height": 256,
+      "used": true,
+      "materials": [
+        "Mud_Pile"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 37,
+      "mimeType": "image/webp",
+      "bytes": 349762,
+      "width": 768,
+      "height": 384,
+      "used": true,
+      "materials": [
+        "Mud_Pile"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 38,
+      "mimeType": "image/webp",
+      "bytes": 128064,
+      "width": 768,
+      "height": 384,
+      "used": true,
+      "materials": [
+        "Dirt_Road_Trails"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 39,
+      "mimeType": "image/webp",
+      "bytes": 90214,
+      "width": 768,
+      "height": 384,
+      "used": true,
+      "materials": [
+        "Dirt_Road_Trails"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 40,
+      "mimeType": "image/webp",
+      "bytes": 332434,
+      "width": 768,
+      "height": 384,
+      "used": true,
+      "materials": [
+        "Dirt_Road_Trails"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 41,
+      "mimeType": "image/webp",
+      "bytes": 145752,
+      "width": 768,
+      "height": 384,
+      "used": true,
+      "materials": [
+        "Road_Edge_Gravel_Dusty"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 42,
+      "mimeType": "image/webp",
+      "bytes": 61476,
+      "width": 768,
+      "height": 384,
+      "used": true,
+      "materials": [
+        "Road_Edge_Gravel_Dusty"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 43,
+      "mimeType": "image/webp",
+      "bytes": 449194,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Road_Edge_Gravel_Dusty"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 44,
+      "mimeType": "image/webp",
+      "bytes": 90312,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Puddle_Streaks"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 45,
+      "mimeType": "image/webp",
+      "bytes": 25476,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Puddle_Streaks"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 46,
+      "mimeType": "image/webp",
+      "bytes": 41356,
+      "width": 768,
+      "height": 192,
+      "used": true,
+      "materials": [
+        "Puddle_Streaks"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 47,
+      "mimeType": "image/webp",
+      "bytes": 10606,
+      "width": 256,
+      "height": 256,
+      "used": true,
+      "materials": [
+        "Wood_Fence"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 48,
+      "mimeType": "image/webp",
+      "bytes": 136692,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Sloped_Rock"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 49,
+      "mimeType": "image/webp",
+      "bytes": 18882,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Sloped_Rock"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 50,
+      "mimeType": "image/webp",
+      "bytes": 440480,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Sloped_Rock"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 51,
+      "mimeType": "image/webp",
+      "bytes": 80350,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Terrain_Far"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 52,
+      "mimeType": "image/webp",
+      "bytes": 50498,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Aerial_Grass"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 53,
+      "mimeType": "image/webp",
+      "bytes": 4942,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Aerial_Grass"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 54,
+      "mimeType": "image/webp",
+      "bytes": 635282,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Aerial_Grass"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 55,
+      "mimeType": "image/webp",
+      "bytes": 117594,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Tall_Cliff"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 56,
+      "mimeType": "image/webp",
+      "bytes": 66708,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Tall_Cliff"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 57,
+      "mimeType": "image/webp",
+      "bytes": 468268,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Tall_Cliff"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 58,
+      "mimeType": "image/webp",
+      "bytes": 26992,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Cobblestone"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 59,
+      "mimeType": "image/webp",
+      "bytes": 15904,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Cobblestone"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 60,
+      "mimeType": "image/webp",
+      "bytes": 335682,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Cobblestone"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 61,
+      "mimeType": "image/webp",
+      "bytes": 137072,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Grass_Close"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 62,
+      "mimeType": "image/webp",
+      "bytes": 54668,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Grass_Close"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 63,
+      "mimeType": "image/webp",
+      "bytes": 677950,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Grass_Close"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 64,
+      "mimeType": "image/webp",
+      "bytes": 147612,
+      "width": 768,
+      "height": 768,
       "used": true,
       "materials": [
         "Dirt_Road"
@@ -17,17 +915,73 @@
       ]
     },
     {
-      "index": 1,
+      "index": 65,
       "mimeType": "image/webp",
-      "bytes": 7240,
-      "width": 512,
-      "height": 512,
+      "bytes": 28950,
+      "width": 768,
+      "height": 768,
       "used": true,
       "materials": [
-        "Grass_Vegetation"
+        "Dirt_Road"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 66,
+      "mimeType": "image/webp",
+      "bytes": 841738,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Dirt_Road"
+      ],
+      "slots": [
+        "normal"
+      ]
+    },
+    {
+      "index": 67,
+      "mimeType": "image/webp",
+      "bytes": 145272,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Broken_Rocks"
       ],
       "slots": [
         "baseColor"
+      ]
+    },
+    {
+      "index": 68,
+      "mimeType": "image/webp",
+      "bytes": 54346,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Broken_Rocks"
+      ],
+      "slots": [
+        "metalRough"
+      ]
+    },
+    {
+      "index": 69,
+      "mimeType": "image/webp",
+      "bytes": 893982,
+      "width": 768,
+      "height": 768,
+      "used": true,
+      "materials": [
+        "Broken_Rocks"
+      ],
+      "slots": [
+        "normal"
       ]
     }
   ]
