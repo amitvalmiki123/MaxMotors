@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { isWheelName } from './names.js';
 import { clusterWheels, descriptorFromBounds } from './wheel-clusters.js';
 
 /**
@@ -19,9 +20,12 @@ import { clusterWheels, descriptorFromBounds } from './wheel-clusters.js';
 
 const PAINT_PATTERNS = [/carosserie/i, /carpaint/i, /body/i, /paint/i, /primary/i, /orange/i, /rouge/i, /vert/i];
 const GLASS_PATTERNS = [/vitres/i, /glass/i, /window/i, /windshield/i];
-const LIGHT_PATTERNS = [/light/i, /lamp/i, /led/i, /beam/i, /emissive/i, /lum/i, /break/i, /indicator/i, /feu/i];
-const HEADLIGHT_PATTERNS = [/headlight/i, /head_?lamp/i, /front.*light/i, /fog/i, /led/i, /indicator/i, /drl/i];
-const TAILLIGHT_PATTERNS = [/tail/i, /rear.*light/i, /back.*light/i, /brake/i, /break/i, /exhaust/i, /third/i];
+// Whole-word `led` / word-initial `lumi`: "tiled_carbon" and "aluminium" are not lamps.
+const LIGHT_PATTERNS = [/light/i, /lamp/i, /(?:^|[^a-z])led(?:[^a-z]|$)/i, /beam/i, /emissive/i, /(?:^|[^a-z])lumi/i, /break/i, /indicator/i, /feu/i];
+const HEADLIGHT_PATTERNS = [/headlight/i, /head_?lamp/i, /front.*light/i, /fog/i, /drl/i, /blanche/i];
+const TAILLIGHT_PATTERNS = [/tail/i, /rear.*light/i, /back.*light/i, /brake/i, /break/i, /third/i, /rouge/i];
+const INDICATOR_PATTERNS = [/indicator/i, /blinker/i, /turn.?signal/i, /orange/i, /amber/i];
+const INTERIOR_PATTERNS = [/(?:^|[^a-z])int(?:_|$)/i, /interior/i, /seat/i, /dash/i, /cabin/i, /console/i, /steer/i];
 const BRAND_PATTERNS = [/badge/i, /logo/i, /emblem/i, /decal/i, /mahindra/i, /lamborghini/i, /scorpio/i];
 
 let cachedLoader = null;
@@ -63,7 +67,7 @@ export async function loadCarAssets(preset, { onProgress } = {}) {
   return { gltf, manifest };
 }
 
-const WHEEL_NODE_PATTERN = /wheel|tyre|tire|rim|pneu|roue|jante/i;
+
 /** Cannon's wheel order; `updateWheels` indexes `wheelInfos` with it. */
 const WHEEL_ORDER = ['front-left', 'front-right', 'rear-left', 'rear-right'];
 
@@ -148,7 +152,7 @@ export function collectSceneCandidates(root) {
       name: object.name || '(unnamed)',
       min: [box.min.x, box.min.y, box.min.z],
       max: [box.max.x, box.max.y, box.max.z],
-      wheelish: WHEEL_NODE_PATTERN.test(object.name || ''),
+      wheelish: isWheelName(object.name),
     }));
     objects.set(object.uuid, object);
   });
@@ -293,35 +297,87 @@ export function buildCarRig({ gltf, manifest, preset, paint, tier }) {
   }
 
   // --- materials -----------------------------------------------------------
-  const paintMaterials = [];
-  const glassMaterials = [];
-  const headlightMaterials = [];
-  const taillightMaterials = [];
-  const wheelMaterials = [];
-  const brandMaterials = [];
-  let bodyTriangles = 0;
+  const materials = classifyCarMaterials(root, { paint, tier });
 
-  const materialStats = new Map();
+  const { box, size } = worldSize(group);
+
+  return {
+    group,
+    root,
+    wheels,
+    complete: wheels.length === 4,
+    problems,
+    wheelDiagnostics,
+    paintMaterials: materials.paintMaterials,
+    glassMaterials: materials.glassMaterials,
+    headlightMaterials: materials.lights.head,
+    taillightMaterials: materials.lights.tail,
+    indicatorMaterials: materials.lights.indicator,
+    lightAnchors: materials.lightAnchors,
+    wheelMaterials: materials.wheelMaterials,
+    brandMaterials: materials.brandMaterials,
+    bounds: { box, size },
+    stats: materials.stats,
+  };
+}
+
+const luminance = (color) => (color ? 0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b : 0);
+
+/** Black emissive is the three.js default (with emissiveIntensity = 1): not a lamp. */
+function hasVisibleEmissive(material) {
+  if (material.emissiveMap) return true;
+  const emissive = material.emissive;
+  if (!emissive) return false;
+  return Math.max(emissive.r, emissive.g, emissive.b) > 0.02 && (material.emissiveIntensity ?? 1) > 0.05;
+}
+
+function hueRole(color) {
+  if (!color) return null;
+  const { r, g, b } = color;
+  if (r > 0.3 && g < r * 0.45 && b < r * 0.45) return 'tail';
+  if (r > 0.3 && g >= r * 0.2 && g <= r * 0.75 && b < r * 0.3) return 'indicator';
+  return null;
+}
+
+/**
+ * Classifies every material of a loaded car and applies the runtime treatment:
+ * clearcoat paint on the exterior body, see-through glass, and emissive lamps
+ * split into head / tail / indicator roles (a lamp material shared by front and
+ * rear meshes is cloned so each end can switch on its own).
+ *
+ * `root` must be measured in rig space (the rig group has no parent yet).
+ */
+export function classifyCarMaterials(root, { paint = null, tier = null } = {}) {
+  const usage = new Map();
+  const meshBox = new THREE.Box3();
+  root.updateMatrixWorld(true);
   root.traverse((object) => {
     if (!object.isMesh) return;
-    const materials = Array.isArray(object.material) ? object.material : [object.material];
-    const triangles = object.geometry?.index ? object.geometry.index.count / 3 : (object.geometry?.attributes?.position?.count ?? 0) / 3;
-    for (const material of materials) {
-      if (!material) continue;
-      const stats = materialStats.get(material) ?? { triangles: 0, meshes: [] };
-      stats.triangles += triangles;
-      stats.meshes.push(object.name);
-      materialStats.set(material, stats);
-    }
     object.castShadow = true;
     object.receiveShadow = true;
+    const geometry = object.geometry;
+    const triangles = geometry?.index ? geometry.index.count / 3 : (geometry?.attributes?.position?.count ?? 0) / 3;
+    if (geometry && !geometry.boundingBox) geometry.computeBoundingBox();
+    const center = geometry?.boundingBox
+      ? meshBox.copy(geometry.boundingBox).applyMatrix4(object.matrixWorld).getCenter(new THREE.Vector3())
+      : new THREE.Vector3();
+    for (const material of Array.isArray(object.material) ? object.material : [object.material]) {
+      if (!material) continue;
+      const entry = usage.get(material) ?? { triangles: 0, wheelTriangles: 0, interiorTriangles: 0, meshes: [] };
+      entry.triangles += triangles;
+      if (isWheelName(object.name)) entry.wheelTriangles += triangles;
+      if (matchesAny(object.name, INTERIOR_PATTERNS)) entry.interiorTriangles += triangles;
+      entry.meshes.push({ mesh: object, triangles, center });
+      usage.set(material, entry);
+    }
   });
 
-  const largestBody = [...materialStats.entries()]
-    .filter(([material]) => matchesAny(material.name, PAINT_PATTERNS))
-    .sort((a, b) => b[1].triangles - a[1].triangles)[0];
-
-  for (const [material, stats] of materialStats) {
+  const glassMaterials = [];
+  const wheelMaterials = [];
+  const brandMaterials = [];
+  const lightMaterials = [];
+  const paintCandidates = [];
+  for (const [material, entry] of usage) {
     const name = material.name ?? '';
     if (matchesAny(name, BRAND_PATTERNS) && !matchesAny(name, PAINT_PATTERNS)) {
       brandMaterials.push(name);
@@ -334,32 +390,30 @@ export function buildCarRig({ gltf, manifest, preset, paint, tier }) {
       material.depthWrite = false;
       material.side = THREE.DoubleSide;
       material.roughness = Math.max(0.05, (material.roughness ?? 0.2) * 0.8);
+      material.envMapIntensity = tier?.mobile ? 0.8 : 1.4;
       glassMaterials.push(material);
       continue;
     }
-    if (matchesAny(name, LIGHT_PATTERNS) || (material.emissiveIntensity ?? 0) > 0.05) {
-      material.emissive = material.emissive ?? new THREE.Color(0xfff1d0);
-      material.emissiveIntensity = Math.max(material.emissiveIntensity ?? 0.8, 1.35);
-      material.toneMapped = true;
-      const meshNames = stats.meshes.join(' ');
-      if (matchesAny(`${name} ${meshNames}`, TAILLIGHT_PATTERNS)) taillightMaterials.push(material);
-      else if (matchesAny(`${name} ${meshNames}`, HEADLIGHT_PATTERNS)) headlightMaterials.push(material);
-      else headlightMaterials.push(material);
+    if (matchesAny(name, LIGHT_PATTERNS) || hasVisibleEmissive(material)) {
+      lightMaterials.push(material);
       continue;
     }
-    const isWheel = /wheel|tyre|tire|rim|jante|pneu/i.test(`${name} ${stats.meshes[0] ?? ''}`);
-    if (isWheel) {
+    if (isWheelName(name) || entry.wheelTriangles > entry.triangles * 0.5) {
       wheelMaterials.push(material);
       continue;
     }
-    if (material === largestBody?.[0] || (matchesAny(name, PAINT_PATTERNS) && stats.triangles > bodyTriangles)) {
-      bodyTriangles = stats.triangles;
-      paintMaterials.push(material);
-    }
+    const interior = matchesAny(name, INTERIOR_PATTERNS) || entry.interiorTriangles > entry.triangles * 0.5;
+    if (!interior && matchesAny(name, PAINT_PATTERNS)) paintCandidates.push([material, entry]);
   }
 
-  // Clearcoat paint: keep the baked normal/roughness/AO maps, override colour.
-  for (const material of paintMaterials) {
+  // One exterior paint: the biggest candidate, plus its duplicates (`Paint.001`).
+  const stem = (name) => String(name ?? '').toLowerCase().replace(/[._-]?\d+$/, '');
+  paintCandidates.sort((left, right) => right[1].triangles - left[1].triangles);
+  const primary = paintCandidates[0]?.[0] ?? null;
+  const paintSources = primary ? paintCandidates.filter(([material]) => stem(material.name) === stem(primary.name)).map(([material]) => material) : [];
+  const paintMaterials = [];
+  for (const material of paintSources) {
+    // Clearcoat paint: keep the baked normal/roughness/AO maps, override colour.
     const physical = new THREE.MeshPhysicalMaterial({
       name: `${material.name}-paint`,
       color: new THREE.Color(paint?.color ?? '#d9b063'),
@@ -369,7 +423,6 @@ export function buildCarRig({ gltf, manifest, preset, paint, tier }) {
       metalnessMap: material.metalnessMap ?? null,
       aoMap: material.aoMap ?? null,
       alphaMap: material.alphaMap ?? null,
-      emissiveMap: material.emissiveMap ?? null,
       metalness: paint?.metalness ?? 0.55,
       roughness: paint?.roughness ?? 0.25,
       clearcoat: 1,
@@ -380,31 +433,79 @@ export function buildCarRig({ gltf, manifest, preset, paint, tier }) {
     physical.userData.isPaint = true;
     physical.userData.bakedColor = material.color?.clone() ?? new THREE.Color(0xffffff);
     replaceMaterialInScene(root, material, physical);
+    paintMaterials.push(physical);
   }
 
-  for (const material of glassMaterials) {
-    material.envMapIntensity = tier?.mobile ? 0.8 : 1.4;
+  // Lamps: decide a role per mesh (mesh name, material name, colour, then which
+  // end of the car it sits on), and clone a material shared across roles.
+  const lights = { head: [], tail: [], indicator: [] };
+  const anchors = { head: [], tail: [] };
+  for (const material of lightMaterials) {
+    const entry = usage.get(material);
+    const lamp = hasVisibleEmissive(material) || luminance(material.color) > 0.25 || Boolean(material.map);
+    if (!lamp) continue; // a dark housing or bezel: leave it alone
+    const roleOf = ({ mesh, center }) => {
+      const label = `${mesh.name}`;
+      if (matchesAny(label, INDICATOR_PATTERNS)) return 'indicator';
+      if (matchesAny(label, TAILLIGHT_PATTERNS)) return 'tail';
+      if (matchesAny(label, HEADLIGHT_PATTERNS)) return 'head';
+      if (matchesAny(material.name, INDICATOR_PATTERNS)) return 'indicator';
+      if (matchesAny(material.name, TAILLIGHT_PATTERNS)) return 'tail';
+      if (matchesAny(material.name, HEADLIGHT_PATTERNS)) return 'head';
+      const hue = hueRole(hasVisibleEmissive(material) ? material.emissive : material.color);
+      if (hue) return hue;
+      return center.z <= 0 ? 'head' : 'tail';
+    };
+    const byRole = new Map();
+    for (const use of entry.meshes) {
+      const role = roleOf(use);
+      const list = byRole.get(role) ?? [];
+      list.push(use);
+      byRole.set(role, list);
+    }
+    const ranked = [...byRole.entries()].sort((left, right) => (
+      right[1].reduce((sum, use) => sum + use.triangles, 0) - left[1].reduce((sum, use) => sum + use.triangles, 0)
+    ));
+    ranked.forEach(([role, uses], index) => {
+      const target = index === 0 ? material : material.clone();
+      if (index > 0) {
+        target.name = `${material.name}-${role}`;
+        for (const { mesh } of uses) {
+          mesh.material = Array.isArray(mesh.material)
+            ? mesh.material.map((candidate) => (candidate === material ? target : candidate))
+            : target;
+        }
+      }
+      if (!hasVisibleEmissive(target)) {
+        target.emissive = new THREE.Color(role === 'tail' ? 0xff2414 : role === 'indicator' ? 0xff8a1a : 0xfff1d6);
+      }
+      target.userData.lampRole = role;
+      target.userData.baseEmissiveIntensity = Math.max(target.emissiveIntensity ?? 1, 1);
+      target.toneMapped = true;
+      lights[role].push(target);
+      if (anchors[role]) for (const { center } of uses) anchors[role].push(center.toArray());
+    });
   }
 
-  const { box, size } = worldSize(group);
+  // Lamp anchors: one point per side (left/right of the centreline) per role.
+  const lightAnchors = {};
+  for (const [role, points] of Object.entries(anchors)) {
+    const sides = [points.filter((point) => point[0] < 0), points.filter((point) => point[0] >= 0)];
+    lightAnchors[role] = sides
+      .filter((list) => list.length)
+      .map((list) => [0, 1, 2].map((axis) => list.reduce((sum, point) => sum + point[axis], 0) / list.length));
+  }
 
   return {
-    group,
-    root,
-    wheels,
-    complete: wheels.length === 4,
-    problems,
-    wheelDiagnostics,
-    paintMaterials: [...new Set(paintMaterials.map((material) => findReplacement(root, material)))],
+    paintMaterials,
     glassMaterials,
-    headlightMaterials: [...new Set(headlightMaterials)],
-    taillightMaterials: [...new Set(taillightMaterials)],
+    lights,
+    lightAnchors,
     wheelMaterials,
     brandMaterials,
-    bounds: { box, size },
     stats: {
-      meshes: materialStats.size,
-      triangles: [...materialStats.values()].reduce((sum, stats) => sum + stats.triangles, 0),
+      meshes: usage.size,
+      triangles: [...usage.values()].reduce((sum, entry) => sum + entry.triangles, 0),
     },
   };
 }
@@ -417,18 +518,6 @@ function replaceMaterialInScene(root, oldMaterial, newMaterial) {
     const swapped = materials.map((material) => (material === oldMaterial ? newMaterial : material));
     object.material = Array.isArray(object.material) ? swapped : swapped[0];
   });
-}
-
-function findReplacement(root, oldMaterial) {
-  let found = null;
-  root.traverse((object) => {
-    if (found || !object.isMesh) return;
-    const materials = Array.isArray(object.material) ? object.material : [object.material];
-    if (materials.some((material) => material?.userData?.isPaint || material?.name === `${oldMaterial.name}-paint`)) {
-      found = materials.find((material) => material?.userData?.isPaint) ?? null;
-    }
-  });
-  return found ?? oldMaterial;
 }
 
 /** Applies a paint palette entry (colour + finish) to a rig. */

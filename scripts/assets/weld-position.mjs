@@ -112,11 +112,12 @@ function weldPrimitiveByPosition(document, primitive, tolerance) {
  * Welds every triangle primitive of the document by position and returns how
  * many vertices were merged away.
  */
-export function weldByPosition(document, { tolerance = DEFAULT_TOLERANCE } = {}) {
+export function weldByPosition(document, { tolerance = DEFAULT_TOLERANCE, filter = null } = {}) {
   let merged = 0;
   let dropped = 0;
   for (const mesh of document.getRoot().listMeshes()) {
     for (const primitive of mesh.listPrimitives()) {
+      if (filter && !filter(primitive)) continue;
       try {
         const result = weldPrimitiveByPosition(document, primitive, tolerance);
         if (!result) continue;
@@ -128,4 +129,75 @@ export function weldByPosition(document, { tolerance = DEFAULT_TOLERANCE } = {})
     }
   }
   return { merged, dropped };
+}
+
+/**
+ * Seam-preserving alternative to `weldByPosition`: snaps vertices that sit
+ * within `tolerance` of each other onto one bitwise-identical position, but
+ * keeps every vertex (and its UV / normal) separate.
+ *
+ * meshopt's simplifier recognises coincident positions with different
+ * attributes as *seams* and collapses along them while keeping both sides'
+ * UVs and normals intact — so the mesh can be simplified without the stretched
+ * texel bands and broken shading that merging the vertices causes. A follow-up
+ * `weld()` then merges only the vertices that became fully identical.
+ *
+ * Returns the number of vertices moved onto a neighbour.
+ */
+export function snapPositions(document, { tolerance = DEFAULT_TOLERANCE, filter = null } = {}) {
+  let snapped = 0;
+  const done = new Set();
+  const toleranceSq = tolerance * tolerance;
+  for (const mesh of document.getRoot().listMeshes()) {
+    for (const primitive of mesh.listPrimitives()) {
+      if (filter && !filter(primitive)) continue;
+      const position = primitive.getAttribute('POSITION');
+      if (!position || done.has(position)) continue;
+      done.add(position);
+      const array = position.getArray();
+      const cells = new Map();
+      const count = position.getCount();
+      for (let vertex = 0; vertex < count; vertex += 1) {
+        const x = array[vertex * 3];
+        const y = array[vertex * 3 + 1];
+        const z = array[vertex * 3 + 2];
+        const cx = bucket(x, tolerance);
+        const cy = bucket(y, tolerance);
+        const cz = bucket(z, tolerance);
+        let match = -1;
+        for (let dx = -1; dx <= 1 && match < 0; dx += 1) {
+          for (let dy = -1; dy <= 1 && match < 0; dy += 1) {
+            for (let dz = -1; dz <= 1 && match < 0; dz += 1) {
+              const list = cells.get(`${cx + dx}:${cy + dy}:${cz + dz}`);
+              if (!list) continue;
+              for (const candidate of list) {
+                const ex = array[candidate * 3] - x;
+                const ey = array[candidate * 3 + 1] - y;
+                const ez = array[candidate * 3 + 2] - z;
+                if (ex * ex + ey * ey + ez * ez <= toleranceSq) {
+                  match = candidate;
+                  break;
+                }
+              }
+            }
+          }
+        }
+        if (match >= 0) {
+          if (array[match * 3] !== x || array[match * 3 + 1] !== y || array[match * 3 + 2] !== z) {
+            array[vertex * 3] = array[match * 3];
+            array[vertex * 3 + 1] = array[match * 3 + 1];
+            array[vertex * 3 + 2] = array[match * 3 + 2];
+            snapped += 1;
+          }
+        } else {
+          const key = `${cx}:${cy}:${cz}`;
+          const list = cells.get(key);
+          if (list) list.push(vertex);
+          else cells.set(key, [vertex]);
+        }
+      }
+      position.setArray(array);
+    }
+  }
+  return snapped;
 }

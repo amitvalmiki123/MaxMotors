@@ -98,3 +98,24 @@ test('non-triangle primitives are skipped', () => {
   assert.equal(merged, 0);
   assert.equal(primitive.getAttribute('POSITION').getCount(), 2);
 });
+
+test('snapPositions aligns seam vertices but keeps their UVs (no merge)', async () => {
+  const { Document } = await import('@gltf-transform/core');
+  const { snapPositions } = await import('../scripts/assets/weld-position.mjs');
+  const document = new Document();
+  const buffer = document.createBuffer();
+  // Two triangles sharing an edge, split along a UV seam with a 0.03 mm gap.
+  const positions = new Float32Array([0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00003, 0, 0, 0.00002, 1, 0, 1, 1, 0]);
+  const uvs = new Float32Array([0, 0, 0.5, 0, 0, 0.5, 0.6, 0, 0.1, 0.5, 0.6, 0.5]);
+  const primitive = document.createPrimitive()
+    .setAttribute('POSITION', document.createAccessor().setType('VEC3').setArray(positions).setBuffer(buffer))
+    .setAttribute('TEXCOORD_0', document.createAccessor().setType('VEC2').setArray(uvs).setBuffer(buffer))
+    .setIndices(document.createAccessor().setType('SCALAR').setArray(new Uint32Array([0, 1, 2, 3, 5, 4])).setBuffer(buffer));
+  document.createMesh().addPrimitive(primitive);
+  const moved = snapPositions(document, { tolerance: 1e-4 });
+  const out = primitive.getAttribute('POSITION').getArray();
+  assert.equal(moved, 2);
+  assert.equal(primitive.getAttribute('POSITION').getCount(), 6, 'no vertex is merged away');
+  assert.deepEqual([...out.slice(9, 12)], [...out.slice(3, 6)], 'seam vertex snapped onto its twin');
+  assert.deepEqual([...primitive.getAttribute('TEXCOORD_0').getArray()], [...uvs], 'UVs untouched');
+});

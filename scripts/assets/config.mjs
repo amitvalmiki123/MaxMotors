@@ -61,6 +61,7 @@ export const ASSET_TARGETS = {
     maxTriangles: 100_000,
     textureSize: 2048,
     textureQuality: 80,
+    baseColorQuality: 92,
     maxTextureBytes: 9 * 1024 * 1024,
     maxTextureMemoryMB: 128,
     simplifyError: 0.006,
@@ -78,6 +79,11 @@ export const ASSET_TARGETS = {
     maxTriangles: 70_000,
     textureSize: 2048,
     textureQuality: 78,
+    baseColorQuality: 92,
+    // Documented above: the source front faces +Z. Its mesh nodes are all
+    // `Object_N`, so naming alone cannot tell, and it shipped backwards.
+    frontAxis: '+z',
+    driverSide: 'left',
     maxTextureBytes: 5 * 1024 * 1024,
     maxTextureMemoryMB: 96,
     simplifyError: 0.004,

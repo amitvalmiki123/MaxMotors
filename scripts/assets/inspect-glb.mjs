@@ -14,6 +14,7 @@
  *
  * Usage: node scripts/assets/inspect-glb.mjs [--out assets/reports]
  */
+import { isWheelName } from '../../src/game/cars/names.js';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { getBounds } from '@gltf-transform/core';
@@ -75,7 +76,7 @@ function walkScene(document) {
         min: box.min,
         max: box.max,
         // Node name only: mesh names can carry reusable material names.
-        wheelish: /wheel|tyre|tire|rim|pneu|roue|jante/i.test(name),
+        wheelish: isWheelName(name),
         ancestorIds: ancestors,
       }));
     }
