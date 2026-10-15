@@ -1,0 +1,10 @@
+name: probe
+on:
+  push:
+    paths:
+      - '.github/workflows/probe.yml'
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "runner works"
