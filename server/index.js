@@ -25,11 +25,3 @@ gameServer.define('lobby', EmptyRoom);
 const port = Number(process.env.PORT || 2567);
 await gameServer.listen(port, '0.0.0.0');
 console.log(`MaxMotors Colyseus server listening on 0.0.0.0:${port}`);
-
-async function shutdown() {
-  await gameServer.gracefullyShutdown(false);
-  process.exit(0);
-}
-
-process.once('SIGINT', shutdown);
-process.once('SIGTERM', shutdown);
