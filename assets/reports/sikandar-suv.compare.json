@@ -5,55 +5,55 @@
   "views": {
     "front34": {
       "optimized": {
-        "iou": 0.9693,
-        "meanDelta": 34.88,
+        "iou": 0.9784,
+        "meanDelta": 30.73,
         "coverage": [
           0.1477,
-          0.1471
+          0.1457
         ]
       },
       "inGame": {
-        "iou": 0.9693,
-        "meanDelta": 34.88,
+        "iou": 0.9784,
+        "meanDelta": 37.36,
         "coverage": [
           0.1477,
-          0.1471
+          0.1457
         ]
       }
     },
     "rear34": {
       "optimized": {
-        "iou": 0.9839,
-        "meanDelta": 28.32,
+        "iou": 0.9845,
+        "meanDelta": 24.88,
         "coverage": [
           0.1458,
-          0.1439
+          0.144
         ]
       },
       "inGame": {
-        "iou": 0.9839,
-        "meanDelta": 28.32,
+        "iou": 0.9845,
+        "meanDelta": 35.3,
         "coverage": [
           0.1458,
-          0.1439
+          0.144
         ]
       }
     },
     "side": {
       "optimized": {
-        "iou": 0.9323,
-        "meanDelta": 21.01,
+        "iou": 0.9438,
+        "meanDelta": 19.04,
         "coverage": [
           0.1388,
-          0.1431
+          0.142
         ]
       },
       "inGame": {
-        "iou": 0.9323,
-        "meanDelta": 21.01,
+        "iou": 0.9438,
+        "meanDelta": 30.11,
         "coverage": [
           0.1388,
-          0.1431
+          0.142
         ]
       }
     }
@@ -65,51 +65,50 @@
       "materials": 43
     },
     "optimized": {
-      "meshes": 160,
-      "triangles": 101011,
-      "materials": 24
+      "meshes": 161,
+      "triangles": 94578,
+      "materials": 35
     },
     "inGame": {
-      "meshes": 160,
-      "triangles": 101011,
-      "materials": 24
+      "meshes": 161,
+      "triangles": 94578,
+      "materials": 36
     }
   },
   "materials": {
     "droppedByOptimizer": [
       "boot.5",
+      "glass.002",
+      "indicator_lf",
+      "indicator_rf",
+      "right_rear_light",
+      "scorpio_n_ext_1.2",
+      "scorpio_n_ext_chassis.3",
+      "scorpio_n_int_roof.4"
+    ],
+    "optimized": [
+      "breaklight_l",
       "breaklight_r",
       "foglight_l",
       "foglight_m.0",
       "foglight_r",
-      "glass.004",
-      "indicator_lm",
-      "indicator_lr",
-      "indicator_rf",
-      "indicator_rm",
-      "indicator_rr",
-      "revlight_L",
-      "revlight_r",
-      "right_front_light",
-      "right_rear_light",
-      "scorpio_n_ext_1.2",
-      "scorpio_n_ext_chassis.3",
-      "scorpio_n_int_roof.4",
-      "taillight_r.7"
-    ],
-    "optimized": [
-      "breaklight_l",
       "glass",
       "glass.001",
-      "glass.002",
       "glass.003",
+      "glass.004",
       "headlight_f.2",
       "headlight_f.3",
-      "indicator_lf",
+      "indicator_lm",
+      "indicator_lr",
+      "indicator_rm",
+      "indicator_rr",
       "movsteer_1.0.3",
       "movsteer_1.0.4",
       "movsteer_1.0.5",
       "primary",
+      "revlight_L",
+      "revlight_r",
+      "right_front_light",
       "scorpio_n_int_body.1",
       "scorpio_n_int_body.2",
       "scorpio_n_int_dashboard.6",
@@ -118,6 +117,7 @@
       "sunroof_m.1",
       "taillight_r.5",
       "taillight_r.6",
+      "taillight_r.7",
       "wheel_rf.0",
       "wheel_rf.1",
       "wheel_rf.2",
@@ -127,8 +127,8 @@
   "environment": {
     "hdri": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloppenheim_06_puresky_2k.hdr",
     "viewer": "hdri 2048x1024",
-    "chrome": "Chrome/154.0.8037.97",
+    "chrome": "Chrome/155.0.8059.39",
     "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
   },
-  "generatedAt": "2026-10-15T14:09:34.018Z"
+  "generatedAt": "2026-10-15T14:24:58.650Z"
 }

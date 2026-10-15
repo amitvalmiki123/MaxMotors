@@ -1,6 +1,6 @@
 # Source asset inspection
 
-Generated 2026-10-15T14:08:31.965Z
+Generated 2026-10-15T14:24:12.488Z
 
 ## sikandar-suv
 
@@ -11,7 +11,7 @@ Generated 2026-10-15T14:08:31.965Z
 - bounds: 2.176 x 1.847 x 4.673 @ min -1.079, 0, -2.423 (long axis z)
 - wheels: front-left r=0.38 @ -0.81/0.38/-1.56 (3 members, name+shape); front-right r=0.38 @ 0.81/0.38/-1.56 (3 members, name+shape); rear-left r=0.38 @ -0.81/0.38/1.19 (3 members, name+shape); rear-right r=0.38 @ 0.81/0.38/1.19 (3 members, name+shape)
 - wheelbase 2.752 m, track 1.625 m
-- materials: wheel_rf.2[wheel], primary[wheel], wheel_rf.0[wheel], movsteer_1.0.5[interior], wheel_rf.1[wheel], foglight_m.0[body], scorpio_n_int_dashboard.6[interior], scorpio_n_int_sidewall.7[body], glass[glass,blend], headlight_f.2[body], wheel_rf.3[wheel], scorpio_n_int_body.1[body]
+- materials: wheel_rf.2[wheel], primary[body], wheel_rf.0[wheel], movsteer_1.0.5[interior], wheel_rf.1[wheel], foglight_m.0[body], scorpio_n_int_dashboard.6[interior], scorpio_n_int_sidewall.7[interior], glass[glass,blend], headlight_f.2[body], wheel_rf.3[wheel], scorpio_n_int_body.1[interior]
 
 ## aurora-v12
 

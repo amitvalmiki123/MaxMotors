@@ -1,7 +1,55 @@
 {
   "id": "aurora-v12",
   "kind": "car",
-  "generatedAt": "2026-10-15T14:08:37.004Z",
+  "generatedAt": "2026-10-15T14:24:21.165Z",
+  "cockpit": {
+    "source": "estimate",
+    "driverSide": "left",
+    "head": [
+      -0.38,
+      0.76,
+      -0.315
+    ],
+    "steeringWheel": {
+      "center": [
+        -0.38,
+        0.56,
+        -0.735
+      ],
+      "axis": [
+        0,
+        0.375,
+        0.927
+      ],
+      "radius": 0.17
+    }
+  },
+  "openables": [
+    {
+      "kind": "door",
+      "node": "detach_door_L_60_63",
+      "style": "scissor",
+      "axis": "x",
+      "angle": -1.1868238913561442,
+      "hinge": [
+        -0.499,
+        0.478,
+        -1.065
+      ]
+    },
+    {
+      "kind": "door",
+      "node": "detach_door_R_60_67",
+      "style": "scissor",
+      "axis": "x",
+      "angle": -1.1868238913561442,
+      "hinge": [
+        0.426,
+        0.478,
+        -1.065
+      ]
+    }
+  ],
   "credits": {
     "inGameName": "Aurora V12",
     "title": "( FREE ) Lamborghini Terzo Millennio",
@@ -18,7 +66,7 @@
   "units": "meters",
   "source": {
     "file": "assets/raw/terzo-millennio.glb",
-    "triangles": 106111,
+    "triangles": 108327,
     "bounds": {
       "min": [
         -0.826,
@@ -34,28 +82,28 @@
   },
   "output": {
     "file": "public/models/aurora-v12.glb",
-    "bytes": 673704,
-    "triangles": 69894,
+    "bytes": 808492,
+    "triangles": 69910,
     "attempts": 1,
     "textureSizePx": 2048,
     "textureQuality": 78,
     "textureBytesBefore": 1464780,
-    "textureBytesAfter": 203262,
+    "textureBytesAfter": 354022,
     "textureMemoryMB": 18.3,
     "triangleBudget": 70000,
     "overBudget": false,
     "sizeBudgetBytes": 4194304
   },
   "transform": {
-    "yawRadians": 0,
-    "yawDegrees": 0,
+    "yawRadians": 3.141593,
+    "yawDegrees": 180,
     "scale": 1.266182,
     "position": [
-      -0.0098,
+      0.0098,
       -0.0546,
-      -0.0236
+      0.0236
     ],
-    "frontConfidence": "default(-Z)",
+    "frontConfidence": "config(+z) naming-lean 2",
     "sourceSize": [
       1.668,
       0.752,
@@ -86,15 +134,15 @@
     "wheelbase": 2.633,
     "track": 1.971,
     "radius": 0.278,
-    "frontZ": -1.34,
-    "rearZ": 1.293,
+    "frontZ": -1.293,
+    "rearZ": 1.34,
     "list": [
       {
-        "corner": "front-left",
+        "corner": "rear-right",
         "position": [
-          -0.986,
+          0.986,
           0.293,
-          -1.34
+          1.34
         ],
         "radius": 0.288,
         "width": 0.147,
@@ -113,11 +161,11 @@
         ]
       },
       {
-        "corner": "front-right",
+        "corner": "rear-left",
         "position": [
-          0.985,
+          -0.985,
           0.293,
-          -1.34
+          1.34
         ],
         "radius": 0.288,
         "width": 0.153,
@@ -136,11 +184,11 @@
         ]
       },
       {
-        "corner": "rear-left",
+        "corner": "front-right",
         "position": [
-          -0.941,
+          0.941,
           0.268,
-          1.293
+          -1.293
         ],
         "radius": 0.268,
         "width": 0.285,
@@ -161,11 +209,11 @@
         ]
       },
       {
-        "corner": "rear-right",
+        "corner": "front-left",
         "position": [
-          0.922,
+          -0.922,
           0.268,
-          1.293
+          -1.293
         ],
         "radius": 0.268,
         "width": 0.285,
@@ -237,7 +285,6 @@
       "Object_153 (0.487x0.099x0.780)",
       "Object_161 (0.201x0.070x0.075)",
       "Object_163 (0.199x0.069x0.074)",
-      "Object_166 (1.217x0.034x0.064)",
       "Object_186 (0.087x0.451x0.451)",
       "Object_200 (0.091x0.451x0.451)",
       "Object_204 (0.054x0.035x0.055)",
@@ -544,8 +591,8 @@
     }
   ],
   "stats": {
-    "nodes": 130,
-    "meshes": 49,
+    "nodes": 131,
+    "meshes": 52,
     "materials": 21,
     "textures": 3
   }

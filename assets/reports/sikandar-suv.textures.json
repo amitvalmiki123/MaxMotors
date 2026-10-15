@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-15T14:08:35.544Z",
+  "generatedAt": "2026-10-15T14:24:19.450Z",
   "count": 10,
   "textures": [
     {
       "index": 0,
       "mimeType": "image/webp",
-      "bytes": 112,
+      "bytes": 118,
       "width": 128,
       "height": 128,
       "used": true,
@@ -19,7 +19,7 @@
     {
       "index": 1,
       "mimeType": "image/webp",
-      "bytes": 75384,
+      "bytes": 118346,
       "width": 512,
       "height": 512,
       "used": true,
@@ -33,7 +33,7 @@
     {
       "index": 2,
       "mimeType": "image/webp",
-      "bytes": 197354,
+      "bytes": 237496,
       "width": 1024,
       "height": 1024,
       "used": true,
@@ -47,7 +47,7 @@
     {
       "index": 3,
       "mimeType": "image/webp",
-      "bytes": 18734,
+      "bytes": 21462,
       "width": 512,
       "height": 512,
       "used": true,
@@ -61,7 +61,7 @@
     {
       "index": 4,
       "mimeType": "image/webp",
-      "bytes": 304,
+      "bytes": 362,
       "width": 256,
       "height": 256,
       "used": true,
@@ -75,13 +75,22 @@
     {
       "index": 5,
       "mimeType": "image/webp",
-      "bytes": 176420,
+      "bytes": 316988,
       "width": 1024,
       "height": 1024,
       "used": true,
       "materials": [
-        "indicator_lf",
-        "breaklight_l"
+        "right_front_light",
+        "foglight_r",
+        "foglight_l",
+        "indicator_lr",
+        "indicator_rr",
+        "breaklight_l",
+        "breaklight_r",
+        "revlight_L",
+        "revlight_r",
+        "indicator_lm",
+        "indicator_rm"
       ],
       "slots": [
         "baseColor"
@@ -90,7 +99,7 @@
     {
       "index": 6,
       "mimeType": "image/webp",
-      "bytes": 54500,
+      "bytes": 94952,
       "width": 512,
       "height": 512,
       "used": true,
@@ -104,7 +113,7 @@
     {
       "index": 7,
       "mimeType": "image/webp",
-      "bytes": 18194,
+      "bytes": 28324,
       "width": 256,
       "height": 256,
       "used": true,
@@ -118,7 +127,7 @@
     {
       "index": 8,
       "mimeType": "image/webp",
-      "bytes": 309880,
+      "bytes": 539856,
       "width": 1024,
       "height": 1024,
       "used": true,
@@ -132,7 +141,7 @@
     {
       "index": 9,
       "mimeType": "image/webp",
-      "bytes": 6802,
+      "bytes": 7928,
       "width": 512,
       "height": 512,
       "used": true,
