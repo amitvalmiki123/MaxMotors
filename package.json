@@ -8,16 +8,28 @@
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
     "test": "node --test tests/*.test.js",
-    "start:server": "npm --prefix server start"
+    "start:server": "npm --prefix server start",
+    "assets:fetch": "node scripts/assets/fetch-sources.mjs",
+    "assets:inspect": "node scripts/assets/inspect-glb.mjs",
+    "assets:build": "node scripts/assets/optimize-glb.mjs",
+    "assets:env": "node scripts/assets/fetch-environment.mjs",
+    "assets:audio": "node scripts/assets/build-audio.mjs",
+    "assets:pipeline": "npm run assets:fetch && npm run assets:inspect && npm run assets:build && npm run assets:env && npm run assets:audio"
   },
   "engines": {
     "node": ">=22.12"
   },
   "dependencies": {
     "cannon-es": "^0.20.0",
-    "three": "^0.186.1"
+    "three": "^0.186.1",
+    "meshoptimizer": "^0.22.0"
   },
   "devDependencies": {
-    "vite": "^8.3.4"
+    "@gltf-transform/core": "^4.5.1",
+    "@gltf-transform/extensions": "^4.5.1",
+    "@gltf-transform/functions": "^4.5.1",
+    "sharp": "^0.35.5",
+    "vite": "^8.3.4",
+    "draco3dgltf": "^1.5.7"
   }
 }
