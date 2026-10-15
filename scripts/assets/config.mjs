@@ -15,7 +15,9 @@
 // `MAXMOTORS_RAW_DIR` lets the dev fixtures run the pipeline locally, where the
 // owner's file host is not reachable (see scripts/assets/dev-fixtures.mjs).
 export const RAW_DIR = process.env.MAXMOTORS_RAW_DIR || 'assets/raw';
-export const REPORT_DIR = 'assets/reports';
+// `MAXMOTORS_REPORT_DIR` keeps local dry-runs (fixtures) from overwriting the
+// real reports the CI pipeline commits.
+export const REPORT_DIR = process.env.MAXMOTORS_REPORT_DIR || 'assets/reports';
 
 /** Source downloads. */
 export const SOURCE_MODELS = [
@@ -60,6 +62,7 @@ export const ASSET_TARGETS = {
     textureSize: 2048,
     textureQuality: 80,
     maxTextureBytes: 9 * 1024 * 1024,
+    maxTextureMemoryMB: 128,
     simplifyError: 0.006,
     // Real-world Scorpio-N length; the model is already 4.67 m long.
     targetLengthMeters: 4.66,
@@ -76,6 +79,7 @@ export const ASSET_TARGETS = {
     textureSize: 2048,
     textureQuality: 78,
     maxTextureBytes: 5 * 1024 * 1024,
+    maxTextureMemoryMB: 96,
     simplifyError: 0.004,
     // Source model is 3.56 m long; scale it up to the real 4.5 m supercar size.
     targetLengthMeters: 4.5,
@@ -90,10 +94,13 @@ export const ASSET_TARGETS = {
     kind: 'track',
     maxBytes: 20 * 1024 * 1024,
     maxTriangles: 150_000,
-    // 70 source images (~50 MB) drive the budget here: 1K is plenty for foliage.
-    textureSize: 1024,
-    textureQuality: 74,
+    // 70 source images (~50 MB) drive the budget here, and the mobile GPU
+    // budget is ~150 MB of decoded texture memory: 512 px foliage lands near
+    // 75 MB, 1K would blow straight past it.
+    textureSize: 512,
+    textureQuality: 76,
     maxTextureBytes: 14 * 1024 * 1024,
+    maxTextureMemoryMB: 150,
     simplifyError: 0.01,
     stripNodePatterns: [],
     stripMaterialPatterns: [],

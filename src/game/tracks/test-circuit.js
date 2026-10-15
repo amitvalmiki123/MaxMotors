@@ -255,7 +255,19 @@ export function createTestCircuitTrack({ scene, quality, roadTextures = null }) 
     roadMaterial.map = textureSet.map;
     roadMaterial.normalMap = textureSet.normalMap;
     if (textureSet.normalMap) roadMaterial.normalScale = new THREE.Vector2(0.85, 0.85);
-    roadMaterial.roughness = 0.85;
+    if (textureSet.armMap) {
+      // Poly Haven ships a combined AO/Roughness/Metalness map; three samples the
+      // red channel for AO, green for roughness and blue for metalness, so the
+      // same texture drives all three slots.
+      roadMaterial.aoMap = textureSet.armMap;
+      roadMaterial.aoMapIntensity = 0.85;
+      roadMaterial.roughnessMap = textureSet.armMap;
+      roadMaterial.metalnessMap = textureSet.armMap;
+      roadMaterial.roughness = 1;
+      roadMaterial.metalness = 1;
+    } else {
+      roadMaterial.roughness = 0.85;
+    }
   }
 
   const road = new THREE.Mesh(createRibbonGeometry(curve, { width: ROAD_HALF_WIDTH * 2, y: 0.012 }), roadMaterial);

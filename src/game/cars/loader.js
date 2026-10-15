@@ -1,6 +1,5 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { MeshoptDecoder } from 'meshoptimizer';
+import { clusterWheels, descriptorFromBounds } from './wheel-clusters.js';
 
 /**
  * GLB car loader + rigger.
@@ -27,16 +26,24 @@ const BRAND_PATTERNS = [/badge/i, /logo/i, /emblem/i, /decal/i, /mahindra/i, /la
 
 let cachedLoader = null;
 
-export function createGLTFLoader() {
+/**
+ * The GLTFLoader and the meshopt decoder are imported on demand: together they
+ * are a large part of the bundle and nothing needs them until a model loads.
+ */
+export async function createGLTFLoader() {
   if (cachedLoader) return cachedLoader;
+  const [{ GLTFLoader }, { MeshoptDecoder }] = await Promise.all([
+    import('three/examples/jsm/loaders/GLTFLoader.js'),
+    import('meshoptimizer'),
+  ]);
   const loader = new GLTFLoader();
   loader.setMeshoptDecoder(MeshoptDecoder);
   cachedLoader = loader;
   return loader;
 }
 
-export function loadGLTF(url, { onProgress } = {}) {
-  const loader = createGLTFLoader();
+export async function loadGLTF(url, { onProgress } = {}) {
+  const loader = await createGLTFLoader();
   return new Promise((resolve, reject) => {
     loader.load(url, (gltf) => resolve(gltf), (event) => onProgress?.(event), (error) => reject(error));
   });
@@ -54,6 +61,98 @@ export async function loadCarAssets(preset, { onProgress } = {}) {
     fetchJson(preset.manifestUrl),
   ]);
   return { gltf, manifest };
+}
+
+const WHEEL_NODE_PATTERN = /wheel|tyre|tire|rim|pneu|roue|jante/i;
+/** Cannon's wheel order; `updateWheels` indexes `wheelInfos` with it. */
+const WHEEL_ORDER = ['front-left', 'front-right', 'rear-left', 'rear-right'];
+
+/**
+ * Mirrors `THREE.PropertyBinding.sanitizeNodeName`, which `GLTFLoader` applies to
+ * every node name (it strips `[].:/` and turns whitespace into `_`). Pipeline
+ * paths are compared against loaded names, so both sides must sanitize.
+ */
+export function sanitizeNodeName(name) {
+  return String(name ?? '').replace(/\s/g, '_').replace(/[[\].:/]/g, '');
+}
+
+/**
+ * Resolves a pipeline node path such as `/0:Sketchfab_model/1:root/3:wheel_rf`.
+ *
+ * The leading number of each segment is the child index inside its parent, which
+ * is stable — real exports repeat node names, and `GLTFLoader` renames
+ * duplicates (`Object_5`, `Object_5_1`), so index paths are the only form that
+ * survives a round trip through the loader. Legacy `name#occurrence` and plain
+ * `name` segments are still accepted, matched against sanitized names.
+ */
+export function resolveNodePath(root, nodePath) {
+  if (!nodePath) return null;
+  const segments = String(nodePath).split('/').filter(Boolean);
+  let current = root;
+  for (const segment of segments) {
+    let next = null;
+    const separator = segment.indexOf(':');
+    if (separator > 0) {
+      const index = Number.parseInt(segment.slice(0, separator), 10);
+      next = Number.isInteger(index) ? current.children[index] ?? null : null;
+      if (next) {
+        const expected = sanitizeNodeName(segment.slice(separator + 1));
+        const actual = sanitizeNodeName(next.name);
+        // Index wins; the name is a courtesy check so a stale manifest is loud.
+        if (expected && actual && !actual.startsWith(expected)) {
+          console.info(`Node path drift: expected "${expected}", found "${actual}"`);
+        }
+      }
+    } else {
+      const [rawName, rawIndex] = segment.split('#');
+      const wanted = Number.parseInt(rawIndex ?? '0', 10) || 0;
+      const name = sanitizeNodeName(rawName);
+      let seen = 0;
+      for (const child of current.children) {
+        if (!sanitizeNodeName(child.name).startsWith(name)) continue;
+        if (seen === wanted) {
+          next = child;
+          break;
+        }
+        seen += 1;
+      }
+    }
+    if (!next) return null;
+    current = next;
+  }
+  return current === root ? null : current;
+}
+
+/**
+ * Collects disc-shaped mesh candidates from the loaded scene, measured in the
+ * rig group's space (the group has no parent while the rig is built, so its
+ * world matrix is the identity and `matrixWorld` is already group-local).
+ *
+ * Only the *node* name is inspected: these exports reuse wheel material names on
+ * doors and dashboards (`int_door_lf_wheel_rf.2_0`), so mesh/material names
+ * would drag interior trim into the wheel pivots.
+ */
+export function collectSceneCandidates(root) {
+  const candidates = [];
+  const objects = new Map();
+  const box = new THREE.Box3();
+  root.updateMatrixWorld(true);
+  root.traverse((object) => {
+    if (!object.isMesh || object.isInstancedMesh || !object.geometry) return;
+    const geometry = object.geometry;
+    if (!geometry.boundingBox) geometry.computeBoundingBox();
+    if (!geometry.boundingBox) return;
+    box.copy(geometry.boundingBox).applyMatrix4(object.matrixWorld);
+    candidates.push(descriptorFromBounds({
+      id: object.uuid,
+      name: object.name || '(unnamed)',
+      min: [box.min.x, box.min.y, box.min.z],
+      max: [box.max.x, box.max.y, box.max.z],
+      wheelish: WHEEL_NODE_PATTERN.test(object.name || ''),
+    }));
+    objects.set(object.uuid, object);
+  });
+  return { candidates, objects };
 }
 
 function matchesAny(name, patterns) {
@@ -86,30 +185,75 @@ export function buildCarRig({ gltf, manifest, preset, paint, tier }) {
   root.updateMatrixWorld(true);
 
   // --- wheels: steer (Y) -> spin (X) -> source meshes -----------------------
+  // The rig is clustered from the loaded scene first (shape + naming, see
+  // wheel-clusters.js) and only falls back to the manifest's recorded node paths
+  // when that cannot explain four wheels.
   const wheels = [];
   const problems = [];
+  const wheelDiagnostics = [];
   const wheelSpecs = (manifest?.wheels?.list ?? []).slice().sort((a, b) => {
     const order = { 'front-left': 0, 'front-right': 1, 'rear-left': 2, 'rear-right': 3 };
     return (order[a.corner] ?? 9) - (order[b.corner] ?? 9);
   });
 
-  for (const [index, spec] of wheelSpecs.entries()) {
-    const members = (spec.memberPaths ?? []).map((memberPath) => root.getObjectByProperty('name', memberPath.split('/').pop()));
-    const unique = [...new Set(members.filter(Boolean))];
-    if (!unique.length) {
-      problems.push(`wheel ${spec.corner}: no meshes resolved`);
-      continue;
-    }
+  const plans = [];
+  const { candidates, objects } = collectSceneCandidates(root);
+  const carBox = new THREE.Box3().setFromObject(root);
+  const carSize = carBox.getSize(new THREE.Vector3());
+  const carCenter = carBox.getCenter(new THREE.Vector3());
+  const clusters = clusterWheels(candidates, {
+    modelWidth: carSize.x,
+    modelCenterX: carCenter.x,
+    groundY: carBox.min.y,
+    height: carSize.y,
+    halfLength: carSize.z / 2,
+  });
+  wheelDiagnostics.push({
+    source: 'scene',
+    detected: clusters.wheels.length,
+    wheelbase: clusters.wheelbase,
+    track: clusters.track,
+    radius: clusters.radius,
+    estimate: clusters.radiusEstimate,
+  });
 
+  if (clusters.complete) {
+    for (const cluster of clusters.wheels) {
+      const members = cluster.members.map((id) => objects.get(id)).filter(Boolean);
+      if (!members.length) continue;
+      plans.push({ corner: cluster.corner, position: cluster.center, members, source: 'scene' });
+    }
+  }
+
+  if (plans.length !== 4) {
+    if (plans.length) wheelDiagnostics.push({ source: 'scene', warning: 'incomplete, using the manifest' });
+    plans.length = 0;
+    for (const spec of wheelSpecs) {
+      const members = (spec.memberPaths ?? []).map((memberPath) => resolveNodePath(root, memberPath));
+      const unique = [...new Set(members.filter(Boolean))];
+      if (!unique.length) {
+        problems.push(`wheel ${spec.corner}: no meshes resolved`);
+        continue;
+      }
+      if (!Array.isArray(spec.position)) {
+        problems.push(`wheel ${spec.corner}: manifest has no position`);
+        continue;
+      }
+      plans.push({ corner: spec.corner, position: spec.position, members: unique, source: 'manifest', spec });
+    }
+  }
+
+  for (const plan of plans) {
     const steerPivot = new THREE.Group();
-    steerPivot.name = `wheel-steer:${spec.corner}`;
-    steerPivot.position.fromArray(spec.position);
+    steerPivot.name = `wheel-steer:${plan.corner}`;
+    steerPivot.position.set(plan.position[0], plan.position[1], plan.position[2]);
     const spinPivot = new THREE.Group();
-    spinPivot.name = `wheel-spin:${spec.corner}`;
+    spinPivot.name = `wheel-spin:${plan.corner}`;
     steerPivot.add(spinPivot);
     group.add(steerPivot);
+    group.updateMatrixWorld(true);
 
-    for (const member of unique) {
+    for (const member of plan.members) {
       // `attach` keeps the world transform while re-parenting, and the spin
       // pivot compensates any rest rotation so the axle stays on +X.
       spinPivot.attach(member);
@@ -119,20 +263,30 @@ export function buildCarRig({ gltf, manifest, preset, paint, tier }) {
     // Tread diameter measured after re-parenting, so it includes source scales.
     const { size } = worldSize(spinPivot);
     const measuredDiameter = Math.max(size.y, size.z);
-    const radius = measuredDiameter > 0.05 ? measuredDiameter / 2 : (spec.radius ?? 0.33);
+    const measured = measuredDiameter > 0.05 ? measuredDiameter / 2 : null;
+    const radius = measured ?? plan.spec?.radius ?? 0.33;
 
     wheels.push({
-      corner: spec.corner,
-      index,
-      front: spec.corner.startsWith('front'),
+      corner: plan.corner,
+      index: WHEEL_ORDER.indexOf(plan.corner),
+      front: plan.corner.startsWith('front'),
       steerPivot,
       spinPivot,
       radius,
-      measured: Number(measuredDiameter.toFixed(3)),
-      manifestRadius: spec.radius ?? null,
-      source: spec.source ?? 'manifest',
+      measured: measured === null ? null : Number(measuredDiameter.toFixed(3)),
+      manifestRadius: plan.spec?.radius ?? null,
+      source: plan.source,
       width: size.x,
+      members: plan.members.length,
     });
+  }
+
+  // A manifest corner order that disagrees with the scene is worth knowing about
+  // (it usually means the shipped manifest is stale), but never blocks the rig.
+  const manifestWheelbase = manifest?.wheels?.wheelbase ?? null;
+  if (manifestWheelbase !== null && clusters.wheelbase !== null
+    && Math.abs(manifestWheelbase - clusters.wheelbase) > Math.max(0.25, Math.abs(clusters.wheelbase) * 0.2)) {
+    problems.push(`manifest wheelbase ${manifestWheelbase} vs measured ${clusters.wheelbase}`);
   }
 
   // --- materials -----------------------------------------------------------
@@ -237,6 +391,7 @@ export function buildCarRig({ gltf, manifest, preset, paint, tier }) {
     wheels,
     complete: wheels.length === 4,
     problems,
+    wheelDiagnostics,
     paintMaterials: [...new Set(paintMaterials.map((material) => findReplacement(root, material)))],
     glassMaterials,
     headlightMaterials: [...new Set(headlightMaterials)],

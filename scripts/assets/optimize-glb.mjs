@@ -91,6 +91,25 @@ function countMeshTriangles(mesh) {
   return Math.round(total);
 }
 
+/**
+ * Decoded GPU memory (RGBA8) of every texture that survived into the asset.
+ * This is the number the mobile budget in the M2 brief refers to (~150 MB), and
+ * it is what forces the forest foliage down to 512 px.
+ */
+function estimateTextureMemoryMB(document) {
+  let bytes = 0;
+  for (const texture of document.getRoot().listTextures()) {
+    const size = texture.getSize();
+    const [width, height] = Array.isArray(size) ? size : [0, 0];
+    if (!width || !height) {
+      bytes += 1024 * 1024;
+      continue;
+    }
+    bytes += width * height * 4;
+  }
+  return bytes / (1024 * 1024);
+}
+
 function countTriangles(document) {
   let total = 0;
   for (const mesh of document.getRoot().listMeshes()) {
@@ -262,10 +281,12 @@ function sceneBounds(document) {
  */
 function collectNodeCandidates(document) {
   const candidates = [];
-  const walk = (node, ancestors, parentPath) => {
+  const walk = (node, ancestors, parentPath, siblingIndex) => {
     const mesh = node.getMesh();
     const name = node.getName() || mesh?.getName() || '(unnamed)';
-    const nodePath = `${parentPath}/${name}`;
+    // Node names repeat (two `wheel_f_dummy`s, dozens of `Object_*`), so the
+    // path records the occurrence index among same-named siblings: `name#0`.
+    const nodePath = `${parentPath}/${name}#${siblingIndex}`;
     if (mesh) {
       const box = getBounds(node);
       candidates.push(descriptorFromBounds({
@@ -278,10 +299,22 @@ function collectNodeCandidates(document) {
         ancestorIds: ancestors,
       }));
     }
-    for (const child of node.listChildren()) walk(child, [...ancestors, nodePath], nodePath);
+    const counters = new Map();
+    for (const child of node.listChildren()) {
+      const childName = child.getName() || child.getMesh()?.getName() || '(unnamed)';
+      const occurrence = counters.get(childName) ?? 0;
+      counters.set(childName, occurrence + 1);
+      walk(child, [...ancestors, nodePath], nodePath, occurrence);
+    }
   };
   for (const scene of document.getRoot().listScenes()) {
-    for (const node of scene.listChildren()) walk(node, [], '');
+    const counters = new Map();
+    for (const node of scene.listChildren()) {
+      const name = node.getName() || node.getMesh()?.getName() || '(unnamed)';
+      const occurrence = counters.get(name) ?? 0;
+      counters.set(name, occurrence + 1);
+      walk(node, [], '', occurrence);
+    }
   }
   return { candidates };
 }
@@ -350,6 +383,7 @@ function computeCarPlacement(document, target, bounds) {
     modelCenterX: (bounds.min[0] + bounds.max[0]) / 2,
     groundY: bounds.min[1],
     height: bounds.size[1],
+    halfLength: bounds.size[2] / 2,
     expectedRadius: Math.max(0.12, length * 0.07),
     axleAxis: 0,
   });
@@ -425,6 +459,7 @@ async function optimizeOnce(target, attempt) {
   }
 
   const textureStats = await compressTextures(document, { textureSize, quality });
+  const textureMemory = estimateTextureMemoryMB(document);
   await document.transform(prune());
 
   let terrain = null;
@@ -445,7 +480,7 @@ async function optimizeOnce(target, attempt) {
   document.createExtension(EXTMeshoptCompression).setRequired(true).setEncoder?.(MeshoptEncoder);
   await document.transform(meshopt({ encoder: MeshoptEncoder, level: 'high' }));
 
-  return { document, strip, interior, flatDecals, textureStats, terrain, trianglesBefore, trianglesAfter, textureSize, quality };
+  return { document, strip, interior, flatDecals, textureStats, textureMemory, terrain, trianglesBefore, trianglesAfter, textureSize, quality };
 }
 
 async function writeHillshade(grid, filePath) {
@@ -475,7 +510,7 @@ async function writeHillshade(grid, filePath) {
   await sharp(buffer, { raw: { width: cols, height: rows, channels: 3 } }).png().toFile(filePath);
 }
 
-async function buildCarManifest(document, target, id, { strip, interior, flatDecals, textureStats, trianglesBefore, trianglesAfter, textureSize, quality, bytes, attemptIndex }) {
+async function buildCarManifest(document, target, id, { strip, interior, flatDecals, textureStats, textureMemory, trianglesBefore, trianglesAfter, textureSize, quality, bytes, attemptIndex }) {
   const bounds = sceneBounds(document);
   const placement = computeCarPlacement(document, target, bounds);
   const { wheelData } = placement;
@@ -539,6 +574,7 @@ async function buildCarManifest(document, target, id, { strip, interior, flatDec
       textureQuality: quality,
       textureBytesBefore: textureStats.before,
       textureBytesAfter: textureStats.after,
+      textureMemoryMB: Number((textureMemory ?? 0).toFixed(1)),
     },
     transform: {
       yawRadians: Number(placement.yaw.toFixed(6)),
@@ -677,13 +713,15 @@ async function buildAsset(id, target) {
     const bytes = Buffer.from(await io.writeBinary(result.document)).byteLength;
     const withinSize = bytes <= target.maxBytes;
     const withinTriangles = result.trianglesAfter <= target.maxTriangles + 2;
+    const withinMemory = !target.maxTextureMemoryMB || result.textureMemory <= target.maxTextureMemoryMB;
     console.log(
       `[optimize] ${id} attempt ${attemptIndex + 1}: ${formatBytes(bytes)} (limit ${formatBytes(target.maxBytes)}) | ` +
         `tris ${result.trianglesAfter.toLocaleString()} (limit ${target.maxTriangles.toLocaleString()}) | ` +
-        `textures ${formatBytes(result.textureStats.after)} @${result.textureSize}px q${result.quality}`,
+        `textures ${formatBytes(result.textureStats.after)} @${result.textureSize}px q${result.quality} | ` +
+        `GPU ${result.textureMemory.toFixed(0)} MB${target.maxTextureMemoryMB ? ` (limit ${target.maxTextureMemoryMB})` : ''}`,
     );
     if (!best || bytes < best.bytes) best = { ...result, bytes, attemptIndex };
-    if (withinSize && withinTriangles) break;
+    if (withinSize && withinTriangles && withinMemory) break;
     if (typeof result.document.dispose === 'function') result.document.dispose();
   }
 

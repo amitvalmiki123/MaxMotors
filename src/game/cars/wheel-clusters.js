@@ -47,12 +47,14 @@ export function descriptorFromBounds({ name = '', min, max, wheelish = false, id
  * them), which beats any single name heuristic: this model reuses wheel
  * *material* names on doors, so names alone are unreliable.
  */
-export function estimateWheelRadius(candidates, modelWidth) {
+export function estimateWheelRadius(candidates, modelWidth, context = null) {
   const pool = candidates
     .filter((candidate) => candidate.discLike
       && candidate.radius > Math.max(0.03, modelWidth * 0.02)
       && candidate.radius < modelWidth * 0.4
-      && !overlapsCenterline(candidate, modelWidth))
+      && !overlapsCenterline(candidate, modelWidth)
+      && sitsOnGround(candidate, context)
+      && inCornerBand(candidate, context))
     .map((candidate) => candidate.radius)
     .sort((a, b) => a - b);
   if (!pool.length) return null;
@@ -65,6 +67,30 @@ export function estimateWheelRadius(candidates, modelWidth) {
     }
   }
   return best.radius === null ? null : { radius: best.radius, support: best.count, pool: pool.length };
+}
+
+/**
+ * A wheel touches the road, so its hub sits one tyre radius above the ground:
+ * `|hubY - radius|` is small for every wheel and wildly off for the discs that
+ * confuse these models (dashboards, steering wheels, seats, mirrors).
+ */
+export function sitsOnGround(candidate, context) {
+  if (!context || !Number.isFinite(context.groundY)) return true;
+  const hubHeight = candidate.center[1] - context.groundY;
+  const delta = Math.abs(hubHeight - candidate.radius);
+  return delta <= Math.max(0.14, candidate.radius * 0.6);
+}
+
+/**
+ * Wheels live in the outboard, near-axle band of the footprint. Interior trim is
+ * symmetric and close to the centreline, so this rejects most of it outright.
+ */
+export function inCornerBand(candidate, context) {
+  if (!context) return true;
+  const { halfWidth = 0, halfLength = 0 } = context;
+  if (halfWidth > 0 && Math.abs(candidate.center[0]) < halfWidth * 0.42) return false;
+  if (halfLength > 0 && Math.abs(candidate.center[2]) < halfLength * 0.35) return false;
+  return true;
 }
 
 function overlapsCenterline(candidate, modelWidth) {
@@ -88,12 +114,22 @@ export function scoreWheelCandidate(candidate, { modelWidth = 0, expectedRadius 
   if (context) {
     // Wheels live in a horizontal band near the bottom of the car.
     const relativeY = (candidate.center[1] - context.groundY) / Math.max(0.1, context.height);
-    if (relativeY > 0.55) return -Infinity;
+    if (relativeY > 0.5) return -Infinity;
     score += 1 - relativeY;
-    // ...and near the extreme X positions of the model.
-    const lateral = Math.abs(candidate.center[0]) / Math.max(0.1, context.halfWidth);
-    if (lateral < 0.45) score -= 1.5;
-    else score += lateral;
+    // A wheel touches the ground, so the hub height matches the radius.
+    const hubDelta = Math.abs((candidate.center[1] - context.groundY) - candidate.radius);
+    const hubTolerance = Math.max(0.09, candidate.radius * 0.45);
+    if (hubDelta > Math.max(0.3, candidate.radius * 1.2)) return -Infinity;
+    score += hubDelta <= hubTolerance ? 2.5 : -hubDelta * 8;
+    // ...and they sit outboard, near one of the two axles, not mid-body.
+    if (context.halfWidth) {
+      const lateral = Math.abs(candidate.center[0]) / Math.max(0.1, context.halfWidth);
+      score += lateral >= 0.55 ? 1.5 : -2.5;
+    }
+    if (context.halfLength) {
+      const axial = Math.abs(candidate.center[2]) / Math.max(0.1, context.halfLength);
+      score += axial >= 0.45 ? 1.5 : -2;
+    }
   }
   return score;
 }
@@ -116,13 +152,19 @@ export function clusterWheels(candidates, {
   modelCenterX = 0,
   groundY = 0,
   height = 1,
+  halfLength = 0,
   expectedRadius = null,
   axleAxis = 0,
 } = {}) {
-  const context = { groundY, height, halfWidth: Math.max(0.1, modelWidth / 2) };
+  const context = {
+    groundY,
+    height,
+    halfWidth: Math.max(0.1, modelWidth / 2),
+    halfLength: halfLength > 0 ? halfLength : 0,
+  };
   const estimate = expectedRadius
     ? { radius: expectedRadius, support: 0, pool: 0 }
-    : estimateWheelRadius(candidates, modelWidth);
+    : estimateWheelRadius(candidates, modelWidth, context);
   const targetRadius = estimate?.radius ?? null;
 
   const scored = candidates
@@ -130,9 +172,12 @@ export function clusterWheels(candidates, {
     .filter((entry) => Number.isFinite(entry.score))
     .sort((a, b) => b.score - a.score);
 
-  const pairPool = targetRadius
-    ? scored.filter((entry) => Math.abs(entry.candidate.radius - targetRadius) / targetRadius <= 0.35)
-    : scored;
+  // Only physically plausible hubs may form a pair: a near-radius disc that sits
+  // on the ground, outboard, near an axle. Without this, dashboards and seats
+  // pair up with their mirrored twins and steal the corners.
+  const pairPool = scored
+    .filter((entry) => sitsOnGround(entry.candidate, context) && inCornerBand(entry.candidate, context))
+    .filter((entry) => !targetRadius || Math.abs(entry.candidate.radius - targetRadius) / targetRadius <= 0.35);
 
   // The mirror axis is estimated, not assumed: asymmetric body parts (side
   // accents, mirrors) shift the bounding-box centre away from the car's axis.
@@ -206,14 +251,20 @@ export function clusterWheels(candidates, {
       used.add(primary.id);
 
       const members = [primary];
-      // Absorb the rim, tyre and brake meshes that share this hub.
+      // Absorb the rim, tyre, brake disc and rim-cover meshes that share this hub.
+      const hubX = primary.center[0];
+      const hubY = primary.center[1];
+      const hubZ = primary.center[2];
+      const hubRadius = pair.radius;
       for (const { candidate } of scored) {
         if (used.has(candidate.id)) continue;
-        if (candidate.radius < pair.radius * 0.3) continue;
+        if (candidate.radius < hubRadius * 0.3) continue;
+        if (candidate.radius > hubRadius * 1.6) continue;
         const sameSide = Math.sign(candidate.center[0] - (pair.axis ?? modelCenterX)) === (side === 'right' ? 1 : -1);
         if (!sameSide) continue;
-        const sameHub = Math.abs(Math.abs(candidate.center[0]) - Math.abs(primary.center[0])) < mirrorTolerance * 2
-          && Math.abs(candidate.center[2] - primary.center[2]) < Math.max(0.06, height * 0.3);
+        const sameHub = Math.abs(candidate.center[0] - hubX) < Math.max(0.12, hubRadius * 0.5)
+          && Math.abs(candidate.center[1] - hubY) < Math.max(0.1, hubRadius * 0.5)
+          && Math.abs(candidate.center[2] - hubZ) < Math.max(0.15, hubRadius * 0.6);
         if (!sameHub) continue;
         members.push(candidate);
         used.add(candidate.id);

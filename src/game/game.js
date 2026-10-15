@@ -9,7 +9,6 @@ import { createEnvironment } from './environment.js';
 import { engineLoad, shift } from './drivetrain.js';
 import { createVehiclePhysics, FIXED_TIME_STEP, getVehicleTelemetry, resetVehicle, resolveVehicleConfig, stepVehicle } from './physics.js';
 import { createSceneGraphics } from './scene-graphics.js';
-import { createForestDirtTrail } from './tracks/forest-trail.js';
 import { createTestCircuitTrack } from './tracks/test-circuit.js';
 
 const HDRI_URLS = {
@@ -185,12 +184,19 @@ export function createGame({
       // Align the visual wheel contact to the physics wheel radius so the tyres
       // sit on the road instead of sinking in or floating.
       const physicsRadius = physics.config.wheelRadius;
-      if (nextRig.wheels.length) {
+      if (nextRig.wheels.length === 4) {
         const measured = nextRig.wheels.reduce((sum, wheel) => sum + wheel.radius, 0) / nextRig.wheels.length;
-        const correction = measured > 0.05 ? physicsRadius / measured : 1;
+        const raw = measured > 0.05 ? physicsRadius / measured : 1;
+        // Clamped: the point is to seat the tyres on the road, not to let a bad
+        // measurement stretch the whole car.
+        const correction = Math.min(1.25, Math.max(0.8, raw));
         if (Math.abs(correction - 1) > 0.02) {
           nextRig.group.scale.setScalar(correction);
-          onStatus({ car: preset.id, scaleCorrection: Number(correction.toFixed(3)) });
+          onStatus({
+            car: preset.id,
+            scaleCorrection: Number(correction.toFixed(3)),
+            ...(Math.abs(raw - correction) > 0.01 ? { scaleCorrectionClamped: Number(raw.toFixed(3)) } : {}),
+          });
         }
       }
       mountRig(nextRig);
@@ -214,6 +220,7 @@ export function createGame({
     onStatus({ track: trackId, state: 'loading' });
     if (trackId === 'forest-dirt-trail' && !tracks.has('forest-dirt-trail')) {
       try {
+        const { createForestDirtTrail } = await import('./tracks/forest-trail.js');
         const forest = await createForestDirtTrail({
           scene,
           physics,

@@ -1,11 +1,4 @@
 import * as THREE from 'three';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { SSAOPass } from 'three/examples/jsm/postprocessing/SSAOPass.js';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
-import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader.js';
 
 /**
  * Post-processing chain: SSAO → bloom → vignette → output.
@@ -28,48 +21,76 @@ export function createPostProcessing({ renderer, scene, camera, tier }) {
   }
 
   const size = renderer.getSize(new THREE.Vector2());
-  const composer = new EffectComposer(renderer);
-  composer.setPixelRatio(renderer.getPixelRatio());
-
+  let composer = null;
   let ssaoPass = null;
-  if (tier.ssao) {
-    ssaoPass = new SSAOPass(scene, camera, size.x, size.y);
-    ssaoPass.kernelRadius = 0.9;
-    ssaoPass.minDistance = 0.0015;
-    ssaoPass.maxDistance = 0.08;
-    ssaoPass.output = SSAOPass.OUTPUT.Default;
-    composer.addPass(ssaoPass);
-  } else {
-    composer.addPass(new RenderPass(scene, camera));
-  }
-
   let bloomPass = null;
-  if (tier.bloom) {
-    bloomPass = new UnrealBloomPass(new THREE.Vector2(size.x, size.y), 0.34, 0.55, 0.82);
-    composer.addPass(bloomPass);
-  }
-
   let vignettePass = null;
-  if (tier.vignette) {
-    // The lens vignette is deliberately gentler than the CSS overlay so bloom
-    // highlights near the edges are not crushed twice.
-    vignettePass = new ShaderPass(VignetteShader);
-    vignettePass.uniforms.offset.value = 1.05;
-    vignettePass.uniforms.darkness.value = 1.15;
-    composer.addPass(vignettePass);
-  }
+  let width = size.x;
+  let height = size.y;
 
-  composer.addPass(new OutputPass());
+  // The composer and the effect passes are a sizeable slice of the bundle, so
+  // they are imported on demand: the first frames render directly and the chain
+  // takes over once it is ready (desktop only, see config.js). Every module is
+  // loaded through `Promise.all` — module namespaces are not iterable, so they
+  // must never be destructured out of a single `import()`.
+  Promise.all([
+    import('three/examples/jsm/postprocessing/EffectComposer.js'),
+    import('three/examples/jsm/postprocessing/RenderPass.js'),
+    import('three/examples/jsm/postprocessing/UnrealBloomPass.js'),
+    import('three/examples/jsm/shaders/VignetteShader.js'),
+    import('three/examples/jsm/postprocessing/ShaderPass.js'),
+    import('three/examples/jsm/postprocessing/OutputPass.js'),
+    import('three/examples/jsm/postprocessing/SSAOPass.js'),
+  ])
+    .then(([composerModule, renderPassModule, bloomModule, vignetteModule, shaderPassModule, outputModule, ssaoModule]) => {
+      const nextComposer = new composerModule.EffectComposer(renderer);
+      nextComposer.setPixelRatio(renderer.getPixelRatio());
+
+      if (tier.ssao) {
+        ssaoPass = new ssaoModule.SSAOPass(scene, camera, width, height);
+        ssaoPass.kernelRadius = 0.9;
+        ssaoPass.minDistance = 0.0015;
+        ssaoPass.maxDistance = 0.08;
+        ssaoPass.output = ssaoModule.SSAOPass.OUTPUT.Default;
+        nextComposer.addPass(ssaoPass);
+      } else {
+        nextComposer.addPass(new renderPassModule.RenderPass(scene, camera));
+      }
+
+      if (tier.bloom) {
+        bloomPass = new bloomModule.UnrealBloomPass(new THREE.Vector2(width, height), 0.34, 0.55, 0.82);
+        nextComposer.addPass(bloomPass);
+      }
+
+      if (tier.vignette) {
+        vignettePass = new shaderPassModule.ShaderPass(vignetteModule.VignetteShader);
+        vignettePass.uniforms.offset.value = 1.05;
+        vignettePass.uniforms.darkness.value = 1.15;
+        nextComposer.addPass(vignettePass);
+      }
+
+      nextComposer.addPass(new outputModule.OutputPass());
+      nextComposer.setSize(width, height);
+      composer = nextComposer;
+    })
+    .catch((error) => {
+      console.info('Post-processing unavailable; rendering directly.', error?.message ?? error);
+    });
 
   return {
     enabled: true,
-    composer,
+    get ready() {
+      return Boolean(composer);
+    },
     render(deltaTime) {
       void deltaTime;
-      composer.render();
+      if (composer) composer.render();
+      else renderer.render(scene, camera);
     },
-    setSize(width, height) {
-      composer.setSize(width, height);
+    setSize(nextWidth, nextHeight) {
+      width = nextWidth;
+      height = nextHeight;
+      composer?.setSize(width, height);
       ssaoPass?.setSize?.(width, height);
       bloomPass?.setSize?.(width, height);
     },
@@ -77,10 +98,11 @@ export function createPostProcessing({ renderer, scene, camera, tier }) {
       /* bloom/vignette are track independent */
     },
     dispose() {
-      composer.dispose?.();
+      composer?.dispose?.();
       ssaoPass?.dispose?.();
       bloomPass?.dispose?.();
       vignettePass?.dispose?.();
+      composer = null;
     },
   };
 }

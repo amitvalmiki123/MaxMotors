@@ -3,8 +3,10 @@
  * profiles. Fictional names only — see docs/ASSET_LICENSES.md for the real
  * source models and attribution.
  *
- * The Aurora V12 preset is intentionally identical to the M1 VEHICLE_CONFIG so
- * the original handling feel and its physics tests are unchanged.
+ * The Aurora V12 preset keeps the M1 handling numbers (mass, forces, brakes,
+ * top speed, engine bite) so the original feel and its physics tests are
+ * unchanged; only the wheel geometry is fitted to the shipped model, because the
+ * rigged wheels have to sit where the physics RaycastVehicle thinks they are.
  */
 
 export const CAR_PRESETS = Object.freeze({
@@ -21,7 +23,8 @@ export const CAR_PRESETS = Object.freeze({
     physics: Object.freeze({
       // Keep in sync with VEHICLE_CONFIG defaults (M1 handling).
       mass: 1180,
-      wheelRadius: 0.38,
+      // Measured from the shipped Aurora V12 GLB (0.59 m tyre diameter).
+      wheelRadius: 0.295,
       maxForwardForce: 2050,
       maxReverseForce: 1150,
       serviceBrakeForce: 8500,
@@ -30,9 +33,9 @@ export const CAR_PRESETS = Object.freeze({
       frictionSlip: 5.2,
       engineBite: 0.12,
       bodyHalfExtents: [0.91, 0.36, 1.72],
-      wheelHalfTrack: 0.9,
-      wheelHalfBase: 1.14,
-      wheelAnchorY: -0.18,
+      wheelHalfTrack: 0.85,
+      wheelHalfBase: 1.36,
+      wheelAnchorY: -0.17,
       suspension: Object.freeze({
         suspensionStiffness: 34,
         suspensionRestLength: 0.32,
@@ -62,7 +65,8 @@ export const CAR_PRESETS = Object.freeze({
     accent: '#7fa86a',
     physics: Object.freeze({
       mass: 2200,
-      wheelRadius: 0.42,
+      // Measured from the shipped Sikandar SUV GLB (0.76 m tyre diameter).
+      wheelRadius: 0.38,
       maxForwardForce: 4400,
       maxReverseForce: 2100,
       serviceBrakeForce: 11000,
@@ -72,9 +76,9 @@ export const CAR_PRESETS = Object.freeze({
       frictionSlip: 4.6,
       engineBite: 0.2,
       bodyHalfExtents: [0.98, 0.5, 1.86],
-      wheelHalfTrack: 0.99,
-      wheelHalfBase: 1.24,
-      wheelAnchorY: -0.22,
+      wheelHalfTrack: 0.79,
+      wheelHalfBase: 1.375,
+      wheelAnchorY: -0.2,
       suspension: Object.freeze({
         suspensionStiffness: 40,
         suspensionRestLength: 0.38,

@@ -54,12 +54,12 @@ function walkScene(document) {
   const treeLines = [];
   let nextId = 0;
 
-  const walk = (node, depth, ancestors, parentPath) => {
+  const walk = (node, depth, ancestors, parentPath, siblingIndex = 0) => {
     const id = nextId++;
     const name = node.getName() || '(unnamed)';
     const mesh = node.getMesh();
     const box = boundsOf(node);
-    const nodePath = `${parentPath}/${name}`;
+    const nodePath = `${parentPath}/${name}#${siblingIndex}`;
     const label = `${name} ${mesh?.getName() ?? ''}`;
     let triangles = 0;
     const materialNames = [];
@@ -96,11 +96,23 @@ function walkScene(document) {
         ` size=(${box.size.map((value) => value.toFixed(2)).join(', ')})` +
         ` center=(${box.center.map((value) => value.toFixed(2)).join(', ')})`,
     );
-    for (const child of node.listChildren()) walk(child, depth + 1, [...ancestors, nodePath], nodePath);
+    const counters = new Map();
+    for (const child of node.listChildren()) {
+      const childName = child.getName() || child.getMesh()?.getName() || '(unnamed)';
+      const occurrence = counters.get(childName) ?? 0;
+      counters.set(childName, occurrence + 1);
+      walk(child, depth + 1, [...ancestors, nodePath], nodePath, occurrence);
+    }
   };
 
   for (const scene of document.getRoot().listScenes()) {
-    for (const node of scene.listChildren()) walk(node, 0, [], '');
+    const counters = new Map();
+    for (const node of scene.listChildren()) {
+      const name = node.getName() || node.getMesh()?.getName() || '(unnamed)';
+      const occurrence = counters.get(name) ?? 0;
+      counters.set(name, occurrence + 1);
+      walk(node, 0, [], '', occurrence);
+    }
   }
   return { nodes, candidates, treeLines };
 }
@@ -242,6 +254,7 @@ async function inspectAsset(id, target) {
     modelCenterX: (sceneBounds.min[0] + sceneBounds.max[0]) / 2,
     groundY: sceneBounds.min[1],
     height: sceneBounds.size[1],
+    halfLength: sceneBounds.size[2] / 2,
     expectedRadius: Math.max(0.12, Math.max(sceneBounds.size[0], sceneBounds.size[2]) * 0.07),
   });
 
