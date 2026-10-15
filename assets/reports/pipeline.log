@@ -1,5 +1,5 @@
-mode=build only='' ref=arena/6900dcad-maxmotors sha=2b1678e23b2c4cf52a9fff2517a9ec98c3473fef
-runner=Linux runnervm8k3b6 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+mode=build only='' ref=arena/6900dcad-maxmotors sha=c4e6566b36e1039fb9a3c7cc1246680e4e34483c
+runner=Linux runnervmmprz5 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
 
 added 45 packages, and audited 46 packages in 3s
 
@@ -7,59 +7,57 @@ added 45 packages, and audited 46 packages in 3s
   run `npm fund` for details
 
 found 0 vulnerabilities
-[fetch] sikandar-suv <- https://files.catbox.moe/d9datv.glb
-[fetch] sikandar-suv: 85.4 MB | nodes=56 meshes=27 tris=341,109 materials=26 images=70
-        nodes: Sketchfab_model | Dirt road scene.fbx | RootNode | Background_Tree_Atlas.001 | Background_Tree_Atlas.001_Background_Tree_Atlas_0 | Background_Tree_Atlas.001_Background_Tree_Atlas_0 | Background_Tree_Atlas.002 | Background_Tree_Atlas.002_Metal_Fence_0 | Background_Tree_Atlas.003 | Background_Tree_Atlas.003_Dirt_Road_Bare_0 | Background_Tree_Atlas.004 | Background_Tree_Atlas.004_Trunk_Birch_0
-        materials: Background_Tree_Atlas | Metal_Fence | Dirt_Road_Bare | Trunk_Birch | Wood_Log | Trunk_Oak | Fallen_Generic_Leaves | Ground_Dirt | Forest_Bush | Grass_Vegetation_Dry | Grass_Vegetation_Green | Fallen_Maple_Leaves
-[fetch] forest-dirt-trail <- https://files.catbox.moe/88sc50.glb
-[fetch] forest-dirt-trail: 54.5 MB | nodes=269 meshes=186 tris=1,354,283 materials=43 images=19
+[fetch] sikandar-suv <- https://files.catbox.moe/88sc50.glb
+[fetch] sikandar-suv: 54.5 MB | nodes=269 meshes=186 tris=1,354,283 materials=43 images=19
         nodes: Sketchfab_model | scorpio_n.fbx | RootNode | Scorpio-N22 | wheel_rf_dummy | wheel_rf | wheel_rf_wheel_rf.3_0 | wheel_rf_wheel_rf.1_0 | wheel_rf_wheel_rf.2_0 | wheel_rf_wheel_rf.0_0 | wheel_rf.001 | wheel_rf.001_wheel_rf.3_0
         materials: wheel_rf.3 | wheel_rf.1 | wheel_rf.2 | wheel_rf.0 | movsteer_1.0.5 | movsteer_1.0.3 | movsteer_1.0.4 | primary | scorpio_n_ext_chassis.3 | scorpio_n_ext_1.2 | headlight_f.2 | headlight_f.3
+[fetch] forest-dirt-trail <- https://files.catbox.moe/d9datv.glb
+[fetch] forest-dirt-trail: 85.4 MB | nodes=56 meshes=27 tris=341,109 materials=26 images=70
+        nodes: Sketchfab_model | Dirt road scene.fbx | RootNode | Background_Tree_Atlas.001 | Background_Tree_Atlas.001_Background_Tree_Atlas_0 | Background_Tree_Atlas.001_Background_Tree_Atlas_0 | Background_Tree_Atlas.002 | Background_Tree_Atlas.002_Metal_Fence_0 | Background_Tree_Atlas.003 | Background_Tree_Atlas.003_Dirt_Road_Bare_0 | Background_Tree_Atlas.004 | Background_Tree_Atlas.004_Trunk_Birch_0
+        materials: Background_Tree_Atlas | Metal_Fence | Dirt_Road_Bare | Trunk_Birch | Wood_Log | Trunk_Oak | Fallen_Generic_Leaves | Ground_Dirt | Forest_Bush | Grass_Vegetation_Dry | Grass_Vegetation_Green | Fallen_Maple_Leaves
 [fetch] aurora-v12 <- https://files.catbox.moe/phz6v9.glb
 [fetch] aurora-v12: 5.8 MB | nodes=247 meshes=115 tris=108,327 materials=47 images=6
         nodes: Sketchfab_model | root | GLTF_SceneRootNode | detach_wing_10_carpaint_custom03_LOD2_0 | Object_4 | top_wing_L_anim_4 | detach_anim02_3 | detach_anim02_details_LOD2_1 | Object_8 | detach_anim02_tiled_carbon_LOD2_2 | Object_10 | top_wing_R_anim_8
         materials: material_0 | Carosserie | Orange | Blanck | CARBONE | Jantes_I | Lumire_Orange | Jantes | material | Material.001 | Rouge | Vert
 [fetch] wrote assets/source-summary.json (3 entries)
-[inspect] sikandar-suv: tris=341,109 nodes=56 materials=26 textures=70 (50.7 MB) bounds=551.19 x 111.23 x 547.97
-          wheel candidates: 16, front signals: 4
+[inspect] sikandar-suv FAILED: RangeError: Maximum call stack size exceeded
+    at rasterizeSilhouette (file:///home/runner/work/MaxMotors/MaxMotors/scripts/assets/inspect-glb.mjs:110:21)
+    at inspectAsset (file:///home/runner/work/MaxMotors/MaxMotors/scripts/assets/inspect-glb.mjs:267:9)
+    at async main (file:///home/runner/work/MaxMotors/MaxMotors/scripts/assets/inspect-glb.mjs:331:22)
 [inspect] aurora-v12: tris=108,327 nodes=247 materials=47 textures=6 (1.4 MB) bounds=2.647 x 0.752 x 3.556
-          wheel candidates: 39, front signals: 17
-[inspect] forest-dirt-trail: tris=1,354,283 nodes=269 materials=43 textures=19 (5.0 MB) bounds=2.176 x 1.847 x 4.673
-          wheel candidates: 40, front signals: 47
+          wheel clusters: front-left@-0.73/0.27/-0.97 r=0.23 | front-right@0.69/0.28/-1.00 r=0.23 | rear-left@-0.83/0.27/0.66 r=0.37 | rear-right@0.34/0.23/0.92 r=0.37
+[inspect] forest-dirt-trail FAILED: RangeError: Maximum call stack size exceeded
+    at rasterizeSilhouette (file:///home/runner/work/MaxMotors/MaxMotors/scripts/assets/inspect-glb.mjs:110:21)
+    at inspectAsset (file:///home/runner/work/MaxMotors/MaxMotors/scripts/assets/inspect-glb.mjs:267:9)
+    at async main (file:///home/runner/work/MaxMotors/MaxMotors/scripts/assets/inspect-glb.mjs:331:22)
 [inspect] reports written to assets/reports
-prune: Removed types... Texture (3), Accessor (152)
-[optimize] FATAL: TypeError: document.createExtension(...).setRequired(...).setEncoder is not a function
-    at optimizeOnce (file:///home/runner/work/MaxMotors/MaxMotors/scripts/assets/optimize-glb.mjs:318:69)
-    at async buildAsset (file:///home/runner/work/MaxMotors/MaxMotors/scripts/assets/optimize-glb.mjs:331:20)
-    at async main (file:///home/runner/work/MaxMotors/MaxMotors/scripts/assets/optimize-glb.mjs:468:22)
 --- public/ tree ---
-4.0K	public/models
 8.0K	public/cars
-16K	public
+12K	public
 --- files ---
 assets/reports:
-total 636
-drwxr-xr-x 2 runner runner   4096 Oct 15 08:15 .
-drwxr-xr-x 4 runner runner   4096 Oct 15 08:14 ..
--rw-r--r-- 1 runner runner   3064 Oct 15 08:15 SUMMARY.md
--rw-r--r-- 1 runner runner 174044 Oct 15 08:15 aurora-v12.report.json
--rw-r--r-- 1 runner runner   4614 Oct 15 08:15 aurora-v12.side.png
--rw-r--r-- 1 runner runner  19332 Oct 15 08:15 aurora-v12.top.png
--rw-r--r-- 1 runner runner  23963 Oct 15 08:15 aurora-v12.tree.txt
--rw-r--r-- 1 runner runner    281 Oct 15 08:15 forest-dirt-trail.map.png
--rw-r--r-- 1 runner runner    998 Oct 15 08:15 forest-dirt-trail.map.txt
--rw-r--r-- 1 runner runner 191794 Oct 15 08:15 forest-dirt-trail.report.json
--rw-r--r-- 1 runner runner   7774 Oct 15 08:15 forest-dirt-trail.side.png
--rw-r--r-- 1 runner runner  43213 Oct 15 08:15 forest-dirt-trail.top.png
--rw-r--r-- 1 runner runner  33668 Oct 15 08:15 forest-dirt-trail.tree.txt
--rw-r--r-- 1 runner runner   3442 Oct 15 08:15 pipeline.log
--rw-r--r-- 1 runner runner  55074 Oct 15 08:15 sikandar-suv.report.json
--rw-r--r-- 1 runner runner   3351 Oct 15 08:15 sikandar-suv.side.png
--rw-r--r-- 1 runner runner  10745 Oct 15 08:15 sikandar-suv.top.png
--rw-r--r-- 1 runner runner   7359 Oct 15 08:15 sikandar-suv.tree.txt
--rw-r--r-- 1 runner runner  30322 Oct 15 08:15 source-summary.json
-
-public/models:
-total 8
-drwxr-xr-x 2 runner runner 4096 Oct 15 08:15 .
-drwxr-xr-x 4 runner runner 4096 Oct 15 08:15 ..
+total 8692
+drwxr-xr-x 2 runner runner    4096 Oct 15 08:26 .
+drwxr-xr-x 4 runner runner    4096 Oct 15 08:26 ..
+-rw-r--r-- 1 runner runner     769 Oct 15 08:26 SUMMARY.md
+-rw-r--r-- 1 runner runner   99832 Oct 15 08:26 aurora-v12.report.json
+-rw-r--r-- 1 runner runner    4630 Oct 15 08:26 aurora-v12.side.png
+-rw-r--r-- 1 runner runner  287933 Oct 15 08:26 aurora-v12.textures.png
+-rw-r--r-- 1 runner runner    5617 Oct 15 08:26 aurora-v12.top.png
+-rw-r--r-- 1 runner runner   23963 Oct 15 08:26 aurora-v12.tree.txt
+-rw-r--r-- 1 runner runner    2067 Oct 15 08:26 forest-dirt-trail.height.png
+-rw-r--r-- 1 runner runner    2118 Oct 15 08:26 forest-dirt-trail.map.png
+-rw-r--r-- 1 runner runner   58326 Oct 15 08:26 forest-dirt-trail.map.txt
+-rw-r--r-- 1 runner runner  191794 Oct 15 08:26 forest-dirt-trail.report.json
+-rw-r--r-- 1 runner runner    7774 Oct 15 08:26 forest-dirt-trail.side.png
+-rw-r--r-- 1 runner runner 6939973 Oct 15 08:26 forest-dirt-trail.textures.png
+-rw-r--r-- 1 runner runner   43213 Oct 15 08:26 forest-dirt-trail.top.png
+-rw-r--r-- 1 runner runner   33668 Oct 15 08:26 forest-dirt-trail.tree.txt
+-rw-r--r-- 1 runner runner   11728 Oct 15 08:26 optimized-manifests.json
+-rw-r--r-- 1 runner runner    3530 Oct 15 08:26 pipeline.log
+-rw-r--r-- 1 runner runner   55074 Oct 15 08:26 sikandar-suv.report.json
+-rw-r--r-- 1 runner runner    3351 Oct 15 08:26 sikandar-suv.side.png
+-rw-r--r-- 1 runner runner 1025128 Oct 15 08:26 sikandar-suv.textures.png
+-rw-r--r-- 1 runner runner   10745 Oct 15 08:26 sikandar-suv.top.png
+-rw-r--r-- 1 runner runner    7359 Oct 15 08:26 sikandar-suv.tree.txt
+-rw-r--r-- 1 runner runner   30322 Oct 15 08:26 source-summary.json
