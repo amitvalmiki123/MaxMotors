@@ -41,16 +41,21 @@
           <span id="traction-warning" hidden>OFF TRACK</span>
         </div>
 
-        <section class="setup-panel" aria-label="Car and track selection">
-          <div class="setup-group">
-            <div class="setup-label">TRACK</div>
-            <div class="chip-row" id="track-options" role="radiogroup" aria-label="Select track"></div>
-          </div>
-          <div class="setup-group">
-            <div class="setup-label">CAR</div>
-            <div class="chip-row" id="car-options" role="radiogroup" aria-label="Select car"></div>
-            <div class="setup-meta" id="car-meta"></div>
-            <div class="paint-row" id="paint-options" role="radiogroup" aria-label="Select paint"></div>
+        <section class="setup-panel" id="setup-panel" aria-label="Car and track selection">
+          <button class="setup-toggle" id="setup-toggle" type="button" aria-expanded="true" aria-controls="setup-body">
+            <span>SETUP</span><span class="setup-toggle-icon" aria-hidden="true">▾</span>
+          </button>
+          <div class="setup-body" id="setup-body">
+            <div class="setup-group">
+              <div class="setup-label">TRACK</div>
+              <div class="chip-row" id="track-options" role="radiogroup" aria-label="Select track"></div>
+            </div>
+            <div class="setup-group">
+              <div class="setup-label">CAR</div>
+              <div class="chip-row" id="car-options" role="radiogroup" aria-label="Select car"></div>
+              <div class="setup-meta" id="car-meta"></div>
+              <div class="paint-row" id="paint-options" role="radiogroup" aria-label="Select paint"></div>
+            </div>
           </div>
         </section>
 

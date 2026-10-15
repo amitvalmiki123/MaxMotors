@@ -692,23 +692,52 @@ noscript {
     font-size: 7px;
   }
 
+  /* The hero block and the full telemetry card are desktop furniture: on a phone
+     they eat the viewport the car is drawn in. The speed readout becomes a slim
+     strip under the topbar instead. */
+  .track-heading {
+    display: none;
+  }
+
   .telemetry {
-    bottom: max(110px, calc(env(safe-area-inset-bottom) + 102px));
+    top: max(70px, calc(env(safe-area-inset-top) + 58px));
+    bottom: auto;
     left: 18px;
-    width: 168px;
-    padding: 10px 12px 9px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: auto;
+    padding: 7px 11px;
+    border: 1px solid rgba(246, 244, 231, 0.32);
+    border-top-width: 1px;
+    border-radius: 3px;
   }
 
   .telemetry-label {
-    font-size: 7px;
+    display: none;
+  }
+
+  .speed-readout {
+    margin: 0;
+    gap: 6px;
   }
 
   .speed-readout strong {
-    font-size: 42px;
+    font-size: 26px;
+  }
+
+  .speed-readout > span {
+    padding-bottom: 3px;
+    font-size: 8px;
+  }
+
+  .speed-meter {
+    display: none;
   }
 
   .telemetry-footer {
-    margin-top: 8px;
+    gap: 8px;
+    margin: 0;
     font-size: 6px;
   }
 
@@ -876,6 +905,33 @@ noscript {
   backdrop-filter: blur(9px);
 }
 
+.setup-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Collapsing the setup panel is a touch-device affordance (see the media query
+   below): on desktop every group is always visible and this button is hidden. */
+.setup-toggle {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: 9px var(--mono);
+  letter-spacing: 0.22em;
+  cursor: pointer;
+}
+
+.setup-toggle-icon {
+  font-size: 11px;
+  transition: transform 140ms ease;
+}
+
 .setup-group {
   display: flex;
   flex-direction: column;
@@ -991,12 +1047,36 @@ noscript {
     left: 12px;
     right: 12px;
     bottom: max(88px, calc(env(safe-area-inset-bottom) + 84px));
+    /* Above .telemetry: the speed card is later in the DOM and used to paint
+       over the car/track chips. */
+    z-index: 2;
     width: auto;
-    max-height: 34vh;
+    max-height: 40vh;
     overflow: auto;
     padding: 11px 12px;
     gap: 9px;
     touch-action: pan-y;
+  }
+
+  .setup-body {
+    gap: 9px;
+  }
+
+  .setup-toggle {
+    display: flex;
+  }
+
+  /* Driving collapses the panel, so the car is never hidden behind the chips. */
+  .setup-panel.is-collapsed {
+    padding: 9px 12px;
+  }
+
+  .setup-panel.is-collapsed .setup-body {
+    display: none;
+  }
+
+  .setup-panel.is-collapsed .setup-toggle-icon {
+    transform: rotate(-90deg);
   }
 
   .chip {

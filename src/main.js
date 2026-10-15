@@ -245,6 +245,9 @@ try {
     onReset: () => game?.reset(),
     onAnyInput: () => {
       if (!game.muted && !audioLabel.textContent.includes('ON')) unlockAudio();
+      // Touch devices collapse the setup panel once the player starts driving, so
+      // the car is not hidden behind the chips (the CSS only applies on touch).
+      if (!setupCollapsed) setSetupCollapsed(true);
     },
   });
 
@@ -267,6 +270,18 @@ try {
   message.textContent = 'The 3D drive could not start. Check that WebGL is enabled in this browser, then reload the page.';
   document.querySelector('#app').append(message);
 }
+
+const setupPanel = document.querySelector('#setup-panel');
+const setupToggle = document.querySelector('#setup-toggle');
+let setupCollapsed = false;
+
+function setSetupCollapsed(collapsed) {
+  setupCollapsed = collapsed;
+  setupPanel?.classList.toggle('is-collapsed', collapsed);
+  setupToggle?.setAttribute('aria-expanded', String(!collapsed));
+}
+
+setupToggle?.addEventListener('click', () => setSetupCollapsed(!setupCollapsed));
 
 document.querySelector('#reset-button').addEventListener('click', () => game?.reset());
 document.querySelector('#credits-button').addEventListener('click', () => creditsDialog.showModal());
