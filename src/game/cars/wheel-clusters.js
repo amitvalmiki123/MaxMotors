@@ -99,12 +99,17 @@ export function scoreWheelCandidate(candidate, { modelWidth = 0, expectedRadius 
 }
 
 /**
- * Groups candidates into up to four wheel corners.
+ * Groups candidates into up to four wheels.
  *
  * Wheels are the only parts of a car that exist as mirrored left/right pairs of
- * equal-size discs, so pairs are matched first: that survives the messy naming
- * and stray disc-like parts (brake glow meshes, exhaust tips, roof scoops) that
- * fooled the earlier per-quadrant clustering.
+ * equal-size discs, and the wheel radius is the most repeated disc size on the
+ * model. Combining those two signals survives the messy naming of real exports
+ * (doors and glass that reuse wheel material names, brake discs, roof scoops…):
+ *
+ *   1. estimate the wheel radius from the tightest disc-radius cluster,
+ *   2. only near-radius candidates may form a mirrored pair,
+ *   3. every accepted pair becomes two wheels (one per side),
+ *   4. rims, tyres and brake discs at the same hub are absorbed into them.
  */
 export function clusterWheels(candidates, {
   modelWidth = 0,
@@ -115,108 +120,146 @@ export function clusterWheels(candidates, {
   axleAxis = 0,
 } = {}) {
   const context = { groundY, height, halfWidth: Math.max(0.1, modelWidth / 2) };
-  const estimate = expectedRadius ? { radius: expectedRadius, support: 0, pool: 0 } : estimateWheelRadius(candidates, modelWidth);
+  const estimate = expectedRadius
+    ? { radius: expectedRadius, support: 0, pool: 0 }
+    : estimateWheelRadius(candidates, modelWidth);
   const targetRadius = estimate?.radius ?? null;
+
   const scored = candidates
     .map((candidate) => ({ candidate, score: scoreWheelCandidate(candidate, { modelWidth, expectedRadius: targetRadius, context }) }))
     .filter((entry) => Number.isFinite(entry.score))
     .sort((a, b) => b.score - a.score);
 
-  // Only candidates close to the estimated wheel radius may form a wheel pair;
-  // rims, brake discs and mud flaps are absorbed afterwards.
-  const pairCandidates = targetRadius
+  const pairPool = targetRadius
     ? scored.filter((entry) => Math.abs(entry.candidate.radius - targetRadius) / targetRadius <= 0.35)
     : scored;
 
+  // The mirror axis is estimated, not assumed: asymmetric body parts (side
+  // accents, mirrors) shift the bounding-box centre away from the car's axis.
   const mirrorTolerance = Math.max(0.03, modelWidth * 0.06);
-  const pairs = [];
-  for (let left = 0; left < pairCandidates.length; left += 1) {
-    for (let right = left + 1; right < pairCandidates.length; right += 1) {
-      const a = pairCandidates[left].candidate;
-      const b = pairCandidates[right].candidate;
-      if (Math.sign(a.center[0] - modelCenterX) === Math.sign(b.center[0] - modelCenterX)) continue;
-      const mirroredX = Math.abs((a.center[0] - modelCenterX) + (b.center[0] - modelCenterX));
-      if (mirroredX > mirrorTolerance) continue;
-      const radiusRatio = Math.max(a.radius, b.radius) / Math.max(1e-4, Math.min(a.radius, b.radius));
-      if (radiusRatio > 1.18) continue;
-      const zDelta = Math.abs(a.center[2] - b.center[2]);
-      if (zDelta > Math.max(0.05, height * 0.25)) continue;
-      pairs.push({
-        a,
-        b,
-        score: pairCandidates[left].score + pairCandidates[right].score - mirroredX * 2 - (radiusRatio - 1) * 4 - zDelta,
-        radius: Math.max(a.radius, b.radius),
-        z: (a.center[2] + b.center[2]) / 2,
-      });
+  const axisCandidates = [
+    0,
+    modelCenterX,
+    median(pairPool.map((entry) => entry.candidate.center[0])),
+  ].filter((value) => Number.isFinite(value));
+
+  const collectPairs = (axis) => {
+    const pairs = [];
+    for (let left = 0; left < pairPool.length; left += 1) {
+      for (let right = left + 1; right < pairPool.length; right += 1) {
+        const a = pairPool[left].candidate;
+        const b = pairPool[right].candidate;
+        if (Math.sign(a.center[0] - axis) === Math.sign(b.center[0] - axis)) continue;
+        const mirroredX = Math.abs((a.center[0] - axis) + (b.center[0] - axis));
+        if (mirroredX > mirrorTolerance) continue;
+        const radiusRatio = Math.max(a.radius, b.radius) / Math.max(1e-4, Math.min(a.radius, b.radius));
+        if (radiusRatio > 1.18) continue;
+        const zDelta = Math.abs(a.center[2] - b.center[2]);
+        if (zDelta > Math.max(0.05, height * 0.25)) continue;
+        pairs.push({
+          a,
+          b,
+          axis,
+          score: pairPool[left].score + pairPool[right].score - mirroredX * 2 - (radiusRatio - 1) * 4 - zDelta,
+          z: (a.center[2] + b.center[2]) / 2,
+          radius: Math.max(a.radius, b.radius),
+        });
+      }
     }
+    return pairs.sort((left, right) => right.score - left.score);
+  };
+
+  let pairs = [];
+  for (const axis of axisCandidates) {
+    const candidatePairs = collectPairs(axis);
+    // Prefer the axis that explains the most wheels, then the cleanest pairs.
+    const coverage = new Set(candidatePairs.map((pair) => pair.z.toFixed(2))).size;
+    const score = candidatePairs.reduce((sum, pair) => sum + pair.score, 0) + coverage * 10;
+    if (score > (pairs.score ?? -Infinity) || pairs.length === 0) {
+      pairs = candidatePairs;
+      pairs.score = score;
+    }
+  }
+  // A car with four wheels should explain two axle positions; if an axis only
+  // finds one, the other axis's pairing wins.
+  const axleCounts = axisCandidates.map((axis) => new Set(collectPairs(axis).map((pair) => pair.z.toFixed(2))).size);
+  const bestAxleCount = Math.max(...axleCounts, 0);
+  if (bestAxleCount > new Set(pairs.map((pair) => pair.z.toFixed(2))).size) {
+    const bestIndex = axleCounts.indexOf(bestAxleCount);
+    pairs = collectPairs(axisCandidates[bestIndex]);
   }
   pairs.sort((left, right) => right.score - left.score);
 
-  // Keep the best pair per end of the car, and never reuse a candidate.
   const used = new Set();
-  const chosen = [];
+  const slots = new Set();
+  const wheels = [];
+
   for (const pair of pairs) {
-    if (used.has(pair.a.id) || used.has(pair.b.id)) continue;
     const end = pair.z <= 0 ? 'front' : 'rear';
-    const sign = pair.a.center[0] - modelCenterX >= 0 ? 'right' : 'left';
-    if (chosen.some((entry) => entry.end === end && entry.sign === sign)) continue;
-    chosen.push({ ...pair, end, sign });
-    used.add(pair.a.id);
-    used.add(pair.b.id);
-    if (chosen.length === 4) break;
+    const leftMember = pair.a.center[0] <= pair.b.center[0] ? pair.a : pair.b;
+    const rightMember = leftMember === pair.a ? pair.b : pair.a;
+
+    for (const [side, primary] of [['left', leftMember], ['right', rightMember]]) {
+      const slot = `${end}-${side}`;
+      if (slots.has(slot) || used.has(primary.id)) continue;
+      slots.add(slot);
+      used.add(primary.id);
+
+      const members = [primary];
+      // Absorb the rim, tyre and brake meshes that share this hub.
+      for (const { candidate } of scored) {
+        if (used.has(candidate.id)) continue;
+        if (candidate.radius < pair.radius * 0.3) continue;
+        const sameSide = Math.sign(candidate.center[0] - (pair.axis ?? modelCenterX)) === (side === 'right' ? 1 : -1);
+        if (!sameSide) continue;
+        const sameHub = Math.abs(Math.abs(candidate.center[0]) - Math.abs(primary.center[0])) < mirrorTolerance * 2
+          && Math.abs(candidate.center[2] - primary.center[2]) < Math.max(0.06, height * 0.3);
+        if (!sameHub) continue;
+        members.push(candidate);
+        used.add(candidate.id);
+      }
+
+      wheels.push(buildWheel({ corner: slot, members, axleAxis, hub: primary }));
+    }
+    if (wheels.length >= 4) break;
   }
 
   // Fall back to per-quadrant clustering when the model has no clean pairs
   // (single-mesh cars, asymmetric imports).
-  if (chosen.length < 2) {
-    return clusterByQuadrant(scored, { modelWidth, modelCenterX, axleAxis });
+  if (wheels.length < 2) {
+    return clusterByQuadrant(scored, { modelWidth, modelCenterX, axleAxis, estimate });
   }
-
-  const wheels = [];
-  for (const entry of chosen) {
-    const members = [entry.a, entry.b];
-    // Absorb same-side duplicates that sit on the same hub (rim, tyre, brake
-    // discs are separate meshes at nearly the same position).
-    for (const { candidate } of scored) {
-      if (used.has(candidate.id)) continue;
-      if (candidate.radius < entry.radius * 0.3) continue;
-      const sameSide = Math.sign(candidate.center[0] - modelCenterX) === Math.sign(entry.a.center[0] - modelCenterX);
-      const sameHub = Math.abs(Math.abs(candidate.center[0]) - Math.abs(entry.a.center[0])) < mirrorTolerance * 2
-        && Math.abs(candidate.center[2] - entry.z) < Math.max(0.06, height * 0.3);
-      if (!sameSide || !sameHub) continue;
-      members.push(candidate);
-      used.add(candidate.id);
-    }
-
-    const ids = new Set(members.map((member) => member.id));
-    const roots = members.filter((member) => !(member.ancestorIds ?? []).some((ancestor) => ids.has(ancestor)));
-    const center = [0, 0, 0];
-    let weightSum = 0;
-    for (const member of members) {
-      const weight = Math.max(member.radius * member.radius, 0.0001);
-      weightSum += weight;
-      for (let axis = 0; axis < 3; axis += 1) center[axis] += member.center[axis] * weight;
-    }
-    for (let axis = 0; axis < 3; axis += 1) center[axis] /= weightSum || 1;
-
-    wheels.push({
-      corner: `${entry.end}-${entry.sign}`,
-      center,
-      radius: Math.max(...members.map((member) => member.radius)),
-      width: Math.max(...members.map((member) => member.width)),
-      axleAxis,
-      members: roots.map((member) => member.id),
-      memberNames: roots.map((member) => member.name),
-      allMemberCount: members.length,
-      source: members.some((member) => member.wheelish) ? 'name+shape' : 'shape',
-      confidence: Number(Math.min(1, members.length / 3).toFixed(2)),
-    });
-  }
-
   return summarizeWheels(wheels, estimate);
 }
 
-function clusterByQuadrant(scored, { modelWidth, modelCenterX, axleAxis }) {
+function buildWheel({ corner, members, axleAxis, hub }) {
+  const ids = new Set(members.map((member) => member.id));
+  const roots = members.filter((member) => !(member.ancestorIds ?? []).some((ancestor) => ids.has(ancestor)));
+  const center = [0, 0, 0];
+  let weightSum = 0;
+  for (const member of members) {
+    const weight = Math.max(member.radius * member.radius, 0.0001);
+    weightSum += weight;
+    for (let axis = 0; axis < 3; axis += 1) center[axis] += member.center[axis] * weight;
+  }
+  for (let axis = 0; axis < 3; axis += 1) center[axis] /= weightSum || 1;
+
+  return {
+    corner,
+    center,
+    radius: Math.max(...members.map((member) => member.radius)),
+    hubRadius: hub.radius,
+    width: Math.max(...members.map((member) => member.width)),
+    axleAxis,
+    members: roots.map((member) => member.id),
+    memberNames: roots.map((member) => member.name),
+    allMemberCount: members.length,
+    source: members.some((member) => member.wheelish) ? 'name+shape' : 'shape',
+    confidence: Number(Math.min(1, members.length / 3).toFixed(2)),
+  };
+}
+
+function clusterByQuadrant(scored, { modelWidth, modelCenterX, axleAxis, estimate }) {
   const corners = new Map([
     ['front-left', []],
     ['front-right', []],
@@ -234,30 +277,9 @@ function clusterByQuadrant(scored, { modelWidth, modelCenterX, axleAxis }) {
     if (!members.length) continue;
     const largest = Math.max(...members.map((member) => member.radius));
     const pool = members.filter((member) => member.radius >= largest * 0.6);
-    const ids = new Set(pool.map((member) => member.id));
-    const roots = pool.filter((member) => !(member.ancestorIds ?? []).some((ancestor) => ids.has(ancestor)));
-    const center = [0, 0, 0];
-    let weightSum = 0;
-    for (const member of pool) {
-      const weight = Math.max(member.radius * member.radius, 0.0001);
-      weightSum += weight;
-      for (let axis = 0; axis < 3; axis += 1) center[axis] += member.center[axis] * weight;
-    }
-    for (let axis = 0; axis < 3; axis += 1) center[axis] /= weightSum || 1;
-    wheels.push({
-      corner,
-      center,
-      radius: largest,
-      width: Math.max(...pool.map((member) => member.width)),
-      axleAxis,
-      members: roots.map((member) => member.id),
-      memberNames: roots.map((member) => member.name),
-      allMemberCount: pool.length,
-      source: pool.some((member) => member.wheelish) ? 'name+shape' : 'shape',
-      confidence: Number(Math.min(1, pool.length / 2).toFixed(2)),
-    });
+    wheels.push(buildWheel({ corner, members: pool, axleAxis, hub: pool[0] }));
   }
-  return summarizeWheels(wheels);
+  return summarizeWheels(wheels, estimate);
 }
 
 function summarizeWheels(wheels, estimate = null) {
@@ -281,3 +303,11 @@ function summarizeWheels(wheels, estimate = null) {
     rearZ: rear.length ? Number(average(rear, 2).toFixed(3)) : null,
   };
 }
+
+export function median(values) {
+  const finite = values.filter((value) => Number.isFinite(value)).sort((a, b) => a - b);
+  if (!finite.length) return 0;
+  return finite[Math.floor(finite.length / 2)];
+}
+
+void EPSILON;

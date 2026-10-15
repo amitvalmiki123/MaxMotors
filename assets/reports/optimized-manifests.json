@@ -2,7 +2,7 @@
   {
     "id": "sikandar-suv",
     "kind": "car",
-    "generatedAt": "2026-10-15T08:31:39.849Z",
+    "generatedAt": "2026-10-15T08:32:24.731Z",
     "credits": {
       "inGameName": "Sikandar SUV",
       "title": "2022 Mahindra Scorpio-N",
@@ -33,7 +33,7 @@
       }
     },
     "output": {
-      "file": "/tmp/out3/models/sikandar-suv.glb",
+      "file": "/tmp/out5/models/sikandar-suv.glb",
       "bytes": 31760,
       "triangles": 156,
       "attempts": 1,
@@ -77,18 +77,18 @@
       4.66
     ],
     "wheels": {
-      "detected": false,
-      "count": 2,
+      "detected": true,
+      "count": 4,
       "wheelbase": 3.984,
-      "track": 0,
+      "track": 1.426,
       "radius": 0.338,
       "frontZ": -1.992,
       "rearZ": 1.992,
       "list": [
         {
-          "corner": "front-right",
+          "corner": "front-left",
           "position": [
-            0,
+            -0.713,
             0.338,
             -1.992
           ],
@@ -96,20 +96,37 @@
           "width": 0.232,
           "axleAxis": "x",
           "source": "name+shape",
-          "confidence": 0.67,
+          "confidence": 0.33,
           "members": [
-            "wheel_fl",
+            "wheel_fl"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_f_dummy/wheel_fl"
+          ]
+        },
+        {
+          "corner": "front-right",
+          "position": [
+            0.713,
+            0.338,
+            -1.992
+          ],
+          "radius": 0.338,
+          "width": 0.232,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.33,
+          "members": [
             "wheel_fr"
           ],
           "memberPaths": [
-            "/ModelRoot/wheel_f_dummy/wheel_fl",
             "/ModelRoot/wheel_f_dummy/wheel_fr"
           ]
         },
         {
-          "corner": "rear-right",
+          "corner": "rear-left",
           "position": [
-            0,
+            -0.713,
             0.338,
             1.992
           ],
@@ -117,13 +134,30 @@
           "width": 0.232,
           "axleAxis": "x",
           "source": "name+shape",
-          "confidence": 0.67,
+          "confidence": 0.33,
           "members": [
-            "wheel_rl",
+            "wheel_rl"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_r_dummy/wheel_rl"
+          ]
+        },
+        {
+          "corner": "rear-right",
+          "position": [
+            0.713,
+            0.338,
+            1.992
+          ],
+          "radius": 0.338,
+          "width": 0.232,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.33,
+          "members": [
             "wheel_rr"
           ],
           "memberPaths": [
-            "/ModelRoot/wheel_r_dummy/wheel_rl",
             "/ModelRoot/wheel_r_dummy/wheel_rr"
           ]
         }
@@ -198,7 +232,7 @@
   {
     "id": "aurora-v12",
     "kind": "car",
-    "generatedAt": "2026-10-15T08:31:39.984Z",
+    "generatedAt": "2026-10-15T08:32:24.864Z",
     "credits": {
       "inGameName": "Aurora V12",
       "title": "( FREE ) Lamborghini Terzo Millennio",
@@ -230,7 +264,7 @@
       }
     },
     "output": {
-      "file": "/tmp/out3/models/aurora-v12.glb",
+      "file": "/tmp/out5/models/aurora-v12.glb",
       "bytes": 31476,
       "triangles": 156,
       "attempts": 1,
@@ -274,18 +308,18 @@
       4.5
     ],
     "wheels": {
-      "detected": false,
-      "count": 2,
+      "detected": true,
+      "count": 4,
       "wheelbase": 4.076,
-      "track": 0,
+      "track": 1.698,
       "radius": 0.212,
       "frontZ": -2.038,
       "rearZ": 2.038,
       "list": [
         {
-          "corner": "rear-left",
+          "corner": "rear-right",
           "position": [
-            0,
+            0.849,
             0.212,
             2.038
           ],
@@ -293,20 +327,37 @@
           "width": 0.276,
           "axleAxis": "x",
           "source": "name+shape",
-          "confidence": 0.67,
+          "confidence": 0.33,
           "members": [
-            "wheel_rl",
+            "wheel_rl"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_r_dummy/wheel_rl"
+          ]
+        },
+        {
+          "corner": "rear-left",
+          "position": [
+            -0.849,
+            0.212,
+            2.038
+          ],
+          "radius": 0.212,
+          "width": 0.276,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.33,
+          "members": [
             "wheel_rr"
           ],
           "memberPaths": [
-            "/ModelRoot/wheel_r_dummy/wheel_rl",
             "/ModelRoot/wheel_r_dummy/wheel_rr"
           ]
         },
         {
           "corner": "front-right",
           "position": [
-            0,
+            0.849,
             0.212,
             -2.038
           ],
@@ -314,13 +365,30 @@
           "width": 0.276,
           "axleAxis": "x",
           "source": "name+shape",
-          "confidence": 0.67,
+          "confidence": 0.33,
           "members": [
-            "wheel_fl",
+            "wheel_fl"
+          ],
+          "memberPaths": [
+            "/ModelRoot/wheel_f_dummy/wheel_fl"
+          ]
+        },
+        {
+          "corner": "front-left",
+          "position": [
+            -0.849,
+            0.212,
+            -2.038
+          ],
+          "radius": 0.212,
+          "width": 0.276,
+          "axleAxis": "x",
+          "source": "name+shape",
+          "confidence": 0.33,
+          "members": [
             "wheel_fr"
           ],
           "memberPaths": [
-            "/ModelRoot/wheel_f_dummy/wheel_fl",
             "/ModelRoot/wheel_f_dummy/wheel_fr"
           ]
         }
@@ -395,7 +463,7 @@
   {
     "id": "forest-dirt-trail",
     "kind": "track",
-    "generatedAt": "2026-10-15T08:31:40.430Z",
+    "generatedAt": "2026-10-15T08:32:25.360Z",
     "credits": {
       "inGameName": "Forest Dirt Trail",
       "title": "Dirt Road Through Forest",
@@ -413,7 +481,7 @@
       "triangles": 834
     },
     "output": {
-      "file": "/tmp/out3/tracks/forest-dirt-trail.glb",
+      "file": "/tmp/out5/tracks/forest-dirt-trail.glb",
       "bytes": 33372,
       "triangles": 834,
       "attempts": 1,
@@ -450,7 +518,7 @@
       480
     ],
     "terrain": {
-      "file": "/tmp/out3/tracks/forest-dirt-trail.terrain.json",
+      "file": "/tmp/out5/tracks/forest-dirt-trail.terrain.json",
       "cellSize": 2,
       "cols": 240,
       "rows": 240,
