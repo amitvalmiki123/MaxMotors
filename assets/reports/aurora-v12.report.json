@@ -1,0 +1,8977 @@
+{
+  "id": "aurora-v12",
+  "source": "assets/raw/terzo-millennio.glb",
+  "kind": "car",
+  "generatedAt": "2026-10-15T08:15:05.097Z",
+  "stats": {
+    "nodes": 247,
+    "meshes": 115,
+    "triangles": 108327,
+    "materials": 47,
+    "textures": 6,
+    "textureBytes": 1464780,
+    "animations": 1,
+    "skins": 0,
+    "extensions": [
+      "KHR_materials_emissive_strength",
+      "KHR_materials_specular"
+    ]
+  },
+  "sceneBounds": {
+    "min": [
+      -1.435,
+      0.012,
+      -1.758
+    ],
+    "max": [
+      1.212,
+      0.764,
+      1.798
+    ],
+    "size": [
+      2.647,
+      0.752,
+      3.556
+    ]
+  },
+  "materials": [
+    {
+      "name": "Carosserie",
+      "class": "body",
+      "triangles": 26001,
+      "primitives": 17
+    },
+    {
+      "name": "material",
+      "class": "body",
+      "triangles": 16950,
+      "primitives": 7
+    },
+    {
+      "name": "Jantes",
+      "class": "body",
+      "triangles": 14793,
+      "primitives": 13
+    },
+    {
+      "name": "Carbone",
+      "class": "body",
+      "triangles": 6436,
+      "primitives": 1
+    },
+    {
+      "name": "Blanck",
+      "class": "body",
+      "triangles": 6352,
+      "primitives": 6
+    },
+    {
+      "name": "Material.025",
+      "class": "body",
+      "triangles": 4536,
+      "primitives": 1
+    },
+    {
+      "name": "Lumire_Orange",
+      "class": "body",
+      "triangles": 4320,
+      "primitives": 4
+    },
+    {
+      "name": "Vitres",
+      "class": "glass",
+      "triangles": 3968,
+      "primitives": 2
+    },
+    {
+      "name": "Tire",
+      "class": "wheel",
+      "triangles": 1836,
+      "primitives": 1
+    },
+    {
+      "name": "Tire.001",
+      "class": "wheel",
+      "triangles": 1836,
+      "primitives": 1
+    },
+    {
+      "name": "Jantes_I",
+      "class": "body",
+      "triangles": 1830,
+      "primitives": 3
+    },
+    {
+      "name": "CARBONE",
+      "class": "body",
+      "triangles": 1798,
+      "primitives": 5
+    },
+    {
+      "name": "Material.029",
+      "class": "body",
+      "triangles": 1676,
+      "primitives": 1
+    },
+    {
+      "name": "Material.033",
+      "class": "body",
+      "triangles": 1624,
+      "primitives": 1
+    },
+    {
+      "name": "Material.049",
+      "class": "glass",
+      "triangles": 1536,
+      "primitives": 4
+    },
+    {
+      "name": "material_0",
+      "class": "body",
+      "triangles": 1425,
+      "primitives": 9
+    },
+    {
+      "name": "Material.044",
+      "class": "body",
+      "triangles": 992,
+      "primitives": 1
+    },
+    {
+      "name": "Material.032",
+      "class": "body",
+      "triangles": 990,
+      "primitives": 1
+    },
+    {
+      "name": "Orange",
+      "class": "body",
+      "triangles": 963,
+      "primitives": 5
+    },
+    {
+      "name": "Material.026",
+      "class": "glass",
+      "triangles": 936,
+      "primitives": 1
+    },
+    {
+      "name": "Material.002",
+      "class": "body",
+      "triangles": 760,
+      "primitives": 1
+    },
+    {
+      "name": "Lumire_blanche",
+      "class": "body",
+      "triangles": 750,
+      "primitives": 1
+    },
+    {
+      "name": "Lumire_rouge",
+      "class": "body",
+      "triangles": 612,
+      "primitives": 2
+    },
+    {
+      "name": "Rouge",
+      "class": "body",
+      "triangles": 596,
+      "primitives": 1
+    },
+    {
+      "name": "Material.034",
+      "class": "body",
+      "triangles": 580,
+      "primitives": 1
+    },
+    {
+      "name": "Volant.003",
+      "class": "body",
+      "triangles": 458,
+      "primitives": 1
+    },
+    {
+      "name": "Material.001",
+      "class": "body",
+      "triangles": 412,
+      "primitives": 2
+    },
+    {
+      "name": "Material.039",
+      "class": "body",
+      "triangles": 398,
+      "primitives": 1
+    },
+    {
+      "name": "Material.030",
+      "class": "body",
+      "triangles": 370,
+      "primitives": 1
+    },
+    {
+      "name": "Material",
+      "class": "body",
+      "triangles": 325,
+      "primitives": 1
+    },
+    {
+      "name": "Material.038",
+      "class": "body",
+      "triangles": 300,
+      "primitives": 1
+    },
+    {
+      "name": "Material.040",
+      "class": "body",
+      "triangles": 278,
+      "primitives": 1
+    },
+    {
+      "name": "Material.031",
+      "class": "body",
+      "triangles": 262,
+      "primitives": 1
+    },
+    {
+      "name": "Material.018",
+      "class": "body",
+      "triangles": 260,
+      "primitives": 1
+    },
+    {
+      "name": "Material.023",
+      "class": "body",
+      "triangles": 248,
+      "primitives": 1
+    },
+    {
+      "name": "Material.041",
+      "class": "body",
+      "triangles": 236,
+      "primitives": 1
+    },
+    {
+      "name": "Material.027",
+      "class": "body",
+      "triangles": 224,
+      "primitives": 1
+    },
+    {
+      "name": "Material.036",
+      "class": "body",
+      "triangles": 152,
+      "primitives": 1
+    },
+    {
+      "name": "Material.003",
+      "class": "body",
+      "triangles": 94,
+      "primitives": 1
+    },
+    {
+      "name": "Material.042",
+      "class": "body",
+      "triangles": 56,
+      "primitives": 2
+    },
+    {
+      "name": "Material.017",
+      "class": "body",
+      "triangles": 36,
+      "primitives": 2
+    },
+    {
+      "name": "Material.028",
+      "class": "body",
+      "triangles": 28,
+      "primitives": 1
+    },
+    {
+      "name": "Vert",
+      "class": "body",
+      "triangles": 20,
+      "primitives": 1
+    },
+    {
+      "name": "Blanc",
+      "class": "body",
+      "triangles": 20,
+      "primitives": 1
+    },
+    {
+      "name": "BASE",
+      "class": "body",
+      "triangles": 18,
+      "primitives": 1
+    },
+    {
+      "name": "Fer.001",
+      "class": "body",
+      "triangles": 18,
+      "primitives": 1
+    },
+    {
+      "name": "Material.037",
+      "class": "body",
+      "triangles": 18,
+      "primitives": 1
+    }
+  ],
+  "textures": [
+    {
+      "name": "(unnamed)",
+      "mimeType": "image/jpeg",
+      "bytes": 378697,
+      "uri": null
+    },
+    {
+      "name": "(unnamed)",
+      "mimeType": "image/jpeg",
+      "bytes": 105493,
+      "uri": null
+    },
+    {
+      "name": "(unnamed)",
+      "mimeType": "image/jpeg",
+      "bytes": 64818,
+      "uri": null
+    },
+    {
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 840609,
+      "uri": null
+    },
+    {
+      "name": "(unnamed)",
+      "mimeType": "image/jpeg",
+      "bytes": 27044,
+      "uri": null
+    },
+    {
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 48119,
+      "uri": null
+    }
+  ],
+  "wheelCandidates": [
+    {
+      "name": "Object_26",
+      "mesh": "Object_7",
+      "triangles": 610,
+      "center": [
+        -0.645,
+        0.256,
+        1.04
+      ],
+      "size": [
+        0.226,
+        0.407,
+        0.407
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.203,
+      "widthEstimate": 0.226,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_28",
+      "mesh": "Object_8",
+      "triangles": 1080,
+      "center": [
+        -0.77,
+        0.254,
+        1.039
+      ],
+      "size": [
+        0.046,
+        0.4,
+        0.396
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.2,
+      "widthEstimate": 0.046,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_30",
+      "mesh": "Object_9",
+      "triangles": 2568,
+      "center": [
+        -0.763,
+        0.252,
+        1.04
+      ],
+      "size": [
+        0.081,
+        0.422,
+        0.423
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.211,
+      "widthEstimate": 0.081,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_33",
+      "mesh": "Object_10",
+      "triangles": 320,
+      "center": [
+        -0.763,
+        0.255,
+        1.04
+      ],
+      "size": [
+        0.052,
+        0.408,
+        0.408
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.204,
+      "widthEstimate": 0.052,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_35",
+      "mesh": "Object_11",
+      "triangles": 432,
+      "center": [
+        -0.761,
+        0.256,
+        1.04
+      ],
+      "size": [
+        0.061,
+        0.419,
+        0.419
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.209,
+      "widthEstimate": 0.061,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_40",
+      "mesh": "Object_12",
+      "triangles": 610,
+      "center": [
+        0.645,
+        0.256,
+        1.041
+      ],
+      "size": [
+        0.226,
+        0.407,
+        0.407
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.203,
+      "widthEstimate": 0.226,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_42",
+      "mesh": "Object_13",
+      "triangles": 1080,
+      "center": [
+        0.771,
+        0.254,
+        1.041
+      ],
+      "size": [
+        0.046,
+        0.4,
+        0.396
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.2,
+      "widthEstimate": 0.046,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_44",
+      "mesh": "Object_14",
+      "triangles": 2568,
+      "center": [
+        0.763,
+        0.252,
+        1.04
+      ],
+      "size": [
+        0.081,
+        0.422,
+        0.423
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.211,
+      "widthEstimate": 0.081,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_47",
+      "mesh": "Object_15",
+      "triangles": 320,
+      "center": [
+        0.765,
+        0.255,
+        1.04
+      ],
+      "size": [
+        0.052,
+        0.408,
+        0.408
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.204,
+      "widthEstimate": 0.052,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_49",
+      "mesh": "Object_16",
+      "triangles": 432,
+      "center": [
+        0.76,
+        0.256,
+        1.04
+      ],
+      "size": [
+        0.061,
+        0.419,
+        0.419
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.209,
+      "widthEstimate": 0.061,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_94",
+      "mesh": "Object_43",
+      "triangles": 64,
+      "center": [
+        0.001,
+        0.327,
+        -1.344
+      ],
+      "size": [
+        0.018,
+        0.312,
+        0.307
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.156,
+      "widthEstimate": 0.018,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_132",
+      "mesh": "Object_61",
+      "triangles": 18,
+      "center": [
+        0.64,
+        0.251,
+        -0.583
+      ],
+      "size": [
+        0.299,
+        0.344,
+        0.458
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.229,
+      "widthEstimate": 0.299,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_146",
+      "mesh": "Object_68",
+      "triangles": 18,
+      "center": [
+        -0.638,
+        0.251,
+        -0.583
+      ],
+      "size": [
+        0.299,
+        0.344,
+        0.458
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.229,
+      "widthEstimate": 0.299,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_179",
+      "mesh": "Object_82",
+      "triangles": 1080,
+      "center": [
+        -0.778,
+        0.274,
+        -1.04
+      ],
+      "size": [
+        0.065,
+        0.431,
+        0.426
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.215,
+      "widthEstimate": 0.065,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_181",
+      "mesh": "Object_83",
+      "triangles": 2568,
+      "center": [
+        -0.769,
+        0.273,
+        -1.04
+      ],
+      "size": [
+        0.116,
+        0.454,
+        0.456
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.228,
+      "widthEstimate": 0.116,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_184",
+      "mesh": "Object_84",
+      "triangles": 320,
+      "center": [
+        -0.767,
+        0.276,
+        -1.039
+      ],
+      "size": [
+        0.075,
+        0.439,
+        0.439
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.22,
+      "widthEstimate": 0.075,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_186",
+      "mesh": "Object_85",
+      "triangles": 432,
+      "center": [
+        -0.765,
+        0.276,
+        -1.039
+      ],
+      "size": [
+        0.087,
+        0.451,
+        0.451
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.226,
+      "widthEstimate": 0.087,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_193",
+      "mesh": "Object_87",
+      "triangles": 1080,
+      "center": [
+        0.793,
+        0.274,
+        -1.039
+      ],
+      "size": [
+        0.068,
+        0.431,
+        0.426
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.215,
+      "widthEstimate": 0.068,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_195",
+      "mesh": "Object_88",
+      "triangles": 2568,
+      "center": [
+        0.782,
+        0.273,
+        -1.039
+      ],
+      "size": [
+        0.121,
+        0.454,
+        0.456
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.228,
+      "widthEstimate": 0.121,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_198",
+      "mesh": "Object_89",
+      "triangles": 320,
+      "center": [
+        0.784,
+        0.276,
+        -1.04
+      ],
+      "size": [
+        0.078,
+        0.439,
+        0.439
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.22,
+      "widthEstimate": 0.078,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_200",
+      "mesh": "Object_90",
+      "triangles": 432,
+      "center": [
+        0.778,
+        0.276,
+        -1.04
+      ],
+      "size": [
+        0.091,
+        0.451,
+        0.451
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.226,
+      "widthEstimate": 0.091,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_218",
+      "mesh": "Object_104",
+      "triangles": 990,
+      "center": [
+        0.228,
+        0.39,
+        0.595
+      ],
+      "size": [
+        0.007,
+        0.02,
+        0.02
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.01,
+      "widthEstimate": 0.007,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_231",
+      "mesh": "Object_111",
+      "triangles": 384,
+      "center": [
+        -0.765,
+        0.256,
+        1.041
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.204,
+      "widthEstimate": 0.061,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_236",
+      "mesh": "Object_112",
+      "triangles": 384,
+      "center": [
+        0.764,
+        0.256,
+        1.039
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.204,
+      "widthEstimate": 0.061,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_241",
+      "mesh": "Object_113",
+      "triangles": 384,
+      "center": [
+        -0.77,
+        0.277,
+        -1.038
+      ],
+      "size": [
+        0.088,
+        0.44,
+        0.44
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.22,
+      "widthEstimate": 0.088,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_246",
+      "mesh": "Object_114",
+      "triangles": 384,
+      "center": [
+        0.783,
+        0.277,
+        -1.041
+      ],
+      "size": [
+        0.091,
+        0.44,
+        0.44
+      ],
+      "axleAxis": "x",
+      "radiusEstimate": 0.22,
+      "widthEstimate": 0.091,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1.5
+    },
+    {
+      "name": "Object_69",
+      "mesh": "Object_24",
+      "triangles": 284,
+      "center": [
+        0.001,
+        0.537,
+        0.977
+      ],
+      "size": [
+        0.784,
+        0.27,
+        0.685
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 0.392,
+      "widthEstimate": 0.27,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_74",
+      "mesh": "Object_27",
+      "triangles": 596,
+      "center": [
+        0.001,
+        0.208,
+        1.084
+      ],
+      "size": [
+        1.494,
+        0.31,
+        1.178
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 0.747,
+      "widthEstimate": 0.31,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_81",
+      "mesh": "Object_34",
+      "triangles": 300,
+      "center": [
+        0.004,
+        0.405,
+        0.147
+      ],
+      "size": [
+        0.903,
+        0.613,
+        0.957
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 0.478,
+      "widthEstimate": 0.613,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_156",
+      "mesh": "Object_72",
+      "triangles": 982,
+      "center": [
+        0.001,
+        0.314,
+        -1.259
+      ],
+      "size": [
+        1.403,
+        0.529,
+        0.986
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 0.702,
+      "widthEstimate": 0.529,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_204",
+      "mesh": "Object_92",
+      "triangles": 248,
+      "center": [
+        0.002,
+        0.256,
+        1.73
+      ],
+      "size": [
+        0.054,
+        0.035,
+        0.055
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 0.028,
+      "widthEstimate": 0.035,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_208",
+      "mesh": "Object_94",
+      "triangles": 6436,
+      "center": [
+        0.246,
+        0.411,
+        0.597
+      ],
+      "size": [
+        0.176,
+        0.104,
+        0.138
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 0.088,
+      "widthEstimate": 0.104,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_211",
+      "mesh": "Object_97",
+      "triangles": 936,
+      "center": [
+        0.246,
+        0.411,
+        0.576
+      ],
+      "size": [
+        0.07,
+        0.043,
+        0.062
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 0.035,
+      "widthEstimate": 0.043,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_212",
+      "mesh": "Object_98",
+      "triangles": 224,
+      "center": [
+        0.246,
+        0.411,
+        0.576
+      ],
+      "size": [
+        0.068,
+        0.042,
+        0.061
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 0.034,
+      "widthEstimate": 0.042,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_213",
+      "mesh": "Object_99",
+      "triangles": 28,
+      "center": [
+        0.246,
+        0.411,
+        0.574
+      ],
+      "size": [
+        0.059,
+        0.036,
+        0.054
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 0.029,
+      "widthEstimate": 0.036,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_215",
+      "mesh": "Object_101",
+      "triangles": 458,
+      "center": [
+        0.246,
+        0.396,
+        0.582
+      ],
+      "size": [
+        0.063,
+        0.041,
+        0.065
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 0.033,
+      "widthEstimate": 0.041,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_216",
+      "mesh": "Object_102",
+      "triangles": 370,
+      "center": [
+        0.246,
+        0.43,
+        0.621
+      ],
+      "size": [
+        0.151,
+        0.054,
+        0.191
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 0.096,
+      "widthEstimate": 0.054,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_223",
+      "mesh": "Object_109",
+      "triangles": 18,
+      "center": [
+        0.246,
+        0.43,
+        0.707
+      ],
+      "size": [
+        0.045,
+        0.053,
+        0.014
+      ],
+      "axleAxis": "z",
+      "radiusEstimate": 0.026,
+      "widthEstimate": 0.014,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    },
+    {
+      "name": "Object_225",
+      "mesh": "Object_110",
+      "triangles": 992,
+      "center": [
+        0.006,
+        0.264,
+        0
+      ],
+      "size": [
+        1.539,
+        0.055,
+        2.111
+      ],
+      "axleAxis": "y",
+      "radiusEstimate": 1.056,
+      "widthEstimate": 0.055,
+      "discLike": true,
+      "wheelish": false,
+      "score": 1
+    }
+  ],
+  "frontSignals": [
+    {
+      "node": "wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15",
+      "kind": "front",
+      "center": [
+        -0.763,
+        0.255,
+        1.04
+      ]
+    },
+    {
+      "node": "wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25",
+      "kind": "front",
+      "center": [
+        0.765,
+        0.255,
+        1.04
+      ]
+    },
+    {
+      "node": "bone_anim_front_38",
+      "kind": "front",
+      "center": [
+        0.001,
+        0.048,
+        1.668
+      ]
+    },
+    {
+      "node": "bone_anim_front_piston_41",
+      "kind": "front",
+      "center": [
+        0.002,
+        0.065,
+        1.648
+      ]
+    },
+    {
+      "node": "chassis_emissive_ID_rear_LOD2_52",
+      "kind": "rear",
+      "center": [
+        0.001,
+        0.49,
+        -1.543
+      ]
+    },
+    {
+      "node": "detach_diffuser_5_59",
+      "kind": "rear",
+      "center": [
+        0.001,
+        0.15,
+        -1.284
+      ]
+    },
+    {
+      "node": "detach_diffuser_5_details_LOD2_58",
+      "kind": "rear",
+      "center": [
+        0.001,
+        0.15,
+        -1.284
+      ]
+    },
+    {
+      "node": "detach_trunk_50_85",
+      "kind": "rear",
+      "center": [
+        0.001,
+        0.634,
+        -1.007
+      ]
+    },
+    {
+      "node": "detach_trunk_50_carpaint_custom02_LOD2_82",
+      "kind": "rear",
+      "center": [
+        0.001,
+        0.634,
+        -1.007
+      ]
+    },
+    {
+      "node": "detach_trunk_50_details_normal_LOD2_83",
+      "kind": "rear",
+      "center": [
+        0.001,
+        0.628,
+        -1.007
+      ]
+    },
+    {
+      "node": "detach_trunk_50_tiled_carbon_LOD2_84",
+      "kind": "rear",
+      "center": [
+        0.001,
+        0.677,
+        -0.792
+      ]
+    },
+    {
+      "node": "emissive_mesh_emissive_mesh_exhaust_LOD6_86",
+      "kind": "rear",
+      "center": [
+        0.001,
+        0.314,
+        -1.259
+      ]
+    },
+    {
+      "node": "front_piston_91",
+      "kind": "front",
+      "center": [
+        0.001,
+        0.118,
+        1.558
+      ]
+    },
+    {
+      "node": "front_piston_details_LOD2_89",
+      "kind": "front",
+      "center": [
+        0.001,
+        0.118,
+        1.558
+      ]
+    },
+    {
+      "node": "front_piston_details_LOD4_90",
+      "kind": "front",
+      "center": [
+        0.001,
+        0.118,
+        1.558
+      ]
+    },
+    {
+      "node": "wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100",
+      "kind": "front",
+      "center": [
+        -0.767,
+        0.276,
+        -1.039
+      ]
+    },
+    {
+      "node": "wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110",
+      "kind": "front",
+      "center": [
+        0.784,
+        0.276,
+        -1.04
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_76",
+      "depth": 6,
+      "name": "Object_76",
+      "mesh": "Object_29",
+      "triangles": 14572,
+      "center": [
+        0.001,
+        0.393,
+        -0.017
+      ],
+      "size": [
+        1.592,
+        0.716,
+        3.484
+      ],
+      "min": [
+        -0.795,
+        0.035,
+        -1.758
+      ],
+      "max": [
+        0.797,
+        0.751,
+        1.725
+      ],
+      "materialNames": [
+        "material"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_LOD2_47/Object_68",
+      "depth": 6,
+      "name": "Object_68",
+      "mesh": "Object_23",
+      "triangles": 11232,
+      "center": [
+        0.001,
+        0.391,
+        0.019
+      ],
+      "size": [
+        1.609,
+        0.715,
+        3.554
+      ],
+      "min": [
+        -0.803,
+        0.034,
+        -1.758
+      ],
+      "max": [
+        0.806,
+        0.749,
+        1.796
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_208",
+      "depth": 4,
+      "name": "Object_208",
+      "mesh": "Object_94",
+      "triangles": 6436,
+      "center": [
+        0.246,
+        0.411,
+        0.597
+      ],
+      "size": [
+        0.176,
+        0.104,
+        0.138
+      ],
+      "min": [
+        0.158,
+        0.359,
+        0.527
+      ],
+      "max": [
+        0.334,
+        0.463,
+        0.666
+      ],
+      "materialNames": [
+        "Carbone"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint02_LOD2_44/Object_62",
+      "depth": 6,
+      "name": "Object_62",
+      "mesh": "Object_20",
+      "triangles": 5686,
+      "center": [
+        0.001,
+        0.313,
+        -0.005
+      ],
+      "size": [
+        1.572,
+        0.563,
+        3.485
+      ],
+      "min": [
+        -0.785,
+        0.031,
+        -1.747
+      ],
+      "max": [
+        0.787,
+        0.594,
+        1.738
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_normal_LOD2_50/Object_86",
+      "depth": 6,
+      "name": "Object_86",
+      "mesh": "Object_38",
+      "triangles": 4642,
+      "center": [
+        0.001,
+        0.381,
+        0.001
+      ],
+      "size": [
+        1.57,
+        0.7,
+        3.429
+      ],
+      "min": [
+        -0.784,
+        0.031,
+        -1.713
+      ],
+      "max": [
+        0.786,
+        0.731,
+        1.716
+      ],
+      "materialNames": [
+        "Blanck"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_210",
+      "depth": 4,
+      "name": "Object_210",
+      "mesh": "Object_96",
+      "triangles": 4536,
+      "center": [
+        0.246,
+        0.41,
+        0.544
+      ],
+      "size": [
+        0.117,
+        0.014,
+        0.014
+      ],
+      "min": [
+        0.187,
+        0.403,
+        0.537
+      ],
+      "max": [
+        0.305,
+        0.416,
+        0.55
+      ],
+      "materialNames": [
+        "Material.025"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_93/glass_glass_LOD2_92/Object_167",
+      "depth": 6,
+      "name": "Object_167",
+      "mesh": "Object_77",
+      "triangles": 2610,
+      "center": [
+        0.001,
+        0.523,
+        0.587
+      ],
+      "size": [
+        1.033,
+        0.48,
+        2.025
+      ],
+      "min": [
+        -0.516,
+        0.283,
+        -0.426
+      ],
+      "max": [
+        0.517,
+        0.764,
+        1.599
+      ],
+      "materialNames": [
+        "Vitres"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_rims_LOD2_3_13/Object_30",
+      "depth": 8,
+      "name": "Object_30",
+      "mesh": "Object_9",
+      "triangles": 2568,
+      "center": [
+        -0.763,
+        0.252,
+        1.04
+      ],
+      "size": [
+        0.081,
+        0.422,
+        0.423
+      ],
+      "min": [
+        -0.804,
+        0.042,
+        0.828
+      ],
+      "max": [
+        -0.723,
+        0.463,
+        1.251
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_rims_LOD2_4_23/Object_44",
+      "depth": 8,
+      "name": "Object_44",
+      "mesh": "Object_14",
+      "triangles": 2568,
+      "center": [
+        0.763,
+        0.252,
+        1.04
+      ],
+      "size": [
+        0.081,
+        0.422,
+        0.423
+      ],
+      "min": [
+        0.723,
+        0.042,
+        0.829
+      ],
+      "max": [
+        0.804,
+        0.463,
+        1.252
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_rims_LOD2_98/Object_181",
+      "depth": 8,
+      "name": "Object_181",
+      "mesh": "Object_83",
+      "triangles": 2568,
+      "center": [
+        -0.769,
+        0.273,
+        -1.04
+      ],
+      "size": [
+        0.116,
+        0.454,
+        0.456
+      ],
+      "min": [
+        -0.826,
+        0.046,
+        -1.267
+      ],
+      "max": [
+        -0.711,
+        0.5,
+        -0.812
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_rims_LOD2_2_108/Object_195",
+      "depth": 8,
+      "name": "Object_195",
+      "mesh": "Object_88",
+      "triangles": 2568,
+      "center": [
+        0.782,
+        0.273,
+        -1.039
+      ],
+      "size": [
+        0.121,
+        0.454,
+        0.456
+      ],
+      "min": [
+        0.721,
+        0.046,
+        -1.267
+      ],
+      "max": [
+        0.842,
+        0.5,
+        -0.812
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_diffuser_5_59/detach_diffuser_5_details_LOD2_58/Object_103",
+      "depth": 6,
+      "name": "Object_103",
+      "mesh": "Object_47",
+      "triangles": 2128,
+      "center": [
+        0.001,
+        0.15,
+        -1.284
+      ],
+      "size": [
+        1.591,
+        0.204,
+        0.869
+      ],
+      "min": [
+        -0.795,
+        0.048,
+        -1.718
+      ],
+      "max": [
+        0.797,
+        0.252,
+        -0.849
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Roues arri��re.003_128/Object_202",
+      "depth": 4,
+      "name": "Object_202",
+      "mesh": "Object_91",
+      "triangles": 1836,
+      "center": [
+        0,
+        0.255,
+        1.041
+      ],
+      "size": [
+        1.568,
+        0.488,
+        0.488
+      ],
+      "min": [
+        -0.784,
+        0.012,
+        0.797
+      ],
+      "max": [
+        0.784,
+        0.499,
+        1.285
+      ],
+      "materialNames": [
+        "Tire"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Roues arri��re.001_130/Object_206",
+      "depth": 4,
+      "name": "Object_206",
+      "mesh": "Object_93",
+      "triangles": 1836,
+      "center": [
+        0,
+        0.276,
+        -1.042
+      ],
+      "size": [
+        1.634,
+        0.518,
+        0.518
+      ],
+      "min": [
+        -0.817,
+        0.017,
+        -1.301
+      ],
+      "max": [
+        0.817,
+        0.535,
+        -0.783
+      ],
+      "materialNames": [
+        "Tire.001"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_trunk_50_85/detach_trunk_50_carpaint_custom02_LOD2_82/Object_149",
+      "depth": 6,
+      "name": "Object_149",
+      "mesh": "Object_69",
+      "triangles": 1802,
+      "center": [
+        0.001,
+        0.634,
+        -1.007
+      ],
+      "size": [
+        0.696,
+        0.193,
+        1.227
+      ],
+      "min": [
+        -0.347,
+        0.538,
+        -1.62
+      ],
+      "max": [
+        0.349,
+        0.731,
+        -0.394
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_214",
+      "depth": 4,
+      "name": "Object_214",
+      "mesh": "Object_100",
+      "triangles": 1676,
+      "center": [
+        0.246,
+        0.403,
+        0.571
+      ],
+      "size": [
+        0.176,
+        0.081,
+        0.085
+      ],
+      "min": [
+        0.158,
+        0.363,
+        0.529
+      ],
+      "max": [
+        0.334,
+        0.444,
+        0.614
+      ],
+      "materialNames": [
+        "Material.029"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_219",
+      "depth": 4,
+      "name": "Object_219",
+      "mesh": "Object_105",
+      "triangles": 1624,
+      "center": [
+        0.247,
+        0.364,
+        0.528
+      ],
+      "size": [
+        0.053,
+        0.006,
+        0.001
+      ],
+      "min": [
+        0.221,
+        0.361,
+        0.527
+      ],
+      "max": [
+        0.273,
+        0.367,
+        0.528
+      ],
+      "materialNames": [
+        "Material.033"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_detachable_95/glass_detachable_glass_LOD2_94/Object_172",
+      "depth": 6,
+      "name": "Object_172",
+      "mesh": "Object_80",
+      "triangles": 1358,
+      "center": [
+        0.001,
+        0.593,
+        -0.272
+      ],
+      "size": [
+        1.076,
+        0.336,
+        2.263
+      ],
+      "min": [
+        -0.537,
+        0.425,
+        -1.404
+      ],
+      "max": [
+        0.539,
+        0.761,
+        0.86
+      ],
+      "materialNames": [
+        "Vitres"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_emissive_ID_rims_LOD2_3_12/Object_28",
+      "depth": 8,
+      "name": "Object_28",
+      "mesh": "Object_8",
+      "triangles": 1080,
+      "center": [
+        -0.77,
+        0.254,
+        1.039
+      ],
+      "size": [
+        0.046,
+        0.4,
+        0.396
+      ],
+      "min": [
+        -0.793,
+        0.054,
+        0.841
+      ],
+      "max": [
+        -0.747,
+        0.454,
+        1.237
+      ],
+      "materialNames": [
+        "Lumire_Orange"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_emissive_ID_rims_LOD2_4_22/Object_42",
+      "depth": 8,
+      "name": "Object_42",
+      "mesh": "Object_13",
+      "triangles": 1080,
+      "center": [
+        0.771,
+        0.254,
+        1.041
+      ],
+      "size": [
+        0.046,
+        0.4,
+        0.396
+      ],
+      "min": [
+        0.748,
+        0.054,
+        0.843
+      ],
+      "max": [
+        0.794,
+        0.454,
+        1.238
+      ],
+      "materialNames": [
+        "Lumire_Orange"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_emissive_ID_rims_LOD2_97/Object_179",
+      "depth": 8,
+      "name": "Object_179",
+      "mesh": "Object_82",
+      "triangles": 1080,
+      "center": [
+        -0.778,
+        0.274,
+        -1.04
+      ],
+      "size": [
+        0.065,
+        0.431,
+        0.426
+      ],
+      "min": [
+        -0.811,
+        0.059,
+        -1.253
+      ],
+      "max": [
+        -0.746,
+        0.489,
+        -0.827
+      ],
+      "materialNames": [
+        "Lumire_Orange"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_emissive_ID_rims_LOD2_2_107/Object_193",
+      "depth": 8,
+      "name": "Object_193",
+      "mesh": "Object_87",
+      "triangles": 1080,
+      "center": [
+        0.793,
+        0.274,
+        -1.039
+      ],
+      "size": [
+        0.068,
+        0.431,
+        0.426
+      ],
+      "min": [
+        0.759,
+        0.059,
+        -1.252
+      ],
+      "max": [
+        0.827,
+        0.489,
+        -0.826
+      ],
+      "materialNames": [
+        "Lumire_Orange"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_38/detach_lip_5_37/detach_lip_5_details_LOD2_35/Object_53",
+      "depth": 7,
+      "name": "Object_53",
+      "mesh": "Object_17",
+      "triangles": 1024,
+      "center": [
+        0.001,
+        0.048,
+        1.668
+      ],
+      "size": [
+        0.642,
+        0.038,
+        0.247
+      ],
+      "min": [
+        -0.32,
+        0.029,
+        1.544
+      ],
+      "max": [
+        0.322,
+        0.067,
+        1.791
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/<Wheel.001_132/Object_225",
+      "depth": 4,
+      "name": "Object_225",
+      "mesh": "Object_110",
+      "triangles": 992,
+      "center": [
+        0.006,
+        0.264,
+        0
+      ],
+      "size": [
+        1.539,
+        0.055,
+        2.111
+      ],
+      "min": [
+        -0.763,
+        0.237,
+        -1.056
+      ],
+      "max": [
+        0.775,
+        0.292,
+        1.055
+      ],
+      "materialNames": [
+        "Material.044"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_218",
+      "depth": 4,
+      "name": "Object_218",
+      "mesh": "Object_104",
+      "triangles": 990,
+      "center": [
+        0.228,
+        0.39,
+        0.595
+      ],
+      "size": [
+        0.007,
+        0.02,
+        0.02
+      ],
+      "min": [
+        0.224,
+        0.38,
+        0.585
+      ],
+      "max": [
+        0.231,
+        0.401,
+        0.606
+      ],
+      "materialNames": [
+        "Material.032"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_custom01_LOD2_46/Object_66",
+      "depth": 6,
+      "name": "Object_66",
+      "mesh": "Object_22",
+      "triangles": 988,
+      "center": [
+        0.001,
+        0.291,
+        1.516
+      ],
+      "size": [
+        1.113,
+        0.159,
+        0.564
+      ],
+      "min": [
+        -0.555,
+        0.212,
+        1.234
+      ],
+      "max": [
+        0.558,
+        0.371,
+        1.798
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/emissive_mesh_88/emissive_mesh_emissive_mesh_exhaust_LOD6_86/Object_156",
+      "depth": 6,
+      "name": "Object_156",
+      "mesh": "Object_72",
+      "triangles": 982,
+      "center": [
+        0.001,
+        0.314,
+        -1.259
+      ],
+      "size": [
+        1.403,
+        0.529,
+        0.986
+      ],
+      "min": [
+        -0.701,
+        0.05,
+        -1.752
+      ],
+      "max": [
+        0.702,
+        0.579,
+        -0.766
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_211",
+      "depth": 4,
+      "name": "Object_211",
+      "mesh": "Object_97",
+      "triangles": 936,
+      "center": [
+        0.246,
+        0.411,
+        0.576
+      ],
+      "size": [
+        0.07,
+        0.043,
+        0.062
+      ],
+      "min": [
+        0.211,
+        0.39,
+        0.545
+      ],
+      "max": [
+        0.281,
+        0.433,
+        0.607
+      ],
+      "materialNames": [
+        "Material.026"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_neons_LOD2_51/Object_90",
+      "depth": 6,
+      "name": "Object_90",
+      "mesh": "Object_41",
+      "triangles": 760,
+      "center": [
+        0,
+        0.591,
+        -0.89
+      ],
+      "size": [
+        0.301,
+        0.207,
+        1.23
+      ],
+      "min": [
+        -0.15,
+        0.487,
+        -1.505
+      ],
+      "max": [
+        0.151,
+        0.694,
+        -0.276
+      ],
+      "materialNames": [
+        "Material.002"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_93/glass_glass_LOD2_92/Object_168",
+      "depth": 6,
+      "name": "Object_168",
+      "mesh": "Object_78",
+      "triangles": 750,
+      "center": [
+        0.001,
+        0.273,
+        1.55
+      ],
+      "size": [
+        1.336,
+        0.243,
+        0.343
+      ],
+      "min": [
+        -0.667,
+        0.151,
+        1.379
+      ],
+      "max": [
+        0.669,
+        0.394,
+        1.722
+      ],
+      "materialNames": [
+        "Lumire_blanche"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/detach_wing_10_carpaint_custom03_LOD2_0/Object_4",
+      "depth": 4,
+      "name": "Object_4",
+      "mesh": "Object_0",
+      "triangles": 742,
+      "center": [
+        0.572,
+        0.582,
+        -1.169
+      ],
+      "size": [
+        1.28,
+        0.045,
+        0.373
+      ],
+      "min": [
+        -0.069,
+        0.559,
+        -1.355
+      ],
+      "max": [
+        1.212,
+        0.604,
+        -0.982
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_carpaint_LOD2_70/Object_125",
+      "depth": 6,
+      "name": "Object_125",
+      "mesh": "Object_57",
+      "triangles": 675,
+      "center": [
+        0.722,
+        0.182,
+        -0.009
+      ],
+      "size": [
+        0.163,
+        0.286,
+        1.699
+      ],
+      "min": [
+        0.64,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        0.803,
+        0.324,
+        0.841
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_carpaint_LOD2_77/Object_139",
+      "depth": 6,
+      "name": "Object_139",
+      "mesh": "Object_64",
+      "triangles": 675,
+      "center": [
+        -0.72,
+        0.182,
+        -0.009
+      ],
+      "size": [
+        0.163,
+        0.286,
+        1.699
+      ],
+      "min": [
+        -0.801,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        -0.638,
+        0.324,
+        0.841
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_details_normal_LOD2_3_11/Object_26",
+      "depth": 8,
+      "name": "Object_26",
+      "mesh": "Object_7",
+      "triangles": 610,
+      "center": [
+        -0.645,
+        0.256,
+        1.04
+      ],
+      "size": [
+        0.226,
+        0.407,
+        0.407
+      ],
+      "min": [
+        -0.758,
+        0.053,
+        0.836
+      ],
+      "max": [
+        -0.533,
+        0.46,
+        1.244
+      ],
+      "materialNames": [
+        "Jantes_I"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_details_normal_LOD2_4_21/Object_40",
+      "depth": 8,
+      "name": "Object_40",
+      "mesh": "Object_12",
+      "triangles": 610,
+      "center": [
+        0.645,
+        0.256,
+        1.041
+      ],
+      "size": [
+        0.226,
+        0.407,
+        0.407
+      ],
+      "min": [
+        0.532,
+        0.053,
+        0.837
+      ],
+      "max": [
+        0.758,
+        0.46,
+        1.244
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_details_normal_LOD2_96/Object_177",
+      "depth": 8,
+      "name": "Object_177",
+      "mesh": "Object_81",
+      "triangles": 610,
+      "center": [
+        -0.6,
+        0.277,
+        -1.04
+      ],
+      "size": [
+        0.323,
+        0.439,
+        0.438
+      ],
+      "min": [
+        -0.762,
+        0.057,
+        -1.259
+      ],
+      "max": [
+        -0.439,
+        0.496,
+        -0.82
+      ],
+      "materialNames": [
+        "Jantes_I"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_details_normal_LOD2_2_106/Object_191",
+      "depth": 8,
+      "name": "Object_191",
+      "mesh": "Object_86",
+      "triangles": 610,
+      "center": [
+        0.606,
+        0.277,
+        -1.039
+      ],
+      "size": [
+        0.337,
+        0.439,
+        0.438
+      ],
+      "min": [
+        0.438,
+        0.057,
+        -1.258
+      ],
+      "max": [
+        0.774,
+        0.496,
+        -0.82
+      ],
+      "materialNames": [
+        "Jantes_I"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_74",
+      "depth": 6,
+      "name": "Object_74",
+      "mesh": "Object_27",
+      "triangles": 596,
+      "center": [
+        0.001,
+        0.208,
+        1.084
+      ],
+      "size": [
+        1.494,
+        0.31,
+        1.178
+      ],
+      "min": [
+        -0.746,
+        0.053,
+        0.495
+      ],
+      "max": [
+        0.748,
+        0.362,
+        1.673
+      ],
+      "materialNames": [
+        "Rouge"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_221",
+      "depth": 4,
+      "name": "Object_221",
+      "mesh": "Object_107",
+      "triangles": 580,
+      "center": [
+        0.246,
+        0.407,
+        0.692
+      ],
+      "size": [
+        0.116,
+        0.025,
+        0.192
+      ],
+      "min": [
+        0.188,
+        0.394,
+        0.596
+      ],
+      "max": [
+        0.304,
+        0.42,
+        0.788
+      ],
+      "materialNames": [
+        "Material.034"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_carpaint03_LOD2_69/Object_123",
+      "depth": 6,
+      "name": "Object_123",
+      "mesh": "Object_56",
+      "triangles": 579,
+      "center": [
+        0.623,
+        0.264,
+        0.009
+      ],
+      "size": [
+        0.27,
+        0.36,
+        1.551
+      ],
+      "min": [
+        0.488,
+        0.084,
+        -0.767
+      ],
+      "max": [
+        0.758,
+        0.443,
+        0.784
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_carpaint03_LOD2_76/Object_137",
+      "depth": 6,
+      "name": "Object_137",
+      "mesh": "Object_63",
+      "triangles": 579,
+      "center": [
+        -0.621,
+        0.264,
+        0.009
+      ],
+      "size": [
+        0.269,
+        0.36,
+        1.551
+      ],
+      "min": [
+        -0.755,
+        0.084,
+        -0.767
+      ],
+      "max": [
+        -0.486,
+        0.443,
+        0.784
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_93/glass_glass_LOD2_92/Object_169",
+      "depth": 6,
+      "name": "Object_169",
+      "mesh": "Object_79",
+      "triangles": 548,
+      "center": [
+        0.001,
+        0.489,
+        -1.543
+      ],
+      "size": [
+        1.399,
+        0.113,
+        0.285
+      ],
+      "min": [
+        -0.698,
+        0.433,
+        -1.686
+      ],
+      "max": [
+        0.701,
+        0.546,
+        -1.4
+      ],
+      "materialNames": [
+        "Lumire_rouge"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_carbon_LOD2_45/Object_64",
+      "depth": 6,
+      "name": "Object_64",
+      "mesh": "Object_21",
+      "triangles": 504,
+      "center": [
+        0.001,
+        0.484,
+        1.062
+      ],
+      "size": [
+        1.391,
+        0.136,
+        0.542
+      ],
+      "min": [
+        -0.695,
+        0.416,
+        0.791
+      ],
+      "max": [
+        0.697,
+        0.552,
+        1.333
+      ],
+      "materialNames": [
+        "CARBONE"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_75",
+      "depth": 6,
+      "name": "Object_75",
+      "mesh": "Object_28",
+      "triangles": 492,
+      "center": [
+        0.001,
+        0.348,
+        0.57
+      ],
+      "size": [
+        1.549,
+        0.048,
+        0.196
+      ],
+      "min": [
+        -0.773,
+        0.324,
+        0.472
+      ],
+      "max": [
+        0.776,
+        0.372,
+        0.668
+      ],
+      "materialNames": [
+        "Blanck"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_trunk_50_85/detach_trunk_50_details_normal_LOD2_83/Object_151",
+      "depth": 6,
+      "name": "Object_151",
+      "mesh": "Object_70",
+      "triangles": 476,
+      "center": [
+        0.001,
+        0.628,
+        -1.007
+      ],
+      "size": [
+        0.696,
+        0.18,
+        1.227
+      ],
+      "min": [
+        -0.347,
+        0.538,
+        -1.62
+      ],
+      "max": [
+        0.349,
+        0.718,
+        -0.394
+      ],
+      "materialNames": [
+        "material_0"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_L_60_63/detach_door_L_60_details_LOD2_61/Object_108",
+      "depth": 6,
+      "name": "Object_108",
+      "mesh": "Object_49",
+      "triangles": 469,
+      "center": [
+        0.332,
+        0.497,
+        0.42
+      ],
+      "size": [
+        0.412,
+        0.508,
+        0.88
+      ],
+      "min": [
+        0.125,
+        0.243,
+        -0.02
+      ],
+      "max": [
+        0.538,
+        0.751,
+        0.86
+      ],
+      "materialNames": [
+        "Blanck"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_details_LOD2_65/Object_116",
+      "depth": 6,
+      "name": "Object_116",
+      "mesh": "Object_53",
+      "triangles": 469,
+      "center": [
+        -0.329,
+        0.497,
+        0.42
+      ],
+      "size": [
+        0.413,
+        0.508,
+        0.88
+      ],
+      "min": [
+        -0.535,
+        0.243,
+        -0.02
+      ],
+      "max": [
+        -0.123,
+        0.751,
+        0.86
+      ],
+      "materialNames": [
+        "Blanck"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/front_piston_91/front_piston_details_LOD2_89/Object_161",
+      "depth": 6,
+      "name": "Object_161",
+      "mesh": "Object_74",
+      "triangles": 460,
+      "center": [
+        0.001,
+        0.118,
+        1.558
+      ],
+      "size": [
+        0.201,
+        0.07,
+        0.075
+      ],
+      "min": [
+        -0.099,
+        0.083,
+        1.521
+      ],
+      "max": [
+        0.102,
+        0.153,
+        1.596
+      ],
+      "materialNames": [
+        "material"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_215",
+      "depth": 4,
+      "name": "Object_215",
+      "mesh": "Object_101",
+      "triangles": 458,
+      "center": [
+        0.246,
+        0.396,
+        0.582
+      ],
+      "size": [
+        0.063,
+        0.041,
+        0.065
+      ],
+      "min": [
+        0.215,
+        0.375,
+        0.55
+      ],
+      "max": [
+        0.278,
+        0.416,
+        0.614
+      ],
+      "materialNames": [
+        "Volant.003"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17/wheelFR_motion_rims_LOD2_3_16/Object_35",
+      "depth": 8,
+      "name": "Object_35",
+      "mesh": "Object_11",
+      "triangles": 432,
+      "center": [
+        -0.761,
+        0.256,
+        1.04
+      ],
+      "size": [
+        0.061,
+        0.419,
+        0.419
+      ],
+      "min": [
+        -0.791,
+        0.046,
+        0.831
+      ],
+      "max": [
+        -0.73,
+        0.466,
+        1.25
+      ],
+      "materialNames": [
+        "material"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27/wheelFR_motion_rims_LOD2_4_26/Object_49",
+      "depth": 8,
+      "name": "Object_49",
+      "mesh": "Object_16",
+      "triangles": 432,
+      "center": [
+        0.76,
+        0.256,
+        1.04
+      ],
+      "size": [
+        0.061,
+        0.419,
+        0.419
+      ],
+      "min": [
+        0.73,
+        0.046,
+        0.83
+      ],
+      "max": [
+        0.791,
+        0.466,
+        1.249
+      ],
+      "materialNames": [
+        "material"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102/wheelFR_motion_rims_LOD2_101/Object_186",
+      "depth": 8,
+      "name": "Object_186",
+      "mesh": "Object_85",
+      "triangles": 432,
+      "center": [
+        -0.765,
+        0.276,
+        -1.039
+      ],
+      "size": [
+        0.087,
+        0.451,
+        0.451
+      ],
+      "min": [
+        -0.808,
+        0.05,
+        -1.265
+      ],
+      "max": [
+        -0.721,
+        0.502,
+        -0.813
+      ],
+      "materialNames": [
+        "material"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112/wheelFR_motion_rims_LOD2_2_111/Object_200",
+      "depth": 8,
+      "name": "Object_200",
+      "mesh": "Object_90",
+      "triangles": 432,
+      "center": [
+        0.778,
+        0.276,
+        -1.04
+      ],
+      "size": [
+        0.091,
+        0.451,
+        0.451
+      ],
+      "min": [
+        0.732,
+        0.05,
+        -1.266
+      ],
+      "max": [
+        0.823,
+        0.502,
+        -0.814
+      ],
+      "materialNames": [
+        "material"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_tiled_carbon_LOD2_55/Object_98",
+      "depth": 6,
+      "name": "Object_98",
+      "mesh": "Object_45",
+      "triangles": 410,
+      "center": [
+        0.001,
+        0.461,
+        -0.003
+      ],
+      "size": [
+        1.079,
+        0.47,
+        2.228
+      ],
+      "min": [
+        -0.538,
+        0.226,
+        -1.117
+      ],
+      "max": [
+        0.541,
+        0.696,
+        1.111
+      ],
+      "materialNames": [
+        "CARBONE"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_82",
+      "depth": 6,
+      "name": "Object_82",
+      "mesh": "Object_35",
+      "triangles": 398,
+      "center": [
+        0.001,
+        0.394,
+        0.466
+      ],
+      "size": [
+        0.994,
+        0.683,
+        1.975
+      ],
+      "min": [
+        -0.496,
+        0.052,
+        -0.521
+      ],
+      "max": [
+        0.498,
+        0.735,
+        1.454
+      ],
+      "materialNames": [
+        "Material.039"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_dest.001_136/bone_wheel_FR_rotation_3.001_135/wheelFR_3.001_134/wheelFR_glass_LOD2_3_133/Object_231",
+      "depth": 8,
+      "name": "Object_231",
+      "mesh": "Object_111",
+      "triangles": 384,
+      "center": [
+        -0.765,
+        0.256,
+        1.041
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "min": [
+        -0.795,
+        0.052,
+        0.837
+      ],
+      "max": [
+        -0.734,
+        0.461,
+        1.246
+      ],
+      "materialNames": [
+        "Material.049"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_sins.001_140/bone_wheel_FR_rotation_4.001_139/wheelFR_4.001_138/wheelFR_glass_LOD2_4_137/Object_236",
+      "depth": 8,
+      "name": "Object_236",
+      "mesh": "Object_112",
+      "triangles": 384,
+      "center": [
+        0.764,
+        0.256,
+        1.039
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "min": [
+        0.734,
+        0.052,
+        0.834
+      ],
+      "max": [
+        0.795,
+        0.461,
+        1.243
+      ],
+      "materialNames": [
+        "Material.049"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/post_dest.001_144/bone_wheel_FR_rotation.001_143/wheelFR.001_142/wheelFR_glass_LOD2_141/Object_241",
+      "depth": 8,
+      "name": "Object_241",
+      "mesh": "Object_113",
+      "triangles": 384,
+      "center": [
+        -0.77,
+        0.277,
+        -1.038
+      ],
+      "size": [
+        0.088,
+        0.44,
+        0.44
+      ],
+      "min": [
+        -0.814,
+        0.057,
+        -1.258
+      ],
+      "max": [
+        -0.726,
+        0.497,
+        -0.818
+      ],
+      "materialNames": [
+        "Material.049"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/ppst_sinis.001_148/bone_wheel_FR_rotation_2.001_147/wheelFR_2.001_146/wheelFR_glass_LOD2_2_145/Object_246",
+      "depth": 8,
+      "name": "Object_246",
+      "mesh": "Object_114",
+      "triangles": 384,
+      "center": [
+        0.783,
+        0.277,
+        -1.041
+      ],
+      "size": [
+        0.091,
+        0.44,
+        0.44
+      ],
+      "min": [
+        0.738,
+        0.057,
+        -1.261
+      ],
+      "max": [
+        0.829,
+        0.497,
+        -0.821
+      ],
+      "materialNames": [
+        "Material.049"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_216",
+      "depth": 4,
+      "name": "Object_216",
+      "mesh": "Object_102",
+      "triangles": 370,
+      "center": [
+        0.246,
+        0.43,
+        0.621
+      ],
+      "size": [
+        0.151,
+        0.054,
+        0.191
+      ],
+      "min": [
+        0.171,
+        0.404,
+        0.526
+      ],
+      "max": [
+        0.322,
+        0.457,
+        0.717
+      ],
+      "materialNames": [
+        "Material.030"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_trunk_50_85/detach_trunk_50_tiled_carbon_LOD2_84/Object_153",
+      "depth": 6,
+      "name": "Object_153",
+      "mesh": "Object_71",
+      "triangles": 336,
+      "center": [
+        0.001,
+        0.677,
+        -0.792
+      ],
+      "size": [
+        0.487,
+        0.099,
+        0.78
+      ],
+      "min": [
+        -0.242,
+        0.627,
+        -1.183
+      ],
+      "max": [
+        0.245,
+        0.726,
+        -0.402
+      ],
+      "materialNames": [
+        "CARBONE"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_normal_LOD2_50/Object_87",
+      "depth": 6,
+      "name": "Object_87",
+      "mesh": "Object_39",
+      "triangles": 325,
+      "center": [
+        0,
+        0.331,
+        0.782
+      ],
+      "size": [
+        0.568,
+        0.14,
+        1.231
+      ],
+      "min": [
+        -0.284,
+        0.261,
+        0.166
+      ],
+      "max": [
+        0.284,
+        0.401,
+        1.398
+      ],
+      "materialNames": [
+        "Material"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15/Object_33",
+      "depth": 8,
+      "name": "Object_33",
+      "mesh": "Object_10",
+      "triangles": 320,
+      "center": [
+        -0.763,
+        0.255,
+        1.04
+      ],
+      "size": [
+        0.052,
+        0.408,
+        0.408
+      ],
+      "min": [
+        -0.789,
+        0.051,
+        0.836
+      ],
+      "max": [
+        -0.737,
+        0.459,
+        1.244
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25/Object_47",
+      "depth": 8,
+      "name": "Object_47",
+      "mesh": "Object_15",
+      "triangles": 320,
+      "center": [
+        0.765,
+        0.255,
+        1.04
+      ],
+      "size": [
+        0.052,
+        0.408,
+        0.408
+      ],
+      "min": [
+        0.739,
+        0.051,
+        0.836
+      ],
+      "max": [
+        0.791,
+        0.459,
+        1.244
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100/Object_184",
+      "depth": 8,
+      "name": "Object_184",
+      "mesh": "Object_84",
+      "triangles": 320,
+      "center": [
+        -0.767,
+        0.276,
+        -1.039
+      ],
+      "size": [
+        0.075,
+        0.439,
+        0.439
+      ],
+      "min": [
+        -0.804,
+        0.056,
+        -1.259
+      ],
+      "max": [
+        -0.73,
+        0.495,
+        -0.82
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110/Object_198",
+      "depth": 8,
+      "name": "Object_198",
+      "mesh": "Object_89",
+      "triangles": 320,
+      "center": [
+        0.784,
+        0.276,
+        -1.04
+      ],
+      "size": [
+        0.078,
+        0.439,
+        0.439
+      ],
+      "min": [
+        0.745,
+        0.056,
+        -1.259
+      ],
+      "max": [
+        0.823,
+        0.495,
+        -0.82
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_L_60_63/detach_door_L_60_carpaint_LOD2_60/Object_106",
+      "depth": 6,
+      "name": "Object_106",
+      "mesh": "Object_48",
+      "triangles": 313,
+      "center": [
+        0.515,
+        0.554,
+        0.377
+      ],
+      "size": [
+        0.327,
+        0.354,
+        0.793
+      ],
+      "min": [
+        0.351,
+        0.377,
+        -0.019
+      ],
+      "max": [
+        0.678,
+        0.731,
+        0.774
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_details_LOD2_71/Object_127",
+      "depth": 6,
+      "name": "Object_127",
+      "mesh": "Object_58",
+      "triangles": 308,
+      "center": [
+        0.683,
+        0.142,
+        0.131
+      ],
+      "size": [
+        0.072,
+        0.021,
+        0.401
+      ],
+      "min": [
+        0.647,
+        0.131,
+        -0.069
+      ],
+      "max": [
+        0.719,
+        0.152,
+        0.332
+      ],
+      "materialNames": [
+        "Orange"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_details_LOD2_78/Object_141",
+      "depth": 6,
+      "name": "Object_141",
+      "mesh": "Object_65",
+      "triangles": 308,
+      "center": [
+        -0.683,
+        0.141,
+        0.131
+      ],
+      "size": [
+        0.067,
+        0.022,
+        0.4
+      ],
+      "min": [
+        -0.716,
+        0.13,
+        -0.069
+      ],
+      "max": [
+        -0.649,
+        0.151,
+        0.33
+      ],
+      "materialNames": [
+        "Orange"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_81",
+      "depth": 6,
+      "name": "Object_81",
+      "mesh": "Object_34",
+      "triangles": 300,
+      "center": [
+        0.004,
+        0.405,
+        0.147
+      ],
+      "size": [
+        0.903,
+        0.613,
+        0.957
+      ],
+      "min": [
+        -0.448,
+        0.099,
+        -0.332
+      ],
+      "max": [
+        0.456,
+        0.711,
+        0.625
+      ],
+      "materialNames": [
+        "Material.038"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_rear_LOD2_52/Object_92",
+      "depth": 6,
+      "name": "Object_92",
+      "mesh": "Object_42",
+      "triangles": 290,
+      "center": [
+        0.001,
+        0.49,
+        -1.543
+      ],
+      "size": [
+        1.393,
+        0.11,
+        0.282
+      ],
+      "min": [
+        -0.695,
+        0.435,
+        -1.684
+      ],
+      "max": [
+        0.697,
+        0.545,
+        -1.403
+      ],
+      "materialNames": [
+        "material_0"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_LOD2_47/Object_69",
+      "depth": 6,
+      "name": "Object_69",
+      "mesh": "Object_24",
+      "triangles": 284,
+      "center": [
+        0.001,
+        0.537,
+        0.977
+      ],
+      "size": [
+        0.784,
+        0.27,
+        0.685
+      ],
+      "min": [
+        -0.391,
+        0.402,
+        0.635
+      ],
+      "max": [
+        0.393,
+        0.672,
+        1.319
+      ],
+      "materialNames": [
+        "Material.001"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_piston_41/piston_moving_40/piston_moving_details_LOD2_39/Object_59",
+      "depth": 7,
+      "name": "Object_59",
+      "mesh": "Object_19",
+      "triangles": 280,
+      "center": [
+        0.002,
+        0.065,
+        1.648
+      ],
+      "size": [
+        0.188,
+        0.054,
+        0.121
+      ],
+      "min": [
+        -0.092,
+        0.038,
+        1.587
+      ],
+      "max": [
+        0.096,
+        0.093,
+        1.709
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_83",
+      "depth": 6,
+      "name": "Object_83",
+      "mesh": "Object_36",
+      "triangles": 278,
+      "center": [
+        0.001,
+        0.311,
+        0.441
+      ],
+      "size": [
+        1.01,
+        0.513,
+        1.907
+      ],
+      "min": [
+        -0.504,
+        0.055,
+        -0.512
+      ],
+      "max": [
+        0.506,
+        0.568,
+        1.395
+      ],
+      "materialNames": [
+        "Material.040"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/detach_anim04_LOD_tiled_carbon_LOD16_9/Object_18",
+      "depth": 4,
+      "name": "Object_18",
+      "mesh": "Object_5",
+      "triangles": 276,
+      "center": [
+        -0.017,
+        0.22,
+        0.749
+      ],
+      "size": [
+        0.074,
+        0.214,
+        0.657
+      ],
+      "min": [
+        -0.054,
+        0.113,
+        0.42
+      ],
+      "max": [
+        0.02,
+        0.327,
+        1.078
+      ],
+      "materialNames": [
+        "CARBONE"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/detach_03_5_details_orange_accents_LOD2_10/Object_20",
+      "depth": 4,
+      "name": "Object_20",
+      "mesh": "Object_6",
+      "triangles": 272,
+      "center": [
+        -1.397,
+        0.218,
+        0.301
+      ],
+      "size": [
+        0.074,
+        0.211,
+        0.654
+      ],
+      "min": [
+        -1.435,
+        0.113,
+        -0.025
+      ],
+      "max": [
+        -1.36,
+        0.324,
+        0.628
+      ],
+      "materialNames": [
+        "CARBONE"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_217",
+      "depth": 4,
+      "name": "Object_217",
+      "mesh": "Object_103",
+      "triangles": 262,
+      "center": [
+        0.246,
+        0.403,
+        0.711
+      ],
+      "size": [
+        0.156,
+        0.075,
+        0.295
+      ],
+      "min": [
+        0.168,
+        0.365,
+        0.563
+      ],
+      "max": [
+        0.324,
+        0.44,
+        0.859
+      ],
+      "materialNames": [
+        "Material.031"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_209",
+      "depth": 4,
+      "name": "Object_209",
+      "mesh": "Object_95",
+      "triangles": 260,
+      "center": [
+        0.246,
+        0.41,
+        0.543
+      ],
+      "size": [
+        0.161,
+        0.013,
+        0.013
+      ],
+      "min": [
+        0.165,
+        0.403,
+        0.537
+      ],
+      "max": [
+        0.327,
+        0.416,
+        0.55
+      ],
+      "materialNames": [
+        "Material.018"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/emissive_mesh_88/emissive_mesh_emissive_mesh_static_LOD6_87/Object_158",
+      "depth": 6,
+      "name": "Object_158",
+      "mesh": "Object_73",
+      "triangles": 252,
+      "center": [
+        0.001,
+        0.327,
+        -1.465
+      ],
+      "size": [
+        1.418,
+        0.448,
+        0.564
+      ],
+      "min": [
+        -0.708,
+        0.102,
+        -1.747
+      ],
+      "max": [
+        0.71,
+        0.551,
+        -1.183
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/<Wheel.002_129/Object_204",
+      "depth": 4,
+      "name": "Object_204",
+      "mesh": "Object_92",
+      "triangles": 248,
+      "center": [
+        0.002,
+        0.256,
+        1.73
+      ],
+      "size": [
+        0.054,
+        0.035,
+        0.055
+      ],
+      "min": [
+        -0.025,
+        0.238,
+        1.702
+      ],
+      "max": [
+        0.028,
+        0.273,
+        1.757
+      ],
+      "materialNames": [
+        "Material.023"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_77",
+      "depth": 6,
+      "name": "Object_77",
+      "mesh": "Object_30",
+      "triangles": 246,
+      "center": [
+        0.001,
+        0.712,
+        -0.629
+      ],
+      "size": [
+        0.601,
+        0.018,
+        0.213
+      ],
+      "min": [
+        -0.299,
+        0.703,
+        -0.736
+      ],
+      "max": [
+        0.302,
+        0.721,
+        -0.522
+      ],
+      "materialNames": [
+        "Orange"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_84",
+      "depth": 6,
+      "name": "Object_84",
+      "mesh": "Object_37",
+      "triangles": 236,
+      "center": [
+        0.001,
+        0.271,
+        -0.602
+      ],
+      "size": [
+        1.604,
+        0.029,
+        0.266
+      ],
+      "min": [
+        -0.801,
+        0.256,
+        -0.735
+      ],
+      "max": [
+        0.803,
+        0.285,
+        -0.468
+      ],
+      "materialNames": [
+        "Material.041"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_212",
+      "depth": 4,
+      "name": "Object_212",
+      "mesh": "Object_98",
+      "triangles": 224,
+      "center": [
+        0.246,
+        0.411,
+        0.576
+      ],
+      "size": [
+        0.068,
+        0.042,
+        0.061
+      ],
+      "min": [
+        0.212,
+        0.39,
+        0.545
+      ],
+      "max": [
+        0.28,
+        0.432,
+        0.606
+      ],
+      "materialNames": [
+        "Material.027"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_underside_LOD2_56/Object_100",
+      "depth": 6,
+      "name": "Object_100",
+      "mesh": "Object_46",
+      "triangles": 190,
+      "center": [
+        0.001,
+        0.07,
+        0.129
+      ],
+      "size": [
+        1.018,
+        0.077,
+        2.541
+      ],
+      "min": [
+        -0.508,
+        0.031,
+        -1.141
+      ],
+      "max": [
+        0.51,
+        0.108,
+        1.4
+      ],
+      "materialNames": [
+        "material"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_carpaint_LOD2_64/Object_113",
+      "depth": 6,
+      "name": "Object_113",
+      "mesh": "Object_51",
+      "triangles": 185,
+      "center": [
+        -0.582,
+        0.469,
+        0.377
+      ],
+      "size": [
+        0.189,
+        0.184,
+        0.793
+      ],
+      "min": [
+        -0.676,
+        0.377,
+        -0.019
+      ],
+      "max": [
+        -0.487,
+        0.561,
+        0.774
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_73",
+      "depth": 6,
+      "name": "Object_73",
+      "mesh": "Object_26",
+      "triangles": 159,
+      "center": [
+        0,
+        0.275,
+        0.373
+      ],
+      "size": [
+        0.111,
+        0.111,
+        0.574
+      ],
+      "min": [
+        -0.055,
+        0.219,
+        0.086
+      ],
+      "max": [
+        0.056,
+        0.33,
+        0.66
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_222",
+      "depth": 4,
+      "name": "Object_222",
+      "mesh": "Object_108",
+      "triangles": 152,
+      "center": [
+        0.245,
+        0.38,
+        0.818
+      ],
+      "size": [
+        0.14,
+        0.075,
+        0.342
+      ],
+      "min": [
+        0.175,
+        0.343,
+        0.647
+      ],
+      "max": [
+        0.315,
+        0.418,
+        0.989
+      ],
+      "materialNames": [
+        "Material.036"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_L_anim_4/detach_anim02_3/detach_anim02_tiled_carbon_LOD2_2/Object_10",
+      "depth": 6,
+      "name": "Object_10",
+      "mesh": "Object_2",
+      "triangles": 140,
+      "center": [
+        0.402,
+        0.658,
+        -0.991
+      ],
+      "size": [
+        0.049,
+        0.092,
+        0.379
+      ],
+      "min": [
+        0.378,
+        0.612,
+        -1.181
+      ],
+      "max": [
+        0.427,
+        0.704,
+        -0.802
+      ],
+      "materialNames": [
+        "Blanck"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_R_anim_8/detach_anim03_7/detach_anim03_tiled_carbon_LOD2_6/Object_16",
+      "depth": 6,
+      "name": "Object_16",
+      "mesh": "Object_4",
+      "triangles": 140,
+      "center": [
+        -0.4,
+        0.658,
+        -0.991
+      ],
+      "size": [
+        0.049,
+        0.092,
+        0.379
+      ],
+      "min": [
+        -0.424,
+        0.612,
+        -1.181
+      ],
+      "max": [
+        -0.376,
+        0.704,
+        -0.802
+      ],
+      "materialNames": [
+        "Blanck"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_carpaint_LOD2_64/Object_114",
+      "depth": 6,
+      "name": "Object_114",
+      "mesh": "Object_52",
+      "triangles": 128,
+      "center": [
+        -0.37,
+        0.687,
+        0.377
+      ],
+      "size": [
+        0.043,
+        0.088,
+        0.551
+      ],
+      "min": [
+        -0.392,
+        0.643,
+        0.102
+      ],
+      "max": [
+        -0.349,
+        0.731,
+        0.653
+      ],
+      "materialNames": [
+        "Material.001"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/front_piston_91/front_piston_details_LOD4_90/Object_163",
+      "depth": 6,
+      "name": "Object_163",
+      "mesh": "Object_75",
+      "triangles": 126,
+      "center": [
+        0.001,
+        0.118,
+        1.558
+      ],
+      "size": [
+        0.199,
+        0.069,
+        0.074
+      ],
+      "min": [
+        -0.098,
+        0.084,
+        1.521
+      ],
+      "max": [
+        0.101,
+        0.153,
+        1.595
+      ],
+      "materialNames": [
+        "material_0"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_details_normal_LOD2_72/Object_130",
+      "depth": 6,
+      "name": "Object_130",
+      "mesh": "Object_60",
+      "triangles": 123,
+      "center": [
+        0.624,
+        0.241,
+        -0.022
+      ],
+      "size": [
+        0.289,
+        0.404,
+        1.67
+      ],
+      "min": [
+        0.48,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        0.769,
+        0.443,
+        0.813
+      ],
+      "materialNames": [
+        "material_0"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_details_normal_LOD2_79/Object_144",
+      "depth": 6,
+      "name": "Object_144",
+      "mesh": "Object_67",
+      "triangles": 123,
+      "center": [
+        -0.622,
+        0.241,
+        -0.022
+      ],
+      "size": [
+        0.289,
+        0.404,
+        1.67
+      ],
+      "min": [
+        -0.767,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        -0.478,
+        0.443,
+        0.813
+      ],
+      "materialNames": [
+        "material_0"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_carpaint02_LOD2_68/Object_121",
+      "depth": 6,
+      "name": "Object_121",
+      "mesh": "Object_55",
+      "triangles": 117,
+      "center": [
+        0.699,
+        0.182,
+        -0.009
+      ],
+      "size": [
+        0.172,
+        0.286,
+        1.696
+      ],
+      "min": [
+        0.613,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        0.786,
+        0.324,
+        0.839
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_carpaint02_LOD2_75/Object_135",
+      "depth": 6,
+      "name": "Object_135",
+      "mesh": "Object_62",
+      "triangles": 117,
+      "center": [
+        -0.697,
+        0.182,
+        -0.009
+      ],
+      "size": [
+        0.172,
+        0.286,
+        1.696
+      ],
+      "min": [
+        -0.784,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        -0.611,
+        0.324,
+        0.839
+      ],
+      "materialNames": [
+        "material_0"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_normal_LOD2_48/Object_71",
+      "depth": 6,
+      "name": "Object_71",
+      "mesh": "Object_25",
+      "triangles": 106,
+      "center": [
+        0.001,
+        0.6,
+        -0.284
+      ],
+      "size": [
+        1.062,
+        0.102,
+        0.616
+      ],
+      "min": [
+        -0.53,
+        0.549,
+        -0.593
+      ],
+      "max": [
+        0.532,
+        0.651,
+        0.024
+      ],
+      "materialNames": [
+        "Jantes"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_80",
+      "depth": 6,
+      "name": "Object_80",
+      "mesh": "Object_33",
+      "triangles": 94,
+      "center": [
+        0.001,
+        0.526,
+        -1.724
+      ],
+      "size": [
+        0.265,
+        0.029,
+        0.023
+      ],
+      "min": [
+        -0.132,
+        0.511,
+        -1.736
+      ],
+      "max": [
+        0.134,
+        0.54,
+        -1.713
+      ],
+      "materialNames": [
+        "Material.003"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_grid_LOD2_54/Object_96",
+      "depth": 6,
+      "name": "Object_96",
+      "mesh": "Object_44",
+      "triangles": 80,
+      "center": [
+        0.001,
+        0.236,
+        0.415
+      ],
+      "size": [
+        1.578,
+        0.345,
+        2.357
+      ],
+      "min": [
+        -0.788,
+        0.063,
+        -0.763
+      ],
+      "max": [
+        0.79,
+        0.408,
+        1.594
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_thirdlight_LOD2_53/Object_94",
+      "depth": 6,
+      "name": "Object_94",
+      "mesh": "Object_43",
+      "triangles": 64,
+      "center": [
+        0.001,
+        0.327,
+        -1.344
+      ],
+      "size": [
+        0.018,
+        0.312,
+        0.307
+      ],
+      "min": [
+        -0.008,
+        0.171,
+        -1.497
+      ],
+      "max": [
+        0.01,
+        0.483,
+        -1.191
+      ],
+      "materialNames": [
+        "Lumire_rouge"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_L_60_63/detach_door_L_60_details_normal_LOD2_62/Object_110",
+      "depth": 6,
+      "name": "Object_110",
+      "mesh": "Object_50",
+      "triangles": 59,
+      "center": [
+        0.574,
+        0.386,
+        0.395
+      ],
+      "size": [
+        0.208,
+        0.285,
+        0.743
+      ],
+      "min": [
+        0.47,
+        0.243,
+        0.023
+      ],
+      "max": [
+        0.678,
+        0.528,
+        0.766
+      ],
+      "materialNames": [
+        "material_0"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_details_normal_LOD2_66/Object_118",
+      "depth": 6,
+      "name": "Object_118",
+      "mesh": "Object_54",
+      "triangles": 59,
+      "center": [
+        -0.572,
+        0.386,
+        0.395
+      ],
+      "size": [
+        0.208,
+        0.285,
+        0.743
+      ],
+      "min": [
+        -0.676,
+        0.243,
+        0.023
+      ],
+      "max": [
+        -0.467,
+        0.528,
+        0.766
+      ],
+      "materialNames": [
+        "material_0"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_L_anim_4/detach_anim02_3/detach_anim02_details_LOD2_1/Object_8",
+      "depth": 6,
+      "name": "Object_8",
+      "mesh": "Object_1",
+      "triangles": 54,
+      "center": [
+        0.404,
+        0.676,
+        -0.979
+      ],
+      "size": [
+        0.021,
+        0.035,
+        0.205
+      ],
+      "min": [
+        0.393,
+        0.659,
+        -1.081
+      ],
+      "max": [
+        0.414,
+        0.694,
+        -0.877
+      ],
+      "materialNames": [
+        "Orange"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_38/detach_lip_5_37/detach_lip_5_details_normal_LOD2_36/Object_55",
+      "depth": 7,
+      "name": "Object_55",
+      "mesh": "Object_18",
+      "triangles": 52,
+      "center": [
+        0.001,
+        0.03,
+        1.668
+      ],
+      "size": [
+        0.639,
+        0.002,
+        0.244
+      ],
+      "min": [
+        -0.319,
+        0.029,
+        1.545
+      ],
+      "max": [
+        0.32,
+        0.031,
+        1.79
+      ],
+      "materialNames": [
+        "material_0"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_93/glass_glass_LOD2_92/Object_166",
+      "depth": 6,
+      "name": "Object_166",
+      "mesh": "Object_76",
+      "triangles": 48,
+      "center": [
+        0.001,
+        0.379,
+        1.398
+      ],
+      "size": [
+        1.217,
+        0.036,
+        0.064
+      ],
+      "min": [
+        -0.607,
+        0.361,
+        1.366
+      ],
+      "max": [
+        0.609,
+        0.397,
+        1.43
+      ],
+      "materialNames": [
+        "Carosserie"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_R_anim_8/detach_anim03_7/detach_anim03_details_LOD2_5/Object_14",
+      "depth": 6,
+      "name": "Object_14",
+      "mesh": "Object_3",
+      "triangles": 47,
+      "center": [
+        -0.403,
+        0.676,
+        -0.97
+      ],
+      "size": [
+        0.02,
+        0.034,
+        0.192
+      ],
+      "min": [
+        -0.413,
+        0.659,
+        -1.066
+      ],
+      "max": [
+        -0.393,
+        0.693,
+        -0.874
+      ],
+      "materialNames": [
+        "Orange"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_details_LOD2_71/Object_128",
+      "depth": 6,
+      "name": "Object_128",
+      "mesh": "Object_59",
+      "triangles": 28,
+      "center": [
+        0.783,
+        0.17,
+        -0.766
+      ],
+      "size": [
+        0.027,
+        0.188,
+        0.12
+      ],
+      "min": [
+        0.769,
+        0.076,
+        -0.827
+      ],
+      "max": [
+        0.797,
+        0.264,
+        -0.706
+      ],
+      "materialNames": [
+        "Material.042"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_details_LOD2_78/Object_142",
+      "depth": 6,
+      "name": "Object_142",
+      "mesh": "Object_66",
+      "triangles": 28,
+      "center": [
+        -0.781,
+        0.17,
+        -0.766
+      ],
+      "size": [
+        0.028,
+        0.188,
+        0.12
+      ],
+      "min": [
+        -0.795,
+        0.076,
+        -0.827
+      ],
+      "max": [
+        -0.767,
+        0.264,
+        -0.706
+      ],
+      "materialNames": [
+        "Material.042"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_213",
+      "depth": 4,
+      "name": "Object_213",
+      "mesh": "Object_99",
+      "triangles": 28,
+      "center": [
+        0.246,
+        0.411,
+        0.574
+      ],
+      "size": [
+        0.059,
+        0.036,
+        0.054
+      ],
+      "min": [
+        0.217,
+        0.394,
+        0.547
+      ],
+      "max": [
+        0.276,
+        0.429,
+        0.601
+      ],
+      "materialNames": [
+        "Material.028"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_78",
+      "depth": 6,
+      "name": "Object_78",
+      "mesh": "Object_31",
+      "triangles": 20,
+      "center": [
+        0.001,
+        0.339,
+        0.59
+      ],
+      "size": [
+        1.534,
+        0.013,
+        0.039
+      ],
+      "min": [
+        -0.766,
+        0.332,
+        0.571
+      ],
+      "max": [
+        0.768,
+        0.345,
+        0.61
+      ],
+      "materialNames": [
+        "Vert"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49/Object_79",
+      "depth": 6,
+      "name": "Object_79",
+      "mesh": "Object_32",
+      "triangles": 20,
+      "center": [
+        0.001,
+        0.347,
+        0.551
+      ],
+      "size": [
+        1.513,
+        0.012,
+        0.036
+      ],
+      "min": [
+        -0.756,
+        0.341,
+        0.533
+      ],
+      "max": [
+        0.758,
+        0.353,
+        0.569
+      ],
+      "materialNames": [
+        "Blanc"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_normal_LOD2_50/Object_88",
+      "depth": 6,
+      "name": "Object_88",
+      "mesh": "Object_40",
+      "triangles": 18,
+      "center": [
+        0,
+        0.318,
+        0.404
+      ],
+      "size": [
+        0.04,
+        0.02,
+        0.075
+      ],
+      "min": [
+        -0.02,
+        0.309,
+        0.367
+      ],
+      "max": [
+        0.02,
+        0.328,
+        0.442
+      ],
+      "materialNames": [
+        "BASE"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_grid_LOD2_73/Object_132",
+      "depth": 6,
+      "name": "Object_132",
+      "mesh": "Object_61",
+      "triangles": 18,
+      "center": [
+        0.64,
+        0.251,
+        -0.583
+      ],
+      "size": [
+        0.299,
+        0.344,
+        0.458
+      ],
+      "min": [
+        0.491,
+        0.079,
+        -0.812
+      ],
+      "max": [
+        0.79,
+        0.423,
+        -0.354
+      ],
+      "materialNames": [
+        "Material.017"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_grid_LOD2_80/Object_146",
+      "depth": 6,
+      "name": "Object_146",
+      "mesh": "Object_68",
+      "triangles": 18,
+      "center": [
+        -0.638,
+        0.251,
+        -0.583
+      ],
+      "size": [
+        0.299,
+        0.344,
+        0.458
+      ],
+      "min": [
+        -0.788,
+        0.079,
+        -0.812
+      ],
+      "max": [
+        -0.489,
+        0.423,
+        -0.354
+      ],
+      "materialNames": [
+        "Material.017"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_220",
+      "depth": 4,
+      "name": "Object_220",
+      "mesh": "Object_106",
+      "triangles": 18,
+      "center": [
+        0.246,
+        0.39,
+        0.792
+      ],
+      "size": [
+        0.1,
+        0.042,
+        0.393
+      ],
+      "min": [
+        0.196,
+        0.369,
+        0.596
+      ],
+      "max": [
+        0.296,
+        0.411,
+        0.989
+      ],
+      "materialNames": [
+        "Fer.001"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131/Object_223",
+      "depth": 4,
+      "name": "Object_223",
+      "mesh": "Object_109",
+      "triangles": 18,
+      "center": [
+        0.246,
+        0.43,
+        0.707
+      ],
+      "size": [
+        0.045,
+        0.053,
+        0.014
+      ],
+      "min": [
+        0.223,
+        0.404,
+        0.7
+      ],
+      "max": [
+        0.268,
+        0.456,
+        0.714
+      ],
+      "materialNames": [
+        "Material.037"
+      ],
+      "children": 0,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model",
+      "depth": 0,
+      "name": "Sketchfab_model",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.111,
+        0.388,
+        0.02
+      ],
+      "size": [
+        2.646,
+        0.752,
+        3.556
+      ],
+      "min": [
+        -1.435,
+        0.012,
+        -1.758
+      ],
+      "max": [
+        1.212,
+        0.764,
+        1.798
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root",
+      "depth": 1,
+      "name": "root",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.111,
+        0.388,
+        0.02
+      ],
+      "size": [
+        2.646,
+        0.752,
+        3.556
+      ],
+      "min": [
+        -1.435,
+        0.012,
+        -1.758
+      ],
+      "max": [
+        1.212,
+        0.764,
+        1.798
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode",
+      "depth": 2,
+      "name": "GLTF_SceneRootNode",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.111,
+        0.388,
+        0.02
+      ],
+      "size": [
+        2.646,
+        0.752,
+        3.556
+      ],
+      "min": [
+        -1.435,
+        0.012,
+        -1.758
+      ],
+      "max": [
+        1.212,
+        0.764,
+        1.798
+      ],
+      "materialNames": [],
+      "children": 12,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/detach_wing_10_carpaint_custom03_LOD2_0",
+      "depth": 3,
+      "name": "detach_wing_10_carpaint_custom03_LOD2_0",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.572,
+        0.582,
+        -1.169
+      ],
+      "size": [
+        1.28,
+        0.045,
+        0.373
+      ],
+      "min": [
+        -0.069,
+        0.559,
+        -1.355
+      ],
+      "max": [
+        1.212,
+        0.604,
+        -0.982
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_L_anim_4",
+      "depth": 3,
+      "name": "top_wing_L_anim_4",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.402,
+        0.658,
+        -0.991
+      ],
+      "size": [
+        0.049,
+        0.092,
+        0.379
+      ],
+      "min": [
+        0.378,
+        0.612,
+        -1.181
+      ],
+      "max": [
+        0.427,
+        0.704,
+        -0.802
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_L_anim_4/detach_anim02_3",
+      "depth": 4,
+      "name": "detach_anim02_3",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.402,
+        0.658,
+        -0.991
+      ],
+      "size": [
+        0.049,
+        0.092,
+        0.379
+      ],
+      "min": [
+        0.378,
+        0.612,
+        -1.181
+      ],
+      "max": [
+        0.427,
+        0.704,
+        -0.802
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_L_anim_4/detach_anim02_3/detach_anim02_details_LOD2_1",
+      "depth": 5,
+      "name": "detach_anim02_details_LOD2_1",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.404,
+        0.676,
+        -0.979
+      ],
+      "size": [
+        0.021,
+        0.035,
+        0.205
+      ],
+      "min": [
+        0.393,
+        0.659,
+        -1.081
+      ],
+      "max": [
+        0.414,
+        0.694,
+        -0.877
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_L_anim_4/detach_anim02_3/detach_anim02_tiled_carbon_LOD2_2",
+      "depth": 5,
+      "name": "detach_anim02_tiled_carbon_LOD2_2",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.402,
+        0.658,
+        -0.991
+      ],
+      "size": [
+        0.049,
+        0.092,
+        0.379
+      ],
+      "min": [
+        0.378,
+        0.612,
+        -1.181
+      ],
+      "max": [
+        0.427,
+        0.704,
+        -0.802
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_R_anim_8",
+      "depth": 3,
+      "name": "top_wing_R_anim_8",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.4,
+        0.658,
+        -0.991
+      ],
+      "size": [
+        0.049,
+        0.092,
+        0.379
+      ],
+      "min": [
+        -0.424,
+        0.612,
+        -1.181
+      ],
+      "max": [
+        -0.376,
+        0.704,
+        -0.802
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_R_anim_8/detach_anim03_7",
+      "depth": 4,
+      "name": "detach_anim03_7",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.4,
+        0.658,
+        -0.991
+      ],
+      "size": [
+        0.049,
+        0.092,
+        0.379
+      ],
+      "min": [
+        -0.424,
+        0.612,
+        -1.181
+      ],
+      "max": [
+        -0.376,
+        0.704,
+        -0.802
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_R_anim_8/detach_anim03_7/detach_anim03_details_LOD2_5",
+      "depth": 5,
+      "name": "detach_anim03_details_LOD2_5",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.403,
+        0.676,
+        -0.97
+      ],
+      "size": [
+        0.02,
+        0.034,
+        0.192
+      ],
+      "min": [
+        -0.413,
+        0.659,
+        -1.066
+      ],
+      "max": [
+        -0.393,
+        0.693,
+        -0.874
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/top_wing_R_anim_8/detach_anim03_7/detach_anim03_tiled_carbon_LOD2_6",
+      "depth": 5,
+      "name": "detach_anim03_tiled_carbon_LOD2_6",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.4,
+        0.658,
+        -0.991
+      ],
+      "size": [
+        0.049,
+        0.092,
+        0.379
+      ],
+      "min": [
+        -0.424,
+        0.612,
+        -1.181
+      ],
+      "max": [
+        -0.376,
+        0.704,
+        -0.802
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/detach_anim04_LOD_tiled_carbon_LOD16_9",
+      "depth": 3,
+      "name": "detach_anim04_LOD_tiled_carbon_LOD16_9",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.017,
+        0.22,
+        0.749
+      ],
+      "size": [
+        0.074,
+        0.214,
+        0.657
+      ],
+      "min": [
+        -0.054,
+        0.113,
+        0.42
+      ],
+      "max": [
+        0.02,
+        0.327,
+        1.078
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/detach_03_5_details_orange_accents_LOD2_10",
+      "depth": 3,
+      "name": "detach_03_5_details_orange_accents_LOD2_10",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -1.397,
+        0.218,
+        0.301
+      ],
+      "size": [
+        0.074,
+        0.211,
+        0.654
+      ],
+      "min": [
+        -1.435,
+        0.113,
+        -0.025
+      ],
+      "max": [
+        -1.36,
+        0.324,
+        0.628
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126",
+      "depth": 3,
+      "name": "Lambo T M_126",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.008,
+        0.396,
+        0.02
+      ],
+      "size": [
+        1.668,
+        0.735,
+        3.556
+      ],
+      "min": [
+        -0.826,
+        0.029,
+        -1.758
+      ],
+      "max": [
+        0.842,
+        0.764,
+        1.798
+      ],
+      "materialNames": [],
+      "children": 17,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20",
+      "depth": 4,
+      "name": "anteriore_dest_20",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.668,
+        0.254,
+        1.04
+      ],
+      "size": [
+        0.271,
+        0.424,
+        0.423
+      ],
+      "min": [
+        -0.804,
+        0.042,
+        0.828
+      ],
+      "max": [
+        -0.533,
+        0.466,
+        1.251
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19",
+      "depth": 5,
+      "name": "bone_wheel_FR_rotation_3_19",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.668,
+        0.254,
+        1.04
+      ],
+      "size": [
+        0.271,
+        0.424,
+        0.423
+      ],
+      "min": [
+        -0.804,
+        0.042,
+        0.828
+      ],
+      "max": [
+        -0.533,
+        0.466,
+        1.251
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14",
+      "depth": 6,
+      "name": "wheelFR_3_14",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.668,
+        0.252,
+        1.04
+      ],
+      "size": [
+        0.271,
+        0.422,
+        0.423
+      ],
+      "min": [
+        -0.804,
+        0.042,
+        0.828
+      ],
+      "max": [
+        -0.533,
+        0.463,
+        1.251
+      ],
+      "materialNames": [],
+      "children": 3,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_details_normal_LOD2_3_11",
+      "depth": 7,
+      "name": "wheelFR_details_normal_LOD2_3_11",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.645,
+        0.256,
+        1.04
+      ],
+      "size": [
+        0.226,
+        0.407,
+        0.407
+      ],
+      "min": [
+        -0.758,
+        0.053,
+        0.836
+      ],
+      "max": [
+        -0.533,
+        0.46,
+        1.244
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_emissive_ID_rims_LOD2_3_12",
+      "depth": 7,
+      "name": "wheelFR_emissive_ID_rims_LOD2_3_12",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.77,
+        0.254,
+        1.039
+      ],
+      "size": [
+        0.046,
+        0.4,
+        0.396
+      ],
+      "min": [
+        -0.793,
+        0.054,
+        0.841
+      ],
+      "max": [
+        -0.747,
+        0.454,
+        1.237
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_3_14/wheelFR_rims_LOD2_3_13",
+      "depth": 7,
+      "name": "wheelFR_rims_LOD2_3_13",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.763,
+        0.252,
+        1.04
+      ],
+      "size": [
+        0.081,
+        0.422,
+        0.423
+      ],
+      "min": [
+        -0.804,
+        0.042,
+        0.828
+      ],
+      "max": [
+        -0.723,
+        0.463,
+        1.251
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17",
+      "depth": 6,
+      "name": "wheelFR_motion_3_17",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.761,
+        0.256,
+        1.04
+      ],
+      "size": [
+        0.061,
+        0.419,
+        0.419
+      ],
+      "min": [
+        -0.791,
+        0.046,
+        0.831
+      ],
+      "max": [
+        -0.73,
+        0.466,
+        1.25
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15",
+      "depth": 7,
+      "name": "wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_3_15",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.763,
+        0.255,
+        1.04
+      ],
+      "size": [
+        0.052,
+        0.408,
+        0.408
+      ],
+      "min": [
+        -0.789,
+        0.051,
+        0.836
+      ],
+      "max": [
+        -0.737,
+        0.459,
+        1.244
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_dest_20/bone_wheel_FR_rotation_3_19/wheelFR_motion_3_17/wheelFR_motion_rims_LOD2_3_16",
+      "depth": 7,
+      "name": "wheelFR_motion_rims_LOD2_3_16",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.761,
+        0.256,
+        1.04
+      ],
+      "size": [
+        0.061,
+        0.419,
+        0.419
+      ],
+      "min": [
+        -0.791,
+        0.046,
+        0.831
+      ],
+      "max": [
+        -0.73,
+        0.466,
+        1.25
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30",
+      "depth": 4,
+      "name": "anteriore_sins_30",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.668,
+        0.254,
+        1.04
+      ],
+      "size": [
+        0.271,
+        0.424,
+        0.423
+      ],
+      "min": [
+        0.532,
+        0.042,
+        0.829
+      ],
+      "max": [
+        0.804,
+        0.466,
+        1.252
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29",
+      "depth": 5,
+      "name": "bone_wheel_FR_rotation_4_29",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.668,
+        0.254,
+        1.04
+      ],
+      "size": [
+        0.271,
+        0.424,
+        0.423
+      ],
+      "min": [
+        0.532,
+        0.042,
+        0.829
+      ],
+      "max": [
+        0.804,
+        0.466,
+        1.252
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24",
+      "depth": 6,
+      "name": "wheelFR_4_24",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.668,
+        0.252,
+        1.04
+      ],
+      "size": [
+        0.271,
+        0.422,
+        0.423
+      ],
+      "min": [
+        0.532,
+        0.042,
+        0.829
+      ],
+      "max": [
+        0.804,
+        0.463,
+        1.252
+      ],
+      "materialNames": [],
+      "children": 3,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_details_normal_LOD2_4_21",
+      "depth": 7,
+      "name": "wheelFR_details_normal_LOD2_4_21",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.645,
+        0.256,
+        1.041
+      ],
+      "size": [
+        0.226,
+        0.407,
+        0.407
+      ],
+      "min": [
+        0.532,
+        0.053,
+        0.837
+      ],
+      "max": [
+        0.758,
+        0.46,
+        1.244
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_emissive_ID_rims_LOD2_4_22",
+      "depth": 7,
+      "name": "wheelFR_emissive_ID_rims_LOD2_4_22",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.771,
+        0.254,
+        1.041
+      ],
+      "size": [
+        0.046,
+        0.4,
+        0.396
+      ],
+      "min": [
+        0.748,
+        0.054,
+        0.843
+      ],
+      "max": [
+        0.794,
+        0.454,
+        1.238
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_4_24/wheelFR_rims_LOD2_4_23",
+      "depth": 7,
+      "name": "wheelFR_rims_LOD2_4_23",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.763,
+        0.252,
+        1.04
+      ],
+      "size": [
+        0.081,
+        0.422,
+        0.423
+      ],
+      "min": [
+        0.723,
+        0.042,
+        0.829
+      ],
+      "max": [
+        0.804,
+        0.463,
+        1.252
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27",
+      "depth": 6,
+      "name": "wheelFR_motion_4_27",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.76,
+        0.256,
+        1.04
+      ],
+      "size": [
+        0.061,
+        0.419,
+        0.419
+      ],
+      "min": [
+        0.73,
+        0.046,
+        0.83
+      ],
+      "max": [
+        0.791,
+        0.466,
+        1.249
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25",
+      "depth": 7,
+      "name": "wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_4_25",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.765,
+        0.255,
+        1.04
+      ],
+      "size": [
+        0.052,
+        0.408,
+        0.408
+      ],
+      "min": [
+        0.739,
+        0.051,
+        0.836
+      ],
+      "max": [
+        0.791,
+        0.459,
+        1.244
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/anteriore_sins_30/bone_wheel_FR_rotation_4_29/wheelFR_motion_4_27/wheelFR_motion_rims_LOD2_4_26",
+      "depth": 7,
+      "name": "wheelFR_motion_rims_LOD2_4_26",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.76,
+        0.256,
+        1.04
+      ],
+      "size": [
+        0.061,
+        0.419,
+        0.419
+      ],
+      "min": [
+        0.73,
+        0.046,
+        0.83
+      ],
+      "max": [
+        0.791,
+        0.466,
+        1.249
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_38",
+      "depth": 4,
+      "name": "bone_anim_front_38",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.048,
+        1.668
+      ],
+      "size": [
+        0.642,
+        0.038,
+        0.247
+      ],
+      "min": [
+        -0.32,
+        0.029,
+        1.544
+      ],
+      "max": [
+        0.322,
+        0.067,
+        1.791
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_38/detach_lip_5_37",
+      "depth": 5,
+      "name": "detach_lip_5_37",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.048,
+        1.668
+      ],
+      "size": [
+        0.642,
+        0.038,
+        0.247
+      ],
+      "min": [
+        -0.32,
+        0.029,
+        1.544
+      ],
+      "max": [
+        0.322,
+        0.067,
+        1.791
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_38/detach_lip_5_37/detach_lip_5_details_LOD2_35",
+      "depth": 6,
+      "name": "detach_lip_5_details_LOD2_35",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.048,
+        1.668
+      ],
+      "size": [
+        0.642,
+        0.038,
+        0.247
+      ],
+      "min": [
+        -0.32,
+        0.029,
+        1.544
+      ],
+      "max": [
+        0.322,
+        0.067,
+        1.791
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_38/detach_lip_5_37/detach_lip_5_details_normal_LOD2_36",
+      "depth": 6,
+      "name": "detach_lip_5_details_normal_LOD2_36",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.03,
+        1.668
+      ],
+      "size": [
+        0.639,
+        0.002,
+        0.244
+      ],
+      "min": [
+        -0.319,
+        0.029,
+        1.545
+      ],
+      "max": [
+        0.32,
+        0.031,
+        1.79
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_piston_41",
+      "depth": 4,
+      "name": "bone_anim_front_piston_41",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.002,
+        0.065,
+        1.648
+      ],
+      "size": [
+        0.188,
+        0.054,
+        0.121
+      ],
+      "min": [
+        -0.092,
+        0.038,
+        1.587
+      ],
+      "max": [
+        0.096,
+        0.093,
+        1.709
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_piston_41/piston_moving_40",
+      "depth": 5,
+      "name": "piston_moving_40",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.002,
+        0.065,
+        1.648
+      ],
+      "size": [
+        0.188,
+        0.054,
+        0.121
+      ],
+      "min": [
+        -0.092,
+        0.038,
+        1.587
+      ],
+      "max": [
+        0.096,
+        0.093,
+        1.709
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/bone_anim_front_piston_41/piston_moving_40/piston_moving_details_LOD2_39",
+      "depth": 6,
+      "name": "piston_moving_details_LOD2_39",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.002,
+        0.065,
+        1.648
+      ],
+      "size": [
+        0.188,
+        0.054,
+        0.121
+      ],
+      "min": [
+        -0.092,
+        0.038,
+        1.587
+      ],
+      "max": [
+        0.096,
+        0.093,
+        1.709
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57",
+      "depth": 4,
+      "name": "chassis_57",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.391,
+        0.02
+      ],
+      "size": [
+        1.609,
+        0.72,
+        3.556
+      ],
+      "min": [
+        -0.803,
+        0.031,
+        -1.758
+      ],
+      "max": [
+        0.806,
+        0.751,
+        1.798
+      ],
+      "materialNames": [],
+      "children": 13,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint02_LOD2_44",
+      "depth": 5,
+      "name": "chassis_carpaint02_LOD2_44",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.313,
+        -0.005
+      ],
+      "size": [
+        1.572,
+        0.563,
+        3.485
+      ],
+      "min": [
+        -0.785,
+        0.031,
+        -1.747
+      ],
+      "max": [
+        0.787,
+        0.594,
+        1.738
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_carbon_LOD2_45",
+      "depth": 5,
+      "name": "chassis_carpaint_carbon_LOD2_45",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.484,
+        1.062
+      ],
+      "size": [
+        1.391,
+        0.136,
+        0.542
+      ],
+      "min": [
+        -0.695,
+        0.416,
+        0.791
+      ],
+      "max": [
+        0.697,
+        0.552,
+        1.333
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_custom01_LOD2_46",
+      "depth": 5,
+      "name": "chassis_carpaint_custom01_LOD2_46",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.291,
+        1.516
+      ],
+      "size": [
+        1.113,
+        0.159,
+        0.564
+      ],
+      "min": [
+        -0.555,
+        0.212,
+        1.234
+      ],
+      "max": [
+        0.558,
+        0.371,
+        1.798
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_LOD2_47",
+      "depth": 5,
+      "name": "chassis_carpaint_LOD2_47",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.391,
+        0.019
+      ],
+      "size": [
+        1.609,
+        0.715,
+        3.554
+      ],
+      "min": [
+        -0.803,
+        0.034,
+        -1.758
+      ],
+      "max": [
+        0.806,
+        0.749,
+        1.796
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_carpaint_normal_LOD2_48",
+      "depth": 5,
+      "name": "chassis_carpaint_normal_LOD2_48",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.6,
+        -0.284
+      ],
+      "size": [
+        1.062,
+        0.102,
+        0.616
+      ],
+      "min": [
+        -0.53,
+        0.549,
+        -0.593
+      ],
+      "max": [
+        0.532,
+        0.651,
+        0.024
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_LOD2_49",
+      "depth": 5,
+      "name": "chassis_details_LOD2_49",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.393,
+        -0.017
+      ],
+      "size": [
+        1.604,
+        0.716,
+        3.484
+      ],
+      "min": [
+        -0.801,
+        0.035,
+        -1.758
+      ],
+      "max": [
+        0.803,
+        0.751,
+        1.725
+      ],
+      "materialNames": [],
+      "children": 12,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_details_normal_LOD2_50",
+      "depth": 5,
+      "name": "chassis_details_normal_LOD2_50",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.381,
+        0.001
+      ],
+      "size": [
+        1.57,
+        0.7,
+        3.429
+      ],
+      "min": [
+        -0.784,
+        0.031,
+        -1.713
+      ],
+      "max": [
+        0.786,
+        0.731,
+        1.716
+      ],
+      "materialNames": [],
+      "children": 3,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_neons_LOD2_51",
+      "depth": 5,
+      "name": "chassis_emissive_ID_neons_LOD2_51",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0,
+        0.591,
+        -0.89
+      ],
+      "size": [
+        0.301,
+        0.207,
+        1.23
+      ],
+      "min": [
+        -0.15,
+        0.487,
+        -1.505
+      ],
+      "max": [
+        0.151,
+        0.694,
+        -0.276
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_rear_LOD2_52",
+      "depth": 5,
+      "name": "chassis_emissive_ID_rear_LOD2_52",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.49,
+        -1.543
+      ],
+      "size": [
+        1.393,
+        0.11,
+        0.282
+      ],
+      "min": [
+        -0.695,
+        0.435,
+        -1.684
+      ],
+      "max": [
+        0.697,
+        0.545,
+        -1.403
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_emissive_ID_thirdlight_LOD2_53",
+      "depth": 5,
+      "name": "chassis_emissive_ID_thirdlight_LOD2_53",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.327,
+        -1.344
+      ],
+      "size": [
+        0.018,
+        0.312,
+        0.307
+      ],
+      "min": [
+        -0.008,
+        0.171,
+        -1.497
+      ],
+      "max": [
+        0.01,
+        0.483,
+        -1.191
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_grid_LOD2_54",
+      "depth": 5,
+      "name": "chassis_grid_LOD2_54",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.236,
+        0.415
+      ],
+      "size": [
+        1.578,
+        0.345,
+        2.357
+      ],
+      "min": [
+        -0.788,
+        0.063,
+        -0.763
+      ],
+      "max": [
+        0.79,
+        0.408,
+        1.594
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_tiled_carbon_LOD2_55",
+      "depth": 5,
+      "name": "chassis_tiled_carbon_LOD2_55",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.461,
+        -0.003
+      ],
+      "size": [
+        1.079,
+        0.47,
+        2.228
+      ],
+      "min": [
+        -0.538,
+        0.226,
+        -1.117
+      ],
+      "max": [
+        0.541,
+        0.696,
+        1.111
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/chassis_57/chassis_underside_LOD2_56",
+      "depth": 5,
+      "name": "chassis_underside_LOD2_56",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.07,
+        0.129
+      ],
+      "size": [
+        1.018,
+        0.077,
+        2.541
+      ],
+      "min": [
+        -0.508,
+        0.031,
+        -1.141
+      ],
+      "max": [
+        0.51,
+        0.108,
+        1.4
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_diffuser_5_59",
+      "depth": 4,
+      "name": "detach_diffuser_5_59",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.15,
+        -1.284
+      ],
+      "size": [
+        1.591,
+        0.204,
+        0.869
+      ],
+      "min": [
+        -0.795,
+        0.048,
+        -1.718
+      ],
+      "max": [
+        0.797,
+        0.252,
+        -0.849
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_diffuser_5_59/detach_diffuser_5_details_LOD2_58",
+      "depth": 5,
+      "name": "detach_diffuser_5_details_LOD2_58",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.15,
+        -1.284
+      ],
+      "size": [
+        1.591,
+        0.204,
+        0.869
+      ],
+      "min": [
+        -0.795,
+        0.048,
+        -1.718
+      ],
+      "max": [
+        0.797,
+        0.252,
+        -0.849
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_L_60_63",
+      "depth": 4,
+      "name": "detach_door_L_60_63",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.402,
+        0.497,
+        0.42
+      ],
+      "size": [
+        0.553,
+        0.508,
+        0.88
+      ],
+      "min": [
+        0.125,
+        0.243,
+        -0.02
+      ],
+      "max": [
+        0.678,
+        0.751,
+        0.86
+      ],
+      "materialNames": [],
+      "children": 3,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_L_60_63/detach_door_L_60_carpaint_LOD2_60",
+      "depth": 5,
+      "name": "detach_door_L_60_carpaint_LOD2_60",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.515,
+        0.554,
+        0.377
+      ],
+      "size": [
+        0.327,
+        0.354,
+        0.793
+      ],
+      "min": [
+        0.351,
+        0.377,
+        -0.019
+      ],
+      "max": [
+        0.678,
+        0.731,
+        0.774
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_L_60_63/detach_door_L_60_details_LOD2_61",
+      "depth": 5,
+      "name": "detach_door_L_60_details_LOD2_61",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.332,
+        0.497,
+        0.42
+      ],
+      "size": [
+        0.412,
+        0.508,
+        0.88
+      ],
+      "min": [
+        0.125,
+        0.243,
+        -0.02
+      ],
+      "max": [
+        0.538,
+        0.751,
+        0.86
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_L_60_63/detach_door_L_60_details_normal_LOD2_62",
+      "depth": 5,
+      "name": "detach_door_L_60_details_normal_LOD2_62",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.574,
+        0.386,
+        0.395
+      ],
+      "size": [
+        0.208,
+        0.285,
+        0.743
+      ],
+      "min": [
+        0.47,
+        0.243,
+        0.023
+      ],
+      "max": [
+        0.678,
+        0.528,
+        0.766
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67",
+      "depth": 4,
+      "name": "detach_door_R_60_67",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.399,
+        0.497,
+        0.42
+      ],
+      "size": [
+        0.553,
+        0.508,
+        0.88
+      ],
+      "min": [
+        -0.676,
+        0.243,
+        -0.02
+      ],
+      "max": [
+        -0.123,
+        0.751,
+        0.86
+      ],
+      "materialNames": [],
+      "children": 3,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_carpaint_LOD2_64",
+      "depth": 5,
+      "name": "detach_door_R_60_carpaint_LOD2_64",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.512,
+        0.554,
+        0.377
+      ],
+      "size": [
+        0.327,
+        0.354,
+        0.793
+      ],
+      "min": [
+        -0.676,
+        0.377,
+        -0.019
+      ],
+      "max": [
+        -0.349,
+        0.731,
+        0.774
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_details_LOD2_65",
+      "depth": 5,
+      "name": "detach_door_R_60_details_LOD2_65",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.329,
+        0.497,
+        0.42
+      ],
+      "size": [
+        0.413,
+        0.508,
+        0.88
+      ],
+      "min": [
+        -0.535,
+        0.243,
+        -0.02
+      ],
+      "max": [
+        -0.123,
+        0.751,
+        0.86
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_door_R_60_67/detach_door_R_60_details_normal_LOD2_66",
+      "depth": 5,
+      "name": "detach_door_R_60_details_normal_LOD2_66",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.572,
+        0.386,
+        0.395
+      ],
+      "size": [
+        0.208,
+        0.285,
+        0.743
+      ],
+      "min": [
+        -0.676,
+        0.243,
+        0.023
+      ],
+      "max": [
+        -0.467,
+        0.528,
+        0.766
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74",
+      "depth": 4,
+      "name": "detach_skirt_L_15_74",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.641,
+        0.241,
+        -0.009
+      ],
+      "size": [
+        0.324,
+        0.405,
+        1.699
+      ],
+      "min": [
+        0.48,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        0.803,
+        0.443,
+        0.841
+      ],
+      "materialNames": [],
+      "children": 6,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_carpaint02_LOD2_68",
+      "depth": 5,
+      "name": "detach_skirt_L_15_carpaint02_LOD2_68",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.699,
+        0.182,
+        -0.009
+      ],
+      "size": [
+        0.172,
+        0.286,
+        1.696
+      ],
+      "min": [
+        0.613,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        0.786,
+        0.324,
+        0.839
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_carpaint03_LOD2_69",
+      "depth": 5,
+      "name": "detach_skirt_L_15_carpaint03_LOD2_69",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.623,
+        0.264,
+        0.009
+      ],
+      "size": [
+        0.27,
+        0.36,
+        1.551
+      ],
+      "min": [
+        0.488,
+        0.084,
+        -0.767
+      ],
+      "max": [
+        0.758,
+        0.443,
+        0.784
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_carpaint_LOD2_70",
+      "depth": 5,
+      "name": "detach_skirt_L_15_carpaint_LOD2_70",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.722,
+        0.182,
+        -0.009
+      ],
+      "size": [
+        0.163,
+        0.286,
+        1.699
+      ],
+      "min": [
+        0.64,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        0.803,
+        0.324,
+        0.841
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_details_LOD2_71",
+      "depth": 5,
+      "name": "detach_skirt_L_15_details_LOD2_71",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.722,
+        0.17,
+        -0.247
+      ],
+      "size": [
+        0.15,
+        0.188,
+        1.158
+      ],
+      "min": [
+        0.647,
+        0.076,
+        -0.827
+      ],
+      "max": [
+        0.797,
+        0.264,
+        0.332
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_details_normal_LOD2_72",
+      "depth": 5,
+      "name": "detach_skirt_L_15_details_normal_LOD2_72",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.624,
+        0.241,
+        -0.022
+      ],
+      "size": [
+        0.289,
+        0.404,
+        1.67
+      ],
+      "min": [
+        0.48,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        0.769,
+        0.443,
+        0.813
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_L_15_74/detach_skirt_L_15_grid_LOD2_73",
+      "depth": 5,
+      "name": "detach_skirt_L_15_grid_LOD2_73",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.64,
+        0.251,
+        -0.583
+      ],
+      "size": [
+        0.299,
+        0.344,
+        0.458
+      ],
+      "min": [
+        0.491,
+        0.079,
+        -0.812
+      ],
+      "max": [
+        0.79,
+        0.423,
+        -0.354
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81",
+      "depth": 4,
+      "name": "detach_skirt_R_15_81",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.639,
+        0.241,
+        -0.009
+      ],
+      "size": [
+        0.324,
+        0.405,
+        1.699
+      ],
+      "min": [
+        -0.801,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        -0.478,
+        0.443,
+        0.841
+      ],
+      "materialNames": [],
+      "children": 6,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_carpaint02_LOD2_75",
+      "depth": 5,
+      "name": "detach_skirt_R_15_carpaint02_LOD2_75",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.697,
+        0.182,
+        -0.009
+      ],
+      "size": [
+        0.172,
+        0.286,
+        1.696
+      ],
+      "min": [
+        -0.784,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        -0.611,
+        0.324,
+        0.839
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_carpaint03_LOD2_76",
+      "depth": 5,
+      "name": "detach_skirt_R_15_carpaint03_LOD2_76",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.621,
+        0.264,
+        0.009
+      ],
+      "size": [
+        0.269,
+        0.36,
+        1.551
+      ],
+      "min": [
+        -0.755,
+        0.084,
+        -0.767
+      ],
+      "max": [
+        -0.486,
+        0.443,
+        0.784
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_carpaint_LOD2_77",
+      "depth": 5,
+      "name": "detach_skirt_R_15_carpaint_LOD2_77",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.72,
+        0.182,
+        -0.009
+      ],
+      "size": [
+        0.163,
+        0.286,
+        1.699
+      ],
+      "min": [
+        -0.801,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        -0.638,
+        0.324,
+        0.841
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_details_LOD2_78",
+      "depth": 5,
+      "name": "detach_skirt_R_15_details_LOD2_78",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.722,
+        0.17,
+        -0.248
+      ],
+      "size": [
+        0.146,
+        0.188,
+        1.157
+      ],
+      "min": [
+        -0.795,
+        0.076,
+        -0.827
+      ],
+      "max": [
+        -0.649,
+        0.264,
+        0.33
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_details_normal_LOD2_79",
+      "depth": 5,
+      "name": "detach_skirt_R_15_details_normal_LOD2_79",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.622,
+        0.241,
+        -0.022
+      ],
+      "size": [
+        0.289,
+        0.404,
+        1.67
+      ],
+      "min": [
+        -0.767,
+        0.039,
+        -0.858
+      ],
+      "max": [
+        -0.478,
+        0.443,
+        0.813
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_skirt_R_15_81/detach_skirt_R_15_grid_LOD2_80",
+      "depth": 5,
+      "name": "detach_skirt_R_15_grid_LOD2_80",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.638,
+        0.251,
+        -0.583
+      ],
+      "size": [
+        0.299,
+        0.344,
+        0.458
+      ],
+      "min": [
+        -0.788,
+        0.079,
+        -0.812
+      ],
+      "max": [
+        -0.489,
+        0.423,
+        -0.354
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_trunk_50_85",
+      "depth": 4,
+      "name": "detach_trunk_50_85",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.634,
+        -1.007
+      ],
+      "size": [
+        0.696,
+        0.193,
+        1.227
+      ],
+      "min": [
+        -0.347,
+        0.538,
+        -1.62
+      ],
+      "max": [
+        0.349,
+        0.731,
+        -0.394
+      ],
+      "materialNames": [],
+      "children": 3,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_trunk_50_85/detach_trunk_50_carpaint_custom02_LOD2_82",
+      "depth": 5,
+      "name": "detach_trunk_50_carpaint_custom02_LOD2_82",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.634,
+        -1.007
+      ],
+      "size": [
+        0.696,
+        0.193,
+        1.227
+      ],
+      "min": [
+        -0.347,
+        0.538,
+        -1.62
+      ],
+      "max": [
+        0.349,
+        0.731,
+        -0.394
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_trunk_50_85/detach_trunk_50_details_normal_LOD2_83",
+      "depth": 5,
+      "name": "detach_trunk_50_details_normal_LOD2_83",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.628,
+        -1.007
+      ],
+      "size": [
+        0.696,
+        0.18,
+        1.227
+      ],
+      "min": [
+        -0.347,
+        0.538,
+        -1.62
+      ],
+      "max": [
+        0.349,
+        0.718,
+        -0.394
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/detach_trunk_50_85/detach_trunk_50_tiled_carbon_LOD2_84",
+      "depth": 5,
+      "name": "detach_trunk_50_tiled_carbon_LOD2_84",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.677,
+        -0.792
+      ],
+      "size": [
+        0.487,
+        0.099,
+        0.78
+      ],
+      "min": [
+        -0.242,
+        0.627,
+        -1.183
+      ],
+      "max": [
+        0.245,
+        0.726,
+        -0.402
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/emissive_mesh_88",
+      "depth": 4,
+      "name": "emissive_mesh_88",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.314,
+        -1.259
+      ],
+      "size": [
+        1.418,
+        0.529,
+        0.986
+      ],
+      "min": [
+        -0.708,
+        0.05,
+        -1.752
+      ],
+      "max": [
+        0.71,
+        0.579,
+        -0.766
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/emissive_mesh_88/emissive_mesh_emissive_mesh_exhaust_LOD6_86",
+      "depth": 5,
+      "name": "emissive_mesh_emissive_mesh_exhaust_LOD6_86",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.314,
+        -1.259
+      ],
+      "size": [
+        1.403,
+        0.529,
+        0.986
+      ],
+      "min": [
+        -0.701,
+        0.05,
+        -1.752
+      ],
+      "max": [
+        0.702,
+        0.579,
+        -0.766
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/emissive_mesh_88/emissive_mesh_emissive_mesh_static_LOD6_87",
+      "depth": 5,
+      "name": "emissive_mesh_emissive_mesh_static_LOD6_87",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.327,
+        -1.465
+      ],
+      "size": [
+        1.418,
+        0.448,
+        0.564
+      ],
+      "min": [
+        -0.708,
+        0.102,
+        -1.747
+      ],
+      "max": [
+        0.71,
+        0.551,
+        -1.183
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/front_piston_91",
+      "depth": 4,
+      "name": "front_piston_91",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.118,
+        1.558
+      ],
+      "size": [
+        0.201,
+        0.07,
+        0.075
+      ],
+      "min": [
+        -0.099,
+        0.083,
+        1.521
+      ],
+      "max": [
+        0.102,
+        0.153,
+        1.596
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/front_piston_91/front_piston_details_LOD2_89",
+      "depth": 5,
+      "name": "front_piston_details_LOD2_89",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.118,
+        1.558
+      ],
+      "size": [
+        0.201,
+        0.07,
+        0.075
+      ],
+      "min": [
+        -0.099,
+        0.083,
+        1.521
+      ],
+      "max": [
+        0.102,
+        0.153,
+        1.596
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/front_piston_91/front_piston_details_LOD4_90",
+      "depth": 5,
+      "name": "front_piston_details_LOD4_90",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.118,
+        1.558
+      ],
+      "size": [
+        0.199,
+        0.069,
+        0.074
+      ],
+      "min": [
+        -0.098,
+        0.084,
+        1.521
+      ],
+      "max": [
+        0.101,
+        0.153,
+        1.595
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_93",
+      "depth": 4,
+      "name": "glass_93",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.458,
+        0.018
+      ],
+      "size": [
+        1.399,
+        0.612,
+        3.408
+      ],
+      "min": [
+        -0.698,
+        0.151,
+        -1.686
+      ],
+      "max": [
+        0.701,
+        0.764,
+        1.722
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_93/glass_glass_LOD2_92",
+      "depth": 5,
+      "name": "glass_glass_LOD2_92",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.458,
+        0.018
+      ],
+      "size": [
+        1.399,
+        0.612,
+        3.408
+      ],
+      "min": [
+        -0.698,
+        0.151,
+        -1.686
+      ],
+      "max": [
+        0.701,
+        0.764,
+        1.722
+      ],
+      "materialNames": [],
+      "children": 4,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_detachable_95",
+      "depth": 4,
+      "name": "glass_detachable_95",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.593,
+        -0.272
+      ],
+      "size": [
+        1.076,
+        0.336,
+        2.263
+      ],
+      "min": [
+        -0.537,
+        0.425,
+        -1.404
+      ],
+      "max": [
+        0.539,
+        0.761,
+        0.86
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/glass_detachable_95/glass_detachable_glass_LOD2_94",
+      "depth": 5,
+      "name": "glass_detachable_glass_LOD2_94",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.001,
+        0.593,
+        -0.272
+      ],
+      "size": [
+        1.076,
+        0.336,
+        2.263
+      ],
+      "min": [
+        -0.537,
+        0.425,
+        -1.404
+      ],
+      "max": [
+        0.539,
+        0.761,
+        0.86
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105",
+      "depth": 4,
+      "name": "post_dest_105",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.633,
+        0.274,
+        -1.04
+      ],
+      "size": [
+        0.388,
+        0.456,
+        0.456
+      ],
+      "min": [
+        -0.826,
+        0.046,
+        -1.267
+      ],
+      "max": [
+        -0.439,
+        0.502,
+        -0.812
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104",
+      "depth": 5,
+      "name": "bone_wheel_FR_rotation_104",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.633,
+        0.274,
+        -1.04
+      ],
+      "size": [
+        0.388,
+        0.456,
+        0.456
+      ],
+      "min": [
+        -0.826,
+        0.046,
+        -1.267
+      ],
+      "max": [
+        -0.439,
+        0.502,
+        -0.812
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99",
+      "depth": 6,
+      "name": "wheelFR_99",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.633,
+        0.273,
+        -1.04
+      ],
+      "size": [
+        0.388,
+        0.454,
+        0.456
+      ],
+      "min": [
+        -0.826,
+        0.046,
+        -1.267
+      ],
+      "max": [
+        -0.439,
+        0.5,
+        -0.812
+      ],
+      "materialNames": [],
+      "children": 3,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_details_normal_LOD2_96",
+      "depth": 7,
+      "name": "wheelFR_details_normal_LOD2_96",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.6,
+        0.277,
+        -1.04
+      ],
+      "size": [
+        0.323,
+        0.439,
+        0.438
+      ],
+      "min": [
+        -0.762,
+        0.057,
+        -1.259
+      ],
+      "max": [
+        -0.439,
+        0.496,
+        -0.82
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_emissive_ID_rims_LOD2_97",
+      "depth": 7,
+      "name": "wheelFR_emissive_ID_rims_LOD2_97",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.778,
+        0.274,
+        -1.04
+      ],
+      "size": [
+        0.065,
+        0.431,
+        0.426
+      ],
+      "min": [
+        -0.811,
+        0.059,
+        -1.253
+      ],
+      "max": [
+        -0.746,
+        0.489,
+        -0.827
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_99/wheelFR_rims_LOD2_98",
+      "depth": 7,
+      "name": "wheelFR_rims_LOD2_98",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.769,
+        0.273,
+        -1.04
+      ],
+      "size": [
+        0.116,
+        0.454,
+        0.456
+      ],
+      "min": [
+        -0.826,
+        0.046,
+        -1.267
+      ],
+      "max": [
+        -0.711,
+        0.5,
+        -0.812
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102",
+      "depth": 6,
+      "name": "wheelFR_motion_102",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.765,
+        0.276,
+        -1.039
+      ],
+      "size": [
+        0.087,
+        0.451,
+        0.451
+      ],
+      "min": [
+        -0.808,
+        0.05,
+        -1.265
+      ],
+      "max": [
+        -0.721,
+        0.502,
+        -0.813
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100",
+      "depth": 7,
+      "name": "wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_100",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.767,
+        0.276,
+        -1.039
+      ],
+      "size": [
+        0.075,
+        0.439,
+        0.439
+      ],
+      "min": [
+        -0.804,
+        0.056,
+        -1.259
+      ],
+      "max": [
+        -0.73,
+        0.495,
+        -0.82
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/post_dest_105/bone_wheel_FR_rotation_104/wheelFR_motion_102/wheelFR_motion_rims_LOD2_101",
+      "depth": 7,
+      "name": "wheelFR_motion_rims_LOD2_101",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.765,
+        0.276,
+        -1.039
+      ],
+      "size": [
+        0.087,
+        0.451,
+        0.451
+      ],
+      "min": [
+        -0.808,
+        0.05,
+        -1.265
+      ],
+      "max": [
+        -0.721,
+        0.502,
+        -0.813
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115",
+      "depth": 4,
+      "name": "ppst_sinis_115",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.64,
+        0.274,
+        -1.039
+      ],
+      "size": [
+        0.404,
+        0.456,
+        0.456
+      ],
+      "min": [
+        0.438,
+        0.046,
+        -1.267
+      ],
+      "max": [
+        0.842,
+        0.502,
+        -0.812
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114",
+      "depth": 5,
+      "name": "bone_wheel_FR_rotation_2_114",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.64,
+        0.274,
+        -1.039
+      ],
+      "size": [
+        0.404,
+        0.456,
+        0.456
+      ],
+      "min": [
+        0.438,
+        0.046,
+        -1.267
+      ],
+      "max": [
+        0.842,
+        0.502,
+        -0.812
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109",
+      "depth": 6,
+      "name": "wheelFR_2_109",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.64,
+        0.273,
+        -1.039
+      ],
+      "size": [
+        0.404,
+        0.454,
+        0.456
+      ],
+      "min": [
+        0.438,
+        0.046,
+        -1.267
+      ],
+      "max": [
+        0.842,
+        0.5,
+        -0.812
+      ],
+      "materialNames": [],
+      "children": 3,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_details_normal_LOD2_2_106",
+      "depth": 7,
+      "name": "wheelFR_details_normal_LOD2_2_106",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.606,
+        0.277,
+        -1.039
+      ],
+      "size": [
+        0.337,
+        0.439,
+        0.438
+      ],
+      "min": [
+        0.438,
+        0.057,
+        -1.258
+      ],
+      "max": [
+        0.774,
+        0.496,
+        -0.82
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_emissive_ID_rims_LOD2_2_107",
+      "depth": 7,
+      "name": "wheelFR_emissive_ID_rims_LOD2_2_107",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.793,
+        0.274,
+        -1.039
+      ],
+      "size": [
+        0.068,
+        0.431,
+        0.426
+      ],
+      "min": [
+        0.759,
+        0.059,
+        -1.252
+      ],
+      "max": [
+        0.827,
+        0.489,
+        -0.826
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_2_109/wheelFR_rims_LOD2_2_108",
+      "depth": 7,
+      "name": "wheelFR_rims_LOD2_2_108",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.782,
+        0.273,
+        -1.039
+      ],
+      "size": [
+        0.121,
+        0.454,
+        0.456
+      ],
+      "min": [
+        0.721,
+        0.046,
+        -1.267
+      ],
+      "max": [
+        0.842,
+        0.5,
+        -0.812
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112",
+      "depth": 6,
+      "name": "wheelFR_motion_2_112",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.778,
+        0.276,
+        -1.04
+      ],
+      "size": [
+        0.091,
+        0.451,
+        0.451
+      ],
+      "min": [
+        0.732,
+        0.05,
+        -1.266
+      ],
+      "max": [
+        0.823,
+        0.502,
+        -0.814
+      ],
+      "materialNames": [],
+      "children": 2,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112/wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110",
+      "depth": 7,
+      "name": "wheelFR_motion_emissive_mesh_wheelmotion_front_LOD2_2_110",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.784,
+        0.276,
+        -1.04
+      ],
+      "size": [
+        0.078,
+        0.439,
+        0.439
+      ],
+      "min": [
+        0.745,
+        0.056,
+        -1.259
+      ],
+      "max": [
+        0.823,
+        0.495,
+        -0.82
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lambo T M_126/ppst_sinis_115/bone_wheel_FR_rotation_2_114/wheelFR_motion_2_112/wheelFR_motion_rims_LOD2_2_111",
+      "depth": 7,
+      "name": "wheelFR_motion_rims_LOD2_2_111",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.778,
+        0.276,
+        -1.04
+      ],
+      "size": [
+        0.091,
+        0.451,
+        0.451
+      ],
+      "min": [
+        0.732,
+        0.05,
+        -1.266
+      ],
+      "max": [
+        0.823,
+        0.502,
+        -0.814
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Roues arri��re.003_128",
+      "depth": 3,
+      "name": "Roues arri��re.003_128",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0,
+        0.255,
+        1.041
+      ],
+      "size": [
+        1.568,
+        0.488,
+        0.488
+      ],
+      "min": [
+        -0.784,
+        0.012,
+        0.797
+      ],
+      "max": [
+        0.784,
+        0.499,
+        1.285
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/<Wheel.002_129",
+      "depth": 3,
+      "name": "<Wheel.002_129",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.002,
+        0.256,
+        1.73
+      ],
+      "size": [
+        0.054,
+        0.035,
+        0.055
+      ],
+      "min": [
+        -0.025,
+        0.238,
+        1.702
+      ],
+      "max": [
+        0.028,
+        0.273,
+        1.757
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Roues arri��re.001_130",
+      "depth": 3,
+      "name": "Roues arri��re.001_130",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0,
+        0.276,
+        -1.042
+      ],
+      "size": [
+        1.634,
+        0.518,
+        0.518
+      ],
+      "min": [
+        -0.817,
+        0.017,
+        -1.301
+      ],
+      "max": [
+        0.817,
+        0.535,
+        -0.783
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Circle.003_131",
+      "depth": 3,
+      "name": "Circle.003_131",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.246,
+        0.403,
+        0.757
+      ],
+      "size": [
+        0.176,
+        0.12,
+        0.463
+      ],
+      "min": [
+        0.158,
+        0.343,
+        0.526
+      ],
+      "max": [
+        0.334,
+        0.463,
+        0.989
+      ],
+      "materialNames": [],
+      "children": 16,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/<Wheel.001_132",
+      "depth": 3,
+      "name": "<Wheel.001_132",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.006,
+        0.264,
+        0
+      ],
+      "size": [
+        1.539,
+        0.055,
+        2.111
+      ],
+      "min": [
+        -0.763,
+        0.237,
+        -1.056
+      ],
+      "max": [
+        0.775,
+        0.292,
+        1.055
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149",
+      "depth": 3,
+      "name": "Lamborghini_Terzo_Millennio_car_149",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.007,
+        0.274,
+        -0.008
+      ],
+      "size": [
+        1.643,
+        0.445,
+        2.507
+      ],
+      "min": [
+        -0.814,
+        0.052,
+        -1.261
+      ],
+      "max": [
+        0.829,
+        0.497,
+        1.246
+      ],
+      "materialNames": [],
+      "children": 4,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_dest.001_136",
+      "depth": 4,
+      "name": "anteriore_dest.001_136",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.765,
+        0.256,
+        1.041
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "min": [
+        -0.795,
+        0.052,
+        0.837
+      ],
+      "max": [
+        -0.734,
+        0.461,
+        1.246
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_dest.001_136/bone_wheel_FR_rotation_3.001_135",
+      "depth": 5,
+      "name": "bone_wheel_FR_rotation_3.001_135",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.765,
+        0.256,
+        1.041
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "min": [
+        -0.795,
+        0.052,
+        0.837
+      ],
+      "max": [
+        -0.734,
+        0.461,
+        1.246
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_dest.001_136/bone_wheel_FR_rotation_3.001_135/wheelFR_3.001_134",
+      "depth": 6,
+      "name": "wheelFR_3.001_134",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.765,
+        0.256,
+        1.041
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "min": [
+        -0.795,
+        0.052,
+        0.837
+      ],
+      "max": [
+        -0.734,
+        0.461,
+        1.246
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_dest.001_136/bone_wheel_FR_rotation_3.001_135/wheelFR_3.001_134/wheelFR_glass_LOD2_3_133",
+      "depth": 7,
+      "name": "wheelFR_glass_LOD2_3_133",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.765,
+        0.256,
+        1.041
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "min": [
+        -0.795,
+        0.052,
+        0.837
+      ],
+      "max": [
+        -0.734,
+        0.461,
+        1.246
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_sins.001_140",
+      "depth": 4,
+      "name": "anteriore_sins.001_140",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.764,
+        0.256,
+        1.039
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "min": [
+        0.734,
+        0.052,
+        0.834
+      ],
+      "max": [
+        0.795,
+        0.461,
+        1.243
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_sins.001_140/bone_wheel_FR_rotation_4.001_139",
+      "depth": 5,
+      "name": "bone_wheel_FR_rotation_4.001_139",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.764,
+        0.256,
+        1.039
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "min": [
+        0.734,
+        0.052,
+        0.834
+      ],
+      "max": [
+        0.795,
+        0.461,
+        1.243
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_sins.001_140/bone_wheel_FR_rotation_4.001_139/wheelFR_4.001_138",
+      "depth": 6,
+      "name": "wheelFR_4.001_138",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.764,
+        0.256,
+        1.039
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "min": [
+        0.734,
+        0.052,
+        0.834
+      ],
+      "max": [
+        0.795,
+        0.461,
+        1.243
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/anteriore_sins.001_140/bone_wheel_FR_rotation_4.001_139/wheelFR_4.001_138/wheelFR_glass_LOD2_4_137",
+      "depth": 7,
+      "name": "wheelFR_glass_LOD2_4_137",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.764,
+        0.256,
+        1.039
+      ],
+      "size": [
+        0.061,
+        0.409,
+        0.409
+      ],
+      "min": [
+        0.734,
+        0.052,
+        0.834
+      ],
+      "max": [
+        0.795,
+        0.461,
+        1.243
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/post_dest.001_144",
+      "depth": 4,
+      "name": "post_dest.001_144",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.77,
+        0.277,
+        -1.038
+      ],
+      "size": [
+        0.088,
+        0.44,
+        0.44
+      ],
+      "min": [
+        -0.814,
+        0.057,
+        -1.258
+      ],
+      "max": [
+        -0.726,
+        0.497,
+        -0.818
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/post_dest.001_144/bone_wheel_FR_rotation.001_143",
+      "depth": 5,
+      "name": "bone_wheel_FR_rotation.001_143",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.77,
+        0.277,
+        -1.038
+      ],
+      "size": [
+        0.088,
+        0.44,
+        0.44
+      ],
+      "min": [
+        -0.814,
+        0.057,
+        -1.258
+      ],
+      "max": [
+        -0.726,
+        0.497,
+        -0.818
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/post_dest.001_144/bone_wheel_FR_rotation.001_143/wheelFR.001_142",
+      "depth": 6,
+      "name": "wheelFR.001_142",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.77,
+        0.277,
+        -1.038
+      ],
+      "size": [
+        0.088,
+        0.44,
+        0.44
+      ],
+      "min": [
+        -0.814,
+        0.057,
+        -1.258
+      ],
+      "max": [
+        -0.726,
+        0.497,
+        -0.818
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/post_dest.001_144/bone_wheel_FR_rotation.001_143/wheelFR.001_142/wheelFR_glass_LOD2_141",
+      "depth": 7,
+      "name": "wheelFR_glass_LOD2_141",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        -0.77,
+        0.277,
+        -1.038
+      ],
+      "size": [
+        0.088,
+        0.44,
+        0.44
+      ],
+      "min": [
+        -0.814,
+        0.057,
+        -1.258
+      ],
+      "max": [
+        -0.726,
+        0.497,
+        -0.818
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/ppst_sinis.001_148",
+      "depth": 4,
+      "name": "ppst_sinis.001_148",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.783,
+        0.277,
+        -1.041
+      ],
+      "size": [
+        0.091,
+        0.44,
+        0.44
+      ],
+      "min": [
+        0.738,
+        0.057,
+        -1.261
+      ],
+      "max": [
+        0.829,
+        0.497,
+        -0.821
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/ppst_sinis.001_148/bone_wheel_FR_rotation_2.001_147",
+      "depth": 5,
+      "name": "bone_wheel_FR_rotation_2.001_147",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.783,
+        0.277,
+        -1.041
+      ],
+      "size": [
+        0.091,
+        0.44,
+        0.44
+      ],
+      "min": [
+        0.738,
+        0.057,
+        -1.261
+      ],
+      "max": [
+        0.829,
+        0.497,
+        -0.821
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/ppst_sinis.001_148/bone_wheel_FR_rotation_2.001_147/wheelFR_2.001_146",
+      "depth": 6,
+      "name": "wheelFR_2.001_146",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.783,
+        0.277,
+        -1.041
+      ],
+      "size": [
+        0.091,
+        0.44,
+        0.44
+      ],
+      "min": [
+        0.738,
+        0.057,
+        -1.261
+      ],
+      "max": [
+        0.829,
+        0.497,
+        -0.821
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    },
+    {
+      "path": "/Sketchfab_model/root/GLTF_SceneRootNode/Lamborghini_Terzo_Millennio_car_149/ppst_sinis.001_148/bone_wheel_FR_rotation_2.001_147/wheelFR_2.001_146/wheelFR_glass_LOD2_2_145",
+      "depth": 7,
+      "name": "wheelFR_glass_LOD2_2_145",
+      "mesh": null,
+      "triangles": 0,
+      "center": [
+        0.783,
+        0.277,
+        -1.041
+      ],
+      "size": [
+        0.091,
+        0.44,
+        0.44
+      ],
+      "min": [
+        0.738,
+        0.057,
+        -1.261
+      ],
+      "max": [
+        0.829,
+        0.497,
+        -0.821
+      ],
+      "materialNames": [],
+      "children": 1,
+      "hasTransform": true
+    }
+  ]
+}
