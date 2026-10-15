@@ -2,7 +2,7 @@
   {
     "id": "sikandar-suv",
     "kind": "car",
-    "generatedAt": "2026-10-15T08:25:46.825Z",
+    "generatedAt": "2026-10-15T08:28:51.284Z",
     "credits": {
       "inGameName": "Sikandar SUV",
       "title": "2022 Mahindra Scorpio-N",
@@ -33,8 +33,8 @@
       }
     },
     "output": {
-      "file": "/tmp/out/models/sikandar-suv.glb",
-      "bytes": 31760,
+      "file": "/tmp/out2/models/sikandar-suv.glb",
+      "bytes": 25504,
       "triangles": 156,
       "attempts": 1,
       "textureSizePx": 2048,
@@ -174,7 +174,49 @@
         "Badge_Logo_Decal"
       ],
       "interiorRemoved": [],
-      "interiorSkipped": null
+      "interiorSkipped": null,
+      "flatDecalRemoved": [
+        "detail_trim_0 (1.850x0.030x0.020)",
+        "detail_trim_1 (1.850x0.030x0.020)",
+        "detail_trim_2 (1.850x0.030x0.020)",
+        "detail_trim_3 (1.850x0.030x0.020)",
+        "detail_trim_4 (1.850x0.030x0.020)",
+        "detail_trim_5 (1.850x0.030x0.020)",
+        "detail_trim_6 (1.850x0.030x0.020)",
+        "detail_trim_7 (1.850x0.030x0.020)",
+        "detail_trim_8 (1.850x0.030x0.020)",
+        "detail_trim_9 (1.850x0.030x0.020)",
+        "detail_trim_10 (1.850x0.030x0.020)",
+        "detail_trim_11 (1.850x0.030x0.020)",
+        "detail_trim_12 (1.850x0.030x0.020)",
+        "detail_trim_13 (1.850x0.030x0.020)",
+        "detail_trim_14 (1.850x0.030x0.020)",
+        "detail_trim_15 (1.850x0.030x0.020)",
+        "detail_trim_16 (1.850x0.030x0.020)",
+        "detail_trim_17 (1.850x0.030x0.020)",
+        "detail_trim_18 (1.850x0.030x0.020)",
+        "detail_trim_19 (1.850x0.030x0.020)",
+        "detail_trim_20 (1.850x0.030x0.020)",
+        "detail_trim_21 (1.850x0.030x0.020)",
+        "detail_trim_22 (1.850x0.030x0.020)",
+        "detail_trim_23 (1.850x0.030x0.020)",
+        "detail_trim_24 (1.850x0.030x0.020)",
+        "detail_trim_25 (1.850x0.030x0.020)",
+        "detail_trim_26 (1.850x0.030x0.020)",
+        "detail_trim_27 (1.850x0.030x0.020)",
+        "detail_trim_28 (1.850x0.030x0.020)",
+        "detail_trim_29 (1.850x0.030x0.020)",
+        "detail_trim_30 (1.850x0.030x0.020)",
+        "detail_trim_31 (1.850x0.030x0.020)",
+        "detail_trim_32 (1.850x0.030x0.020)",
+        "detail_trim_33 (1.850x0.030x0.020)",
+        "detail_trim_34 (1.850x0.030x0.020)",
+        "detail_trim_35 (1.850x0.030x0.020)",
+        "detail_trim_36 (1.850x0.030x0.020)",
+        "detail_trim_37 (1.850x0.030x0.020)",
+        "detail_trim_38 (1.850x0.030x0.020)",
+        "detail_trim_39 (1.850x0.030x0.020)"
+      ]
     },
     "materials": [
       {
@@ -222,8 +264,8 @@
       }
     ],
     "stats": {
-      "nodes": 53,
-      "meshes": 5,
+      "nodes": 13,
+      "meshes": 4,
       "materials": 3,
       "textures": 2
     }
@@ -231,7 +273,7 @@
   {
     "id": "aurora-v12",
     "kind": "car",
-    "generatedAt": "2026-10-15T08:25:46.945Z",
+    "generatedAt": "2026-10-15T08:28:51.405Z",
     "credits": {
       "inGameName": "Aurora V12",
       "title": "( FREE ) Lamborghini Terzo Millennio",
@@ -263,8 +305,8 @@
       }
     },
     "output": {
-      "file": "/tmp/out/models/aurora-v12.glb",
-      "bytes": 31476,
+      "file": "/tmp/out2/models/aurora-v12.glb",
+      "bytes": 24724,
       "triangles": 156,
       "attempts": 1,
       "textureSizePx": 2048,
@@ -404,7 +446,49 @@
         "Badge_Logo_Decal"
       ],
       "interiorRemoved": [],
-      "interiorSkipped": null
+      "interiorSkipped": null,
+      "flatDecalRemoved": [
+        "detail_trim_0 (1.850x0.030x0.020)",
+        "detail_trim_1 (1.850x0.030x0.020)",
+        "detail_trim_2 (1.850x0.030x0.020)",
+        "detail_trim_3 (1.850x0.030x0.020)",
+        "detail_trim_4 (1.850x0.030x0.020)",
+        "detail_trim_5 (1.850x0.030x0.020)",
+        "detail_trim_6 (1.850x0.030x0.020)",
+        "detail_trim_7 (1.850x0.030x0.020)",
+        "detail_trim_8 (1.850x0.030x0.020)",
+        "detail_trim_9 (1.850x0.030x0.020)",
+        "detail_trim_10 (1.850x0.030x0.020)",
+        "detail_trim_11 (1.850x0.030x0.020)",
+        "detail_trim_12 (1.850x0.030x0.020)",
+        "detail_trim_13 (1.850x0.030x0.020)",
+        "detail_trim_14 (1.850x0.030x0.020)",
+        "detail_trim_15 (1.850x0.030x0.020)",
+        "detail_trim_16 (1.850x0.030x0.020)",
+        "detail_trim_17 (1.850x0.030x0.020)",
+        "detail_trim_18 (1.850x0.030x0.020)",
+        "detail_trim_19 (1.850x0.030x0.020)",
+        "detail_trim_20 (1.850x0.030x0.020)",
+        "detail_trim_21 (1.850x0.030x0.020)",
+        "detail_trim_22 (1.850x0.030x0.020)",
+        "detail_trim_23 (1.850x0.030x0.020)",
+        "detail_trim_24 (1.850x0.030x0.020)",
+        "detail_trim_25 (1.850x0.030x0.020)",
+        "detail_trim_26 (1.850x0.030x0.020)",
+        "detail_trim_27 (1.850x0.030x0.020)",
+        "detail_trim_28 (1.850x0.030x0.020)",
+        "detail_trim_29 (1.850x0.030x0.020)",
+        "detail_trim_30 (1.850x0.030x0.020)",
+        "detail_trim_31 (1.850x0.030x0.020)",
+        "detail_trim_32 (1.850x0.030x0.020)",
+        "detail_trim_33 (1.850x0.030x0.020)",
+        "detail_trim_34 (1.850x0.030x0.020)",
+        "detail_trim_35 (1.850x0.030x0.020)",
+        "detail_trim_36 (1.850x0.030x0.020)",
+        "detail_trim_37 (1.850x0.030x0.020)",
+        "detail_trim_38 (1.850x0.030x0.020)",
+        "detail_trim_39 (1.850x0.030x0.020)"
+      ]
     },
     "materials": [
       {
@@ -452,8 +536,8 @@
       }
     ],
     "stats": {
-      "nodes": 53,
-      "meshes": 5,
+      "nodes": 13,
+      "meshes": 4,
       "materials": 3,
       "textures": 2
     }
@@ -461,7 +545,7 @@
   {
     "id": "forest-dirt-trail",
     "kind": "track",
-    "generatedAt": "2026-10-15T08:25:47.386Z",
+    "generatedAt": "2026-10-15T08:28:51.842Z",
     "credits": {
       "inGameName": "Forest Dirt Trail",
       "title": "Dirt Road Through Forest",
@@ -479,7 +563,7 @@
       "triangles": 834
     },
     "output": {
-      "file": "/tmp/out/tracks/forest-dirt-trail.glb",
+      "file": "/tmp/out2/tracks/forest-dirt-trail.glb",
       "bytes": 33372,
       "triangles": 834,
       "attempts": 1,
@@ -516,7 +600,7 @@
       480
     ],
     "terrain": {
-      "file": "/tmp/out/tracks/forest-dirt-trail.terrain.json",
+      "file": "/tmp/out2/tracks/forest-dirt-trail.terrain.json",
       "cellSize": 2,
       "cols": 240,
       "rows": 240,
@@ -534,7 +618,8 @@
       "removedMaterials": [],
       "removedMeshes": [],
       "interiorRemoved": [],
-      "interiorSkipped": null
+      "interiorSkipped": null,
+      "flatDecalRemoved": []
     },
     "stats": {
       "nodes": 4,

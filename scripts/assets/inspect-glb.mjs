@@ -107,10 +107,18 @@ function walkScene(document) {
 function rasterizeSilhouette(points, markers, project, filePath) {
   const projected = points.map(project);
   if (!projected.length) return Promise.resolve(null);
-  const minX = Math.min(...projected.map((point) => point[0]));
-  const maxX = Math.max(...projected.map((point) => point[0]));
-  const minY = Math.min(...projected.map((point) => point[1]));
-  const maxY = Math.max(...projected.map((point) => point[1]));
+  // Explicit loops: a photogrammetry scene has far more points than a spread
+  // call can pass as arguments.
+  let minX = Infinity;
+  let maxX = -Infinity;
+  let minY = Infinity;
+  let maxY = -Infinity;
+  for (const [x, y] of projected) {
+    if (x < minX) minX = x;
+    if (x > maxX) maxX = x;
+    if (y < minY) minY = y;
+    if (y > maxY) maxY = y;
+  }
   const width = 360;
   const spanX = maxX - minX || 1;
   const spanY = maxY - minY || 1;
@@ -213,8 +221,18 @@ async function inspectAsset(id, target) {
   const { triangles, materials } = collectTriangles(document, { kind: target.kind });
   const sceneBounds = (() => {
     const withMesh = nodes.filter((node) => node.mesh);
-    const min = [0, 1, 2].map((axis) => Math.min(...withMesh.map((node) => node.min[axis])));
-    const max = [0, 1, 2].map((axis) => Math.max(...withMesh.map((node) => node.max[axis])));
+    const min = [Infinity, Infinity, Infinity];
+    const max = [-Infinity, -Infinity, -Infinity];
+    for (const node of withMesh) {
+      for (let axis = 0; axis < 3; axis += 1) {
+        if (Number.isFinite(node.min[axis])) min[axis] = Math.min(min[axis], node.min[axis]);
+        if (Number.isFinite(node.max[axis])) max[axis] = Math.max(max[axis], node.max[axis]);
+      }
+    }
+    for (let axis = 0; axis < 3; axis += 1) {
+      if (!Number.isFinite(min[axis])) min[axis] = 0;
+      if (!Number.isFinite(max[axis])) max[axis] = 0;
+    }
     return { min, max, size: [0, 1, 2].map((axis) => max[axis] - min[axis]) };
   })();
 
@@ -238,6 +256,7 @@ async function inspectAsset(id, target) {
   const textures = await writeTextureSheet(document, path.join(OUTPUT_DIR, `${id}.textures.png`));
 
   const points = [];
+  const MESH_POINT_BUDGET = 900;
   for (const node of document.getRoot().listNodes()) {
     const mesh = node.getMesh();
     if (!mesh) continue;
@@ -245,7 +264,7 @@ async function inspectAsset(id, target) {
     for (const primitive of mesh.listPrimitives()) {
       const position = primitive.getAttribute('POSITION');
       if (!position) continue;
-      const stride = Math.max(1, Math.floor(position.getCount() / 6000));
+      const stride = Math.max(1, Math.floor(position.getCount() / MESH_POINT_BUDGET));
       for (let index = 0; index < position.getCount(); index += stride) {
         const [x, y, z] = position.getElement(index, [0, 0, 0]);
         points.push([

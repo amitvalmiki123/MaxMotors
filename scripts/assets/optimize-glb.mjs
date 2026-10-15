@@ -149,6 +149,37 @@ function stripInterior(document, kind = 'car') {
   return { removed: [...removed.keys()], skipped: null };
 }
 
+/**
+ * Removes small, flat plaques: real-world badges and lettering are usually
+ * separate 30–60 triangle meshes pressed onto the body, with names that give
+ * nothing away (`scorpio_n_ext_1.2`, `detach_04_LOD2_details`). Glass, lights
+ * and wheels are never touched, so windows and LEDs survive.
+ */
+function stripFlatDecals(document, target, kind = 'car') {
+  const bounds = sceneBounds(document);
+  const length = Math.max(bounds.size[0], bounds.size[2]) || 1;
+  const width = Math.max(bounds.size[0], bounds.size[2]) || 1;
+  const maxThickness = 0.015 * length;
+  const maxFootprint = 0.02 * length * width;
+  const removed = [];
+
+  for (const node of document.getRoot().listNodes()) {
+    const mesh = node.getMesh();
+    if (!mesh) continue;
+    const box = getBounds(node);
+    const size = [0, 1, 2].map((axis) => box.max[axis] - box.min[axis]);
+    if (!size.every(Number.isFinite)) continue;
+    const sorted = [...size].sort((a, b) => a - b);
+    const [thickness, middle, longest] = sorted;
+    if (thickness > maxThickness || longest * middle > maxFootprint) continue;
+    const classes = new Set(mesh.listPrimitives().map((primitive) => classifyMaterial(primitive.getMaterial(), { kind })));
+    if (classes.has('glass') || classes.has('light') || classes.has('wheel')) continue;
+    removed.push(`${node.getName() || mesh.getName()} (${size.map((value) => value.toFixed(3)).join('x')})`);
+    node.dispose();
+  }
+  return removed;
+}
+
 async function compressTextures(document, { textureSize, quality }) {
   const normalTextures = new Set();
   for (const material of document.getRoot().listMaterials()) {
@@ -358,6 +389,10 @@ async function optimizeOnce(target, attempt) {
   }
 
   const interior = target.kind === 'car' ? stripInterior(document, target.kind) : { removed: [], skipped: null };
+  const flatDecals = target.kind === 'car' ? stripFlatDecals(document, target, target.kind) : [];
+  if (flatDecals.length) {
+    console.log(`[optimize] flat badge plaques removed (${flatDecals.length}): ${flatDecals.slice(0, 8).join(', ')}${flatDecals.length > 8 ? ', …' : ''}`);
+  }
   if (interior.removed.length) {
     console.log(`[optimize] interior removed: ${interior.removed.join(', ')}`);
   } else if (interior.skipped) {
@@ -385,7 +420,7 @@ async function optimizeOnce(target, attempt) {
   document.createExtension(EXTMeshoptCompression).setRequired(true).setEncoder?.(MeshoptEncoder);
   await document.transform(meshopt({ encoder: MeshoptEncoder, level: 'high' }));
 
-  return { document, strip, interior, textureStats, terrain, trianglesBefore, trianglesAfter, textureSize, quality };
+  return { document, strip, interior, flatDecals, textureStats, terrain, trianglesBefore, trianglesAfter, textureSize, quality };
 }
 
 async function writeHillshade(grid, filePath) {
@@ -415,7 +450,7 @@ async function writeHillshade(grid, filePath) {
   await sharp(buffer, { raw: { width: cols, height: rows, channels: 3 } }).png().toFile(filePath);
 }
 
-async function buildCarManifest(document, target, id, { strip, interior, textureStats, trianglesBefore, trianglesAfter, textureSize, quality, bytes, attemptIndex }) {
+async function buildCarManifest(document, target, id, { strip, interior, flatDecals, textureStats, trianglesBefore, trianglesAfter, textureSize, quality, bytes, attemptIndex }) {
   const bounds = sceneBounds(document);
   const placement = computeCarPlacement(document, target, bounds);
   const { wheelData } = placement;
@@ -501,7 +536,7 @@ async function buildCarManifest(document, target, id, { strip, interior, texture
       rearZ: rearWheels.length ? Number(average(rearWheels, 2).toFixed(3)) : null,
       list: wheels,
     },
-    strip: { ...strip, interiorRemoved: interior?.removed ?? [], interiorSkipped: interior?.skipped ?? null },
+    strip: { ...strip, interiorRemoved: interior?.removed ?? [], interiorSkipped: interior?.skipped ?? null, flatDecalRemoved: flatDecals ?? [] },
     materials: document.getRoot().listMaterials().map((material) => ({
       name: material.getName(),
       alphaMode: material.getAlphaMode(),
@@ -523,6 +558,86 @@ async function buildCarManifest(document, target, id, { strip, interior, texture
       textures: document.getRoot().listTextures().length,
     },
   };
+}
+
+/**
+ * Documents every texture that survives into the shipped file, together with
+ * the materials that use it — the badge-removal check for the brief.
+ */
+async function writeShippedTextureReport(document, outPath, sheetPath) {
+  const usage = new Map();
+  for (const material of document.getRoot().listMaterials()) {
+    const slots = [
+      ['baseColor', material.getBaseColorTexture()],
+      ['normal', material.getNormalTexture()],
+      ['metalRough', material.getMetallicRoughnessTexture()],
+      ['emissive', material.getEmissiveTexture()],
+      ['occlusion', material.getOcclusionTexture()],
+    ];
+    for (const [slot, texture] of slots) {
+      if (!texture) continue;
+      if (!usage.has(texture)) usage.set(texture, new Map());
+      usage.get(texture).set(material.getName(), slot);
+    }
+  }
+
+  const entries = [];
+  const textures = document.getRoot().listTextures();
+  for (const [index, texture] of textures.entries()) {
+    const materials = usage.get(texture) ?? new Map();
+    const image = texture.getImage();
+    let width = null;
+    let height = null;
+    if (image) {
+      const metadata = await sharp(Buffer.from(image)).metadata().catch(() => null);
+      width = metadata?.width ?? null;
+      height = metadata?.height ?? null;
+    }
+    entries.push({
+      index,
+      mimeType: texture.getMimeType(),
+      bytes: image?.byteLength ?? 0,
+      width,
+      height,
+      used: materials.size > 0,
+      materials: [...materials.keys()],
+      slots: [...new Set([...materials.values()])],
+    });
+  }
+
+  await writeFile(outPath, `${JSON.stringify({ generatedAt: new Date().toISOString(), count: entries.length, textures: entries }, null, 2)}\n`);
+
+  const tile = 220;
+  const columns = Math.min(5, Math.max(1, entries.filter((entry) => entry.used).length));
+  const used = entries.filter((entry) => entry.used);
+  if (!used.length) return entries;
+  const rows = Math.ceil(used.length / columns);
+  const composites = [];
+  const labels = [];
+  for (const [position, entry] of used.entries()) {
+    const texture = textures[entry.index];
+    const image = texture.getImage();
+    if (!image) continue;
+    const buffer = await sharp(Buffer.from(image))
+      .resize(tile, tile, { fit: 'inside', background: { r: 14, g: 18, b: 20 } })
+      .flatten({ background: { r: 14, g: 18, b: 20 } })
+      .png()
+      .toBuffer();
+    const size = await sharp(buffer).metadata();
+    const left = (position % columns) * tile + Math.round((tile - size.width) / 2);
+    const top = Math.floor(position / columns) * tile + Math.round((tile - size.height) / 2);
+    composites.push({ input: buffer, left, top });
+    const label = `#${entry.index} ${Math.max(entry.width ?? 0, entry.height ?? 0)}px ${Math.round(entry.bytes / 1024)}KB ${entry.materials.slice(0, 2).join(',')}`;
+    labels.push(
+      `<rect x="${(position % columns) * tile + 2}" y="${Math.floor(position / columns) * tile + 2}" width="${Math.min(tile - 4, label.length * 6.2 + 8)}" height="18" fill="rgba(8,10,12,0.8)"/>`
+      + `<text x="${(position % columns) * tile + 6}" y="${Math.floor(position / columns) * tile + 15}" font-family="monospace" font-size="11" fill="#ffd9a0">${label.replace(/[<>&]/g, '')}</text>`,
+    );
+  }
+  await sharp({ create: { width: columns * tile, height: Math.max(1, rows * tile), channels: 3, background: { r: 12, g: 16, b: 18 } } })
+    .composite([...composites, { input: Buffer.from(`<svg width="${columns * tile}" height="${rows * tile}">${labels.join('')}</svg>`), top: 0, left: 0 }])
+    .png()
+    .toFile(sheetPath);
+  return entries;
 }
 
 async function buildAsset(id, target) {
@@ -551,6 +666,14 @@ async function buildAsset(id, target) {
   const io = await getNodeIO();
   await io.write(outputPath, document);
   await ensureDir(target.manifest);
+
+  const shippedTextures = await writeShippedTextureReport(
+    document,
+    path.join(REPORT_DIR, `${id}.textures.json`),
+    path.join(REPORT_DIR, `${id}.shipped-textures.png`),
+  );
+  const unusedTextures = shippedTextures.filter((entry) => !entry.used).length;
+  console.log(`[optimize] ${id} shipped textures: ${shippedTextures.length - unusedTextures} used, ${unusedTextures} unused`);
 
   let manifest;
   if (target.kind === 'car') {
@@ -619,7 +742,7 @@ async function buildAsset(id, target) {
         roadCoverage: trail.roadCoverage,
         heights: trail.stats,
       },
-      strip: { ...best.strip, interiorRemoved: best.interior.removed, interiorSkipped: best.interior.skipped },
+      strip: { ...best.strip, interiorRemoved: best.interior.removed, interiorSkipped: best.interior.skipped, flatDecalRemoved: best.flatDecals },
       stats: {
         nodes: document.getRoot().listNodes().length,
         meshes: document.getRoot().listMeshes().length,

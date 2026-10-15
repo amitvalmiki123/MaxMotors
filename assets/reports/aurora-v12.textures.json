@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-10-15T08:28:51.377Z",
+  "count": 2,
+  "textures": [
+    {
+      "index": 0,
+      "mimeType": "image/webp",
+      "bytes": 9114,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Carosserie"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 1,
+      "mimeType": "image/webp",
+      "bytes": 8312,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Tire"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    }
+  ]
+}

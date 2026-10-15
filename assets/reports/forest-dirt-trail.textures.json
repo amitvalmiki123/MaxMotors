@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-10-15T08:28:51.748Z",
+  "count": 2,
+  "textures": [
+    {
+      "index": 0,
+      "mimeType": "image/webp",
+      "bytes": 8016,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Dirt_Road"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 1,
+      "mimeType": "image/webp",
+      "bytes": 7240,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Grass_Vegetation"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    }
+  ]
+}
