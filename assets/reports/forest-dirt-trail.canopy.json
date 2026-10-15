@@ -1,0 +1,114 @@
+{
+  "id": "forest-dirt-trail",
+  "generatedAt": "2026-10-15T15:04:42.425Z",
+  "source": {
+    "file": "assets/raw/forest-dirt-road.glb",
+    "instancedNodes": 0,
+    "materials": {
+      "Background_Tree_Atlas": {
+        "islands": 10439,
+        "triangles": 93803
+      },
+      "Trunk_Birch": {
+        "islands": 177,
+        "triangles": 12921
+      },
+      "Trunk_Oak": {
+        "islands": 961,
+        "triangles": 70153
+      },
+      "Fallen_Generic_Leaves": {
+        "islands": 436,
+        "triangles": 7649
+      },
+      "Forest_Bush": {
+        "islands": 2206,
+        "triangles": 8570
+      },
+      "Grass_Vegetation_Dry": {
+        "islands": 8363,
+        "triangles": 16726
+      },
+      "Grass_Vegetation_Green": {
+        "islands": 13073,
+        "triangles": 26126
+      },
+      "Fallen_Maple_Leaves": {
+        "islands": 741,
+        "triangles": 11505
+      }
+    }
+  },
+  "shipped": {
+    "file": "public/tracks/forest-dirt-trail.glb",
+    "instancedNodes": 0,
+    "materials": {
+      "Background_Tree_Atlas": {
+        "islands": 9154,
+        "triangles": 34464
+      },
+      "Trunk_Birch": {
+        "islands": 177,
+        "triangles": 4749
+      },
+      "Trunk_Oak": {
+        "islands": 961,
+        "triangles": 25787
+      },
+      "Fallen_Generic_Leaves": {
+        "islands": 432,
+        "triangles": 2809
+      },
+      "Forest_Bush": {
+        "islands": 1576,
+        "triangles": 3150
+      },
+      "Grass_Vegetation_Dry": {
+        "islands": 3114,
+        "triangles": 6148
+      },
+      "Grass_Vegetation_Green": {
+        "islands": 5107,
+        "triangles": 9606
+      },
+      "Fallen_Maple_Leaves": {
+        "islands": 740,
+        "triangles": 4229
+      }
+    }
+  },
+  "retention": {
+    "Background_Tree_Atlas": {
+      "islands": 0.877,
+      "triangles": 0.367
+    },
+    "Trunk_Birch": {
+      "islands": 1,
+      "triangles": 0.368
+    },
+    "Trunk_Oak": {
+      "islands": 1,
+      "triangles": 0.368
+    },
+    "Fallen_Generic_Leaves": {
+      "islands": 0.991,
+      "triangles": 0.367
+    },
+    "Forest_Bush": {
+      "islands": 0.714,
+      "triangles": 0.368
+    },
+    "Grass_Vegetation_Dry": {
+      "islands": 0.372,
+      "triangles": 0.368
+    },
+    "Grass_Vegetation_Green": {
+      "islands": 0.391,
+      "triangles": 0.368
+    },
+    "Fallen_Maple_Leaves": {
+      "islands": 0.999,
+      "triangles": 0.368
+    }
+  }
+}

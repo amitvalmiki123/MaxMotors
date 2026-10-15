@@ -131,8 +131,8 @@
   "environment": {
     "hdri": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloppenheim_06_puresky_2k.hdr",
     "viewer": "hdri 2048x1024",
-    "chrome": "Chrome/155.0.8059.39",
+    "chrome": "Chrome/154.0.8037.97",
     "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
   },
-  "generatedAt": "2026-10-15T14:51:28.314Z"
+  "generatedAt": "2026-10-15T15:05:47.224Z"
 }
