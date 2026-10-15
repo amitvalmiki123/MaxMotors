@@ -1,4 +1,4 @@
-mode=build only='' ref=main sha=e8f3d24870b600e7fc8f7b7ec344752443a5880d
+mode=build only='' ref=arena/9609d7db-maxmotors sha=01f5122264460aecd0dc13bf88f97714d822c69f
 runner=Linux runnervm8k3b6 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
 
 added 45 packages, and audited 46 packages in 2s
@@ -159,69 +159,69 @@ prune: Removed types... Accessor (61)
 --- files ---
 assets/reports:
 total 14396
-drwxr-xr-x 2 runner runner    4096 Oct 15 09:06 .
-drwxr-xr-x 4 runner runner    4096 Oct 15 09:06 ..
--rw-r--r-- 1 runner runner    2270 Oct 15 09:06 SUMMARY.md
--rw-r--r-- 1 runner runner   99600 Oct 15 09:06 aurora-v12.report.json
--rw-r--r-- 1 runner runner  119163 Oct 15 09:06 aurora-v12.shipped-textures.png
--rw-r--r-- 1 runner runner    4451 Oct 15 09:06 aurora-v12.side.png
--rw-r--r-- 1 runner runner     839 Oct 15 09:06 aurora-v12.textures.json
--rw-r--r-- 1 runner runner  287933 Oct 15 09:06 aurora-v12.textures.png
--rw-r--r-- 1 runner runner    5659 Oct 15 09:06 aurora-v12.top.png
--rw-r--r-- 1 runner runner   23963 Oct 15 09:06 aurora-v12.tree.txt
--rw-r--r-- 1 runner runner   60931 Oct 15 09:06 forest-dirt-trail.height.png
--rw-r--r-- 1 runner runner    4376 Oct 15 09:06 forest-dirt-trail.map.png
--rw-r--r-- 1 runner runner   73742 Oct 15 09:06 forest-dirt-trail.map.txt
--rw-r--r-- 1 runner runner   58473 Oct 15 09:06 forest-dirt-trail.report.json
--rw-r--r-- 1 runner runner 5148935 Oct 15 09:06 forest-dirt-trail.shipped-textures.png
--rw-r--r-- 1 runner runner    3018 Oct 15 09:06 forest-dirt-trail.side.png
--rw-r--r-- 1 runner runner   17345 Oct 15 09:06 forest-dirt-trail.textures.json
--rw-r--r-- 1 runner runner 6939973 Oct 15 09:06 forest-dirt-trail.textures.png
--rw-r--r-- 1 runner runner    3018 Oct 15 09:06 forest-dirt-trail.top.png
--rw-r--r-- 1 runner runner    7359 Oct 15 09:06 forest-dirt-trail.tree.txt
--rw-r--r-- 1 runner runner   30321 Oct 15 09:06 optimized-manifests.json
--rw-r--r-- 1 runner runner   17318 Oct 15 09:06 pipeline.log
--rw-r--r-- 1 runner runner  103300 Oct 15 09:06 sikandar-suv.report.json
--rw-r--r-- 1 runner runner  535529 Oct 15 09:06 sikandar-suv.shipped-textures.png
--rw-r--r-- 1 runner runner    8086 Oct 15 09:06 sikandar-suv.side.png
--rw-r--r-- 1 runner runner    2602 Oct 15 09:06 sikandar-suv.textures.json
--rw-r--r-- 1 runner runner 1025128 Oct 15 09:06 sikandar-suv.textures.png
--rw-r--r-- 1 runner runner   16801 Oct 15 09:06 sikandar-suv.top.png
--rw-r--r-- 1 runner runner   33668 Oct 15 09:06 sikandar-suv.tree.txt
--rw-r--r-- 1 runner runner   30322 Oct 15 09:06 source-summary.json
+drwxr-xr-x 2 runner runner    4096 Oct 15 13:35 .
+drwxr-xr-x 4 runner runner    4096 Oct 15 13:35 ..
+-rw-r--r-- 1 runner runner    2270 Oct 15 13:35 SUMMARY.md
+-rw-r--r-- 1 runner runner   99600 Oct 15 13:35 aurora-v12.report.json
+-rw-r--r-- 1 runner runner  119163 Oct 15 13:35 aurora-v12.shipped-textures.png
+-rw-r--r-- 1 runner runner    4451 Oct 15 13:35 aurora-v12.side.png
+-rw-r--r-- 1 runner runner     839 Oct 15 13:35 aurora-v12.textures.json
+-rw-r--r-- 1 runner runner  287933 Oct 15 13:35 aurora-v12.textures.png
+-rw-r--r-- 1 runner runner    5659 Oct 15 13:35 aurora-v12.top.png
+-rw-r--r-- 1 runner runner   23963 Oct 15 13:35 aurora-v12.tree.txt
+-rw-r--r-- 1 runner runner   60931 Oct 15 13:35 forest-dirt-trail.height.png
+-rw-r--r-- 1 runner runner    4376 Oct 15 13:35 forest-dirt-trail.map.png
+-rw-r--r-- 1 runner runner   73742 Oct 15 13:35 forest-dirt-trail.map.txt
+-rw-r--r-- 1 runner runner   58473 Oct 15 13:35 forest-dirt-trail.report.json
+-rw-r--r-- 1 runner runner 5148935 Oct 15 13:35 forest-dirt-trail.shipped-textures.png
+-rw-r--r-- 1 runner runner    3018 Oct 15 13:35 forest-dirt-trail.side.png
+-rw-r--r-- 1 runner runner   17345 Oct 15 13:35 forest-dirt-trail.textures.json
+-rw-r--r-- 1 runner runner 6939973 Oct 15 13:35 forest-dirt-trail.textures.png
+-rw-r--r-- 1 runner runner    3018 Oct 15 13:35 forest-dirt-trail.top.png
+-rw-r--r-- 1 runner runner    7359 Oct 15 13:35 forest-dirt-trail.tree.txt
+-rw-r--r-- 1 runner runner   30321 Oct 15 13:35 optimized-manifests.json
+-rw-r--r-- 1 runner runner   17338 Oct 15 13:35 pipeline.log
+-rw-r--r-- 1 runner runner  103300 Oct 15 13:35 sikandar-suv.report.json
+-rw-r--r-- 1 runner runner  535529 Oct 15 13:35 sikandar-suv.shipped-textures.png
+-rw-r--r-- 1 runner runner    8086 Oct 15 13:35 sikandar-suv.side.png
+-rw-r--r-- 1 runner runner    2602 Oct 15 13:35 sikandar-suv.textures.json
+-rw-r--r-- 1 runner runner 1025128 Oct 15 13:35 sikandar-suv.textures.png
+-rw-r--r-- 1 runner runner   16801 Oct 15 13:35 sikandar-suv.top.png
+-rw-r--r-- 1 runner runner   33668 Oct 15 13:35 sikandar-suv.tree.txt
+-rw-r--r-- 1 runner runner   30322 Oct 15 13:35 source-summary.json
 
 public/audio:
 total 364
-drwxr-xr-x 2 runner runner  4096 Oct 15 09:06 .
-drwxr-xr-x 7 runner runner  4096 Oct 15 09:06 ..
--rw-r--r-- 1 runner runner 88244 Oct 15 09:06 aurora-v10-high.wav
--rw-r--r-- 1 runner runner 88024 Oct 15 09:06 aurora-v10-low.wav
--rw-r--r-- 1 runner runner  1280 Oct 15 09:06 engine.index.json
--rw-r--r-- 1 runner runner 88244 Oct 15 09:06 sikandar-diesel-high.wav
--rw-r--r-- 1 runner runner 88244 Oct 15 09:06 sikandar-diesel-low.wav
+drwxr-xr-x 2 runner runner  4096 Oct 15 13:35 .
+drwxr-xr-x 7 runner runner  4096 Oct 15 13:35 ..
+-rw-r--r-- 1 runner runner 88244 Oct 15 13:35 aurora-v10-high.wav
+-rw-r--r-- 1 runner runner 88024 Oct 15 13:35 aurora-v10-low.wav
+-rw-r--r-- 1 runner runner  1280 Oct 15 13:35 engine.index.json
+-rw-r--r-- 1 runner runner 88244 Oct 15 13:35 sikandar-diesel-high.wav
+-rw-r--r-- 1 runner runner 88244 Oct 15 13:35 sikandar-diesel-low.wav
 
 public/models:
 total 2364
-drwxr-xr-x 2 runner runner    4096 Oct 15 09:06 .
-drwxr-xr-x 7 runner runner    4096 Oct 15 09:06 ..
--rw-r--r-- 1 runner runner  673704 Oct 15 09:06 aurora-v12.glb
--rw-r--r-- 1 runner runner   13856 Oct 15 09:06 aurora-v12.manifest.json
--rw-r--r-- 1 runner runner 1707424 Oct 15 09:06 sikandar-suv.glb
--rw-r--r-- 1 runner runner   12140 Oct 15 09:06 sikandar-suv.manifest.json
+drwxr-xr-x 2 runner runner    4096 Oct 15 13:35 .
+drwxr-xr-x 7 runner runner    4096 Oct 15 13:35 ..
+-rw-r--r-- 1 runner runner  673704 Oct 15 13:35 aurora-v12.glb
+-rw-r--r-- 1 runner runner   13856 Oct 15 13:35 aurora-v12.manifest.json
+-rw-r--r-- 1 runner runner 1707424 Oct 15 13:35 sikandar-suv.glb
+-rw-r--r-- 1 runner runner   12140 Oct 15 13:35 sikandar-suv.manifest.json
 
 public/textures:
 total 9120
-drwxr-xr-x 2 runner runner    4096 Oct 15 09:06 .
-drwxr-xr-x 7 runner runner    4096 Oct 15 09:06 ..
--rw-r--r-- 1 runner runner    1044 Oct 15 09:06 asphalt.index.json
--rw-r--r-- 1 runner runner 1299186 Oct 15 09:06 asphalt_arm_2k.jpg
--rw-r--r-- 1 runner runner 3075676 Oct 15 09:06 asphalt_diffuse_2k.jpg
--rw-r--r-- 1 runner runner 4943950 Oct 15 09:06 asphalt_normal_2k.jpg
+drwxr-xr-x 2 runner runner    4096 Oct 15 13:35 .
+drwxr-xr-x 7 runner runner    4096 Oct 15 13:35 ..
+-rw-r--r-- 1 runner runner    1044 Oct 15 13:35 asphalt.index.json
+-rw-r--r-- 1 runner runner 1299186 Oct 15 13:35 asphalt_arm_2k.jpg
+-rw-r--r-- 1 runner runner 3075676 Oct 15 13:35 asphalt_diffuse_2k.jpg
+-rw-r--r-- 1 runner runner 4943950 Oct 15 13:35 asphalt_normal_2k.jpg
 
 public/tracks:
 total 10144
-drwxr-xr-x 2 runner runner     4096 Oct 15 09:06 .
-drwxr-xr-x 7 runner runner     4096 Oct 15 09:06 ..
--rw-r--r-- 1 runner runner 10174824 Oct 15 09:06 forest-dirt-trail.glb
--rw-r--r-- 1 runner runner     1935 Oct 15 09:06 forest-dirt-trail.manifest.json
--rw-r--r-- 1 runner runner   194438 Oct 15 09:06 forest-dirt-trail.terrain.json
+drwxr-xr-x 2 runner runner     4096 Oct 15 13:35 .
+drwxr-xr-x 7 runner runner     4096 Oct 15 13:35 ..
+-rw-r--r-- 1 runner runner 10174824 Oct 15 13:35 forest-dirt-trail.glb
+-rw-r--r-- 1 runner runner     1935 Oct 15 13:35 forest-dirt-trail.manifest.json
+-rw-r--r-- 1 runner runner   194438 Oct 15 13:35 forest-dirt-trail.terrain.json
