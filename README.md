@@ -77,11 +77,26 @@ fixtures and target any directory:
 
 ```sh
 MAXMOTORS_RAW_DIR=assets/fixtures node scripts/assets/build-audio.mjs --out /tmp/out/audio
-MAXMOTORS_RAW_DIR=assets/fixtures node scripts/assets/optimize-glb.mjs --out-dir /tmp/out
+MAXMOTORS_RAW_DIR=assets/fixtures MAXMOTORS_REPORT_DIR=/tmp/out/reports \
+  node scripts/assets/optimize-glb.mjs --out-dir /tmp/out
 ```
 
+Set `MAXMOTORS_REPORT_DIR` (and `--out-dir`) outside the repository for dry runs, otherwise a local
+run overwrites the committed reports and shipped manifests with fixture numbers.
+
 Budgets (triangles, file size, texture size and decoded texture memory) live in
-`scripts/assets/config.mjs`, and the results are recorded in each asset's `*.manifest.json`.
+`scripts/assets/config.mjs`, and the results are recorded in each asset's `*.manifest.json`
+(`output.triangles`, `output.triangleBudget`, `output.overBudget`).
+
+**Meeting the triangle budget.** The Scorpio-N arrives as a UV-atlas bake: nearly every vertex is
+split along a texture-island border, so `weld()` (bitwise-identical vertices only) is a no-op and
+the simplifier sees a soup of disconnected fans — it returns the input unchanged at every error
+level. `scripts/assets/weld-position.mjs` therefore rebuilds the index buffer on a position grid so
+coincident vertices are shared, dropping the triangles that collapse to a line or point, which is
+what finally lets `simplify` collapse the mesh. `optimize-glb.mjs` runs that as a graduated
+fallback — exact weld first, then the grid coarsening to 1.6% of the model extent — re-simplifying
+and re-checking the budget after each pass, and records `overBudget` so a miss is visible in the
+committed reports (and in `assets/reports/pipeline.log`) instead of hiding in the Actions log.
 
 ## Render deployment
 

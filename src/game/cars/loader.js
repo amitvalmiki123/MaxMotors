@@ -207,6 +207,9 @@ export function buildCarRig({ gltf, manifest, preset, paint, tier }) {
     groundY: carBox.min.y,
     height: carSize.y,
     halfLength: carSize.z / 2,
+    // Priors mirror the asset pipeline (scripts/assets/optimize-glb.mjs) so the
+    // runtime fallback agrees with the wheels baked into the manifest.
+    expectedRadius: Math.max(0.12, carSize.z * 0.07),
   });
   wheelDiagnostics.push({
     source: 'scene',

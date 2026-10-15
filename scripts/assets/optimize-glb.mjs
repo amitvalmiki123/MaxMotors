@@ -385,8 +385,9 @@ function computeCarPlacement(document, target, bounds) {
     groundY: bounds.min[1],
     height: bounds.size[1],
     halfLength: bounds.size[2] / 2,
+    // Same priors as the runtime fallback in src/game/cars/loader.js, so a
+    // manifest-baked wheel and a scene-detected one land on the same hub.
     expectedRadius: Math.max(0.12, length * 0.07),
-    axleAxis: 0,
   });
 
   const contactPlaneY = wheelData.complete && wheelData.frontZ !== null
@@ -825,6 +826,9 @@ async function buildAsset(id, target) {
         textureQuality: best.quality,
         textureBytesBefore: best.textureStats.before,
         textureBytesAfter: best.textureStats.after,
+        triangleBudget: target.maxTriangles,
+        overBudget: best.trianglesAfter > target.maxTriangles,
+        sizeBudgetBytes: target.maxBytes,
       },
       transform: { yawRadians: 0, scale: 1, position: [0, 0, 0], note: 'track keeps source orientation; terrain JSON carries the vertical offset' },
       bounds: {
