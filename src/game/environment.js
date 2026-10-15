@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
+import { horizonRadiance } from './fog.js';
 
 /**
  * Environment: Poly Haven CC0 outdoor HDRI (4K desktop / 1K mobile) with a
@@ -41,9 +42,26 @@ function createFallbackTexture(trackId) {
   return texture;
 }
 
-export function createEnvironment({ scene, renderer, tier, trackId = 'test-circuit-01', hdriUrls, onStatus = () => {} }) {
+export function createEnvironment({ scene, renderer, tier, trackId = 'test-circuit-01', hdriUrls, onStatus = () => {}, onHorizon = () => {} }) {
   const preset = PRESETS[trackId] ?? PRESETS['test-circuit-01'];
-  const fallback = createFallbackTexture(trackId);
+  let fallback = createFallbackTexture(trackId);
+  let horizon = null;
+
+  /** Horizon radiance of whatever sky is showing; the game matches its fog to it. */
+  const measureHorizon = (texture) => {
+    try {
+      const image = texture?.image;
+      if (image?.data && image.width) {
+        horizon = horizonRadiance(image);
+      } else if (image?.getContext) {
+        const { data } = image.getContext('2d').getImageData(0, 0, image.width, image.height);
+        horizon = horizonRadiance({ data, width: image.width, height: image.height }, { encoding: 'srgb8' });
+      }
+    } catch {
+      horizon = null;
+    }
+    onHorizon(horizon);
+  };
   const pmremGenerator = new THREE.PMREMGenerator(renderer);
   pmremGenerator.compileEquirectangularShader();
 
@@ -57,6 +75,7 @@ export function createEnvironment({ scene, renderer, tier, trackId = 'test-circu
     scene.environment = fallback;
     scene.backgroundBlurriness = 0.08;
     scene.environmentIntensity = preset.intensity;
+    measureHorizon(fallback);
     onStatus({ source: reason, hdri: false });
   };
 
@@ -79,7 +98,10 @@ export function createEnvironment({ scene, renderer, tier, trackId = 'test-circu
       scene.background = texture;
       scene.backgroundBlurriness = preset.backgroundBlur;
       scene.environmentIntensity = preset.intensity;
-      renderer.toneMappingExposure = preset.exposure;
+      renderer.toneMappingExposure = (PRESETS[currentTrack] ?? preset).exposure;
+      scene.backgroundBlurriness = (PRESETS[currentTrack] ?? preset).backgroundBlur;
+      scene.environmentIntensity = (PRESETS[currentTrack] ?? preset).intensity;
+      measureHorizon(texture);
       onStatus({ source: 'polyhaven', hdri: true, resolution: `${texture.image?.width ?? '?'}x${texture.image?.height ?? '?'}` });
     }, undefined, (error) => {
       if (disposed) return;
@@ -90,7 +112,11 @@ export function createEnvironment({ scene, renderer, tier, trackId = 'test-circu
 
   return {
     get source() {
-      return scene.environment === fallback ? 'fallback' : 'hdri';
+      return hdriTexture ? 'hdri' : 'fallback';
+    },
+    /** Linear horizon radiance of the current sky (null until measured). */
+    get horizon() {
+      return horizon;
     },
     setTrack(nextTrackId) {
       currentTrack = nextTrackId;
@@ -98,13 +124,18 @@ export function createEnvironment({ scene, renderer, tier, trackId = 'test-circu
       scene.environmentIntensity = next.intensity;
       renderer.toneMappingExposure = next.exposure;
       scene.backgroundBlurriness = next.backgroundBlur;
-      if (scene.background === fallback || !hdriTexture) {
+      if (hdriTexture) {
+        // Keep the HDRI sky: track switches used to leave a flat colour here.
+        scene.background = hdriTexture;
+        scene.environment = environmentTarget.texture;
+        measureHorizon(hdriTexture);
+      } else {
         fallback.dispose();
-        const regenerated = createFallbackTexture(nextTrackId);
-        scene.background = regenerated;
-        scene.environment = regenerated;
+        fallback = createFallbackTexture(nextTrackId);
+        scene.background = fallback;
+        scene.environment = fallback;
+        measureHorizon(fallback);
       }
-      void currentTrack;
     },
     dispose() {
       disposed = true;

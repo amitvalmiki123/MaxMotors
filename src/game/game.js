@@ -10,6 +10,7 @@ import { applyPaint, buildCarRig, disposeCarRig, loadCarAssets, updateWheels } f
 import { detectTier, TRACK_TINT } from './config.js';
 import { createTyreEffects } from './effects.js';
 import { createEnvironment } from './environment.js';
+import { fogColorForPath } from './fog.js';
 import { engineLoad, shift } from './drivetrain.js';
 import { createVehiclePhysics, FIXED_TIME_STEP, getVehicleTelemetry, resetVehicle, resolveVehicleConfig, stepVehicle } from './physics.js';
 import { createSceneGraphics } from './scene-graphics.js';
@@ -129,6 +130,23 @@ export function createGame({
   const ground = createGroundPlane(scene);
   const graphics = createSceneGraphics({ renderer, scene, camera, tier: quality, container });
   const cameras = createCameraDirector({ camera, element: renderer.domElement });
+  let horizon = null;
+  let fogTrackId = initialTrackId;
+  /**
+   * Fog matched to the sky's horizon (see fog.js): dense exponential fog in
+   * the forest for aerial perspective, the light linear fog on the circuit.
+   */
+  function updateFog() {
+    const tint = TRACK_TINT[fogTrackId] ?? TRACK_TINT['test-circuit-01'];
+    const color = new THREE.Color(tint.fog);
+    if (horizon) {
+      const [r, g, b] = fogColorForPath(horizon, { postprocessing: quality.postprocessing, exposure: renderer.toneMappingExposure });
+      color.setRGB(r, g, b, THREE.LinearSRGBColorSpace);
+    }
+    scene.fog = tint.fogDensity
+      ? new THREE.FogExp2(color, tint.fogDensity)
+      : new THREE.Fog(color, tint.fogNear, tint.fogFar);
+  }
   const environment = createEnvironment({
     scene,
     renderer,
@@ -136,6 +154,10 @@ export function createGame({
     trackId: initialTrackId,
     hdriUrls: HDRI_URLS,
     onStatus: (status) => onStatus({ environment: status }),
+    onHorizon: (radiance) => {
+      horizon = radiance;
+      updateFog();
+    },
   });
 
   // --- tracks ---------------------------------------------------------------
@@ -226,11 +248,12 @@ export function createGame({
   }
 
   function applyTrackVisuals(trackId) {
-    const nextTint = TRACK_TINT[trackId] ?? TRACK_TINT['test-circuit-01'];
-    scene.background = new THREE.Color(nextTint.sky);
-    scene.fog = new THREE.Fog(nextTint.fog, nextTint.fogNear, nextTint.fogFar);
+    // The sky stays the environment's (HDRI or generated fallback); this used
+    // to paint a flat colour over it on every track switch.
+    fogTrackId = TRACK_TINT[trackId] ? trackId : (activeTrack?.fogPreset ?? 'test-circuit-01');
     environment.setTrack(trackId);
     graphics.setTrack(trackId);
+    updateFog();
   }
 
   async function selectTrack(trackId) {

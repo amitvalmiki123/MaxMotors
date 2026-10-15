@@ -66,5 +66,7 @@ export function detectTier(environment = {}) {
 /** Blend two colour values through the scene fog (used for track switching). */
 export const TRACK_TINT = Object.freeze({
   'test-circuit-01': { fog: 0x9daaa2, sky: 0xaebbb4, fogNear: 145, fogFar: 420 },
-  'forest-dirt-trail': { fog: 0x77886c, sky: 0x8ea184, fogNear: 60, fogFar: 300 },
+  // Forest: exponential-squared fog (FOREST_FOG_DENSITY in fog.js) whose colour
+  // is measured from the sky's horizon at runtime; `fog` is the offline fallback.
+  'forest-dirt-trail': { fog: 0x9fb0b4, sky: 0x8ea184, fogNear: 60, fogFar: 300, fogDensity: 0.0058 },
 });

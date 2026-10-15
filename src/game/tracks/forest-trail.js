@@ -116,6 +116,40 @@ function createPathIndexer(path) {
   };
 }
 
+/**
+ * Spawn on the first stretch of the trail where the ground under a car is
+ * flat and stays drivable for the next few centreline points. The traced path
+ * starts at the map edge, where the baked heightfield has 18–20 m steps (the
+ * far-terrain layer bleeds into the grid) — spawning on `path[0]` put a wheel
+ * over a 3.7 m drop.
+ */
+export function pickSpawnIndex(points, heightAt, { lookAhead = 6, maxRoughness = 0.35, maxSlope = 0.08 } = {}) {
+  const score = (index) => {
+    const point = points[index];
+    const ahead = points[Math.min(points.length - 1, index + 2)];
+    const behind = points[Math.max(0, index - 2)];
+    let dx = ahead.x - behind.x;
+    let dz = ahead.z - behind.z;
+    const length = Math.hypot(dx, dz) || 1;
+    dx /= length;
+    dz /= length;
+    const samples = [];
+    for (const along of [-1.6, 0, 1.6]) {
+      for (const side of [-1, 0, 1]) samples.push(heightAt(point.x + dx * along - dz * side, point.z + dz * along + dx * side));
+    }
+    const slope = (heightAt(point.x + dx * 3, point.z + dz * 3) - heightAt(point.x - dx * 3, point.z - dz * 3)) / 6;
+    return { roughness: Math.max(...samples) - Math.min(...samples), slope: Math.abs(slope) };
+  };
+  const scores = points.map((_, index) => score(index));
+  const smooth = (index) => scores[index].roughness < maxRoughness && scores[index].slope < maxSlope;
+  for (let index = 0; index < points.length - lookAhead; index += 1) {
+    let ok = true;
+    for (let step = 0; step <= lookAhead && ok; step += 1) ok = smooth(index + step);
+    if (ok) return index;
+  }
+  return scores.reduce((best, entry, index) => (entry.roughness < scores[best].roughness ? index : best), 0);
+}
+
 export async function createForestDirtTrail({ scene, physics, quality, onStatus = () => {}, manifestUrl = DEFAULT_MANIFEST_URL }) {
   const group = new THREE.Group();
   group.name = `track:${TRACK_ID}`;
@@ -191,9 +225,21 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
   const pathIndexer = createPathIndexer(terrain.path);
   const corridor = Math.max(MIN_CORRIDOR_HALF_WIDTH, Math.min(MAX_CORRIDOR_HALF_WIDTH, terrain.roadHalfWidth ?? 6));
 
-  const spawnPoint = pathIndexer.points[0];
-  const spawnDirection = pathIndexer.nearest(spawnPoint.x, spawnPoint.z).direction;
-  const spawnYaw = Math.atan2(-spawnDirection.x, -spawnDirection.z);
+  const heightAt = (x, z) => {
+    const { cols, rows, cellSize, origin } = terrain;
+    const fx = (x - origin[0]) / cellSize;
+    const fz = (z - origin[2]) / cellSize;
+    const ix = Math.max(0, Math.min(cols - 2, Math.floor(fx)));
+    const iz = Math.max(0, Math.min(rows - 2, Math.floor(fz)));
+    const tx = Math.max(0, Math.min(1, fx - ix));
+    const tz = Math.max(0, Math.min(1, fz - iz));
+    const at = (cx, cz) => heights[cz * cols + cx];
+    return (at(ix, iz) * (1 - tx) + at(ix + 1, iz) * tx) * (1 - tz) + (at(ix, iz + 1) * (1 - tx) + at(ix + 1, iz + 1) * tx) * tz;
+  };
+  const spawnIndex = pickSpawnIndex(pathIndexer.points, heightAt);
+  const spawnPoint = pathIndexer.points[spawnIndex];
+  const nextPoint = pathIndexer.points[Math.min(pathIndexer.points.length - 1, spawnIndex + 1)];
+  const spawnYaw = Math.atan2(-(nextPoint.x - spawnPoint.x), -(nextPoint.z - spawnPoint.z));
 
   const bounds = {
     halfWidth: corridor,
@@ -226,20 +272,9 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
       yaw: spawnYaw,
     },
     physics: { heightfieldBody },
-    /** Bilinear ground height, used for the contact shadow and dust height. */
-    groundHeightAt(x, z) {
-      const { cols, rows, cellSize, origin } = terrain;
-      const fx = (x - origin[0]) / cellSize;
-      const fz = (z - origin[2]) / cellSize;
-      const ix = Math.max(0, Math.min(cols - 2, Math.floor(fx)));
-      const iz = Math.max(0, Math.min(rows - 2, Math.floor(fz)));
-      const tx = Math.max(0, Math.min(1, fx - ix));
-      const tz = Math.max(0, Math.min(1, fz - iz));
-      const at = (cx, cz) => heights[Math.max(0, Math.min(rows - 1, cz)) * cols + Math.max(0, Math.min(cols - 1, cx))];
-      const top = at(ix, iz) * (1 - tx) + at(ix + 1, iz) * tx;
-      const bottom = at(ix, iz + 1) * (1 - tx) + at(ix + 1, iz + 1) * tx;
-      return top * (1 - tz) + bottom * tz;
-    },
+    spawnIndex,
+    /** Bilinear ground height: contact shadow, dust height, camera horizon. */
+    groundHeightAt: heightAt,
     stats: {
       meshes,
       triangles: Math.round(triangles),
