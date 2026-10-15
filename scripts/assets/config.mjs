@@ -118,3 +118,6 @@ export const HDRI_URLS = {
   mobile: 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/kloppenheim_06_puresky_1k.hdr',
   fallback: 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/lot_01_2k.hdr',
 };
+
+/** Same sky as the game, for the source-vs-optimized material audit (render-compare.mjs). */
+export const AUDIT_HDRI_URL = 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloppenheim_06_puresky_2k.hdr';

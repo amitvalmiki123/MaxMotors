@@ -21,15 +21,16 @@
   },
   "dependencies": {
     "cannon-es": "^0.20.0",
-    "three": "^0.186.1",
-    "meshoptimizer": "^0.22.0"
+    "meshoptimizer": "^0.22.0",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "@gltf-transform/core": "^4.5.1",
     "@gltf-transform/extensions": "^4.5.1",
     "@gltf-transform/functions": "^4.5.1",
+    "draco3dgltf": "^1.5.7",
+    "puppeteer-core": "^25.14.0",
     "sharp": "^0.35.5",
-    "vite": "^8.3.4",
-    "draco3dgltf": "^1.5.7"
+    "vite": "^8.3.4"
   }
 }
