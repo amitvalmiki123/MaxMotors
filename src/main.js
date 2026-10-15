@@ -7,6 +7,8 @@ const speedValue = document.querySelector('#speed-value');
 const speedFill = document.querySelector('#speed-meter-fill');
 const driveState = document.querySelector('#drive-state');
 const gearValue = document.querySelector('#gear-value');
+const selectorValue = document.querySelector('#selector-value');
+const gearGate = document.querySelector('#gear-gate');
 const rpmValue = document.querySelector('#rpm-value');
 const surfaceLabel = document.querySelector('#surface-label');
 const tractionWarning = document.querySelector('#traction-warning');
@@ -26,23 +28,38 @@ const lightsIndicator = document.querySelector('#lights-indicator');
 const appRoot = document.querySelector('#app');
 const creditsDialog = document.querySelector('#credits-dialog');
 
-// Free Roam (third entry) — deferred to M4.5. The forest collider now works
-// everywhere on the baked terrain (see tracks/forest-trail.js), so the mode is
-// a variant of that track: no lap logic, no corridor soft walls, soft outer
-// bounds at the heightfield edge, off-road grip from SURFACES.dirt.offTrackGrip.
-// It ships with its own acceptance pass (the forest renders far below the
-// frame rate needed to verify it in the M2.5 sandbox).
+/**
+ * Selectable tracks.
+ *
+ * Free Roam (M2.6) is not a third map: it is the same forest scene and the same
+ * cleaned heightfield with different rules — no corridor soft walls, a soft
+ * outer edge at the heightfield boundary, and off-road grip from
+ * `SURFACES.dirt.offTrackGrip`. Because the two forest modes share one download
+ * and one collider (tracks/forest-trail.js), switching between them is instant.
+ */
 const TRACKS = [
   {
     id: 'test-circuit-01',
-    label: 'Test Circuit 01',
+    label: 'TEST CIRCUIT 01',
+    chip: 'Test Circuit 01',
+    title: 'Proving<br /><em>Grounds</em>',
     subtitle: 'Closed-loop asphalt handling course',
     surface: 'ASPHALT',
   },
   {
     id: 'forest-dirt-trail',
-    label: 'Forest Dirt Trail',
+    label: 'FOREST DIRT TRAIL',
+    chip: 'Forest Dirt Trail',
+    title: 'Forest<br /><em>Trail</em>',
     subtitle: 'Dirt road through forest · loose surface',
+    surface: 'DIRT',
+  },
+  {
+    id: 'forest-free-roam',
+    label: 'FOREST FREE ROAM',
+    chip: 'Forest Free Roam',
+    title: 'Free<br /><em>Roam</em>',
+    subtitle: 'The whole forest · soft outer edge',
     surface: 'DIRT',
   },
 ];
@@ -82,7 +99,7 @@ function renderTracks() {
     button.dataset.id = track.id;
     button.setAttribute('role', 'radio');
     button.setAttribute('aria-checked', String(track.id === selectedTrackId));
-    button.innerHTML = `<strong>${track.label}</strong><small>${track.surface}</small>`;
+    button.innerHTML = `<strong>${track.chip}</strong><small>${track.surface}</small>`;
     button.addEventListener('click', async () => {
       if (track.id === selectedTrackId) return;
       selectedTrackId = track.id;
@@ -99,12 +116,40 @@ function renderTracks() {
 
 function applyTrackCopy() {
   const track = TRACKS.find((entry) => entry.id === selectedTrackId) ?? TRACKS[0];
-  trackIdLabel.textContent = track.id === 'test-circuit-01' ? 'TEST CIRCUIT 01' : 'FOREST DIRT TRAIL';
+  trackIdLabel.textContent = track.label;
   trackSubtitle.textContent = track.subtitle;
   surfaceLabel.textContent = track.surface;
-  document.querySelector('#track-title').innerHTML = track.id === 'test-circuit-01'
-    ? 'Proving<br /><em>Grounds</em>'
-    : 'Forest<br /><em>Trail</em>';
+  document.querySelector('#track-title').innerHTML = track.title;
+}
+
+/** Reflects the latched transmission position on the gate and the strip. */
+// Called from the telemetry tick, so the buttons are resolved once and the DOM
+// is only touched when the position actually changes.
+const gearButtons = [...(gearGate?.querySelectorAll('[data-gear]') ?? [])];
+const driftButtons = [...document.querySelectorAll('[data-action="drift"]')];
+let shownSelector = null;
+let shownDrift = null;
+
+function applySelector(selector) {
+  if (!selector || selector === shownSelector) return;
+  shownSelector = selector;
+  for (const button of gearButtons) {
+    const active = button.dataset.gear === selector;
+    button.classList.toggle('is-active', active);
+    button.setAttribute('aria-checked', String(active));
+  }
+  if (selectorValue) selectorValue.textContent = selector;
+}
+
+/** Reflects the drift-mode toggle on its button. */
+function applyDriftMode(enabled) {
+  const next = Boolean(enabled);
+  if (next === shownDrift) return;
+  shownDrift = next;
+  for (const button of driftButtons) {
+    button.classList.toggle('is-active', next);
+    button.setAttribute('aria-pressed', String(next));
+  }
 }
 
 function renderCars() {
@@ -165,17 +210,39 @@ function updateTelemetry(telemetry, input) {
   const topSpeed = getCar(selectedCarId).physics.topSpeedKmh;
   speedFill.style.width = `${Math.min(speed / topSpeed, 1) * 100}%`;
 
-  gearValue.textContent = telemetry.gear > 0 ? `GEAR ${telemetry.gear}` : 'REVERSE';
+  // The gate decides what the numbers mean: in D the strip shows the ratio the
+  // automatic picked, in R/N/P there is no ratio to show.
+  const selector = telemetry.selector ?? 'D';
+  applySelector(selector);
+  gearValue.textContent = selector === 'D'
+    ? `D${Math.max(1, telemetry.gear)}`
+    : selector === 'R'
+      ? 'REVERSE'
+      : selector === 'N'
+        ? 'NEUTRAL'
+        : 'PARK';
   rpmValue.textContent = `${Math.round(telemetry.rpm)} RPM`;
   surfaceLabel.textContent = (telemetry.surface ?? 'asphalt').toUpperCase();
   tractionWarning.hidden = telemetry.onTrack !== false;
 
-  if (input.handbrake && speed > 2) {
+  if (telemetry.flipped) {
+    driveState.textContent = 'ROLLED OVER';
+  } else if (telemetry.abs && speed > 4) {
+    // The anti-lock loop is working: worth saying, because it looks like the
+    // brakes pulsing and feels like the pedal fighting back.
+    driveState.textContent = 'ABS';
+  } else if (input.handbrake && speed > 2) {
     driveState.textContent = 'HANDBRAKE';
+  } else if (telemetry.driftMode && speed > 8) {
+    driveState.textContent = 'DRIFT';
+  } else if (selector === 'R') {
+    driveState.textContent = 'REVERSING';
+  } else if (selector === 'P') {
+    driveState.textContent = 'PARKED';
+  } else if (selector === 'N') {
+    driveState.textContent = 'NEUTRAL';
   } else if (input.brake > input.throttle && Math.abs(telemetry.signedSpeedKmh) > 1.4) {
     driveState.textContent = 'BRAKING';
-  } else if (input.brake > input.throttle) {
-    driveState.textContent = 'REVERSE';
   } else if (input.throttle > 0) {
     driveState.textContent = 'DRIVING';
   } else if (speed > 2) {
@@ -211,7 +278,31 @@ function handleStatus(status) {
   }
   if (status.track && status.state === 'loading') {
     sessionStatus.textContent = 'LOADING TRACK';
-    showToast(status.track === 'forest-dirt-trail' ? 'Loading forest trail (15 MB scene)…' : 'Loading test circuit…');
+    const forest = status.track.startsWith('forest-');
+    showToast(forest ? 'Loading forest (15 MB scene)…' : 'Loading test circuit…');
+    return;
+  }
+  if (status.track && status.terrain) {
+    // What the load-time cleanup did to the baked heightfield. The shipped
+    // payload predates the ground-only rebuild, so this is the runtime filter's
+    // report — spikes, holes, unreachable "sentinel" pits and over-steep seams.
+    const { spikes, holes, sentinelCells, steepCells, trunks } = status.terrain;
+    console.info('MaxMotors terrain:', status.terrain);
+    showToast(
+      `Forest collision cleaned: ${spikes} spikes, ${holes} holes, ${sentinelCells} pits, ${steepCells} steep cells removed · ${trunks} tree colliders`,
+      { timeout: 7000 },
+    );
+    return;
+  }
+  if (status.state === 'gear') {
+    applySelector(status.selector);
+    const names = { P: 'Park', R: 'Reverse', N: 'Neutral', D: 'Drive' };
+    showToast(names[status.selector] ?? status.selector, { timeout: 1400 });
+    return;
+  }
+  if (status.state === 'drift') {
+    applyDriftMode(status.driftMode);
+    showToast(status.driftMode ? 'Drift mode on — the rear axle is loose' : 'Drift mode off', { timeout: 2200 });
     return;
   }
   if (status.track && status.state === 'ready') {
@@ -257,7 +348,11 @@ try {
       if (action === 'lights') lightsIndicator.hidden = !game?.toggleHeadlights();
       if (action === 'doors' && game?.toggleOpenable('doors') === null) showToast('This car has no separately modelled doors.', { timeout: 2200 });
       if (action === 'bonnet' && game?.toggleOpenable('bonnet') === null) showToast('This car has no separately modelled bonnet or boot.', { timeout: 2200 });
+      if (action === 'drift') applyDriftMode(game?.toggleDriftMode());
     },
+    // 1–4 (and the free letters P / N) select the transmission gate; R stays
+    // Reset and D stays steer-right, both long documented.
+    onGear: (selector) => applySelector(game?.setSelector(selector)),
     onAnyInput: () => {
       if (!game.muted && !audioLabel.textContent.includes('ON')) unlockAudio();
       // Driving hides the setup panel (and the title / hints) on every device;
@@ -280,6 +375,8 @@ try {
   });
   // Dev-only handle for automated acceptance checks (stripped from production builds).
   if (import.meta.env.DEV) window.__maxmotors = { get game() { return game; } };
+  applySelector(game.selector);
+  applyDriftMode(game.driftMode);
   game.init().then(() => {
     sessionStatus.textContent = 'READY';
     showToast('Box-car preview is drivable now — the licensed model swaps in when it loads.', { timeout: 5000 });

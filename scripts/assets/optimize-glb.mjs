@@ -22,7 +22,7 @@ import { MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer';
 import sharp from 'sharp';
 import { ASSET_TARGETS, RAW_DIR, REPORT_DIR } from './config.mjs';
 import { clusterWheels, descriptorFromBounds } from '../../src/game/cars/wheel-clusters.js';
-import { buildTerrainGrid, classifyMaterial, collectTriangles, extractRoadPath, serializeTrail, writeOccupancyArtifacts } from './terrain.mjs';
+import { buildTerrainGrid, classifyMaterial, collectTriangles, extractRoadPath, extractTrunks, serializeTrail, writeOccupancyArtifacts } from './terrain.mjs';
 import { ensureDir, formatBytes, getNodeIO } from './gltf-io.mjs';
 import { recomputeCreaseNormals, snapPositions, weldByPosition } from './weld-position.mjs';
 import { computeCockpit, steeringColumnAxis } from '../../src/game/cars/cockpit.js';
@@ -709,7 +709,15 @@ async function optimizeOnce(target, attempt) {
     const bounds = sceneBounds(document);
     const { triangles, materials } = collectTriangles(document, { kind: target.kind });
     const grid = buildTerrainGrid({ triangles, materials, bounds, cellSize: 2 });
-    terrain = { grid, road: extractRoadPath(grid), bounds };
+    // Trunk colliders come from the same triangle soup, before instancing moves
+    // the transforms into EXT_mesh_gpu_instancing.
+    const trunks = extractTrunks({ triangles, materials, min: [bounds.min[0], bounds.min[2]] });
+    terrain = { grid, road: extractRoadPath(grid), trunks, bounds };
+    console.log(
+      `[optimize] track ground: ${grid.groundTriangles.toLocaleString()} of ${triangles.length.toLocaleString()} triangles are ground ` +
+        `(${grid.groundMaterials.length} materials); excluded ${(grid.excludedMaterials ?? []).length}; ` +
+        `trunks ${trunks.length}`,
+    );
     try {
       await document.transform(instance({ min: 4 }));
     } catch (error) {
@@ -990,11 +998,11 @@ async function buildAsset(id, target) {
   if (target.kind === 'car') {
     manifest = await buildCarManifest(document, target, id, best);
   } else {
-    const { grid, road, bounds } = best.terrain;
+    const { grid, road, trunks, bounds } = best.terrain;
     const pathY = road.path.filter(Boolean).map((point) => point[1]).sort((a, b) => a - b);
     const medianY = pathY.length ? pathY[Math.floor(pathY.length / 2)] : 0;
     const heightOffset = -medianY;
-    const trail = serializeTrail(grid, { id, path: road.path, roadHalfWidth: road.roadHalfWidth, heightOffset });
+    const trail = serializeTrail(grid, { id, path: road.path, roadHalfWidth: road.roadHalfWidth, heightOffset, trunks });
     trail.bounds = {
       min: [Number((grid.min[0]).toFixed(3)), trail.stats.minHeight, Number((grid.min[1]).toFixed(3))],
       max: [
@@ -1016,7 +1024,8 @@ async function buildAsset(id, target) {
     console.log(
       `[optimize] ${id} terrain: road ${road.path.filter(Boolean).length} pts, half-width ${road.roadHalfWidth.toFixed(2)} m, ` +
         `coverage ${(road.coverage * 100).toFixed(2)}%, grid ${grid.cols}x${grid.rows} @ ${grid.cellSize.toFixed(2)} m, ` +
-        `offset ${heightOffset.toFixed(2)}`,
+        `offset ${heightOffset.toFixed(2)}, outliers ${trail.stats.spikes} spikes / ${trail.stats.holes} holes removed, ` +
+        `holes filled ${trail.stats.filled} (+${trail.stats.unreachable} unreachable), trunks ${trail.stats.trunks}`,
     );
 
     manifest = {
@@ -1054,6 +1063,7 @@ async function buildAsset(id, target) {
         roadHalfWidth: trail.roadHalfWidth,
         roadPoints: trail.path.length,
         roadCoverage: trail.roadCoverage,
+        trunks: trail.trunks.length,
         heights: trail.stats,
       },
       strip: { ...best.strip, interiorRemoved: best.interior.removed, interiorSkipped: best.interior.skipped, flatDecalRemoved: best.flatDecals },

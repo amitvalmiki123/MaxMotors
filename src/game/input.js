@@ -1,3 +1,35 @@
+/**
+ * Input mapping: raw device state (keys held, touch buttons held) → the neutral
+ * `{steer, throttle, brake, handbrake}` shape the physics step consumes.
+ *
+ * M2.6 adds the transmission selector (P/R/N/D). The selector is *discrete* —
+ * a position you choose, not an axis you hold — so it is not part of this
+ * driving input: `input-controller.js` reports it through its own callback and
+ * `physics.js` latches it onto the persistent control state.
+ *
+ * Key conflicts: `R` is Reset and `D` is steer-right, both long documented, so
+ * the gear positions live on the number row (1–4) with `P` and `N` as mnemonic
+ * aliases — the two letters that were still free. The touch widget has explicit
+ * P/R/N/D buttons, which is the primary affordance on a phone.
+ */
+
+/** Valid transmission selector positions, in gate order. */
+export const SELECTORS = Object.freeze(['P', 'R', 'N', 'D']);
+
+/** Keyboard → selector position. Digits are primary; P/N are free-letter aliases. */
+export const GEAR_KEYS = Object.freeze({
+  Digit1: 'P',
+  Digit2: 'R',
+  Digit3: 'N',
+  Digit4: 'D',
+  Numpad1: 'P',
+  Numpad2: 'R',
+  Numpad3: 'N',
+  Numpad4: 'D',
+  KeyP: 'P',
+  KeyN: 'N',
+});
+
 const KEY_BINDINGS = Object.freeze({
   forward: ['KeyW', 'ArrowUp'],
   backward: ['KeyS', 'ArrowDown'],
@@ -14,6 +46,12 @@ function isPressed(keys, code) {
 
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, Number(value) || 0));
+}
+
+/** Normalizes a selector value; returns null when it is not one of P/R/N/D. */
+export function normalizeSelector(value) {
+  const next = String(value ?? '').trim().toUpperCase();
+  return SELECTORS.includes(next) ? next : null;
 }
 
 export function mapKeyboardInput(keys = {}) {

@@ -10,11 +10,48 @@
  *   - a height grid the game turns into a cannon-es Heightfield collider.
  */
 import { isWheelName } from '../../src/game/cars/names.js';
+import { filterHeightOutliers } from '../../src/game/tracks/terrain-grid.js';
 import { Buffer } from 'node:buffer';
 import sharp from 'sharp';
 
-export const GROUND_PATTERN = /road|dirt|ground|terrain|soil|mud|gravel|sand|grass|rock|cliff|path|leaves|aerial|forest|tree|trunk|bush|vegetation/i;
-export const ROAD_PATTERN = /(^|[^a-z])(dirt_road|road|gravel|track|path)([^a-z]|$)/i;
+/**
+ * Surfaces the car can actually drive on — the ground.
+ *
+ * M2.6: this used to be `road|dirt|ground|terrain|soil|mud|gravel|sand|grass|
+ * rock|cliff|path|leaves|aerial|forest|tree|trunk|bush|vegetation`, which
+ * matched *every* material in the forest scene (its atlas is named
+ * `Background_Tree_Atlas`, so "tree" alone matched all 26). Two consequences:
+ * nothing was ever skipped by SKIP_PATTERN (which is guarded by
+ * `!GROUND_PATTERN.test(label)`), and the heightfield sampled the 105 m tall
+ * canopy, the 70k-triangle trunk atlas and standing grass cards as if they were
+ * the ground. Taking the *lowest* hit per cell then produced a surface full of
+ * trunk-base spikes and canopy holes — the 224 spikes / 223 holes measured on
+ * the shipped heightfield, and the reason the car was thrown around the trail.
+ *
+ * The pattern is now strictly the ground: soil, rock and road surfaces.
+ */
+export const GROUND_PATTERN = /road|dirt|ground|terrain|soil|mud|gravel|sand|rock|cliff|path|cobble|puddle|trail|earth|stone/i;
+/**
+ * Anything that grows on, or is placed on, the ground: it must be excluded from
+ * the heightfield (it is not a surface you drive on) but trunks are extracted
+ * separately as their own colliders — see extractTrunks().
+ */
+export const VEGETATION_PATTERN = /tree|trunk|canopy|atlas|bush|shrub|grass|vegetation|lea(f|ves)|foliage|fern|aerial|branch|pine|oak|birch|maple|ivy|moss|flower|plant/i;
+/** Placed props: fences, logs, signs. Not ground, not trees — just skipped. */
+// Word-anchored on purpose: a bare `rail` matched "Dirt_Road_*Trails*" and a
+// bare `post` would match "Compost_Heap", quietly deleting road from the grid.
+export const PROP_PATTERN = /fence|wire|wood_log|(^|_)log($|_)|sign|(^|_)post($|_)|gate|barrier|(^|_)rail($|_)|stump|lamp|bench/i;
+/**
+ * Backdrop sheets: the distant terrain/skyline card a scene uses to hide its
+ * own edge. It is ground-*coloured* but it is not ground you can drive on — it
+ * sits tens of metres below the playable basin and intersects it, which is where
+ * the 38 m single-cell steps in the baked heightfield came from. Excluded from
+ * the collider; the runtime also slope-limits whatever a stale bake still has.
+ */
+export const BACKDROP_PATTERN = /terrain_far|far_terrain|distant|skyline|backdrop|horizon|_far$/i;
+/** Trunk materials, i.e. the vegetation worth giving a solid collider. */
+export const TRUNK_PATTERN = /trunk|_log|wood_log|stump/i;
+export const ROAD_PATTERN = /(^|[^a-z])(dirt_road|road|gravel|track|path|cobble)([^a-z]|$)/i;
 /**
  * Geometry that must not contribute to the terrain grid. Kept deliberately
  * narrow: the forest scene names its tree atlas `Background_Tree_Atlas`, which
@@ -35,6 +72,18 @@ export function classifyMaterial(material, { kind = 'car' } = {}) {
   if (isWheelName(name)) return 'wheel';
   if (/light|lamp|led|beam|emissive|lum|feu/.test(name)) return 'light';
   if (/interior|seat|cabin|dash|steer|(?:^|[^a-z])int_/.test(name)) return 'interior';
+  // Tracks: split the scene into what *is* the ground and what merely stands on
+  // it. Only 'terrain' is sampled into the heightfield; 'trunk' becomes its own
+  // cylinder collider (extractTrunks); vegetation, props, decals and backdrop
+  // sheets are recorded for the report and left out of the collider.
+  if (kind === 'track') {
+    if (BACKDROP_PATTERN.test(name)) return 'backdrop';
+    if (PROP_PATTERN.test(name)) return 'prop';
+    if (VEGETATION_PATTERN.test(name)) return TRUNK_PATTERN.test(name) ? 'trunk' : 'vegetation';
+    if (ROAD_PATTERN.test(name) || GROUND_PATTERN.test(name)) return 'terrain';
+    if (/decal/.test(name)) return 'decal';
+    return 'terrain';
+  }
   if (GROUND_PATTERN.test(name)) return 'terrain';
   if (/badge|logo|emblem|decal|plate/.test(name)) return 'badge';
   if (/glass|window|wind|transparent|screen|vitres/.test(name)) return 'glass';
@@ -69,7 +118,11 @@ export function collectTriangles(document, { kind = 'car' } = {}) {
     if (!mesh) continue;
     const world = node.getWorldMatrix();
     const nodeLabel = `${node.getName()} ${mesh.getName()}`;
-    const skippedNode = SKIP_PATTERN.test(nodeLabel) && !GROUND_PATTERN.test(nodeLabel);
+    // The guard is the *road*: with the M2.6 ground-only pattern, GROUND_PATTERN
+    // no longer matches every node label (the atlas is called
+    // `Background_Tree_Atlas`), so SKIP_PATTERN can fire on scenery that shares a
+    // node name with something the track needs.
+    const skippedNode = SKIP_PATTERN.test(nodeLabel) && !ROAD_PATTERN.test(nodeLabel);
 
     for (const primitive of mesh.listPrimitives()) {
       const position = primitive.getAttribute('POSITION');
@@ -176,10 +229,15 @@ export function buildTerrainGrid({ triangles, materials, bounds, cellSize = 2, m
     }
   };
 
+  // Only ground-class triangles contribute. Trunks, canopy, grass cards, leaf
+  // litter, fences and logs are recorded (they are needed for the trunk
+  // colliders and the reports) but never sampled as a driveable surface.
+  let groundTriangles = 0;
   for (let index = 0; index < triangles.length; index += 1) {
     const tri = triangles[index];
     const material = materials[tri.m];
     if (!material || material.skipped || material.class !== 'terrain') continue;
+    groundTriangles += 1;
     insert(index, tri, 0);
   }
 
@@ -231,13 +289,44 @@ export function buildTerrainGrid({ triangles, materials, bounds, cellSize = 2, m
     }
   }
 
-  return { min: [min[0], min[2]], cellSize: step, cols, rows, low, high, materialGrid, roadGrid, materials };
+  return {
+    min: [min[0], min[2]],
+    cellSize: step,
+    cols,
+    rows,
+    low,
+    high,
+    materialGrid,
+    roadGrid,
+    materials,
+    groundTriangles,
+    /** Material names that were allowed to define the ground (for the report). */
+    groundMaterials: materials.filter((entry) => entry.class === 'terrain').map((entry) => entry.name),
+    excludedMaterials: materials.filter((entry) => entry.class !== 'terrain').map((entry) => `${entry.name} [${entry.class}]`),
+  };
 }
 
-/** Fills holes so the grid can be used as a heightfield collider. */
+// The heightfield cleaner lives with the runtime (src/game/tracks/terrain-grid.js)
+// and is re-exported here: the pipeline and the game must apply exactly the same
+// filter, or a cell one side keeps and the other removes becomes a ramp or a pit.
+export { filterHeightOutliers } from '../../src/game/tracks/terrain-grid.js';
+
+/**
+ * Fills holes so the grid can be used as a heightfield collider.
+ *
+ * Neighbour propagation alone cannot reach a corner that is cut off from the
+ * sampled region, and `serializeTrail` used to write those cells as a bare 0 —
+ * which, after the height offset, became a 96 m pit at the map corner and
+ * launched anything that rolled into it. A final global pass therefore fills
+ * whatever is left from the median of the finite cells, so the payload never
+ * contains a sentinel.
+ *
+ * @returns {{values: Float64Array, holes: number, unreachable: number}}
+ */
 export function fillHoles(grid, { maxIterations = 64 } = {}) {
   const { cols, rows, low } = grid;
   const filled = Float64Array.from(low);
+  const holes = [...low].filter((value) => !Number.isFinite(value)).length;
   for (let iteration = 0; iteration < maxIterations; iteration += 1) {
     let patched = 0;
     for (let iz = 0; iz < rows; iz += 1) {
@@ -264,7 +353,87 @@ export function fillHoles(grid, { maxIterations = 64 } = {}) {
     }
     if (!patched) break;
   }
-  return filled;
+
+  // Anything still unfilled is unreachable from the sampled region (a grid
+  // corner outside the source geometry): give it the scene's median height so
+  // it is flat and boring rather than a pit.
+  let unreachable = 0;
+  const finite = [...filled].filter((value) => Number.isFinite(value)).sort((a, b) => a - b);
+  const median = finite.length ? finite[Math.floor(finite.length / 2)] : 0;
+  for (let index = 0; index < filled.length; index += 1) {
+    if (Number.isFinite(filled[index])) continue;
+    filled[index] = median;
+    unreachable += 1;
+  }
+
+  return { values: filled, holes, unreachable };
+}
+
+/**
+ * Finds the trees.
+ *
+ * The trunk atlas is a single merged primitive covering every trunk in the
+ * scene, so trunks are recovered by clustering their triangle centroids on a
+ * coarse XZ grid: a cluster that is tall and narrow is a trunk, a cluster that
+ * is wide or short is a branch fan, a root flare or a bush. Each survivor
+ * becomes a cylinder collider in the game (see tracks/forest-trail.js), which
+ * is what makes hitting a tree stop the car instead of letting it drive through
+ * the forest.
+ *
+ * @returns {Array<[number, number, number, number]>} `[x, z, radius, baseY]`
+ */
+export function extractTrunks({ triangles, materials, min: origin }, {
+  cellSize = 2.4,
+  minHeight = 3.2,
+  minRadius = 0.14,
+  maxRadius = 1.5,
+  maxLean = 0.55,
+} = {}) {
+  const buckets = new Map();
+  for (const tri of triangles) {
+    const material = materials[tri.m];
+    if (!material || material.skipped || material.class !== 'trunk') continue;
+    for (const corner of [tri.a, tri.b, tri.c]) {
+      const ix = Math.floor((corner[0] - origin[0]) / cellSize);
+      const iz = Math.floor((corner[2] - origin[1]) / cellSize);
+      const key = `${ix}:${iz}`;
+      let bucket = buckets.get(key);
+      if (!bucket) {
+        bucket = { ix, iz, count: 0, minX: Infinity, maxX: -Infinity, minZ: Infinity, maxZ: -Infinity, minY: Infinity, maxY: -Infinity, sumX: 0, sumZ: 0 };
+        buckets.set(key, bucket);
+      }
+      bucket.count += 1;
+      bucket.minX = Math.min(bucket.minX, corner[0]);
+      bucket.maxX = Math.max(bucket.maxX, corner[0]);
+      bucket.minZ = Math.min(bucket.minZ, corner[2]);
+      bucket.maxZ = Math.max(bucket.maxZ, corner[2]);
+      bucket.minY = Math.min(bucket.minY, corner[1]);
+      bucket.maxY = Math.max(bucket.maxY, corner[1]);
+      bucket.sumX += corner[0];
+      bucket.sumZ += corner[2];
+    }
+  }
+
+  const trunks = [];
+  for (const bucket of buckets.values()) {
+    if (bucket.count < 24) continue;
+    const width = bucket.maxX - bucket.minX;
+    const depth = bucket.maxZ - bucket.minZ;
+    const height = bucket.maxY - bucket.minY;
+    const radius = Math.max(width, depth) / 2;
+    if (height < minHeight) continue;
+    if (radius < minRadius || radius > maxRadius) continue;
+    // A trunk is roughly vertical: if its footprint is much wider than it is
+    // across at the base it is a branch fan or two merged trees, not a collider.
+    if (Math.min(width, depth) > height * maxLean) continue;
+    trunks.push([
+      Number((bucket.sumX / bucket.count).toFixed(2)),
+      Number((bucket.sumZ / bucket.count).toFixed(2)),
+      Number(Math.max(minRadius, radius).toFixed(2)),
+      Number(bucket.minY.toFixed(2)),
+    ]);
+  }
+  return trunks;
 }
 
 /**
@@ -450,15 +619,28 @@ export async function writeOccupancyArtifacts(grid, { asciiPath, pngPath, label,
 }
 
 /** Compact JSON payload the game reads to build the heightfield + soft walls. */
-export function serializeTrail(grid, { path, roadHalfWidth, id, heightOffset = 0 }) {
-  const filled = fillHoles(grid);
+export function serializeTrail(grid, { path, roadHalfWidth, id, heightOffset = 0, trunks = [] }) {
+  const { values: filled, holes, unreachable } = fillHoles(grid);
+  // Single-cell spikes and holes are removed *before* encoding: the runtime
+  // builds a cannon-es Heightfield straight from this payload, so a bad cell is
+  // a physical ramp or pit under the car, not a visual glitch.
+  const cleaned = filterHeightOutliers(filled, grid.cols, grid.rows);
   const heights = new Int16Array(grid.cols * grid.rows);
-  for (let index = 0; index < filled.length; index += 1) {
-    const value = (Number.isFinite(filled[index]) ? filled[index] : 0) + heightOffset;
+  for (let index = 0; index < cleaned.values.length; index += 1) {
+    const value = (Number.isFinite(cleaned.values[index]) ? cleaned.values[index] : 0) + heightOffset;
     heights[index] = Math.max(-32000, Math.min(32000, Math.round(value * 100)));
   }
   // Base64 keeps the payload small; the game decodes into Int16 centimetres.
   const encoded = Buffer.from(heights.buffer, heights.byteOffset, heights.byteLength).toString('base64');
+
+  let min = Infinity;
+  let max = -Infinity;
+  for (const value of cleaned.values) {
+    if (!Number.isFinite(value)) continue;
+    if (value < min) min = value;
+    if (value > max) max = value;
+  }
+
   return {
     id,
     cellSize: Number(grid.cellSize.toFixed(4)),
@@ -476,22 +658,32 @@ export function serializeTrail(grid, { path, roadHalfWidth, id, heightOffset = 0
       Number((point[1] + heightOffset).toFixed(3)),
       Number(point[2].toFixed(3)),
     ]),
-    stats: (() => {
-      // Unreachable cells stay NaN after hole filling; they must not poison the
-      // reported height range.
-      let min = Infinity;
-      let max = -Infinity;
-      for (const value of filled) {
-        if (!Number.isFinite(value)) continue;
-        if (value < min) min = value;
-        if (value > max) max = value;
-      }
-      const safeMin = Number.isFinite(min) ? min : 0;
-      const safeMax = Number.isFinite(max) ? max : 0;
-      return {
-        minHeight: Number((safeMin + heightOffset).toFixed(3)),
-        maxHeight: Number((safeMax + heightOffset).toFixed(3)),
-      };
-    })(),
+    /**
+     * Tree-trunk colliders as `[x, z, radius, baseY]`, in the same shifted
+     * space. The game turns each into a cylinder body, so a tree stops the car
+     * instead of the car driving through it (see tracks/forest-trail.js).
+     */
+    trunks: (trunks ?? []).map(([x, z, radius, baseY]) => [
+      Number(x.toFixed(2)),
+      Number(z.toFixed(2)),
+      Number(radius.toFixed(2)),
+      Number((baseY + heightOffset).toFixed(2)),
+    ]),
+    /** Which materials were allowed to define the ground (the M2.6 fix). */
+    groundMaterials: grid.groundMaterials ?? [],
+    excludedMaterials: grid.excludedMaterials ?? [],
+    stats: {
+      minHeight: Number(((Number.isFinite(min) ? min : 0) + heightOffset).toFixed(3)),
+      maxHeight: Number(((Number.isFinite(max) ? max : 0) + heightOffset).toFixed(3)),
+      groundTriangles: grid.groundTriangles ?? 0,
+      /** Cells the outlier filter corrected, and cells it found on the first pass. */
+      spikes: cleaned.spikes,
+      holes: cleaned.holes,
+      /** Cells with no ground hit at all, filled by neighbour propagation. */
+      filled: holes,
+      /** Cells too far from any hit to propagate to, filled with the median. */
+      unreachable,
+      trunks: (trunks ?? []).length,
+    },
   };
 }

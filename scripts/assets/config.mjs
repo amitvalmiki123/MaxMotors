@@ -60,7 +60,11 @@ export const ASSET_TARGETS = {
     maxBytes: 8 * 1024 * 1024,
     maxTriangles: 100_000,
     textureSize: 2048,
-    textureQuality: 80,
+    // M2.6: the SUV shipped at q80 while sitting at 1.5 MB of a 9 MB texture
+    // budget and 2.8 MB of an 8 MB file budget — it was the car players see
+    // closest in the cockpit and its normal/roughness maps were visibly blocked.
+    // q85 costs ~20% more texture bytes, which the budget absorbs easily.
+    textureQuality: 85,
     baseColorQuality: 92,
     maxTextureBytes: 9 * 1024 * 1024,
     maxTextureMemoryMB: 128,

@@ -304,6 +304,9 @@ export function buildCarRig({ gltf, manifest, preset, paint, tier }) {
   return {
     group,
     root,
+    // Carried so the cockpit rig can read the per-car cockpit corrections
+    // (preset.cockpit) without the caller having to thread them through.
+    preset,
     wheels,
     complete: wheels.length === 4,
     problems,
