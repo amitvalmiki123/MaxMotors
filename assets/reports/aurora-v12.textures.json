@@ -1,17 +1,30 @@
 {
-  "generatedAt": "2026-10-15T08:29:24.119Z",
-  "count": 1,
+  "generatedAt": "2026-10-15T08:31:39.950Z",
+  "count": 2,
   "textures": [
     {
       "index": 0,
       "mimeType": "image/webp",
-      "bytes": 91196,
-      "width": 1024,
-      "height": 1024,
+      "bytes": 9114,
+      "width": 512,
+      "height": 512,
       "used": true,
       "materials": [
-        "Tire",
-        "Tire.001"
+        "Carosserie"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 1,
+      "mimeType": "image/webp",
+      "bytes": 8312,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "Tire"
       ],
       "slots": [
         "baseColor"

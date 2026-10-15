@@ -74,7 +74,8 @@ function walkScene(document) {
         name,
         min: box.min,
         max: box.max,
-        wheelish: /wheel|tyre|tire|rim|pneu|roue|jante/i.test(label),
+        // Node name only: mesh names can carry reusable material names.
+        wheelish: /wheel|tyre|tire|rim|pneu|roue|jante/i.test(name),
         ancestorIds: ancestors,
       }));
     }

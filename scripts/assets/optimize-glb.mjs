@@ -81,6 +81,16 @@ function matches(value, patterns) {
   return Boolean(name) && patterns.some((pattern) => name.includes(pattern));
 }
 
+function countMeshTriangles(mesh) {
+  if (!mesh) return 0;
+  let total = 0;
+  for (const primitive of mesh.listPrimitives()) {
+    const indices = primitive.getIndices();
+    total += (indices ? indices.getCount() : primitive.getAttribute('POSITION')?.getCount() ?? 0) / 3;
+  }
+  return Math.round(total);
+}
+
 function countTriangles(document) {
   let total = 0;
   for (const mesh of document.getRoot().listMeshes()) {
@@ -159,22 +169,30 @@ function stripFlatDecals(document, target, kind = 'car') {
   const bounds = sceneBounds(document);
   const length = Math.max(bounds.size[0], bounds.size[2]) || 1;
   const width = Math.max(bounds.size[0], bounds.size[2]) || 1;
-  const maxThickness = 0.015 * length;
-  const maxFootprint = 0.02 * length * width;
+  // A badge/lettering plaque is a thin, small plate lying on the body. Aerodynamic
+  // parts (wings, splitters, diffusers) are bigger, so they stay.
+  const maxThickness = 0.004 * length;
+  const maxDimension = 0.16 * length;
+  const maxFootprint = 0.03 * length * width;
+  const protectedNames = /wing|spoiler|diffuser|splitter|mirror|handle|wiper|grill|vent|duct|camera|plate_?light|reflector/i;
   const removed = [];
 
   for (const node of document.getRoot().listNodes()) {
     const mesh = node.getMesh();
     if (!mesh) continue;
+    const label = node.getName() || mesh.getName() || '';
+    if (protectedNames.test(label)) continue;
+    const triangles = countMeshTriangles(mesh);
+    if (triangles > 3000) continue;
     const box = getBounds(node);
     const size = [0, 1, 2].map((axis) => box.max[axis] - box.min[axis]);
     if (!size.every(Number.isFinite)) continue;
     const sorted = [...size].sort((a, b) => a - b);
     const [thickness, middle, longest] = sorted;
-    if (thickness > maxThickness || longest * middle > maxFootprint) continue;
+    if (thickness > maxThickness || longest > maxDimension || longest * middle > maxFootprint) continue;
     const classes = new Set(mesh.listPrimitives().map((primitive) => classifyMaterial(primitive.getMaterial(), { kind })));
     if (classes.has('glass') || classes.has('light') || classes.has('wheel')) continue;
-    removed.push(`${node.getName() || mesh.getName()} (${size.map((value) => value.toFixed(3)).join('x')})`);
+    removed.push(`${label} (${size.map((value) => value.toFixed(3)).join('x')})`);
     node.dispose();
   }
   return removed;
@@ -255,7 +273,8 @@ function collectNodeCandidates(document) {
         name,
         min: box.min,
         max: box.max,
-        wheelish: /wheel|tyre|tire|rim|pneu|roue|jante/i.test(`${node.getName()} ${mesh.getName()}`),
+        // Node name only: this model reuses wheel *material* names on doors.
+        wheelish: /wheel|tyre|tire|rim|pneu|roue|jante/i.test(node.getName() || ''),
         ancestorIds: ancestors,
       }));
     }
@@ -373,17 +392,23 @@ async function optimizeOnce(target, attempt) {
   const trianglesBefore = countTriangles(document);
   let trianglesAfter = trianglesBefore;
   const triangleBudget = Math.round(target.maxTriangles * attempt.ratioScale);
+  // The triangle budget is the hard target: the allowed geometric error is
+  // scaled up until the mesh fits, so a 341k-triangle model still lands inside
+  // its documented limit instead of stopping at whatever ratio simplifies to.
   if (trianglesBefore > triangleBudget) {
-    for (let round = 0; round < 3 && trianglesAfter > triangleBudget; round += 1) {
+    let error = target.simplifyError ?? 0.005;
+    for (let round = 0; round < 4 && trianglesAfter > triangleBudget; round += 1) {
       const ratio = Math.max(0.02, Math.min(1, triangleBudget / trianglesAfter));
       await document.transform(simplify({
         simplifier: MeshoptSimplifier,
         ratio,
-        error: target.simplifyError ?? 0.005,
+        error,
         lockBorder: false,
       }));
       const next = countTriangles(document);
-      if (next >= trianglesAfter) break;
+      console.log(`[optimize] simplify pass ${round + 1}: ratio ${ratio.toFixed(3)} error ${error.toFixed(4)} -> ${next.toLocaleString()} tris`);
+      if (next >= trianglesAfter && round > 0) break;
+      error *= 3;
       trianglesAfter = next;
     }
   }

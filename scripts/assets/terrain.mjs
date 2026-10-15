@@ -357,7 +357,9 @@ export function extractRoadPath(grid, { smooth = 3 } = {}) {
     const y = validY.length ? validY.reduce((sum, value) => sum + value, 0) / validY.length : 0;
     return [point[0], y, point[2]];
   });
-  const decimated = smoothed.filter((_, index) => index % 2 === 0 || index === smoothed.length - 1);
+  // One centreline point per grid cell (~2 m) keeps the soft walls smooth
+  // through tight bends without a huge payload.
+  const decimated = smoothed;
 
   const roadCells = grid.roadGrid.reduce((sum, value) => sum + value, 0);
   return {
@@ -473,9 +475,22 @@ export function serializeTrail(grid, { path, roadHalfWidth, id, heightOffset = 0
       Number((point[1] + heightOffset).toFixed(3)),
       Number(point[2].toFixed(3)),
     ]),
-    stats: {
-      minHeight: Number((Math.min(...filled) + heightOffset).toFixed(3)),
-      maxHeight: Number((Math.max(...filled) + heightOffset).toFixed(3)),
-    },
+    stats: (() => {
+      // Unreachable cells stay NaN after hole filling; they must not poison the
+      // reported height range.
+      let min = Infinity;
+      let max = -Infinity;
+      for (const value of filled) {
+        if (!Number.isFinite(value)) continue;
+        if (value < min) min = value;
+        if (value > max) max = value;
+      }
+      const safeMin = Number.isFinite(min) ? min : 0;
+      const safeMax = Number.isFinite(max) ? max : 0;
+      return {
+        minHeight: Number((safeMin + heightOffset).toFixed(3)),
+        maxHeight: Number((safeMax + heightOffset).toFixed(3)),
+      };
+    })(),
   };
 }
