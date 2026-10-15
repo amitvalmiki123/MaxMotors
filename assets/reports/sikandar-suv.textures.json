@@ -1,0 +1,147 @@
+{
+  "generatedAt": "2026-10-15T09:03:13.832Z",
+  "count": 10,
+  "textures": [
+    {
+      "index": 0,
+      "mimeType": "image/webp",
+      "bytes": 112,
+      "width": 128,
+      "height": 128,
+      "used": true,
+      "materials": [
+        "wheel_rf.3"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 1,
+      "mimeType": "image/webp",
+      "bytes": 75384,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "movsteer_1.0.5"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 2,
+      "mimeType": "image/webp",
+      "bytes": 197354,
+      "width": 1024,
+      "height": 1024,
+      "used": true,
+      "materials": [
+        "movsteer_1.0.3"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 3,
+      "mimeType": "image/webp",
+      "bytes": 18734,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "movsteer_1.0.4"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 4,
+      "mimeType": "image/webp",
+      "bytes": 304,
+      "width": 256,
+      "height": 256,
+      "used": true,
+      "materials": [
+        "headlight_f.3"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 5,
+      "mimeType": "image/webp",
+      "bytes": 176420,
+      "width": 1024,
+      "height": 1024,
+      "used": true,
+      "materials": [
+        "indicator_lf",
+        "breaklight_l"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 6,
+      "mimeType": "image/webp",
+      "bytes": 54500,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "scorpio_n_int_body.1"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 7,
+      "mimeType": "image/webp",
+      "bytes": 18194,
+      "width": 256,
+      "height": 256,
+      "used": true,
+      "materials": [
+        "scorpio_n_int_body.2"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 8,
+      "mimeType": "image/webp",
+      "bytes": 309880,
+      "width": 1024,
+      "height": 1024,
+      "used": true,
+      "materials": [
+        "scorpio_n_int_dashboard.6"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 9,
+      "mimeType": "image/webp",
+      "bytes": 6802,
+      "width": 512,
+      "height": 512,
+      "used": true,
+      "materials": [
+        "scorpio_n_int_seats-stiches.0"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    }
+  ]
+}

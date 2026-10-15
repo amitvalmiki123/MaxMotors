@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-10-15T09:03:14.850Z",
+  "count": 3,
+  "textures": [
+    {
+      "index": 0,
+      "mimeType": "image/webp",
+      "bytes": 83366,
+      "width": 1024,
+      "height": 1024,
+      "used": true,
+      "materials": [
+        "Blanck"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 1,
+      "mimeType": "image/webp",
+      "bytes": 8520,
+      "width": 1024,
+      "height": 1024,
+      "used": true,
+      "materials": [
+        "CARBONE",
+        "Carbone"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    },
+    {
+      "index": 2,
+      "mimeType": "image/webp",
+      "bytes": 91196,
+      "width": 1024,
+      "height": 1024,
+      "used": true,
+      "materials": [
+        "Tire",
+        "Tire.001"
+      ],
+      "slots": [
+        "baseColor"
+      ]
+    }
+  ]
+}

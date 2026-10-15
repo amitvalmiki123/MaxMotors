@@ -1,0 +1,149 @@
+name: Asset pipeline
+
+# Owner-supplied source GLBs are downloaded here (they are never committed) and
+# optimized into public/. This runs on a GitHub runner because the source host is
+# not reachable from every environment the project is developed in.
+#
+# Every step tees its output into assets/reports/pipeline.log, which is committed
+# at the end (even on failure) so the run can be reviewed without the Actions UI.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'inspect = reports only, build = reports + optimized public assets'
+        required: true
+        default: build
+        type: choice
+        options:
+          - build
+          - inspect
+      only:
+        description: 'Optional single asset id (sikandar-suv | aurora-v12 | forest-dirt-trail)'
+        required: false
+        default: ''
+        type: string
+  # Rebuilds whenever the pipeline, the game code that consumes the assets
+  # (budgets live in scripts/assets/config.mjs, expectations live in
+  # src/game/**) or the credits documentation changes. The source GLBs are not
+  # in the repository, so this is also the way to reproduce the shipped output.
+  push:
+    paths:
+      - '.github/workflows/assets-pipeline.yml'
+      - 'scripts/assets/**'
+      - 'src/game/**'
+      - 'docs/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: assets-pipeline
+  cancel-in-progress: false
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PIPELINE_MODE: ${{ github.event.inputs.mode || 'build' }}
+      PIPELINE_ONLY: ${{ github.event.inputs.only || '' }}
+      LOG: assets/reports/pipeline.log
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Start log
+        run: |
+          mkdir -p assets/reports
+          {
+            echo "mode=$PIPELINE_MODE only='${PIPELINE_ONLY}' ref=$GITHUB_REF_NAME sha=$GITHUB_SHA"
+            echo "runner=$(uname -a)"
+          } > "$LOG"
+
+      - name: Install dependencies
+        run: |
+          set -o pipefail
+          npm ci 2>&1 | tee -a "$LOG"
+
+      - name: Fetch source models into assets/raw (ignored, never committed)
+        run: |
+          set -o pipefail
+          node scripts/assets/fetch-sources.mjs ${{ env.PIPELINE_ONLY != '' && format('--only {0}', env.PIPELINE_ONLY) || '' }} 2>&1 | tee -a "$LOG"
+
+      - name: Inspect sources (node tree, wheel candidates, occupancy maps)
+        run: |
+          set -o pipefail
+          node scripts/assets/inspect-glb.mjs 2>&1 | tee -a "$LOG"
+
+      - name: Optimize GLBs into public/
+        id: optimize
+        if: env.PIPELINE_MODE != 'inspect'
+        run: |
+          set -o pipefail
+          node scripts/assets/optimize-glb.mjs ${{ env.PIPELINE_ONLY != '' && format('--only {0}', env.PIPELINE_ONLY) || '' }} 2>&1 | tee -a "$LOG"
+
+      - name: Fetch Poly Haven CC0 asphalt PBR (2K)
+        id: textures
+        if: env.PIPELINE_MODE != 'inspect'
+        run: |
+          set -o pipefail
+          node scripts/assets/fetch-environment.mjs 2>&1 | tee -a "$LOG"
+
+      - name: Generate CC0 engine loops
+        id: audio
+        if: env.PIPELINE_MODE != 'inspect'
+        run: |
+          set -o pipefail
+          node scripts/assets/build-audio.mjs 2>&1 | tee -a "$LOG"
+
+      - name: Report sizes
+        if: always()
+        run: |
+          {
+            echo "--- public/ tree ---"
+            du -h -d 3 public 2>/dev/null | sort -h || true
+            echo "--- files ---"
+            ls -la public/models public/tracks public/textures public/audio assets/reports 2>/dev/null || true
+          } | tee -a "$LOG"
+
+      # Runs even when a build step failed, so the log always lands on the
+      # branch; a failed build only commits reports, never half-written assets.
+      - name: Commit pipeline output
+        if: always()
+        env:
+          BUILD_OK: ${{ steps.optimize.outcome == 'success' && steps.textures.outcome == 'success' && steps.audio.outcome == 'success' }}
+        run: |
+          git config user.name "maxmotors-asset-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A assets/reports
+          if [ "$BUILD_OK" = "true" ]; then
+            git add -A public
+          else
+            echo "Build steps did not all succeed; committing reports only." | tee -a "$LOG"
+          fi
+          if git diff --cached --quiet; then
+            echo "Nothing to commit." | tee -a "$LOG"
+            exit 0
+          fi
+          git commit -m "chore(assets): pipeline output ($PIPELINE_MODE) [skip ci]"
+          # The branch can move while this job runs (a human push, or the next
+          # pipeline run), so rebase onto the tip and retry instead of failing.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:$GITHUB_REF_NAME; then
+              echo "Pushed pipeline output on attempt $attempt." | tee -a "$LOG"
+              exit 0
+            fi
+            echo "Push attempt $attempt rejected; rebasing onto origin/$GITHUB_REF_NAME." | tee -a "$LOG"
+            git fetch origin "$GITHUB_REF_NAME"
+            git rebase "origin/$GITHUB_REF_NAME" || { git rebase --abort; exit 1; }
+            sleep 5
+          done
+          echo "Could not push pipeline output after 5 attempts." | tee -a "$LOG"
+          exit 1

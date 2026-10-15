@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-10-15T09:03:22.598Z",
+  "title": "Asphalt",
+  "slug": "asphalt_02",
+  "source": "https://polyhaven.com/a/asphalt_02",
+  "license": "CC0 1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "files": [
+    {
+      "slot": "diffuse",
+      "file": "/textures/asphalt_diffuse_2k.jpg",
+      "bytes": 3075676,
+      "width": 2048,
+      "height": 2048,
+      "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_02/asphalt_02_diff_2k.jpg"
+    },
+    {
+      "slot": "normal",
+      "file": "/textures/asphalt_normal_2k.jpg",
+      "bytes": 4943950,
+      "width": 2048,
+      "height": 2048,
+      "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_02/asphalt_02_nor_gl_2k.jpg"
+    },
+    {
+      "slot": "arm",
+      "file": "/textures/asphalt_arm_2k.jpg",
+      "bytes": 1299186,
+      "width": 2048,
+      "height": 2048,
+      "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_02/asphalt_02_arm_2k.jpg"
+    }
+  ]
+}

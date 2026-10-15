@@ -65,6 +65,12 @@ button {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  /* Desktop gets a real post-processing vignette (see src/game/graphics.js);
+     the CSS overlay stays for the mobile/low tier, which renders directly. */
+  background: none;
+}
+
+#app:not([data-quality='desktop']) .scene-vignette {
   background:
     linear-gradient(180deg, rgba(11, 18, 19, 0.48) 0%, transparent 23%, transparent 56%, rgba(12, 17, 17, 0.56) 100%),
     linear-gradient(90deg, rgba(13, 19, 19, 0.25), transparent 58%);
@@ -821,5 +827,197 @@ noscript {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   M2 additions: garage panel (track + car + paint), status toast, audio toggle.
+   --------------------------------------------------------------------------- */
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.icon-button {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(19, 26, 27, 0.55);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+}
+
+.icon-button[aria-pressed='true'] {
+  border-color: rgba(229, 111, 73, 0.6);
+  color: var(--ink);
+}
+
+.setup-panel {
+  position: absolute;
+  left: clamp(22px, 4vw, 62px);
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(360px, calc(100vw - 44px));
+  padding: 16px 17px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(16, 23, 23, 0.62);
+  backdrop-filter: blur(9px);
+}
+
+.setup-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.setup-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+}
+
+.chip-row,
+.paint-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.chip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(24, 32, 33, 0.6);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.chip strong {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.chip small {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.chip.is-active {
+  border-color: rgba(229, 111, 73, 0.75);
+  background: rgba(48, 32, 25, 0.72);
+}
+
+.setup-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.paint-chip {
+  width: 26px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 3px;
+  background: var(--paint);
+  cursor: pointer;
+}
+
+.paint-chip.is-active {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.load-toast {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(120px, 18vh, 190px);
+  transform: translate(-50%, 12px);
+  max-width: min(440px, calc(100vw - 44px));
+  padding: 9px 15px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(14, 20, 20, 0.82);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.load-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+#traction-warning {
+  color: #e2a25d;
+}
+
+#traction-warning::before {
+  content: '● ';
+}
+
+@media (pointer: coarse), (max-width: 760px) {
+  .setup-panel {
+    left: 12px;
+    right: 12px;
+    bottom: max(88px, calc(env(safe-area-inset-bottom) + 84px));
+    width: auto;
+    max-height: 34vh;
+    overflow: auto;
+    padding: 11px 12px;
+    gap: 9px;
+    touch-action: pan-y;
+  }
+
+  .chip {
+    padding: 6px 9px;
+  }
+
+  .chip strong {
+    font-size: 11px;
+  }
+
+  .icon-button span {
+    display: none;
+  }
+
+  .load-toast {
+    bottom: max(210px, calc(env(safe-area-inset-bottom) + 200px));
+  }
+}
+
+@media (max-width: 390px) and (orientation: portrait) {
+  .setup-meta {
+    display: none;
   }
 }

@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-10-15T09:03:22.643Z",
+  "license": "CC0 1.0",
+  "sampleRate": 44100,
+  "engines": [
+    {
+      "id": "aurora-v10",
+      "label": "Aurora V12 — V10-style petrol engine bed",
+      "cylinders": 10,
+      "layers": [
+        {
+          "id": "low",
+          "file": "/audio/aurora-v10-low.wav",
+          "referenceRpm": 1600,
+          "loopSeconds": 0.9975,
+          "firingFrequencyHz": 133.33,
+          "bytes": 88024
+        },
+        {
+          "id": "high",
+          "file": "/audio/aurora-v10-high.wav",
+          "referenceRpm": 7200,
+          "loopSeconds": 1,
+          "firingFrequencyHz": 600,
+          "bytes": 88244
+        }
+      ]
+    },
+    {
+      "id": "sikandar-diesel",
+      "label": "Sikandar SUV — turbo-diesel rumble bed",
+      "cylinders": 4,
+      "layers": [
+        {
+          "id": "low",
+          "file": "/audio/sikandar-diesel-low.wav",
+          "referenceRpm": 900,
+          "loopSeconds": 1,
+          "firingFrequencyHz": 30,
+          "bytes": 88244
+        },
+        {
+          "id": "high",
+          "file": "/audio/sikandar-diesel-high.wav",
+          "referenceRpm": 3600,
+          "loopSeconds": 1,
+          "firingFrequencyHz": 120,
+          "bytes": 88244
+        }
+      ]
+    }
+  ]
+}

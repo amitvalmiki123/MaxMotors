@@ -7,9 +7,10 @@ const RELEVANT_KEYS = new Set([
 ]);
 
 export class InputController {
-  constructor({ root = document, onReset = () => {} } = {}) {
+  constructor({ root = document, onReset = () => {}, onAnyInput = () => {} } = {}) {
     this.root = root;
     this.onReset = onReset;
+    this.onAnyInput = onAnyInput;
     this.keys = new Set();
     this.touchPointers = new Map();
     this.touch = { steer: 0, throttle: 0, brake: 0, handbrake: false };
@@ -17,6 +18,7 @@ export class InputController {
     this.handleKeyDown = (event) => {
       if (!RELEVANT_KEYS.has(event.code)) return;
       event.preventDefault();
+      this.onAnyInput(event);
       if (event.code === 'KeyR' && !event.repeat) this.onReset();
       this.keys.add(event.code);
     };
@@ -30,6 +32,7 @@ export class InputController {
       const action = event.currentTarget.dataset.control;
       if (!action) return;
       event.preventDefault();
+      this.onAnyInput(event);
       this.touchPointers.set(event.pointerId, action);
       event.currentTarget.setPointerCapture?.(event.pointerId);
       this.updateTouchState();

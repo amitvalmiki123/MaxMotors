@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#111a1d" />
-    <meta name="description" content="MaxMotors M1 driving prototype — a local-only procedural car simulator." />
-    <title>MaxMotors — Proving Grounds</title>
+    <meta name="description" content="MaxMotors — a two-car, two-track driving prototype with asphalt and dirt handling." />
+    <title>MaxMotors — Drive Lab M2</title>
   </head>
   <body>
     <div id="app">
@@ -15,29 +15,54 @@
       <header class="topbar">
         <a class="wordmark" href="#" aria-label="MaxMotors home">
           <span class="wordmark-icon" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="wordmark-text">MAX<span>MOTORS</span><small>DRIVE LAB / M1</small></span>
+          <span class="wordmark-text">MAX<span>MOTORS</span><small>DRIVE LAB / M2</small></span>
         </a>
-        <div class="session-status"><span class="status-light"></span> LOCAL SESSION</div>
-        <button class="credits-trigger" id="credits-button" type="button">Credits <span aria-hidden="true">↗</span></button>
+        <div class="session-status">
+          <span class="status-light"></span>
+          <span id="session-status-text">LOADING</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-button" id="audio-button" type="button" aria-pressed="false" title="Toggle engine audio">♪ <span id="audio-label">SOUND OFF</span></button>
+          <button class="credits-trigger" id="credits-button" type="button">Credits <span aria-hidden="true">↗</span></button>
+        </div>
       </header>
 
       <main class="hud" aria-label="Driving interface">
         <section class="track-heading" aria-label="Track information">
-          <div class="eyebrow"><span class="eyebrow-line"></span> TEST CIRCUIT 01</div>
-          <h1>Proving<br /><em>Grounds</em></h1>
-          <p>Closed-loop handling course<br />A procedural M1 drive prototype</p>
+          <div class="eyebrow"><span class="eyebrow-line"></span> <span id="track-id-label">TEST CIRCUIT 01</span></div>
+          <h1 id="track-title">Proving<br /><em>Grounds</em></h1>
+          <p id="track-subtitle">Closed-loop handling course</p>
         </section>
 
         <div class="status-stack" aria-label="Session details">
-          <span><b class="status-dot"></b> SOLO DRIVE</span>
+          <span><b class="status-dot"></b> <span id="car-name">AURORA V12</span></span>
           <span>PHYSICS <b>60 HZ</b></span>
+          <span>SURFACE <b id="surface-label">ASPHALT</b></span>
+          <span id="traction-warning" hidden>OFF TRACK</span>
         </div>
+
+        <section class="setup-panel" aria-label="Car and track selection">
+          <div class="setup-group">
+            <div class="setup-label">TRACK</div>
+            <div class="chip-row" id="track-options" role="radiogroup" aria-label="Select track"></div>
+          </div>
+          <div class="setup-group">
+            <div class="setup-label">CAR</div>
+            <div class="chip-row" id="car-options" role="radiogroup" aria-label="Select car"></div>
+            <div class="setup-meta" id="car-meta"></div>
+            <div class="paint-row" id="paint-options" role="radiogroup" aria-label="Select paint"></div>
+          </div>
+        </section>
 
         <section class="telemetry" aria-label="Vehicle speed">
           <div class="telemetry-label"><span class="telemetry-icon" aria-hidden="true">◉</span> VEHICLE SPEED</div>
           <div class="speed-readout"><strong id="speed-value">000</strong><span>km/h</span></div>
           <div class="speed-meter" aria-hidden="true"><span id="speed-meter-fill"></span></div>
-          <div class="telemetry-footer"><span>PROTOTYPE</span><span id="drive-state">READY</span></div>
+          <div class="telemetry-footer">
+            <span id="gear-value">GEAR 1</span>
+            <span id="rpm-value">950 RPM</span>
+            <span id="drive-state">READY</span>
+          </div>
         </section>
 
         <div class="desktop-hint" id="desktop-hint">
@@ -73,6 +98,8 @@
         </div>
       </main>
 
+      <div class="load-toast" id="load-toast" role="status" aria-live="polite"></div>
+
       <dialog class="credits-dialog" id="credits-dialog" aria-labelledby="credits-title">
         <div class="dialog-heading">
           <div>
@@ -81,22 +108,56 @@
           </div>
           <button class="dialog-close" id="credits-close" type="button" aria-label="Close credits">×</button>
         </div>
-        <p class="credits-intro">The M1 drive prototype uses a clean procedural vehicle. The following licensed models are planned for a future Car Pack; no licensed car GLBs are included in this build.</p>
+        <p class="credits-intro">
+          Every licensed model in this build is listed below with its author and license. In-game names are fictional and the
+          shipped models are modified: geometry simplified, textures re-encoded, and manufacturer badges/logos removed.
+        </p>
         <div class="credit-list">
           <article class="credit-card">
-            <div class="credit-tag">PLANNED CAR PACK / SUV</div>
+            <div class="credit-tag">CAR PACK / SUV · CC BY 4.0</div>
             <h3>Sikandar SUV</h3>
-            <p><a href="https://sketchfab.com/3d-models/2022-mahindra-scorpio-n-538b10f2860f44e694dc3e9d3e223bf8" target="_blank" rel="noreferrer">Source listing: 2022 Mahindra Scorpio-N by BHP3D ↗</a></p>
-            <p>Model and textures: <strong>Modding Beast</strong>. Export and edits: <strong>BHP3D</strong>. License: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0 ↗</a>.</p>
+            <p>
+              <a href="https://sketchfab.com/3d-models/2022-mahindra-scorpio-n-538b10f2860f44e694dc3e9d3e223bf8" target="_blank" rel="noreferrer">2022 Mahindra Scorpio-N ↗</a>
+              — model and textures by <strong>Modding Beast</strong>, export and edits by <strong>BHP3D</strong>.
+            </p>
+            <p>Licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0 ↗</a>. Modified for MaxMotors: optimized geometry, re-encoded textures, badges and logos removed.</p>
           </article>
           <article class="credit-card">
-            <div class="credit-tag">PLANNED CAR PACK / CONCEPT</div>
+            <div class="credit-tag">CAR PACK / CONCEPT · CC BY-NC 4.0</div>
             <h3>Aurora V12</h3>
-            <p><a href="https://sketchfab.com/3d-models/free-lamborghini-terzo-millennio-7ad3dffa9d344c3c978eafcc220cb709" target="_blank" rel="noreferrer">Source listing: ( FREE ) Lamborghini Terzo Millennio by SDC PERFORMANCE ↗</a></p>
-            <p>Model: <strong>SDC PERFORMANCE</strong>. Base interior: <strong>Oxo</strong>. License: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noreferrer">CC BY-NC 4.0 ↗</a>. This car must be replaced before monetization.</p>
+            <p>
+              <a href="https://sketchfab.com/3d-models/free-lamborghini-terzo-millennio-7ad3dffa9d344c3c978eafcc220cb709" target="_blank" rel="noreferrer">( FREE ) Lamborghini Terzo Millennio ↗</a>
+              — model by <strong>SDC PERFORMANCE</strong>, base interior by <strong>Oxo</strong>.
+            </p>
+            <p>
+              Licensed <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noreferrer">CC BY-NC 4.0 ↗</a>.
+              <strong>Non-commercial:</strong> MaxMotors stays a non-commercial project for as long as this car is included; the model must be replaced before any monetization.
+            </p>
+          </article>
+          <article class="credit-card">
+            <div class="credit-tag">TRACK / FOREST · CC BY 4.0</div>
+            <h3>Forest Dirt Trail</h3>
+            <p>
+              <a href="https://sketchfab.com/99Miles" target="_blank" rel="noreferrer">Dirt Road Through Forest ↗</a>
+              by <strong>99.Miles</strong>. Licensed
+              <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0 ↗</a>.
+              Modified for MaxMotors: simplified geometry, instanced foliage, baked terrain collision data.
+            </p>
+          </article>
+          <article class="credit-card">
+            <div class="credit-tag">TEXTURES &amp; LIGHTING · CC0</div>
+            <h3>Surface and sky</h3>
+            <p>
+              Asphalt PBR set and the outdoor HDRI from <a href="https://polyhaven.com/" target="_blank" rel="noreferrer">Poly Haven ↗</a>
+              — <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noreferrer">CC0 1.0 ↗</a> (no attribution required; credited anyway).
+            </p>
+            <p>Engine loop beds are generated by this project (<code>scripts/assets/build-audio.mjs</code>) and dedicated to the public domain under CC0 1.0.</p>
           </article>
         </div>
-        <p class="credits-footnote">Both source files were manually downloaded by the project owner. No generative-AI tools may be given these models as input. Models may be optimized or edited; remove real-world badges and logos from shipped textures. Full records: <a href="https://github.com/amitvalmiki123/MaxMotors/blob/main/docs/CAR_LICENSES.md" target="_blank" rel="noreferrer">docs/CAR_LICENSES.md ↗</a></p>
+        <p class="credits-footnote">
+          Source files were downloaded manually by the project owner; no generative-AI tools were given these models as input.
+          Full records, including the NoAI note and the modification summary: <a href="https://github.com/amitvalmiki123/MaxMotors/blob/main/docs/ASSET_LICENSES.md" target="_blank" rel="noreferrer">docs/ASSET_LICENSES.md ↗</a>
+        </p>
       </dialog>
 
       <noscript>This simulator needs JavaScript and WebGL enabled.</noscript>

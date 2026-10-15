@@ -1,0 +1,4939 @@
+{
+  "id": "sikandar-suv",
+  "source": "assets/raw/scorpio-n.glb",
+  "kind": "car",
+  "generatedAt": "2026-10-15T09:03:07.124Z",
+  "stats": {
+    "nodes": 269,
+    "meshes": 186,
+    "triangles": 1354283,
+    "materials": 43,
+    "textures": 19,
+    "textureBytes": 5210357,
+    "animations": 0,
+    "extensions": []
+  },
+  "sceneBounds": {
+    "min": [
+      -1.079,
+      0,
+      -2.423
+    ],
+    "max": [
+      1.097,
+      1.847,
+      2.25
+    ],
+    "size": [
+      2.176,
+      1.847,
+      4.673
+    ]
+  },
+  "longAxis": "z",
+  "materials": [
+    {
+      "name": "wheel_rf.2",
+      "class": "wheel",
+      "triangles": 466674,
+      "primitives": 27,
+      "skipped": false,
+      "detail": {
+        "name": "wheel_rf.2",
+        "class": "wheel",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "primary",
+      "class": "wheel",
+      "triangles": 285031,
+      "primitives": 9,
+      "skipped": false,
+      "detail": {
+        "name": "primary",
+        "class": "wheel",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          0.014,
+          0.047,
+          0.004,
+          1
+        ]
+      }
+    },
+    {
+      "name": "wheel_rf.0",
+      "class": "wheel",
+      "triangles": 132232,
+      "primitives": 15,
+      "skipped": false,
+      "detail": {
+        "name": "wheel_rf.0",
+        "class": "wheel",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "movsteer_1.0.5",
+      "class": "interior",
+      "triangles": 113678,
+      "primitives": 10,
+      "skipped": false,
+      "detail": {
+        "name": "movsteer_1.0.5",
+        "class": "interior",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "wheel_rf.1",
+      "class": "wheel",
+      "triangles": 75607,
+      "primitives": 23,
+      "skipped": false,
+      "detail": {
+        "name": "wheel_rf.1",
+        "class": "wheel",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "foglight_m.0",
+      "class": "body",
+      "triangles": 71631,
+      "primitives": 5,
+      "skipped": false,
+      "detail": {
+        "name": "foglight_m.0",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "scorpio_n_int_dashboard.6",
+      "class": "interior",
+      "triangles": 56805,
+      "primitives": 7,
+      "skipped": false,
+      "detail": {
+        "name": "scorpio_n_int_dashboard.6",
+        "class": "interior",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "scorpio_n_int_sidewall.7",
+      "class": "body",
+      "triangles": 53695,
+      "primitives": 3,
+      "skipped": false,
+      "detail": {
+        "name": "scorpio_n_int_sidewall.7",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "glass",
+      "class": "glass",
+      "triangles": 32666,
+      "primitives": 17,
+      "skipped": false,
+      "detail": {
+        "name": "glass",
+        "class": "glass",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          0.499,
+          0.499,
+          0.499,
+          0.047
+        ]
+      }
+    },
+    {
+      "name": "headlight_f.2",
+      "class": "body",
+      "triangles": 14679,
+      "primitives": 10,
+      "skipped": false,
+      "detail": {
+        "name": "headlight_f.2",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "wheel_rf.3",
+      "class": "wheel",
+      "triangles": 8053,
+      "primitives": 8,
+      "skipped": false,
+      "detail": {
+        "name": "wheel_rf.3",
+        "class": "wheel",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "scorpio_n_int_body.1",
+      "class": "body",
+      "triangles": 7822,
+      "primitives": 2,
+      "skipped": false,
+      "detail": {
+        "name": "scorpio_n_int_body.1",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "scorpio_n_int_seats-stiches.0",
+      "class": "interior",
+      "triangles": 7769,
+      "primitives": 2,
+      "skipped": false,
+      "detail": {
+        "name": "scorpio_n_int_seats-stiches.0",
+        "class": "interior",
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "movsteer_1.0.3",
+      "class": "interior",
+      "triangles": 4261,
+      "primitives": 10,
+      "skipped": false,
+      "detail": {
+        "name": "movsteer_1.0.3",
+        "class": "interior",
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "taillight_r.6",
+      "class": "body",
+      "triangles": 3334,
+      "primitives": 3,
+      "skipped": false,
+      "detail": {
+        "name": "taillight_r.6",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          0.8,
+          0.8,
+          0.8,
+          1
+        ]
+      }
+    },
+    {
+      "name": "sunroof_m.1",
+      "class": "body",
+      "triangles": 3064,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "sunroof_m.1",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "glass.003",
+      "class": "glass",
+      "triangles": 2578,
+      "primitives": 2,
+      "skipped": false,
+      "detail": {
+        "name": "glass.003",
+        "class": "glass",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          0,
+          0,
+          0.425
+        ]
+      }
+    },
+    {
+      "name": "breaklight_r",
+      "class": "body",
+      "triangles": 2204,
+      "primitives": 2,
+      "skipped": false,
+      "detail": {
+        "name": "breaklight_r",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "right_front_light",
+      "class": "body",
+      "triangles": 2118,
+      "primitives": 3,
+      "skipped": false,
+      "detail": {
+        "name": "right_front_light",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "scorpio_n_int_body.2",
+      "class": "body",
+      "triangles": 1872,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "scorpio_n_int_body.2",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "breaklight_l",
+      "class": "body",
+      "triangles": 1532,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "breaklight_l",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "taillight_r.5",
+      "class": "body",
+      "triangles": 1254,
+      "primitives": 2,
+      "skipped": false,
+      "detail": {
+        "name": "taillight_r.5",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "foglight_r",
+      "class": "body",
+      "triangles": 1109,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "foglight_r",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "foglight_l",
+      "class": "body",
+      "triangles": 1109,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "foglight_l",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "movsteer_1.0.4",
+      "class": "interior",
+      "triangles": 576,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "movsteer_1.0.4",
+        "class": "interior",
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "glass.002",
+      "class": "glass",
+      "triangles": 530,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "glass.002",
+        "class": "glass",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          0.8,
+          0.8,
+          0.8,
+          0.047
+        ]
+      }
+    },
+    {
+      "name": "boot.5",
+      "class": "body",
+      "triangles": 384,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "boot.5",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "right_rear_light",
+      "class": "body",
+      "triangles": 368,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "right_rear_light",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "glass.004",
+      "class": "glass",
+      "triangles": 240,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "glass.004",
+        "class": "glass",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          0,
+          0,
+          0.047
+        ]
+      }
+    },
+    {
+      "name": "taillight_r.7",
+      "class": "body",
+      "triangles": 224,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "taillight_r.7",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          0.894,
+          0.894,
+          0.894,
+          1
+        ]
+      }
+    },
+    {
+      "name": "revlight_L",
+      "class": "body",
+      "triangles": 194,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "revlight_L",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "revlight_r",
+      "class": "body",
+      "triangles": 194,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "revlight_r",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "headlight_f.3",
+      "class": "body",
+      "triangles": 174,
+      "primitives": 2,
+      "skipped": false,
+      "detail": {
+        "name": "headlight_f.3",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "scorpio_n_int_roof.4",
+      "class": "body",
+      "triangles": 96,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "scorpio_n_int_roof.4",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "indicator_lr",
+      "class": "body",
+      "triangles": 94,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "indicator_lr",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "scorpio_n_ext_1.2",
+      "class": "body",
+      "triangles": 84,
+      "primitives": 2,
+      "skipped": false,
+      "detail": {
+        "name": "scorpio_n_ext_1.2",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "glass.001",
+      "class": "glass",
+      "triangles": 76,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "glass.001",
+        "class": "glass",
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          0.937,
+          0.937,
+          0.937,
+          0.047
+        ]
+      }
+    },
+    {
+      "name": "indicator_rr",
+      "class": "body",
+      "triangles": 64,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "indicator_rr",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "scorpio_n_ext_chassis.3",
+      "class": "body",
+      "triangles": 59,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "scorpio_n_ext_chassis.3",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          0,
+          0.549,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "indicator_rm",
+      "class": "body",
+      "triangles": 54,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "indicator_rm",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "indicator_lf",
+      "class": "body",
+      "triangles": 34,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "indicator_lf",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "indicator_rf",
+      "class": "body",
+      "triangles": 34,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "indicator_rf",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "indicator_lm",
+      "class": "body",
+      "triangles": 27,
+      "primitives": 1,
+      "skipped": false,
+      "detail": {
+        "name": "indicator_lm",
+        "class": "body",
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "emissive": [
+          0,
+          0,
+          0
+        ],
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "textures": [
+    {
+      "index": 0,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 132,
+      "width": 128,
+      "height": 128
+    },
+    {
+      "index": 1,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 83,
+      "width": 4,
+      "height": 4
+    },
+    {
+      "index": 2,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 88,
+      "width": 256,
+      "height": 256
+    },
+    {
+      "index": 3,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 101,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "index": 4,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 581051,
+      "width": 512,
+      "height": 512
+    },
+    {
+      "index": 5,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 767063,
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "index": 6,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 58523,
+      "width": 512,
+      "height": 512
+    },
+    {
+      "index": 7,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 42148,
+      "width": 512,
+      "height": 512
+    },
+    {
+      "index": 8,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 87,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "index": 9,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 513,
+      "width": 256,
+      "height": 256
+    },
+    {
+      "index": 10,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 1020139,
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "index": 11,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 222,
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "index": 12,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 221947,
+      "width": 512,
+      "height": 512
+    },
+    {
+      "index": 13,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 50403,
+      "width": 256,
+      "height": 256
+    },
+    {
+      "index": 14,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 429054,
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "index": 15,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 2023120,
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "index": 16,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 15335,
+      "width": 512,
+      "height": 512
+    },
+    {
+      "index": 17,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 222,
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "index": 18,
+      "name": "(unnamed)",
+      "mimeType": "image/png",
+      "bytes": 126,
+      "width": 512,
+      "height": 512
+    }
+  ],
+  "wheelClusters": {
+    "wheels": [
+      {
+        "corner": "front-left",
+        "center": [
+          -0.8128670946106266,
+          0.37947720649167976,
+          -1.5648977296204492
+        ],
+        "radius": 0.3796850358684878,
+        "hubRadius": 0.3796850358684878,
+        "width": 0.26487802867118937,
+        "axleAxis": 0,
+        "members": [
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.2_0#0",
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.1_0#0",
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.0_0#0"
+        ],
+        "memberNames": [
+          "wheel_rf.003_wheel_rf.2_0",
+          "wheel_rf.003_wheel_rf.1_0",
+          "wheel_rf.003_wheel_rf.0_0"
+        ],
+        "allMemberCount": 3,
+        "source": "name+shape",
+        "confidence": 1
+      },
+      {
+        "corner": "front-right",
+        "center": [
+          0.8125628724876011,
+          0.3794772064772143,
+          -1.5648977295477782
+        ],
+        "radius": 0.3796850359454589,
+        "hubRadius": 0.3796850359454589,
+        "width": 0.26487802867118937,
+        "axleAxis": 0,
+        "members": [
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.2_0#0",
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.1_0#0",
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.0_0#0"
+        ],
+        "memberNames": [
+          "wheel_rf_wheel_rf.2_0",
+          "wheel_rf_wheel_rf.1_0",
+          "wheel_rf_wheel_rf.0_0"
+        ],
+        "allMemberCount": 3,
+        "source": "name+shape",
+        "confidence": 1
+      },
+      {
+        "corner": "rear-left",
+        "center": [
+          -0.8128670946106265,
+          0.379477654793033,
+          1.1867563569770585
+        ],
+        "radius": 0.3796850358684878,
+        "hubRadius": 0.3796850358684878,
+        "width": 0.26487802867118937,
+        "axleAxis": 0,
+        "members": [
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.2_0#0",
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.1_0#0",
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.0_0#0"
+        ],
+        "memberNames": [
+          "wheel_rf.002_wheel_rf.2_0",
+          "wheel_rf.002_wheel_rf.1_0",
+          "wheel_rf.002_wheel_rf.0_0"
+        ],
+        "allMemberCount": 3,
+        "source": "name+shape",
+        "confidence": 1
+      },
+      {
+        "corner": "rear-right",
+        "center": [
+          0.8125628724876011,
+          0.37947765477856754,
+          1.1867563570497295
+        ],
+        "radius": 0.3796850359454589,
+        "hubRadius": 0.3796850359454589,
+        "width": 0.26487802867118937,
+        "axleAxis": 0,
+        "members": [
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.2_0#0",
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.1_0#0",
+          "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.0_0#0"
+        ],
+        "memberNames": [
+          "wheel_rf.001_wheel_rf.2_0",
+          "wheel_rf.001_wheel_rf.1_0",
+          "wheel_rf.001_wheel_rf.0_0"
+        ],
+        "allMemberCount": 3,
+        "source": "name+shape",
+        "confidence": 1
+      }
+    ],
+    "radiusEstimate": {
+      "radius": 0.327,
+      "support": 0,
+      "pool": 0
+    },
+    "complete": true,
+    "wheelbase": 2.752,
+    "track": 1.625,
+    "radius": 0.38,
+    "frontZ": -1.565,
+    "rearZ": 1.187
+  },
+  "nodes": [
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_ext_3#0/scorpio_n_ext_3_wheel_rf.2_0#0",
+      "name": "scorpio_n_ext_3_wheel_rf.2_0",
+      "mesh": "scorpio_n_ext_3_wheel_rf.2_0",
+      "triangles": 65352,
+      "center": [
+        0,
+        1.03,
+        -0.318
+      ],
+      "size": [
+        1.877,
+        1.592,
+        4.184
+      ],
+      "min": [
+        -0.938,
+        0.234,
+        -2.41
+      ],
+      "max": [
+        0.938,
+        1.826,
+        1.774
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_ext_1#0/scorpio_n_ext_1_wheel_rf.2_0#0",
+      "name": "scorpio_n_ext_1_wheel_rf.2_0",
+      "mesh": "scorpio_n_ext_1_wheel_rf.2_0",
+      "triangles": 54947,
+      "center": [
+        0,
+        0.983,
+        0.09
+      ],
+      "size": [
+        1.879,
+        1.398,
+        4.319
+      ],
+      "min": [
+        -0.939,
+        0.284,
+        -2.069
+      ],
+      "max": [
+        0.939,
+        1.682,
+        2.25
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_ext_chassis#0/scorpio_n_ext_chassis_primary_0#0",
+      "name": "scorpio_n_ext_chassis_primary_0",
+      "mesh": "scorpio_n_ext_chassis_primary_0",
+      "triangles": 50901,
+      "center": [
+        -0.002,
+        1.111,
+        0.5
+      ],
+      "size": [
+        1.861,
+        1.437,
+        3.202
+      ],
+      "min": [
+        -0.933,
+        0.393,
+        -1.101
+      ],
+      "max": [
+        0.928,
+        1.83,
+        2.101
+      ],
+      "materialNames": [
+        "primary"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/chassis_wheel_rf.2_0#0",
+      "name": "chassis_wheel_rf.2_0",
+      "mesh": "chassis_wheel_rf.2_0",
+      "triangles": 46838,
+      "center": [
+        0,
+        1.02,
+        -0.15
+      ],
+      "size": [
+        1.893,
+        1.557,
+        4.425
+      ],
+      "min": [
+        -0.946,
+        0.242,
+        -2.363
+      ],
+      "max": [
+        0.946,
+        1.798,
+        2.062
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_seat_reck#0/scorpio_n_int_seat_reck_wheel_rf.0_0#0",
+      "name": "scorpio_n_int_seat_reck_wheel_rf.0_0",
+      "mesh": "scorpio_n_int_seat_reck_wheel_rf.0_0",
+      "triangles": 46707,
+      "center": [
+        0.001,
+        0.771,
+        0.72
+      ],
+      "size": [
+        1.35,
+        0.491,
+        2.2
+      ],
+      "min": [
+        -0.674,
+        0.525,
+        -0.38
+      ],
+      "max": [
+        0.676,
+        1.016,
+        1.82
+      ],
+      "materialNames": [
+        "wheel_rf.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_ext_4#0/scorpio_n_ext_4_primary_0#0",
+      "name": "scorpio_n_ext_4_primary_0",
+      "mesh": "scorpio_n_ext_4_primary_0",
+      "triangles": 46660,
+      "center": [
+        0.042,
+        1.119,
+        0.479
+      ],
+      "size": [
+        1.781,
+        1.456,
+        3.136
+      ],
+      "min": [
+        -0.848,
+        0.391,
+        -1.089
+      ],
+      "max": [
+        0.933,
+        1.847,
+        2.047
+      ],
+      "materialNames": [
+        "primary"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_seats#0/scorpio_n_int_seats_movsteer_1.0.5_0#0",
+      "name": "scorpio_n_int_seats_movsteer_1.0.5_0",
+      "mesh": "scorpio_n_int_seats_movsteer_1.0.5_0",
+      "triangles": 45814,
+      "center": [
+        0,
+        1.091,
+        0.748
+      ],
+      "size": [
+        1.324,
+        0.886,
+        2.336
+      ],
+      "min": [
+        -0.662,
+        0.648,
+        -0.42
+      ],
+      "max": [
+        0.662,
+        1.534,
+        1.916
+      ],
+      "materialNames": [
+        "movsteer_1.0.5"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/Rear_Door#0/boot_dummy#0/boot#0/boot_primary_0#0",
+      "name": "boot_primary_0",
+      "mesh": "boot_primary_0",
+      "triangles": 42503,
+      "center": [
+        0,
+        1.173,
+        1.941
+      ],
+      "size": [
+        1.303,
+        1.191,
+        0.482
+      ],
+      "min": [
+        -0.652,
+        0.578,
+        1.7
+      ],
+      "max": [
+        0.652,
+        1.768,
+        2.182
+      ],
+      "materialNames": [
+        "primary"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_ext_4#0/scorpio_n_ext_4_wheel_rf.2_0#0",
+      "name": "scorpio_n_ext_4_wheel_rf.2_0",
+      "mesh": "scorpio_n_ext_4_wheel_rf.2_0",
+      "triangles": 38473,
+      "center": [
+        0,
+        0.965,
+        -0.332
+      ],
+      "size": [
+        1.815,
+        1.482,
+        4.182
+      ],
+      "min": [
+        -0.907,
+        0.224,
+        -2.423
+      ],
+      "max": [
+        0.907,
+        1.706,
+        1.76
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_dashboard#0/scorpio_n_int_dashboard_wheel_rf.0_0#0",
+      "name": "scorpio_n_int_dashboard_wheel_rf.0_0",
+      "mesh": "scorpio_n_int_dashboard_wheel_rf.0_0",
+      "triangles": 37875,
+      "center": [
+        0,
+        1.084,
+        -0.782
+      ],
+      "size": [
+        1.392,
+        0.486,
+        0.431
+      ],
+      "min": [
+        -0.696,
+        0.841,
+        -0.998
+      ],
+      "max": [
+        0.696,
+        1.327,
+        -0.567
+      ],
+      "materialNames": [
+        "wheel_rf.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_seat_reck#0/scorpio_n_int_seat_reck_foglight_m.0_0#0",
+      "name": "scorpio_n_int_seat_reck_foglight_m.0_0",
+      "mesh": "scorpio_n_int_seat_reck_foglight_m.0_0",
+      "triangles": 36859,
+      "center": [
+        0,
+        1.02,
+        0.726
+      ],
+      "size": [
+        1.392,
+        0.927,
+        2.318
+      ],
+      "min": [
+        -0.696,
+        0.556,
+        -0.433
+      ],
+      "max": [
+        0.696,
+        1.484,
+        1.885
+      ],
+      "materialNames": [
+        "foglight_m.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_seats#0/scorpio_n_int_seats_scorpio_n_int_dashboard.6_0#0",
+      "name": "scorpio_n_int_seats_scorpio_n_int_dashboard.6_0",
+      "mesh": "scorpio_n_int_seats_scorpio_n_int_dashboard.6_0",
+      "triangles": 36820,
+      "center": [
+        0,
+        1.099,
+        0.74
+      ],
+      "size": [
+        1.259,
+        0.815,
+        2.352
+      ],
+      "min": [
+        -0.63,
+        0.691,
+        -0.436
+      ],
+      "max": [
+        0.63,
+        1.507,
+        1.916
+      ],
+      "materialNames": [
+        "scorpio_n_int_dashboard.6"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_roof#0/scorpio_n_int_roof_scorpio_n_int_sidewall.7_0#0",
+      "name": "scorpio_n_int_roof_scorpio_n_int_sidewall.7_0",
+      "mesh": "scorpio_n_int_roof_scorpio_n_int_sidewall.7_0",
+      "triangles": 35236,
+      "center": [
+        0,
+        1.644,
+        0.574
+      ],
+      "size": [
+        1.362,
+        0.254,
+        2.45
+      ],
+      "min": [
+        -0.681,
+        1.517,
+        -0.652
+      ],
+      "max": [
+        0.681,
+        1.771,
+        1.799
+      ],
+      "materialNames": [
+        "scorpio_n_int_sidewall.7"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/door_rf_wheel_rf.2_0#0",
+      "name": "door_rf_wheel_rf.2_0",
+      "mesh": "door_rf_wheel_rf.2_0",
+      "triangles": 32051,
+      "center": [
+        0.874,
+        1.026,
+        -0.407
+      ],
+      "size": [
+        0.444,
+        1.387,
+        1.129
+      ],
+      "min": [
+        0.652,
+        0.332,
+        -0.971
+      ],
+      "max": [
+        1.096,
+        1.719,
+        0.158
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lf_dummy#0/door_lf#0/door_lf_wheel_rf.2_0#0",
+      "name": "door_lf_wheel_rf.2_0",
+      "mesh": "door_lf_wheel_rf.2_0",
+      "triangles": 31906,
+      "center": [
+        -0.865,
+        1.026,
+        -0.422
+      ],
+      "size": [
+        0.426,
+        1.387,
+        1.159
+      ],
+      "min": [
+        -1.078,
+        0.332,
+        -1.002
+      ],
+      "max": [
+        -0.652,
+        1.719,
+        0.158
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lr_dummy#0/door_lr#0/door_lr_primary_0#0",
+      "name": "door_lr_primary_0",
+      "mesh": "door_lr_primary_0",
+      "triangles": 30626,
+      "center": [
+        -0.793,
+        1.024,
+        0.581
+      ],
+      "size": [
+        0.291,
+        1.392,
+        1.085
+      ],
+      "min": [
+        -0.938,
+        0.328,
+        0.039
+      ],
+      "max": [
+        -0.647,
+        1.721,
+        1.124
+      ],
+      "materialNames": [
+        "primary"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rr_dummy#0/door_rr#0/door_rr_primary_0#0",
+      "name": "door_rr_primary_0",
+      "mesh": "door_rr_primary_0",
+      "triangles": 30623,
+      "center": [
+        0.793,
+        1.024,
+        0.581
+      ],
+      "size": [
+        0.291,
+        1.392,
+        1.085
+      ],
+      "min": [
+        0.647,
+        0.328,
+        0.039
+      ],
+      "max": [
+        0.938,
+        1.721,
+        1.124
+      ],
+      "materialNames": [
+        "primary"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rr_dummy#0/door_rr#0/door_rr_wheel_rf.2_0#0",
+      "name": "door_rr_wheel_rf.2_0",
+      "mesh": "door_rr_wheel_rf.2_0",
+      "triangles": 29283,
+      "center": [
+        0.792,
+        1.024,
+        0.571
+      ],
+      "size": [
+        0.292,
+        1.402,
+        1.082
+      ],
+      "min": [
+        0.646,
+        0.323,
+        0.03
+      ],
+      "max": [
+        0.938,
+        1.725,
+        1.112
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lr_dummy#0/door_lr#0/door_lr_wheel_rf.2_0#0",
+      "name": "door_lr_wheel_rf.2_0",
+      "mesh": "door_lr_wheel_rf.2_0",
+      "triangles": 29281,
+      "center": [
+        -0.792,
+        1.024,
+        0.571
+      ],
+      "size": [
+        0.292,
+        1.402,
+        1.082
+      ],
+      "min": [
+        -0.938,
+        0.323,
+        0.03
+      ],
+      "max": [
+        -0.646,
+        1.725,
+        1.112
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/door_rf_primary_0#0",
+      "name": "door_rf_primary_0",
+      "mesh": "door_rf_primary_0",
+      "triangles": 28070,
+      "center": [
+        0.875,
+        1.023,
+        -0.42
+      ],
+      "size": [
+        0.442,
+        1.384,
+        1.155
+      ],
+      "min": [
+        0.654,
+        0.331,
+        -0.998
+      ],
+      "max": [
+        1.096,
+        1.715,
+        0.158
+      ],
+      "materialNames": [
+        "primary"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lf_dummy#0/door_lf#0/door_lf_primary_0#0",
+      "name": "door_lf_primary_0",
+      "mesh": "door_lf_primary_0",
+      "triangles": 27998,
+      "center": [
+        -0.866,
+        1.023,
+        -0.42
+      ],
+      "size": [
+        0.424,
+        1.384,
+        1.155
+      ],
+      "min": [
+        -1.078,
+        0.331,
+        -0.998
+      ],
+      "max": [
+        -0.654,
+        1.715,
+        0.158
+      ],
+      "materialNames": [
+        "primary"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/Rear_Door#0/boot_dummy#0/boot#0/boot_wheel_rf.2_0#0",
+      "name": "boot_wheel_rf.2_0",
+      "mesh": "boot_wheel_rf.2_0",
+      "triangles": 27843,
+      "center": [
+        -0.003,
+        1.157,
+        1.976
+      ],
+      "size": [
+        1.309,
+        1.177,
+        0.451
+      ],
+      "min": [
+        -0.657,
+        0.569,
+        1.75
+      ],
+      "max": [
+        0.652,
+        1.746,
+        2.202
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_console#0/scorpio_n_int_console_foglight_m.0_0#0",
+      "name": "scorpio_n_int_console_foglight_m.0_0",
+      "mesh": "scorpio_n_int_console_foglight_m.0_0",
+      "triangles": 26224,
+      "center": [
+        0.192,
+        0.841,
+        -0.467
+      ],
+      "size": [
+        0.764,
+        0.472,
+        1.283
+      ],
+      "min": [
+        -0.19,
+        0.605,
+        -1.109
+      ],
+      "max": [
+        0.574,
+        1.077,
+        0.174
+      ],
+      "materialNames": [
+        "foglight_m.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_ext_2#0/scorpio_n_ext_2_wheel_rf.2_0#0",
+      "name": "scorpio_n_ext_2_wheel_rf.2_0",
+      "mesh": "scorpio_n_ext_2_wheel_rf.2_0",
+      "triangles": 23930,
+      "center": [
+        0,
+        0.593,
+        -0.204
+      ],
+      "size": [
+        1.861,
+        0.621,
+        3.754
+      ],
+      "min": [
+        -0.931,
+        0.282,
+        -2.081
+      ],
+      "max": [
+        0.931,
+        0.904,
+        1.674
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/chassis_primary_0#0",
+      "name": "chassis_primary_0",
+      "mesh": "chassis_primary_0",
+      "triangles": 22026,
+      "center": [
+        0,
+        0.835,
+        -1.686
+      ],
+      "size": [
+        1.868,
+        0.868,
+        1.451
+      ],
+      "min": [
+        -0.934,
+        0.401,
+        -2.411
+      ],
+      "max": [
+        0.934,
+        1.269,
+        -0.961
+      ],
+      "materialNames": [
+        "primary"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_ext_chassis#0/scorpio_n_ext_chassis_wheel_rf.2_0#0",
+      "name": "scorpio_n_ext_chassis_wheel_rf.2_0",
+      "mesh": "scorpio_n_ext_chassis_wheel_rf.2_0",
+      "triangles": 19321,
+      "center": [
+        0,
+        1.024,
+        -0.077
+      ],
+      "size": [
+        1.907,
+        1.486,
+        4.567
+      ],
+      "min": [
+        -0.953,
+        0.281,
+        -2.36
+      ],
+      "max": [
+        0.953,
+        1.767,
+        2.207
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_sidewall#0/scorpio_n_int_sidewall_scorpio_n_int_sidewall.7_0#0",
+      "name": "scorpio_n_int_sidewall_scorpio_n_int_sidewall.7_0",
+      "mesh": "scorpio_n_int_sidewall_scorpio_n_int_sidewall.7_0",
+      "triangles": 18021,
+      "center": [
+        0,
+        1.437,
+        0.507
+      ],
+      "size": [
+        1.555,
+        0.423,
+        2.943
+      ],
+      "min": [
+        -0.777,
+        1.226,
+        -0.964
+      ],
+      "max": [
+        0.777,
+        1.649,
+        1.979
+      ],
+      "materialNames": [
+        "scorpio_n_int_sidewall.7"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_body#0/scorpio_n_int_body_movsteer_1.0.5_0#0",
+      "name": "scorpio_n_int_body_movsteer_1.0.5_0",
+      "mesh": "scorpio_n_int_body_movsteer_1.0.5_0",
+      "triangles": 16613,
+      "center": [
+        0,
+        0.889,
+        0.479
+      ],
+      "size": [
+        1.538,
+        0.831,
+        3.264
+      ],
+      "min": [
+        -0.769,
+        0.473,
+        -1.153
+      ],
+      "max": [
+        0.769,
+        1.304,
+        2.112
+      ],
+      "materialNames": [
+        "movsteer_1.0.5"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_dashboard#0/scorpio_n_int_dashboard_movsteer_1.0.5_0#0",
+      "name": "scorpio_n_int_dashboard_movsteer_1.0.5_0",
+      "mesh": "scorpio_n_int_dashboard_movsteer_1.0.5_0",
+      "triangles": 14619,
+      "center": [
+        0,
+        1.086,
+        -0.806
+      ],
+      "size": [
+        1.505,
+        0.538,
+        0.495
+      ],
+      "min": [
+        -0.752,
+        0.817,
+        -1.054
+      ],
+      "max": [
+        0.752,
+        1.355,
+        -0.558
+      ],
+      "materialNames": [
+        "movsteer_1.0.5"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_ext_3#0/scorpio_n_ext_3_wheel_rf.1_0#0",
+      "name": "scorpio_n_ext_3_wheel_rf.1_0",
+      "mesh": "scorpio_n_ext_3_wheel_rf.1_0",
+      "triangles": 13107,
+      "center": [
+        0,
+        1.08,
+        -0.056
+      ],
+      "size": [
+        1.638,
+        1.516,
+        4.613
+      ],
+      "min": [
+        -0.819,
+        0.322,
+        -2.363
+      ],
+      "max": [
+        0.819,
+        1.838,
+        2.25
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/int_door_rf#0/int_door_rf_wheel_rf.0_0#0",
+      "name": "int_door_rf_wheel_rf.0_0",
+      "mesh": "int_door_rf_wheel_rf.0_0",
+      "triangles": 11720,
+      "center": [
+        0.745,
+        1.13,
+        -0.556
+      ],
+      "size": [
+        0.098,
+        0.49,
+        0.588
+      ],
+      "min": [
+        0.695,
+        0.885,
+        -0.849
+      ],
+      "max": [
+        0.794,
+        1.375,
+        -0.262
+      ],
+      "materialNames": [
+        "wheel_rf.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_console#0/scorpio_n_int_console_movsteer_1.0.5_0#0",
+      "name": "scorpio_n_int_console_movsteer_1.0.5_0",
+      "mesh": "scorpio_n_int_console_movsteer_1.0.5_0",
+      "triangles": 11711,
+      "center": [
+        0.024,
+        0.936,
+        -0.316
+      ],
+      "size": [
+        0.196,
+        0.201,
+        0.372
+      ],
+      "min": [
+        -0.074,
+        0.836,
+        -0.502
+      ],
+      "max": [
+        0.122,
+        1.037,
+        -0.13
+      ],
+      "materialNames": [
+        "movsteer_1.0.5"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_dashboard#0/scorpio_n_int_dashboard_wheel_rf.1_0#0",
+      "name": "scorpio_n_int_dashboard_wheel_rf.1_0",
+      "mesh": "scorpio_n_int_dashboard_wheel_rf.1_0",
+      "triangles": 11251,
+      "center": [
+        0,
+        1.105,
+        -0.733
+      ],
+      "size": [
+        1.392,
+        0.447,
+        0.385
+      ],
+      "min": [
+        -0.696,
+        0.882,
+        -0.926
+      ],
+      "max": [
+        0.696,
+        1.329,
+        -0.541
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/headlight_f#0/headlight_f_wheel_rf.2_0#0",
+      "name": "headlight_f_wheel_rf.2_0",
+      "mesh": "headlight_f_wheel_rf.2_0",
+      "triangles": 10718,
+      "center": [
+        0,
+        0.96,
+        -2.109
+      ],
+      "size": [
+        1.761,
+        0.243,
+        0.36
+      ],
+      "min": [
+        -0.881,
+        0.838,
+        -2.289
+      ],
+      "max": [
+        0.88,
+        1.081,
+        -1.929
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/steering_dummy#0/movsteer_1.0#0/movsteer_1.0_movsteer_1.0.5_0#0",
+      "name": "movsteer_1.0_movsteer_1.0.5_0",
+      "mesh": "movsteer_1.0_movsteer_1.0.5_0",
+      "triangles": 10438,
+      "center": [
+        0.39,
+        1.204,
+        -0.512
+      ],
+      "size": [
+        0.381,
+        0.35,
+        0.187
+      ],
+      "min": [
+        0.199,
+        1.029,
+        -0.605
+      ],
+      "max": [
+        0.581,
+        1.379,
+        -0.418
+      ],
+      "materialNames": [
+        "movsteer_1.0.5"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.2_0#0",
+      "name": "wheel_rf_wheel_rf.2_0",
+      "mesh": "wheel_rf_wheel_rf.2_0",
+      "triangles": 10364,
+      "center": [
+        0.787,
+        0.38,
+        -1.565
+      ],
+      "size": [
+        0.265,
+        0.759,
+        0.759
+      ],
+      "min": [
+        0.654,
+        0,
+        -1.944
+      ],
+      "max": [
+        0.919,
+        0.759,
+        -1.185
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.2_0#0",
+      "name": "wheel_rf.001_wheel_rf.2_0",
+      "mesh": "wheel_rf.001_wheel_rf.2_0",
+      "triangles": 10364,
+      "center": [
+        0.787,
+        0.38,
+        1.187
+      ],
+      "size": [
+        0.265,
+        0.759,
+        0.759
+      ],
+      "min": [
+        0.654,
+        0,
+        0.807
+      ],
+      "max": [
+        0.919,
+        0.759,
+        1.567
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.2_0#0",
+      "name": "wheel_rf.002_wheel_rf.2_0",
+      "mesh": "wheel_rf.002_wheel_rf.2_0",
+      "triangles": 10364,
+      "center": [
+        -0.787,
+        0.38,
+        1.187
+      ],
+      "size": [
+        0.265,
+        0.759,
+        0.759
+      ],
+      "min": [
+        -0.919,
+        0,
+        0.807
+      ],
+      "max": [
+        -0.654,
+        0.759,
+        1.567
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.2_0#0",
+      "name": "wheel_rf.003_wheel_rf.2_0",
+      "mesh": "wheel_rf.003_wheel_rf.2_0",
+      "triangles": 10364,
+      "center": [
+        -0.787,
+        0.38,
+        -1.565
+      ],
+      "size": [
+        0.265,
+        0.759,
+        0.759
+      ],
+      "min": [
+        -0.919,
+        0,
+        -1.944
+      ],
+      "max": [
+        -0.654,
+        0.759,
+        -1.185
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_console#0/scorpio_n_int_console_wheel_rf.0_0#0",
+      "name": "scorpio_n_int_console_wheel_rf.0_0",
+      "mesh": "scorpio_n_int_console_wheel_rf.0_0",
+      "triangles": 8507,
+      "center": [
+        0.012,
+        0.785,
+        -0.441
+      ],
+      "size": [
+        0.421,
+        0.351,
+        1.161
+      ],
+      "min": [
+        -0.199,
+        0.61,
+        -1.022
+      ],
+      "max": [
+        0.222,
+        0.96,
+        0.14
+      ],
+      "materialNames": [
+        "wheel_rf.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/sunroof_m#0/sunroof_m_wheel_rf.2_0#0",
+      "name": "sunroof_m_wheel_rf.2_0",
+      "mesh": "sunroof_m_wheel_rf.2_0",
+      "triangles": 8475,
+      "center": [
+        0,
+        1.754,
+        0.242
+      ],
+      "size": [
+        1.067,
+        0.092,
+        0.999
+      ],
+      "min": [
+        -0.533,
+        1.708,
+        -0.257
+      ],
+      "max": [
+        0.533,
+        1.8,
+        0.742
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/Rear_Door#0/boot_dummy#0/boot#0/boot_wheel_rf.1_0#0",
+      "name": "boot_wheel_rf.1_0",
+      "mesh": "boot_wheel_rf.1_0",
+      "triangles": 6829,
+      "center": [
+        0.004,
+        0.95,
+        2.086
+      ],
+      "size": [
+        1.197,
+        0.433,
+        0.2
+      ],
+      "min": [
+        -0.594,
+        0.734,
+        1.986
+      ],
+      "max": [
+        0.602,
+        1.166,
+        2.186
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/steering_dummy#0/movsteer_1.0#0/movsteer_1.0_wheel_rf.0_0#0",
+      "name": "movsteer_1.0_wheel_rf.0_0",
+      "mesh": "movsteer_1.0_wheel_rf.0_0",
+      "triangles": 6814,
+      "center": [
+        0.39,
+        1.14,
+        -0.476
+      ],
+      "size": [
+        0.318,
+        0.162,
+        0.097
+      ],
+      "min": [
+        0.231,
+        1.059,
+        -0.525
+      ],
+      "max": [
+        0.549,
+        1.221,
+        -0.428
+      ],
+      "materialNames": [
+        "wheel_rf.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_seats#0/scorpio_n_int_seats-stiches#0/scorpio_n_int_seats-stiches_scorpio_n_int_seats-stiches.0_0#0",
+      "name": "scorpio_n_int_seats-stiches_scorpio_n_int_seats-stiches.0_0",
+      "mesh": "scorpio_n_int_seats-stiches_scorpio_n_int_seats-stiches.0_0",
+      "triangles": 6722,
+      "center": [
+        0,
+        1.138,
+        0.547
+      ],
+      "size": [
+        1.524,
+        0.793,
+        2.586
+      ],
+      "min": [
+        -0.762,
+        0.741,
+        -0.746
+      ],
+      "max": [
+        0.762,
+        1.534,
+        1.84
+      ],
+      "materialNames": [
+        "scorpio_n_int_seats-stiches.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_dashboard#0/scorpio_n_int_dashboard_scorpio_n_int_dashboard.6_0#0",
+      "name": "scorpio_n_int_dashboard_scorpio_n_int_dashboard.6_0",
+      "mesh": "scorpio_n_int_dashboard_scorpio_n_int_dashboard.6_0",
+      "triangles": 6318,
+      "center": [
+        0,
+        1.179,
+        -0.758
+      ],
+      "size": [
+        1.456,
+        0.217,
+        0.12
+      ],
+      "min": [
+        -0.728,
+        1.07,
+        -0.818
+      ],
+      "max": [
+        0.728,
+        1.287,
+        -0.698
+      ],
+      "materialNames": [
+        "scorpio_n_int_dashboard.6"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_body#0/scorpio_n_int_body_scorpio_n_int_body.1_0#0",
+      "name": "scorpio_n_int_body_scorpio_n_int_body.1_0",
+      "mesh": "scorpio_n_int_body_scorpio_n_int_body.1_0",
+      "triangles": 6302,
+      "center": [
+        0,
+        0.607,
+        0.4
+      ],
+      "size": [
+        1.443,
+        0.281,
+        3.218
+      ],
+      "min": [
+        -0.722,
+        0.466,
+        -1.209
+      ],
+      "max": [
+        0.722,
+        0.748,
+        2.009
+      ],
+      "materialNames": [
+        "scorpio_n_int_body.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_ext_1#0/scorpio_n_ext_1_primary_0#0",
+      "name": "scorpio_n_ext_1_primary_0",
+      "mesh": "scorpio_n_ext_1_primary_0",
+      "triangles": 5624,
+      "center": [
+        0,
+        0.846,
+        -0.453
+      ],
+      "size": [
+        1.819,
+        0.538,
+        1.159
+      ],
+      "min": [
+        -0.909,
+        0.577,
+        -1.032
+      ],
+      "max": [
+        0.909,
+        1.114,
+        0.126
+      ],
+      "materialNames": [
+        "primary"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/windscreen#0/windscreen_glass_0#0",
+      "name": "windscreen_glass_0",
+      "mesh": "windscreen_glass_0",
+      "triangles": 5422,
+      "center": [
+        0,
+        1.451,
+        -0.799
+      ],
+      "size": [
+        1.489,
+        0.488,
+        0.697
+      ],
+      "min": [
+        -0.744,
+        1.207,
+        -1.147
+      ],
+      "max": [
+        0.744,
+        1.696,
+        -0.45
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/door_rf_glass_0#0",
+      "name": "door_rf_glass_0",
+      "mesh": "door_rf_glass_0",
+      "triangles": 5021,
+      "center": [
+        0.963,
+        1.191,
+        -0.554
+      ],
+      "size": [
+        0.257,
+        0.241,
+        0.471
+      ],
+      "min": [
+        0.835,
+        1.07,
+        -0.789
+      ],
+      "max": [
+        1.092,
+        1.311,
+        -0.318
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lf_dummy#0/door_lf#0/int_door_lf#0/int_door_lf_wheel_rf.0_0#0",
+      "name": "int_door_lf_wheel_rf.0_0",
+      "mesh": "int_door_lf_wheel_rf.0_0",
+      "triangles": 4930,
+      "center": [
+        -0.745,
+        1.13,
+        -0.556
+      ],
+      "size": [
+        0.098,
+        0.49,
+        0.588
+      ],
+      "min": [
+        -0.794,
+        0.885,
+        -0.849
+      ],
+      "max": [
+        -0.695,
+        1.375,
+        -0.262
+      ],
+      "materialNames": [
+        "wheel_rf.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/chassis_wheel_rf.1_0#0",
+      "name": "chassis_wheel_rf.1_0",
+      "mesh": "chassis_wheel_rf.1_0",
+      "triangles": 4902,
+      "center": [
+        0,
+        0.96,
+        -2.306
+      ],
+      "size": [
+        1.033,
+        0.236,
+        0.125
+      ],
+      "min": [
+        -0.517,
+        0.842,
+        -2.368
+      ],
+      "max": [
+        0.517,
+        1.078,
+        -2.243
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_console#0/scorpio_n_int_console_scorpio_n_int_dashboard.6_0#0",
+      "name": "scorpio_n_int_console_scorpio_n_int_dashboard.6_0",
+      "mesh": "scorpio_n_int_console_scorpio_n_int_dashboard.6_0",
+      "triangles": 4869,
+      "center": [
+        0,
+        0.934,
+        -0.255
+      ],
+      "size": [
+        0.313,
+        0.16,
+        0.729
+      ],
+      "min": [
+        -0.157,
+        0.854,
+        -0.619
+      ],
+      "max": [
+        0.157,
+        1.014,
+        0.11
+      ],
+      "materialNames": [
+        "scorpio_n_int_dashboard.6"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lf_dummy#0/door_lf#0/door_lf_glass_0#0",
+      "name": "door_lf_glass_0",
+      "mesh": "door_lf_glass_0",
+      "triangles": 4688,
+      "center": [
+        -1.013,
+        1.282,
+        -0.674
+      ],
+      "size": [
+        0.119,
+        0.058,
+        0.186
+      ],
+      "min": [
+        -1.073,
+        1.253,
+        -0.767
+      ],
+      "max": [
+        -0.954,
+        1.311,
+        -0.581
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_console#0/scorpio_n_int_console_wheel_rf.1_0#0",
+      "name": "scorpio_n_int_console_wheel_rf.1_0",
+      "mesh": "scorpio_n_int_console_wheel_rf.1_0",
+      "triangles": 4482,
+      "center": [
+        0.24,
+        0.835,
+        -0.648
+      ],
+      "size": [
+        0.667,
+        0.382,
+        0.743
+      ],
+      "min": [
+        -0.094,
+        0.644,
+        -1.019
+      ],
+      "max": [
+        0.574,
+        1.026,
+        -0.276
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_sidewall#0/scorpio_n_int_sidewall_wheel_rf.0_0#0",
+      "name": "scorpio_n_int_sidewall_wheel_rf.0_0",
+      "mesh": "scorpio_n_int_sidewall_wheel_rf.0_0",
+      "triangles": 4333,
+      "center": [
+        0.001,
+        0.933,
+        1.538
+      ],
+      "size": [
+        1.37,
+        0.367,
+        0.594
+      ],
+      "min": [
+        -0.684,
+        0.75,
+        1.241
+      ],
+      "max": [
+        0.686,
+        1.116,
+        1.835
+      ],
+      "materialNames": [
+        "wheel_rf.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/foglight_m#0/foglight_m_foglight_m.0_0#0",
+      "name": "foglight_m_foglight_m.0_0",
+      "mesh": "foglight_m_foglight_m.0_0",
+      "triangles": 4148,
+      "center": [
+        0,
+        0.62,
+        -2.23
+      ],
+      "size": [
+        1.586,
+        0.178,
+        0.127
+      ],
+      "min": [
+        -0.793,
+        0.531,
+        -2.294
+      ],
+      "max": [
+        0.793,
+        0.709,
+        -2.167
+      ],
+      "materialNames": [
+        "foglight_m.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_dashboard#0/scorpio_n_int_dashboard_wheel_rf.2_0#0",
+      "name": "scorpio_n_int_dashboard_wheel_rf.2_0",
+      "mesh": "scorpio_n_int_dashboard_wheel_rf.2_0",
+      "triangles": 4130,
+      "center": [
+        0,
+        1.074,
+        -0.791
+      ],
+      "size": [
+        1.439,
+        0.471,
+        0.413
+      ],
+      "min": [
+        -0.72,
+        0.838,
+        -0.998
+      ],
+      "max": [
+        0.72,
+        1.309,
+        -0.585
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/taillight_r#0/taillight_r_foglight_m.0_0#0",
+      "name": "taillight_r_foglight_m.0_0",
+      "mesh": "taillight_r_foglight_m.0_0",
+      "triangles": 3960,
+      "center": [
+        0,
+        1.335,
+        1.92
+      ],
+      "size": [
+        1.627,
+        0.595,
+        0.271
+      ],
+      "min": [
+        -0.814,
+        1.038,
+        1.784
+      ],
+      "max": [
+        0.813,
+        1.632,
+        2.055
+      ],
+      "materialNames": [
+        "foglight_m.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/taillight_r#0/taillight_r_headlight_f.2_0#0",
+      "name": "taillight_r_headlight_f.2_0",
+      "mesh": "taillight_r_headlight_f.2_0",
+      "triangles": 3682,
+      "center": [
+        0,
+        0.829,
+        2.075
+      ],
+      "size": [
+        1.515,
+        0.779,
+        0.292
+      ],
+      "min": [
+        -0.758,
+        0.44,
+        1.929
+      ],
+      "max": [
+        0.757,
+        1.219,
+        2.22
+      ],
+      "materialNames": [
+        "headlight_f.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lr_dummy#0/door_lr#0/int_door_lr#0/int_door_lr_wheel_rf.0_0#0",
+      "name": "int_door_lr_wheel_rf.0_0",
+      "mesh": "int_door_lr_wheel_rf.0_0",
+      "triangles": 3563,
+      "center": [
+        -0.736,
+        1.226,
+        0.631
+      ],
+      "size": [
+        0.112,
+        0.633,
+        0.779
+      ],
+      "min": [
+        -0.792,
+        0.91,
+        0.242
+      ],
+      "max": [
+        -0.681,
+        1.543,
+        1.02
+      ],
+      "materialNames": [
+        "wheel_rf.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rr_dummy#0/door_rr#0/int_door_rr#0/int_door_rr_wheel_rf.0_0#0",
+      "name": "int_door_rr_wheel_rf.0_0",
+      "mesh": "int_door_rr_wheel_rf.0_0",
+      "triangles": 3562,
+      "center": [
+        0.736,
+        1.226,
+        0.631
+      ],
+      "size": [
+        0.112,
+        0.633,
+        0.779
+      ],
+      "min": [
+        0.681,
+        0.91,
+        0.242
+      ],
+      "max": [
+        0.792,
+        1.543,
+        1.02
+      ],
+      "materialNames": [
+        "wheel_rf.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lf_dummy#0/door_lf#0/int_door_lf#0/int_door_lf_movsteer_1.0.5_0#0",
+      "name": "int_door_lf_movsteer_1.0.5_0",
+      "mesh": "int_door_lf_movsteer_1.0.5_0",
+      "triangles": 3140,
+      "center": [
+        -0.736,
+        0.863,
+        -0.432
+      ],
+      "size": [
+        0.149,
+        0.747,
+        0.873
+      ],
+      "min": [
+        -0.81,
+        0.49,
+        -0.868
+      ],
+      "max": [
+        -0.662,
+        1.237,
+        0.004
+      ],
+      "materialNames": [
+        "movsteer_1.0.5"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/int_door_rf#0/int_door_rf_movsteer_1.0.5_0#0",
+      "name": "int_door_rf_movsteer_1.0.5_0",
+      "mesh": "int_door_rf_movsteer_1.0.5_0",
+      "triangles": 3140,
+      "center": [
+        0.736,
+        0.863,
+        -0.432
+      ],
+      "size": [
+        0.149,
+        0.747,
+        0.873
+      ],
+      "min": [
+        0.662,
+        0.49,
+        -0.868
+      ],
+      "max": [
+        0.81,
+        1.237,
+        0.004
+      ],
+      "materialNames": [
+        "movsteer_1.0.5"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_console#0/scorpio_n_int_console_taillight_r.6_0#0",
+      "name": "scorpio_n_int_console_taillight_r.6_0",
+      "mesh": "scorpio_n_int_console_taillight_r.6_0",
+      "triangles": 3100,
+      "center": [
+        0.044,
+        0.831,
+        -0.426
+      ],
+      "size": [
+        0.351,
+        0.442,
+        1.194
+      ],
+      "min": [
+        -0.132,
+        0.61,
+        -1.023
+      ],
+      "max": [
+        0.219,
+        1.052,
+        0.171
+      ],
+      "materialNames": [
+        "taillight_r.6"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/sunroof_m#0/sunroof_m_sunroof_m.1_0#0",
+      "name": "sunroof_m_sunroof_m.1_0",
+      "mesh": "sunroof_m_sunroof_m.1_0",
+      "triangles": 3064,
+      "center": [
+        0,
+        1.735,
+        0.06
+      ],
+      "size": [
+        0.864,
+        0.028,
+        0.524
+      ],
+      "min": [
+        -0.432,
+        1.721,
+        -0.202
+      ],
+      "max": [
+        0.432,
+        1.749,
+        0.322
+      ],
+      "materialNames": [
+        "sunroof_m.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rr_dummy#0/door_rr#0/int_door_rr#0/int_door_rr_movsteer_1.0.5_0#0",
+      "name": "int_door_rr_movsteer_1.0.5_0",
+      "mesh": "int_door_rr_movsteer_1.0.5_0",
+      "triangles": 2908,
+      "center": [
+        0.744,
+        0.899,
+        0.588
+      ],
+      "size": [
+        0.13,
+        0.819,
+        0.865
+      ],
+      "min": [
+        0.679,
+        0.49,
+        0.155
+      ],
+      "max": [
+        0.809,
+        1.308,
+        1.02
+      ],
+      "materialNames": [
+        "movsteer_1.0.5"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lr_dummy#0/door_lr#0/int_door_lr#0/int_door_lr_movsteer_1.0.5_0#0",
+      "name": "int_door_lr_movsteer_1.0.5_0",
+      "mesh": "int_door_lr_movsteer_1.0.5_0",
+      "triangles": 2908,
+      "center": [
+        -0.744,
+        0.899,
+        0.588
+      ],
+      "size": [
+        0.13,
+        0.819,
+        0.865
+      ],
+      "min": [
+        -0.809,
+        0.49,
+        0.155
+      ],
+      "max": [
+        -0.679,
+        1.308,
+        1.02
+      ],
+      "materialNames": [
+        "movsteer_1.0.5"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.1_0#0",
+      "name": "wheel_rf_wheel_rf.1_0",
+      "mesh": "wheel_rf_wheel_rf.1_0",
+      "triangles": 2751,
+      "center": [
+        0.873,
+        0.38,
+        -1.565
+      ],
+      "size": [
+        0.056,
+        0.492,
+        0.492
+      ],
+      "min": [
+        0.845,
+        0.134,
+        -1.811
+      ],
+      "max": [
+        0.901,
+        0.626,
+        -1.319
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.1_0#0",
+      "name": "wheel_rf.001_wheel_rf.1_0",
+      "mesh": "wheel_rf.001_wheel_rf.1_0",
+      "triangles": 2751,
+      "center": [
+        0.873,
+        0.38,
+        1.187
+      ],
+      "size": [
+        0.056,
+        0.492,
+        0.492
+      ],
+      "min": [
+        0.845,
+        0.134,
+        0.941
+      ],
+      "max": [
+        0.901,
+        0.626,
+        1.433
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.1_0#0",
+      "name": "wheel_rf.002_wheel_rf.1_0",
+      "mesh": "wheel_rf.002_wheel_rf.1_0",
+      "triangles": 2751,
+      "center": [
+        -0.873,
+        0.38,
+        1.187
+      ],
+      "size": [
+        0.056,
+        0.492,
+        0.492
+      ],
+      "min": [
+        -0.901,
+        0.134,
+        0.941
+      ],
+      "max": [
+        -0.845,
+        0.626,
+        1.433
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.1_0#0",
+      "name": "wheel_rf.003_wheel_rf.1_0",
+      "mesh": "wheel_rf.003_wheel_rf.1_0",
+      "triangles": 2751,
+      "center": [
+        -0.873,
+        0.38,
+        -1.565
+      ],
+      "size": [
+        0.056,
+        0.492,
+        0.492
+      ],
+      "min": [
+        -0.901,
+        0.134,
+        -1.811
+      ],
+      "max": [
+        -0.845,
+        0.626,
+        -1.319
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_roof#0/scorpio_n_int_roof_movsteer_1.0.3_0#0",
+      "name": "scorpio_n_int_roof_movsteer_1.0.3_0",
+      "mesh": "scorpio_n_int_roof_movsteer_1.0.3_0",
+      "triangles": 2690,
+      "center": [
+        0,
+        1.688,
+        0.619
+      ],
+      "size": [
+        1.099,
+        0.143,
+        2.011
+      ],
+      "min": [
+        -0.55,
+        1.617,
+        -0.387
+      ],
+      "max": [
+        0.55,
+        1.76,
+        1.624
+      ],
+      "materialNames": [
+        "movsteer_1.0.3"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_ext_chassis#0/scorpio_n_ext_chassis_wheel_rf.1_0#0",
+      "name": "scorpio_n_ext_chassis_wheel_rf.1_0",
+      "mesh": "scorpio_n_ext_chassis_wheel_rf.1_0",
+      "triangles": 2623,
+      "center": [
+        -0.049,
+        0.692,
+        0.068
+      ],
+      "size": [
+        1.733,
+        0.729,
+        1.998
+      ],
+      "min": [
+        -0.915,
+        0.328,
+        -0.931
+      ],
+      "max": [
+        0.818,
+        1.056,
+        1.067
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lf_dummy#0/door_lf#0/int_door_lf#0/int_door_lf_scorpio_n_int_dashboard.6_0#0",
+      "name": "int_door_lf_scorpio_n_int_dashboard.6_0",
+      "mesh": "int_door_lf_scorpio_n_int_dashboard.6_0",
+      "triangles": 2515,
+      "center": [
+        -0.75,
+        1.027,
+        -0.355
+      ],
+      "size": [
+        0.087,
+        0.321,
+        0.707
+      ],
+      "min": [
+        -0.794,
+        0.866,
+        -0.709
+      ],
+      "max": [
+        -0.707,
+        1.188,
+        -0.002
+      ],
+      "materialNames": [
+        "scorpio_n_int_dashboard.6"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/int_door_rf#0/int_door_rf_scorpio_n_int_dashboard.6_0#0",
+      "name": "int_door_rf_scorpio_n_int_dashboard.6_0",
+      "mesh": "int_door_rf_scorpio_n_int_dashboard.6_0",
+      "triangles": 2515,
+      "center": [
+        0.75,
+        1.027,
+        -0.355
+      ],
+      "size": [
+        0.087,
+        0.321,
+        0.707
+      ],
+      "min": [
+        0.707,
+        0.866,
+        -0.709
+      ],
+      "max": [
+        0.794,
+        1.188,
+        -0.002
+      ],
+      "materialNames": [
+        "scorpio_n_int_dashboard.6"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/Rear_Door#0/boot_dummy#0/boot#0/int_boot#0/int_boot_movsteer_1.0.5_0#0",
+      "name": "int_boot_movsteer_1.0.5_0",
+      "mesh": "int_boot_movsteer_1.0.5_0",
+      "triangles": 2387,
+      "center": [
+        -0.001,
+        0.999,
+        2.007
+      ],
+      "size": [
+        1.052,
+        0.655,
+        0.165
+      ],
+      "min": [
+        -0.527,
+        0.672,
+        1.924
+      ],
+      "max": [
+        0.525,
+        1.327,
+        2.089
+      ],
+      "materialNames": [
+        "movsteer_1.0.5"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/steering_dummy#0/movsteer_1.0#0/movsteer_1.0_wheel_rf.1_0#0",
+      "name": "movsteer_1.0_wheel_rf.1_0",
+      "mesh": "movsteer_1.0_wheel_rf.1_0",
+      "triangles": 2366,
+      "center": [
+        0.39,
+        1.136,
+        -0.473
+      ],
+      "size": [
+        0.328,
+        0.168,
+        0.107
+      ],
+      "min": [
+        0.226,
+        1.052,
+        -0.526
+      ],
+      "max": [
+        0.554,
+        1.22,
+        -0.419
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/foglight_m#0/foglight_glass#0/foglight_glass_glass_0#0",
+      "name": "foglight_glass_glass_0",
+      "mesh": "foglight_glass_glass_0",
+      "triangles": 2348,
+      "center": [
+        0,
+        0.621,
+        -2.238
+      ],
+      "size": [
+        1.584,
+        0.178,
+        0.125
+      ],
+      "min": [
+        -0.792,
+        0.532,
+        -2.301
+      ],
+      "max": [
+        0.792,
+        0.71,
+        -2.175
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lf_dummy#0/door_lf#0/int_door_lf#0/int_door_lf_wheel_rf.1_0#0",
+      "name": "int_door_lf_wheel_rf.1_0",
+      "mesh": "int_door_lf_wheel_rf.1_0",
+      "triangles": 2294,
+      "center": [
+        -0.727,
+        1.015,
+        -0.56
+      ],
+      "size": [
+        0.096,
+        0.266,
+        0.305
+      ],
+      "min": [
+        -0.775,
+        0.882,
+        -0.712
+      ],
+      "max": [
+        -0.679,
+        1.148,
+        -0.407
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/int_door_rf#0/int_door_rf_wheel_rf.1_0#0",
+      "name": "int_door_rf_wheel_rf.1_0",
+      "mesh": "int_door_rf_wheel_rf.1_0",
+      "triangles": 2294,
+      "center": [
+        0.727,
+        1.015,
+        -0.56
+      ],
+      "size": [
+        0.096,
+        0.266,
+        0.305
+      ],
+      "min": [
+        0.679,
+        0.882,
+        -0.712
+      ],
+      "max": [
+        0.775,
+        1.148,
+        -0.407
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rr_dummy#0/door_rr#0/int_door_rr#0/int_door_rr_wheel_rf.1_0#0",
+      "name": "int_door_rr_wheel_rf.1_0",
+      "mesh": "int_door_rr_wheel_rf.1_0",
+      "triangles": 2294,
+      "center": [
+        0.727,
+        1.04,
+        0.391
+      ],
+      "size": [
+        0.097,
+        0.266,
+        0.305
+      ],
+      "min": [
+        0.679,
+        0.907,
+        0.239
+      ],
+      "max": [
+        0.775,
+        1.174,
+        0.543
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lr_dummy#0/door_lr#0/int_door_lr#0/int_door_lr_wheel_rf.1_0#0",
+      "name": "int_door_lr_wheel_rf.1_0",
+      "mesh": "int_door_lr_wheel_rf.1_0",
+      "triangles": 2294,
+      "center": [
+        -0.727,
+        1.04,
+        0.391
+      ],
+      "size": [
+        0.097,
+        0.266,
+        0.305
+      ],
+      "min": [
+        -0.775,
+        0.907,
+        0.239
+      ],
+      "max": [
+        -0.679,
+        1.174,
+        0.543
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/taillight_r#0/taillight_r_glass#0/taillight_r_glass_glass.003_0#0",
+      "name": "taillight_r_glass_glass.003_0",
+      "mesh": "taillight_r_glass_glass.003_0",
+      "triangles": 2214,
+      "center": [
+        0,
+        1.35,
+        1.91
+      ],
+      "size": [
+        1.655,
+        0.656,
+        0.318
+      ],
+      "min": [
+        -0.827,
+        1.022,
+        1.752
+      ],
+      "max": [
+        0.827,
+        1.678,
+        2.069
+      ],
+      "materialNames": [
+        "glass.003"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/door_rf_headlight_f.2_0#0",
+      "name": "door_rf_headlight_f.2_0",
+      "mesh": "door_rf_headlight_f.2_0",
+      "triangles": 2140,
+      "center": [
+        1.02,
+        1.282,
+        -0.713
+      ],
+      "size": [
+        0.139,
+        0.062,
+        0.153
+      ],
+      "min": [
+        0.951,
+        1.251,
+        -0.79
+      ],
+      "max": [
+        1.09,
+        1.313,
+        -0.636
+      ],
+      "materialNames": [
+        "headlight_f.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/taillight_r#0/taillight_dr_g#0/taillight_dr_g_glass_0#0",
+      "name": "taillight_dr_g_glass_0",
+      "mesh": "taillight_dr_g_glass_0",
+      "triangles": 1960,
+      "center": [
+        0,
+        1.029,
+        1.978
+      ],
+      "size": [
+        1.628,
+        1.173,
+        0.399
+      ],
+      "min": [
+        -0.814,
+        0.443,
+        1.778
+      ],
+      "max": [
+        0.814,
+        1.616,
+        2.177
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lf_dummy#0/door_lf#0/door_lf_headlight_f.2_0#0",
+      "name": "door_lf_headlight_f.2_0",
+      "mesh": "door_lf_headlight_f.2_0",
+      "triangles": 1940,
+      "center": [
+        -1.013,
+        1.282,
+        -0.682
+      ],
+      "size": [
+        0.12,
+        0.062,
+        0.171
+      ],
+      "min": [
+        -1.073,
+        1.251,
+        -0.767
+      ],
+      "max": [
+        -0.953,
+        1.313,
+        -0.596
+      ],
+      "materialNames": [
+        "headlight_f.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rr_dummy#0/door_rr#0/int_door_rr#0/int_door_rr_scorpio_n_int_dashboard.6_0#0",
+      "name": "int_door_rr_scorpio_n_int_dashboard.6_0",
+      "mesh": "int_door_rr_scorpio_n_int_dashboard.6_0",
+      "triangles": 1884,
+      "center": [
+        0.749,
+        1.054,
+        0.625
+      ],
+      "size": [
+        0.09,
+        0.327,
+        0.767
+      ],
+      "min": [
+        0.704,
+        0.891,
+        0.242
+      ],
+      "max": [
+        0.794,
+        1.217,
+        1.009
+      ],
+      "materialNames": [
+        "scorpio_n_int_dashboard.6"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lr_dummy#0/door_lr#0/int_door_lr#0/int_door_lr_scorpio_n_int_dashboard.6_0#0",
+      "name": "int_door_lr_scorpio_n_int_dashboard.6_0",
+      "mesh": "int_door_lr_scorpio_n_int_dashboard.6_0",
+      "triangles": 1884,
+      "center": [
+        -0.749,
+        1.054,
+        0.625
+      ],
+      "size": [
+        0.09,
+        0.327,
+        0.767
+      ],
+      "min": [
+        -0.794,
+        0.891,
+        0.242
+      ],
+      "max": [
+        -0.704,
+        1.217,
+        1.009
+      ],
+      "materialNames": [
+        "scorpio_n_int_dashboard.6"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_body#0/scorpio_n_int_body_scorpio_n_int_body.2_0#0",
+      "name": "scorpio_n_int_body_scorpio_n_int_body.2_0",
+      "mesh": "scorpio_n_int_body_scorpio_n_int_body.2_0",
+      "triangles": 1872,
+      "center": [
+        0,
+        1.052,
+        0.962
+      ],
+      "size": [
+        1.443,
+        0.765,
+        1.919
+      ],
+      "min": [
+        -0.722,
+        0.67,
+        0.002
+      ],
+      "max": [
+        0.722,
+        1.435,
+        1.921
+      ],
+      "materialNames": [
+        "scorpio_n_int_body.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/Rear_Door#0/boot_dummy#0/boot#0/int_boot#0/int_boot_wheel_rf.1_0#0",
+      "name": "int_boot_wheel_rf.1_0",
+      "mesh": "int_boot_wheel_rf.1_0",
+      "triangles": 1667,
+      "center": [
+        0.001,
+        1.088,
+        2.055
+      ],
+      "size": [
+        0.116,
+        0.058,
+        0.044
+      ],
+      "min": [
+        -0.057,
+        1.059,
+        2.033
+      ],
+      "max": [
+        0.059,
+        1.116,
+        2.077
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/headlight_f#0/headlight_f_headlight_f.2_0#0",
+      "name": "headlight_f_headlight_f.2_0",
+      "mesh": "headlight_f_headlight_f.2_0",
+      "triangles": 1605,
+      "center": [
+        -0.097,
+        0.989,
+        -2.13
+      ],
+      "size": [
+        1.484,
+        0.14,
+        0.25
+      ],
+      "min": [
+        -0.839,
+        0.919,
+        -2.255
+      ],
+      "max": [
+        0.645,
+        1.059,
+        -2.005
+      ],
+      "materialNames": [
+        "headlight_f.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/indicator_rm_g#0/indicator_rm_g_glass_0#0",
+      "name": "indicator_rm_g_glass_0",
+      "mesh": "indicator_rm_g_glass_0",
+      "triangles": 1534,
+      "center": [
+        1.024,
+        1.282,
+        -0.706
+      ],
+      "size": [
+        0.146,
+        0.058,
+        0.171
+      ],
+      "min": [
+        0.951,
+        1.253,
+        -0.791
+      ],
+      "max": [
+        1.097,
+        1.311,
+        -0.62
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/taillight_r#0/breaklight_l.001#0/breaklight_l.001_breaklight l_0#0",
+      "name": "breaklight_l.001_breaklight l_0",
+      "mesh": "breaklight_l.001_breaklight l_0",
+      "triangles": 1532,
+      "center": [
+        -0.662,
+        1.03,
+        1.995
+      ],
+      "size": [
+        0.272,
+        1.175,
+        0.373
+      ],
+      "min": [
+        -0.798,
+        0.443,
+        1.809
+      ],
+      "max": [
+        -0.526,
+        1.618,
+        2.182
+      ],
+      "materialNames": [
+        "breaklight_l"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/taillight_r#0/breaklight_r.001#0/breaklight_r.001_breaklight r_0#0",
+      "name": "breaklight_r.001_breaklight r_0",
+      "mesh": "breaklight_r.001_breaklight r_0",
+      "triangles": 1532,
+      "center": [
+        0.662,
+        1.03,
+        1.995
+      ],
+      "size": [
+        0.272,
+        1.175,
+        0.373
+      ],
+      "min": [
+        0.526,
+        0.443,
+        1.809
+      ],
+      "max": [
+        0.798,
+        1.618,
+        2.182
+      ],
+      "materialNames": [
+        "breaklight_r"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/Rear_Door#0/boot_dummy#0/boot#0/windscreen_r#0/windscreen_r_glass_0#0",
+      "name": "windscreen_r_glass_0",
+      "mesh": "windscreen_r_glass_0",
+      "triangles": 1528,
+      "center": [
+        0,
+        1.468,
+        1.969
+      ],
+      "size": [
+        1.223,
+        0.371,
+        0.303
+      ],
+      "min": [
+        -0.611,
+        1.282,
+        1.817
+      ],
+      "max": [
+        0.611,
+        1.654,
+        2.121
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_seats#0/scorpio_n_int_seats_scorpio_n_int_body.1_0#0",
+      "name": "scorpio_n_int_seats_scorpio_n_int_body.1_0",
+      "mesh": "scorpio_n_int_seats_scorpio_n_int_body.1_0",
+      "triangles": 1520,
+      "center": [
+        0,
+        1.016,
+        1.832
+      ],
+      "size": [
+        1.022,
+        0.556,
+        0.171
+      ],
+      "min": [
+        -0.511,
+        0.738,
+        1.746
+      ],
+      "max": [
+        0.511,
+        1.294,
+        1.918
+      ],
+      "materialNames": [
+        "scorpio_n_int_body.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/headlight_f#0/headlight_f_wheel_rf.1_0#0",
+      "name": "headlight_f_wheel_rf.1_0",
+      "mesh": "headlight_f_wheel_rf.1_0",
+      "triangles": 1517,
+      "center": [
+        0.01,
+        0.989,
+        -2.13
+      ],
+      "size": [
+        1.658,
+        0.14,
+        0.25
+      ],
+      "min": [
+        -0.819,
+        0.919,
+        -2.255
+      ],
+      "max": [
+        0.839,
+        1.059,
+        -2.005
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lf_dummy#0/door_lf#0/indicator_lm_g#0/indicator_lm_g_glass_0#0",
+      "name": "indicator_lm_g_glass_0",
+      "mesh": "indicator_lm_g_glass_0",
+      "triangles": 1478,
+      "center": [
+        -1.016,
+        1.282,
+        -0.674
+      ],
+      "size": [
+        0.125,
+        0.058,
+        0.187
+      ],
+      "min": [
+        -1.079,
+        1.253,
+        -0.768
+      ],
+      "max": [
+        -0.954,
+        1.311,
+        -0.58
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.3_0#0",
+      "name": "wheel_rf_wheel_rf.3_0",
+      "mesh": "wheel_rf_wheel_rf.3_0",
+      "triangles": 1421,
+      "center": [
+        0.826,
+        0.415,
+        -1.436
+      ],
+      "size": [
+        0.075,
+        0.201,
+        0.124
+      ],
+      "min": [
+        0.789,
+        0.314,
+        -1.498
+      ],
+      "max": [
+        0.863,
+        0.515,
+        -1.374
+      ],
+      "materialNames": [
+        "wheel_rf.3"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.3_0#0",
+      "name": "wheel_rf.001_wheel_rf.3_0",
+      "mesh": "wheel_rf.001_wheel_rf.3_0",
+      "triangles": 1421,
+      "center": [
+        0.826,
+        0.415,
+        1.315
+      ],
+      "size": [
+        0.075,
+        0.201,
+        0.124
+      ],
+      "min": [
+        0.789,
+        0.314,
+        1.253
+      ],
+      "max": [
+        0.863,
+        0.515,
+        1.378
+      ],
+      "materialNames": [
+        "wheel_rf.3"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.3_0#0",
+      "name": "wheel_rf.002_wheel_rf.3_0",
+      "mesh": "wheel_rf.002_wheel_rf.3_0",
+      "triangles": 1421,
+      "center": [
+        -0.826,
+        0.415,
+        1.315
+      ],
+      "size": [
+        0.075,
+        0.201,
+        0.124
+      ],
+      "min": [
+        -0.864,
+        0.314,
+        1.253
+      ],
+      "max": [
+        -0.789,
+        0.515,
+        1.378
+      ],
+      "materialNames": [
+        "wheel_rf.3"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.3_0#0",
+      "name": "wheel_rf.003_wheel_rf.3_0",
+      "mesh": "wheel_rf.003_wheel_rf.3_0",
+      "triangles": 1421,
+      "center": [
+        -0.826,
+        0.415,
+        -1.436
+      ],
+      "size": [
+        0.075,
+        0.201,
+        0.124
+      ],
+      "min": [
+        -0.864,
+        0.314,
+        -1.498
+      ],
+      "max": [
+        -0.789,
+        0.515,
+        -1.374
+      ],
+      "materialNames": [
+        "wheel_rf.3"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_seat_reck#0/scorpio_n_int_seat_reck_wheel_rf.3_0#0",
+      "name": "scorpio_n_int_seat_reck_wheel_rf.3_0",
+      "mesh": "scorpio_n_int_seat_reck_wheel_rf.3_0",
+      "triangles": 1420,
+      "center": [
+        0.019,
+        0.827,
+        1.197
+      ],
+      "size": [
+        0.385,
+        0.08,
+        0.89
+      ],
+      "min": [
+        -0.173,
+        0.787,
+        0.751
+      ],
+      "max": [
+        0.212,
+        0.867,
+        1.642
+      ],
+      "materialNames": [
+        "wheel_rf.3"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_sidewall#0/scorpio_n_int_sidewall_wheel_rf.1_0#0",
+      "name": "scorpio_n_int_sidewall_wheel_rf.1_0",
+      "mesh": "scorpio_n_int_sidewall_wheel_rf.1_0",
+      "triangles": 1370,
+      "center": [
+        -0.545,
+        0.941,
+        2.012
+      ],
+      "size": [
+        0.054,
+        0.255,
+        0.053
+      ],
+      "min": [
+        -0.572,
+        0.814,
+        1.985
+      ],
+      "max": [
+        -0.518,
+        1.068,
+        2.038
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/taillight_r#0/taillight_r_wheel_rf.2_0#0",
+      "name": "taillight_r_wheel_rf.2_0",
+      "mesh": "taillight_r_wheel_rf.2_0",
+      "triangles": 1366,
+      "center": [
+        0,
+        1.158,
+        1.958
+      ],
+      "size": [
+        1.618,
+        0.15,
+        0.199
+      ],
+      "min": [
+        -0.809,
+        1.084,
+        1.859
+      ],
+      "max": [
+        0.809,
+        1.233,
+        2.057
+      ],
+      "materialNames": [
+        "wheel_rf.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/door_rf_wheel_rf.1_0#0",
+      "name": "door_rf_wheel_rf.1_0",
+      "mesh": "door_rf_wheel_rf.1_0",
+      "triangles": 1364,
+      "center": [
+        0.928,
+        0.862,
+        -0.419
+      ],
+      "size": [
+        0.292,
+        1.068,
+        1.023
+      ],
+      "min": [
+        0.782,
+        0.328,
+        -0.931
+      ],
+      "max": [
+        1.074,
+        1.395,
+        0.092
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rr_dummy#0/door_rr#0/door_rr_wheel_rf.1_0#0",
+      "name": "door_rr_wheel_rf.1_0",
+      "mesh": "door_rr_wheel_rf.1_0",
+      "triangles": 1312,
+      "center": [
+        0.862,
+        0.821,
+        0.573
+      ],
+      "size": [
+        0.151,
+        0.99,
+        1.071
+      ],
+      "min": [
+        0.787,
+        0.326,
+        0.037
+      ],
+      "max": [
+        0.938,
+        1.316,
+        1.108
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lr_dummy#0/door_lr#0/door_lr_wheel_rf.1_0#0",
+      "name": "door_lr_wheel_rf.1_0",
+      "mesh": "door_lr_wheel_rf.1_0",
+      "triangles": 1312,
+      "center": [
+        -0.862,
+        0.821,
+        0.573
+      ],
+      "size": [
+        0.151,
+        0.99,
+        1.071
+      ],
+      "min": [
+        -0.938,
+        0.326,
+        0.037
+      ],
+      "max": [
+        -0.787,
+        1.316,
+        1.108
+      ],
+      "materialNames": [
+        "wheel_rf.1"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rr_dummy#0/door_rr#0/window_rr#0/window_rr_glass_0#0",
+      "name": "window_rr_glass_0",
+      "mesh": "window_rr_glass_0",
+      "triangles": 1276,
+      "center": [
+        0.758,
+        1.377,
+        0.579
+      ],
+      "size": [
+        0.17,
+        0.614,
+        0.796
+      ],
+      "min": [
+        0.673,
+        1.07,
+        0.181
+      ],
+      "max": [
+        0.843,
+        1.684,
+        0.977
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lr_dummy#0/door_lr#0/window_lr#0/window_lr_glass_0#0",
+      "name": "window_lr_glass_0",
+      "mesh": "window_lr_glass_0",
+      "triangles": 1276,
+      "center": [
+        -0.758,
+        1.377,
+        0.579
+      ],
+      "size": [
+        0.17,
+        0.614,
+        0.796
+      ],
+      "min": [
+        -0.843,
+        1.07,
+        0.181
+      ],
+      "max": [
+        -0.673,
+        1.684,
+        0.977
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lf_dummy#0/door_lf#0/window_lf#0/window_lf_glass_0#0",
+      "name": "window_lf_glass_0",
+      "mesh": "window_lf_glass_0",
+      "triangles": 1240,
+      "center": [
+        -0.761,
+        1.363,
+        -0.326
+      ],
+      "size": [
+        0.165,
+        0.627,
+        0.829
+      ],
+      "min": [
+        -0.844,
+        1.049,
+        -0.74
+      ],
+      "max": [
+        -0.679,
+        1.676,
+        0.089
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/window_rf#0/window_rf_glass_0#0",
+      "name": "window_rf_glass_0",
+      "mesh": "window_rf_glass_0",
+      "triangles": 1208,
+      "center": [
+        0.761,
+        1.363,
+        -0.326
+      ],
+      "size": [
+        0.165,
+        0.627,
+        0.829
+      ],
+      "min": [
+        0.679,
+        1.049,
+        -0.74
+      ],
+      "max": [
+        0.844,
+        1.676,
+        0.089
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_lf_dummy#0/door_lf#0/int_door_lf#0/int_door_lf_headlight_f.2_0#0",
+      "name": "int_door_lf_headlight_f.2_0",
+      "mesh": "int_door_lf_headlight_f.2_0",
+      "triangles": 1203,
+      "center": [
+        -0.715,
+        0.91,
+        -0.713
+      ],
+      "size": [
+        0.055,
+        0.782,
+        0.255
+      ],
+      "min": [
+        -0.742,
+        0.519,
+        -0.84
+      ],
+      "max": [
+        -0.687,
+        1.301,
+        -0.585
+      ],
+      "materialNames": [
+        "headlight_f.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/door_rf_dummy#0/door_rf#0/int_door_rf#0/int_door_rf_headlight_f.2_0#0",
+      "name": "int_door_rf_headlight_f.2_0",
+      "mesh": "int_door_rf_headlight_f.2_0",
+      "triangles": 1203,
+      "center": [
+        0.715,
+        0.91,
+        -0.713
+      ],
+      "size": [
+        0.055,
+        0.782,
+        0.255
+      ],
+      "min": [
+        0.687,
+        0.519,
+        -0.84
+      ],
+      "max": [
+        0.742,
+        1.301,
+        -0.585
+      ],
+      "materialNames": [
+        "headlight_f.2"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/foglight_m#0/foglight_r#0/foglight_r_foglight r_0#0",
+      "name": "foglight_r_foglight r_0",
+      "mesh": "foglight_r_foglight r_0",
+      "triangles": 1109,
+      "center": [
+        0.685,
+        0.618,
+        -2.23
+      ],
+      "size": [
+        0.194,
+        0.161,
+        0.109
+      ],
+      "min": [
+        0.588,
+        0.538,
+        -2.285
+      ],
+      "max": [
+        0.782,
+        0.699,
+        -2.176
+      ],
+      "materialNames": [
+        "foglight_r"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/foglight_m#0/foglight_l#0/foglight_l_foglight l_0#0",
+      "name": "foglight_l_foglight l_0",
+      "mesh": "foglight_l_foglight l_0",
+      "triangles": 1109,
+      "center": [
+        -0.685,
+        0.618,
+        -2.23
+      ],
+      "size": [
+        0.194,
+        0.161,
+        0.109
+      ],
+      "min": [
+        -0.782,
+        0.538,
+        -2.285
+      ],
+      "max": [
+        -0.588,
+        0.699,
+        -2.176
+      ],
+      "materialNames": [
+        "foglight_l"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/headlight_f#0/headlight_glass#0/headlight_glass_glass_0#0",
+      "name": "headlight_glass_glass_0",
+      "mesh": "headlight_glass_glass_0",
+      "triangles": 1104,
+      "center": [
+        0,
+        0.97,
+        -2.115
+      ],
+      "size": [
+        1.738,
+        0.216,
+        0.343
+      ],
+      "min": [
+        -0.869,
+        0.862,
+        -2.286
+      ],
+      "max": [
+        0.869,
+        1.077,
+        -1.943
+      ],
+      "materialNames": [
+        "glass"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/chassis_wheel_rf.0_0#0",
+      "name": "chassis_wheel_rf.0_0",
+      "mesh": "chassis_wheel_rf.0_0",
+      "triangles": 1055,
+      "center": [
+        -0.05,
+        0.93,
+        1.448
+      ],
+      "size": [
+        1.255,
+        0.456,
+        0.73
+      ],
+      "min": [
+        -0.677,
+        0.702,
+        1.083
+      ],
+      "max": [
+        0.578,
+        1.157,
+        1.813
+      ],
+      "materialNames": [
+        "wheel_rf.0"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_dashboard#0/scorpio_n_int_dashboard_movsteer_1.0.3_0#0",
+      "name": "scorpio_n_int_dashboard_movsteer_1.0.3_0",
+      "mesh": "scorpio_n_int_dashboard_movsteer_1.0.3_0",
+      "triangles": 1047,
+      "center": [
+        -0.008,
+        1.127,
+        -0.744
+      ],
+      "size": [
+        1.296,
+        0.402,
+        0.329
+      ],
+      "min": [
+        -0.656,
+        0.926,
+        -0.909
+      ],
+      "max": [
+        0.64,
+        1.328,
+        -0.579
+      ],
+      "materialNames": [
+        "movsteer_1.0.3"
+      ],
+      "childCount": 0
+    },
+    {
+      "path": "/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/chassis_dummy#0/chassis#0/scorpio_n_int_console#0/scorpio_n_int_console_scorpio_n_int_seats-stiches.0_0#0",
+      "name": "scorpio_n_int_console_scorpio_n_int_seats-stiches.0_0",
+      "mesh": "scorpio_n_int_console_scorpio_n_int_seats-stiches.0_0",
+      "triangles": 1047,
+      "center": [
+        0.001,
+        0.956,
+        -0.214
+      ],
+      "size": [
+        0.19,
+        0.238,
+        0.644
+      ],
+      "min": [
+        -0.094,
+        0.837,
+        -0.536
+      ],
+      "max": [
+        0.096,
+        1.075,
+        0.108
+      ],
+      "materialNames": [
+        "scorpio_n_int_seats-stiches.0"
+      ],
+      "childCount": 0
+    }
+  ]
+}
