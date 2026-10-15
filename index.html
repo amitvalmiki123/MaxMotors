@@ -37,8 +37,6 @@
         <div class="status-stack" aria-label="Session details">
           <span><b class="status-dot"></b> <span id="car-name">AURORA V12</span></span>
           <span>PHYSICS <b>60 HZ</b></span>
-          <span>SURFACE <b id="surface-label">ASPHALT</b></span>
-          <span id="traction-warning" hidden>OFF TRACK</span>
         </div>
 
         <section class="setup-panel" id="setup-panel" aria-label="Car and track selection">
@@ -59,15 +57,17 @@
           </div>
         </section>
 
-        <section class="telemetry" aria-label="Vehicle speed">
-          <div class="telemetry-label"><span class="telemetry-icon" aria-hidden="true">◉</span> VEHICLE SPEED</div>
+        <!-- In-game HUD: one slim telemetry strip (M2.5 step 6). -->
+        <section class="telemetry" aria-label="Telemetry">
           <div class="speed-readout"><strong id="speed-value">000</strong><span>km/h</span></div>
           <div class="speed-meter" aria-hidden="true"><span id="speed-meter-fill"></span></div>
-          <div class="telemetry-footer">
-            <span id="gear-value">GEAR 1</span>
-            <span id="rpm-value">950 RPM</span>
-            <span id="drive-state">READY</span>
-          </div>
+          <span class="strip-item" id="gear-value">GEAR 1</span>
+          <span class="strip-item" id="rpm-value">950 RPM</span>
+          <span class="strip-item strip-state" id="drive-state">READY</span>
+          <span class="strip-item" id="surface-label">ASPHALT</span>
+          <span class="strip-item strip-warning" id="traction-warning" hidden>OFF TRACK</span>
+          <span class="strip-item strip-camera" id="camera-mode">CHASE</span>
+          <span class="strip-item strip-lamp" id="lights-indicator" hidden>◐ LIGHTS</span>
         </section>
 
         <div class="desktop-hint" id="desktop-hint">
@@ -76,11 +76,16 @@
           <span class="hint-divider"></span>
           <span class="hint-key hint-space">SPACE</span><span class="hint-copy">HANDBRAKE</span>
           <span class="hint-divider"></span>
+          <span class="hint-key">C</span><span class="hint-copy">CAMERA</span>
+          <span class="hint-key">H</span><span class="hint-copy">HORN</span>
+          <span class="hint-key">L</span><span class="hint-copy">LIGHTS</span>
+          <span class="hint-key">O</span><span class="hint-copy">DOORS</span>
+          <span class="hint-divider"></span>
           <span class="hint-key hint-reset">R</span><span class="hint-copy">RESET</span>
         </div>
 
-        <button class="reset-button" id="reset-button" type="button" aria-label="Reset car position">
-          <span aria-hidden="true">↺</span><span>RESET CAR</span>
+        <button class="reset-button" id="reset-button" type="button" aria-label="Reset car (R)" title="Reset car (R)">
+          <span aria-hidden="true">↺</span>
         </button>
 
         <div class="touch-controls" aria-label="Touch driving controls">

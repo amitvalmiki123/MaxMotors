@@ -21,6 +21,9 @@ const paintOptions = document.querySelector('#paint-options');
 const audioButton = document.querySelector('#audio-button');
 const audioLabel = document.querySelector('#audio-label');
 const loadToast = document.querySelector('#load-toast');
+const cameraModeLabel = document.querySelector('#camera-mode');
+const lightsIndicator = document.querySelector('#lights-indicator');
+const appRoot = document.querySelector('#app');
 const creditsDialog = document.querySelector('#credits-dialog');
 
 const TRACKS = [
@@ -245,14 +248,15 @@ try {
     onReset: () => game?.reset(),
     onAction: (action) => {
       if (action === 'camera') game?.cycleCamera();
-      if (action === 'lights') game?.toggleHeadlights();
+      if (action === 'lights') lightsIndicator.hidden = !game?.toggleHeadlights();
       if (action === 'doors' && game?.toggleOpenable('doors') === null) showToast('This car has no separately modelled doors.', { timeout: 2200 });
       if (action === 'bonnet' && game?.toggleOpenable('bonnet') === null) showToast('This car has no separately modelled bonnet or boot.', { timeout: 2200 });
     },
     onAnyInput: () => {
       if (!game.muted && !audioLabel.textContent.includes('ON')) unlockAudio();
-      // Touch devices collapse the setup panel once the player starts driving, so
-      // the car is not hidden behind the chips (the CSS only applies on touch).
+      // Driving hides the setup panel (and the title / hints) on every device;
+      // it collapses again on the next input whenever it was reopened.
+      appRoot.classList.add('is-driving');
       if (!setupCollapsed) setSetupCollapsed(true);
     },
   });
@@ -265,6 +269,9 @@ try {
   sessionStatus.textContent = 'LOADING';
 
   document.querySelector('#app').dataset.quality = game.quality.id;
+  game.onCameraChange((mode) => {
+    cameraModeLabel.textContent = mode.toUpperCase();
+  });
   // Dev-only handle for automated acceptance checks (stripped from production builds).
   if (import.meta.env.DEV) window.__maxmotors = { get game() { return game; } };
   game.init().then(() => {
