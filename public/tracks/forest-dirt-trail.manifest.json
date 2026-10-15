@@ -1,7 +1,7 @@
 {
   "id": "forest-dirt-trail",
   "kind": "track",
-  "generatedAt": "2026-10-15T15:51:18.424Z",
+  "generatedAt": "2026-10-15T20:01:33.350Z",
   "credits": {
     "inGameName": "Forest Dirt Trail",
     "title": "Dirt Road Through Forest",
@@ -67,9 +67,16 @@
     "roadHalfWidth": 12.037,
     "roadPoints": 82,
     "roadCoverage": 0.0186,
+    "trunks": 1333,
     "heights": {
       "minHeight": -66.041,
-      "maxHeight": 11.09
+      "maxHeight": 11.762,
+      "groundTriangles": 42811,
+      "spikes": 8,
+      "holes": 14,
+      "filled": 63917,
+      "unreachable": 9663,
+      "trunks": 1333
     }
   },
   "strip": {
