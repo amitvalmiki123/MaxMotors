@@ -27,9 +27,17 @@ async function fileSize(filePath) {
 }
 
 async function download(url, destination) {
-  const response = await fetch(url, { redirect: 'follow' });
+  const response = await fetch(url, {
+    redirect: 'follow',
+    headers: {
+      // Some file hosts reject requests without a browser-like UA.
+      'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
+      accept: '*/*',
+    },
+  });
   if (!response.ok) {
-    throw new Error(`download failed (${response.status} ${response.statusText}) for ${url}`);
+    const body = (await response.text().catch(() => '')).slice(0, 300).replaceAll('\n', ' ');
+    throw new Error(`download failed (${response.status} ${response.statusText}) for ${url} :: ${body}`);
   }
   const buffer = Buffer.from(await response.arrayBuffer());
   const head = buffer.subarray(0, 16).toString('utf8').trim();

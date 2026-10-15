@@ -1,8 +1,11 @@
 name: Asset pipeline
 
 # Owner-supplied source GLBs are downloaded here (they are never committed) and
-# optimized into public/. This runs on GitHub's runners because the source host
-# is not reachable from every environment the project is developed in.
+# optimized into public/. This runs on a GitHub runner because the source host is
+# not reachable from every environment the project is developed in.
+#
+# Every step tees its output into assets/reports/pipeline.log, which is committed
+# at the end (even on failure) so the run can be reviewed without the Actions UI.
 on:
   workflow_dispatch:
     inputs:
@@ -20,7 +23,7 @@ on:
         default: ''
         type: string
   # Rebuilds whenever the pipeline itself changes (the source GLBs are not in
-  # the repository, so this is the only way to reproduce the shipped output).
+  # the repository, so this is the way to reproduce the shipped output).
   push:
     paths:
       - '.github/workflows/assets-pipeline.yml'
@@ -40,6 +43,7 @@ jobs:
     env:
       PIPELINE_MODE: ${{ github.event.inputs.mode || 'build' }}
       PIPELINE_ONLY: ${{ github.event.inputs.only || '' }}
+      LOG: assets/reports/pipeline.log
     steps:
       - uses: actions/checkout@v4
         with:
@@ -51,44 +55,66 @@ jobs:
           node-version: '22'
           cache: npm
 
+      - name: Start log
+        run: |
+          mkdir -p assets/reports
+          {
+            echo "mode=$PIPELINE_MODE only='${PIPELINE_ONLY}' ref=$GITHUB_REF_NAME sha=$GITHUB_SHA"
+            echo "runner=$(uname -a)"
+          } > "$LOG"
+
       - name: Install dependencies
-        run: npm ci
+        run: |
+          set -o pipefail
+          npm ci 2>&1 | tee -a "$LOG"
 
       - name: Fetch source models into assets/raw (ignored, never committed)
-        run: node scripts/assets/fetch-sources.mjs ${{ env.PIPELINE_ONLY != '' && format('--only {0}', env.PIPELINE_ONLY) || '' }}
+        run: |
+          set -o pipefail
+          node scripts/assets/fetch-sources.mjs ${{ env.PIPELINE_ONLY != '' && format('--only {0}', env.PIPELINE_ONLY) || '' }} 2>&1 | tee -a "$LOG"
 
       - name: Inspect sources (node tree, wheel candidates, occupancy maps)
-        run: node scripts/assets/inspect-glb.mjs
+        run: |
+          set -o pipefail
+          node scripts/assets/inspect-glb.mjs 2>&1 | tee -a "$LOG"
 
       - name: Optimize GLBs into public/
         if: env.PIPELINE_MODE != 'inspect'
-        run: node scripts/assets/optimize-glb.mjs ${{ env.PIPELINE_ONLY != '' && format('--only {0}', env.PIPELINE_ONLY) || '' }}
+        run: |
+          set -o pipefail
+          node scripts/assets/optimize-glb.mjs ${{ env.PIPELINE_ONLY != '' && format('--only {0}', env.PIPELINE_ONLY) || '' }} 2>&1 | tee -a "$LOG"
 
       - name: Fetch Poly Haven CC0 asphalt PBR (2K)
         if: env.PIPELINE_MODE != 'inspect'
-        run: node scripts/assets/fetch-environment.mjs
+        run: |
+          set -o pipefail
+          node scripts/assets/fetch-environment.mjs 2>&1 | tee -a "$LOG"
 
       - name: Generate CC0 engine loops
         if: env.PIPELINE_MODE != 'inspect'
-        run: node scripts/assets/build-audio.mjs
+        run: |
+          set -o pipefail
+          node scripts/assets/build-audio.mjs 2>&1 | tee -a "$LOG"
 
       - name: Report sizes
         if: always()
         run: |
-          echo "## Pipeline output" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          du -h -d 2 public 2>/dev/null | sort -h >> $GITHUB_STEP_SUMMARY || true
-          ls -la public/models public/tracks public/textures public/audio 2>/dev/null >> $GITHUB_STEP_SUMMARY || true
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          {
+            echo "--- public/ tree ---"
+            du -h -d 3 public 2>/dev/null | sort -h || true
+            echo "--- files ---"
+            ls -la public/models public/tracks public/textures public/audio assets/reports 2>/dev/null || true
+          } | tee -a "$LOG"
 
       - name: Commit pipeline output
+        if: always()
         run: |
           git config user.name "maxmotors-asset-bot"
           git config user.email "actions@users.noreply.github.com"
           git add -A assets/reports public
           if git diff --cached --quiet; then
-            echo "Nothing to commit."
+            echo "Nothing to commit." | tee -a "$LOG"
           else
-            git commit -m "chore(assets): pipeline output (${{ env.PIPELINE_MODE }}) [skip ci]"
-            git push origin HEAD:${{ github.ref_name }}
+            git commit -m "chore(assets): pipeline output ($PIPELINE_MODE) [skip ci]"
+            git push origin HEAD:$GITHUB_REF_NAME
           fi
