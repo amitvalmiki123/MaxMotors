@@ -243,6 +243,12 @@ try {
   inputController = new InputController({
     root: document,
     onReset: () => game?.reset(),
+    onAction: (action) => {
+      if (action === 'camera') game?.cycleCamera();
+      if (action === 'lights') game?.toggleHeadlights();
+      if (action === 'doors' && game?.toggleOpenable('doors') === null) showToast('This car has no separately modelled doors.', { timeout: 2200 });
+      if (action === 'bonnet' && game?.toggleOpenable('bonnet') === null) showToast('This car has no separately modelled bonnet or boot.', { timeout: 2200 });
+    },
     onAnyInput: () => {
       if (!game.muted && !audioLabel.textContent.includes('ON')) unlockAudio();
       // Touch devices collapse the setup panel once the player starts driving, so
@@ -259,6 +265,8 @@ try {
   sessionStatus.textContent = 'LOADING';
 
   document.querySelector('#app').dataset.quality = game.quality.id;
+  // Dev-only handle for automated acceptance checks (stripped from production builds).
+  if (import.meta.env.DEV) window.__maxmotors = { get game() { return game; } };
   game.init().then(() => {
     sessionStatus.textContent = 'READY';
     showToast('Box-car preview is drivable now — the licensed model swaps in when it loads.', { timeout: 5000 });

@@ -243,13 +243,19 @@ export function createTyreEffects(scene, quality) {
   let accumulators = new Map();
   let dustAccumulator = 0;
 
+  // Marks go where the tyre meets the ground: the wheel raycast hit point.
+  // (They used to sit at the wheel *centre*, ~0.3 m above the road.) A wheel
+  // in the air leaves no mark and breaks its strip.
   const contactPoints = (physics) => {
     const points = [];
     for (const [index, wheel] of physics.vehicle.wheelInfos.entries()) {
-      const transform = wheel.worldTransform;
+      const hit = wheel.raycastResult;
+      const grounded = Boolean(hit?.hasHit) && (wheel.suspensionForce ?? 0) > 0;
+      const source = grounded ? hit.hitPointWorld : wheel.worldTransform.position;
       points.push({
         index,
-        position: new THREE.Vector3(transform.position.x, transform.position.y, transform.position.z),
+        grounded,
+        position: new THREE.Vector3(source.x, source.y, source.z),
         slip: wheel.sliding ? 1 : 0,
         radius: wheel.radius ?? 0.35,
       });
@@ -286,8 +292,14 @@ export function createTyreEffects(scene, quality) {
         skid.setOpacity(offTrack ? 0.75 : 1);
         for (const point of points) {
           const key = point.index;
+          if (!point.grounded) {
+            previous.delete(key);
+            continue;
+          }
           const last = previous.get(key);
-          const shouldMark = speedKmh > 6 && (handbrake || point.slip || slipAmount > 0.28 || offTrack);
+          // The handbrake locks the rear axle: rear tyres mark, fronts only if sliding.
+          const rear = point.index >= 2;
+          const shouldMark = speedKmh > 6 && ((handbrake && rear) || point.slip || slipAmount > 0.28 || offTrack);
           if (shouldMark && last) {
             const distance = last.distanceTo(point.position);
             const accumulator = (accumulators.get(key) ?? 0) + distance;
@@ -308,8 +320,8 @@ export function createTyreEffects(scene, quality) {
         dustAccumulator += deltaTime * dustRate * (speedKmh > 8 ? 1 : 0.2);
         const rearPoints = points.filter((point) => point.index >= 2);
         const body = physics.chassisBody;
-        const backward = new THREE.Vector3(body.quaternion.x, body.quaternion.y, body.quaternion.z, body.quaternion.w)
-          .multiply(new THREE.Vector3(0, 0, 1));
+        const backward = new THREE.Vector3(0, 0, 1)
+          .applyQuaternion(new THREE.Quaternion(body.quaternion.x, body.quaternion.y, body.quaternion.z, body.quaternion.w));
         while (dustAccumulator > 0.05) {
           dustAccumulator -= 0.05;
           for (const point of rearPoints) {

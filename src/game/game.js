@@ -1,5 +1,9 @@
 import * as THREE from 'three';
 import { createEngineAudio } from './audio.js';
+import { createCameraDirector } from './cameras.js';
+import { createCarLights } from './car-lights.js';
+import { attachOpenables } from './car-openables.js';
+import { attachCockpit } from './cars/cockpit-rig.js';
 import { CAR_PRESETS, getCar, getPaint } from './cars/catalog.js';
 import { createFallbackCarVisual } from './cars/fallback.js';
 import { applyPaint, buildCarRig, disposeCarRig, loadCarAssets, updateWheels } from './cars/loader.js';
@@ -124,6 +128,7 @@ export function createGame({
 
   const ground = createGroundPlane(scene);
   const graphics = createSceneGraphics({ renderer, scene, camera, tier: quality, container });
+  const cameras = createCameraDirector({ camera, element: renderer.domElement });
   const environment = createEnvironment({
     scene,
     renderer,
@@ -150,14 +155,20 @@ export function createGame({
 
   const audio = createEngineAudio({ carId: carPreset.audioProfile, tier: quality });
   const effects = createTyreEffects(scene, quality);
+  const lights = createCarLights({ tier: quality });
 
   // Box-car fallback goes up immediately so the scene is drivable at t=0.
-  function mountRig(nextRig) {
+  function mountRig(nextRig, manifest = null) {
     if (rig) {
       rig.group.removeFromParent();
       if (rig !== nextRig) disposeCarRig(rig);
     }
+    // Driver-head anchor + steering wheel (real node, or a procedural one), and
+    // the doors / bonnet / boot that exist as separate named nodes.
+    nextRig.cockpit ??= attachCockpit(nextRig, manifest);
+    nextRig.openables ??= attachOpenables(nextRig, manifest);
     rig = nextRig;
+    lights.attach(nextRig);
     rigIsFallback = Boolean(nextRig.fallback);
     scene.add(rig.group);
   }
@@ -199,8 +210,14 @@ export function createGame({
           });
         }
       }
-      mountRig(nextRig);
-      onStatus({ car: preset.id, model: 'loaded', wheels: nextRig.wheels.length, triangles: Math.round(nextRig.stats.triangles) });
+      mountRig(nextRig, manifest);
+      onStatus({
+        car: preset.id,
+        model: 'loaded',
+        wheels: nextRig.wheels.length,
+        triangles: Math.round(nextRig.stats.triangles),
+        cockpit: { anchor: nextRig.cockpit.anchorSource, steeringWheel: nextRig.cockpit.source },
+      });
       return nextRig;
     } catch (error) {
       onStatus({ car: preset.id, model: 'fallback', reason: error?.message ?? String(error) });
@@ -265,13 +282,7 @@ export function createGame({
   }
 
   // --- driving state --------------------------------------------------------
-  const input = { throttle: 0, brake: 0, steer: 0, handbrake: false };
-  const cameraOffset = new THREE.Vector3();
-  const targetPosition = new THREE.Vector3();
-  const lookTarget = new THREE.Vector3();
-  const bodyPosition = new THREE.Vector3();
-  const bodyQuaternion = new THREE.Quaternion();
-  const localLookTarget = new THREE.Vector3(0, 0.62, -3.1);
+  const input = { throttle: 0, brake: 0, steer: 0, handbrake: false, horn: false };
   let gear = 1;
   let rpm = 900;
   let load = 0;
@@ -298,15 +309,34 @@ export function createGame({
     rpm = physics.config ? 900 : 900;
     effects.reset();
     syncVisuals(0);
+    cameras.snap();
+  }
+
+  const rideOffset = new THREE.Vector3();
+
+  /**
+   * GLB rigs have their origin on the road under the car (the manifest's contact
+   * plane); the physics body's origin is the chassis centre, which rides
+   * -anchorY + suspension rest + wheel radius above the road. Without this
+   * offset every loaded car floated ~0.8 m (Aurora) / ~0.9 m (Sikandar) above
+   * its own physics wheels. The box-car fallback is built around the chassis
+   * centre already. Visual placement only.
+   */
+  function visualRideHeight() {
+    if (!rig || rig.fallback) return 0;
+    const config = physics.config;
+    return -(config.wheelAnchors?.anchorY ?? -0.18) + (config.suspension?.suspensionRestLength ?? 0.32) + config.wheelRadius;
   }
 
   function syncVisuals(deltaTime) {
     const body = physics.chassisBody;
     if (!rig) return;
-    rig.group.position.set(body.position.x, body.position.y, body.position.z);
     rig.group.quaternion.set(body.quaternion.x, body.quaternion.y, body.quaternion.z, body.quaternion.w);
+    rideOffset.set(0, -visualRideHeight(), 0).applyQuaternion(rig.group.quaternion);
+    rig.group.position.set(body.position.x + rideOffset.x, body.position.y + rideOffset.y, body.position.z + rideOffset.z);
     const steerAngle = physics.vehicle.wheelInfos[0]?.steering ?? 0;
     updateWheels(rig, { wheelInfos: physics.vehicle.wheelInfos, steerAngle });
+    rig.cockpit?.update(steerAngle);
     graphics.updateContactShadow(physics, {
       length: rig.bounds?.size?.z ?? 4.5,
       width: rig.bounds?.size?.x ?? 1.9,
@@ -314,25 +344,29 @@ export function createGame({
     void deltaTime;
   }
 
+  function rigSize() {
+    const size = rig?.bounds?.size ?? (rig?.bounds?.isBox3 ? rig.bounds.getSize(new THREE.Vector3()) : null);
+    const scale = rig?.group?.scale?.x ?? 1;
+    return size ? { x: size.x * scale, y: size.y * scale, z: size.z * scale } : { x: 1.9, y: 1.2, z: 4.5 };
+  }
+
   function updateCamera(deltaTime, speedKmh) {
     const body = physics.chassisBody;
-    const speedRatio = Math.min(speedKmh / (physics.config.topSpeedKmh * 1.1), 1);
-    bodyPosition.set(body.position.x, body.position.y, body.position.z);
-    bodyQuaternion.set(body.quaternion.x, body.quaternion.y, body.quaternion.z, body.quaternion.w);
-    cameraOffset.set(0, 4.8 + speedRatio * 1.1, 9.1 + speedRatio * 2.1);
-    cameraOffset.applyQuaternion(bodyQuaternion);
-    targetPosition.copy(bodyPosition).add(cameraOffset);
-    const smoothing = 1 - Math.exp(-5.2 * Math.max(deltaTime, FIXED_TIME_STEP));
-    camera.position.lerp(targetPosition, smoothing);
-
-    lookTarget.copy(localLookTarget).applyQuaternion(bodyQuaternion).add(bodyPosition);
-    camera.lookAt(lookTarget);
-
-    const targetFov = 58 + speedRatio * 9;
-    if (Math.abs(camera.fov - targetFov) > 0.1) {
-      camera.fov += (targetFov - camera.fov) * smoothing;
-      camera.updateProjectionMatrix();
-    }
+    cameras.update({
+      deltaTime,
+      // Frame the visible car (GLB rigs sit lower than the chassis centre).
+      position: rig && !rig.fallback ? rig.group.position : body.position,
+      quaternion: body.quaternion,
+      velocity: body.velocity,
+      speedKmh,
+      topSpeedKmh: physics.config.topSpeedKmh,
+      yawRate: body.angularVelocity.y,
+      steerAngle: physics.vehicle.wheelInfos[0]?.steering ?? 0,
+      carSize: rigSize(),
+      carGroup: rig?.group ?? null,
+      cockpitHead: rig?.cockpit?.head ?? null,
+      groundHeightAt: activeTrack?.groundHeightAt ?? null,
+    });
 
     // Keep the shadow frustum centred on the car so a 2048 map stays dense.
     sun.position.set(body.position.x - 58, body.position.y + 82, body.position.z + 28);
@@ -389,6 +423,7 @@ export function createGame({
     input.brake = Number(rawInput.brake) || 0;
     input.steer = Number(rawInput.steer) || 0;
     input.handbrake = Boolean(rawInput.handbrake);
+    input.horn = Boolean(rawInput.horn);
 
     accumulator += deltaTime;
     let steps = 0;
@@ -420,7 +455,10 @@ export function createGame({
     });
 
     syncVisuals(deltaTime);
+    rig?.openables?.update(deltaTime, telemetry.speedKmh);
+    lights.update({ braking: input.brake > 0.05 && telemetry.signedSpeedKmh > 1.4 });
     updateCamera(deltaTime, telemetry.speedKmh);
+    audio.setHorn(input.horn);
     audio.update({ rpm, load, speedKmh: telemetry.speedKmh, slip, muted });
     graphics.render(deltaTime);
 
@@ -523,6 +561,48 @@ export function createGame({
     },
     selectTrack,
     reset,
+    /** L key. Returns whether the headlights are now on. */
+    toggleHeadlights() {
+      return lights.toggle();
+    },
+    get headlightsOn() {
+      return lights.on;
+    },
+    /** O key (doors) / B key (bonnet + boot). Null when the car has none. */
+    toggleOpenable(name) {
+      return rig?.openables?.toggle(name, getVehicleTelemetry(physics).speedKmh) ?? null;
+    },
+    get openables() {
+      return { doors: rig?.openables?.doors ?? 0, panels: rig?.openables?.panels ?? 0 };
+    },
+    /** RMS level of the horn output: > 0 while it is audibly sounding. */
+    get hornLevel() {
+      return audio.hornLevel?.() ?? 0;
+    },
+    /** Visual vs physics wheel contact heights (diagnostics / acceptance checks). */
+    diagnostics() {
+      const body = physics.chassisBody;
+      const point = new THREE.Vector3();
+      const visualWheels = (rig?.wheels ?? []).map((wheel) => {
+        wheel.spinPivot.getWorldPosition(point);
+        return Number((point.y - wheel.radius * (rig.group.scale.y ?? 1)).toFixed(3));
+      });
+      const physicsWheels = physics.vehicle.wheelInfos.map((info) => Number((info.raycastResult?.hitPointWorld?.y ?? NaN).toFixed(3)));
+      return { chassisY: Number(body.position.y.toFixed(3)), groundY: Number((physics.groundHeight ?? 0).toFixed(3)), visualWheelBottoms: visualWheels, physicsContacts: physicsWheels, rig: rig?.fallback ? 'fallback' : 'model' };
+    },
+    /** C key / CAM button. Returns the new mode. */
+    cycleCamera() {
+      return cameras.cycle();
+    },
+    setCameraMode(mode) {
+      return cameras.setMode(mode);
+    },
+    get cameraMode() {
+      return cameras.mode;
+    },
+    onCameraChange(listener) {
+      return cameras.onChange(listener);
+    },
     async unlockAudio() {
       if (audioUnlocked) return true;
       audioUnlocked = await audio.unlock();
@@ -540,6 +620,8 @@ export function createGame({
       window.cancelAnimationFrame(animationFrame);
       window.removeEventListener('resize', resize);
       effects.dispose();
+      lights.dispose();
+      cameras.dispose();
       audio.dispose();
       for (const track of tracks.values()) track.dispose();
       graphics.dispose();

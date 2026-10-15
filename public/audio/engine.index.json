@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T14:30:42.840Z",
+  "generatedAt": "2026-10-15T14:42:11.968Z",
   "license": "CC0 1.0",
   "sampleRate": 44100,
   "engines": [
@@ -48,6 +48,18 @@
           "bytes": 88244
         }
       ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "horn",
+      "file": "/audio/horn.wav",
+      "loopSeconds": 0.4,
+      "frequenciesHz": [
+        420,
+        525
+      ],
+      "bytes": 35324
     }
   ]
 }

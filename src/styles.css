@@ -446,6 +446,23 @@ button {
 }
 
 .steering-pad,
+.feature-pad {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 auto 4px;
+  pointer-events: auto;
+}
+
+.feature-button {
+  width: 46px;
+  height: 46px;
+}
+
+.feature-button > span {
+  font-size: 15px;
+}
+
 .pedal-pad {
   display: flex;
   align-items: end;
