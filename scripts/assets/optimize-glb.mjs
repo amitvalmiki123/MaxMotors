@@ -24,6 +24,7 @@ import { ASSET_TARGETS, RAW_DIR, REPORT_DIR } from './config.mjs';
 import { clusterWheels, descriptorFromBounds } from '../../src/game/cars/wheel-clusters.js';
 import { buildTerrainGrid, classifyMaterial, collectTriangles, extractRoadPath, serializeTrail, writeOccupancyArtifacts } from './terrain.mjs';
 import { ensureDir, formatBytes, getNodeIO } from './gltf-io.mjs';
+import { weldByPosition } from './weld-position.mjs';
 
 const args = process.argv.slice(2);
 const onlyIndex = args.indexOf('--only');
@@ -445,6 +446,40 @@ async function optimizeOnce(target, attempt) {
       error *= 3;
       trianglesAfter = next;
     }
+
+    // Last resort for UV-split exports: welding by position reconnects the mesh so
+    // the simplifier can collapse across texture island seams, and dropping the
+    // degenerate triangles it creates (pole fans, seam slivers) is what actually
+    // lets meshopt work. The grid starts at exact positions and coarsens until the
+    // budget is met, so a model that is a soup of per-face vertices still lands
+    // inside its documented limit.
+    const extent = Math.max(1, ...sceneBounds(document).size);
+    const tolerances = [
+      1e-4,
+      extent * 0.0005,
+      extent * 0.001,
+      extent * 0.002,
+      extent * 0.004,
+      extent * 0.008,
+      extent * 0.016,
+    ];
+    for (const tolerance of tolerances) {
+      if (trianglesAfter <= triangleBudget) break;
+      const { merged, dropped } = weldByPosition(document, { tolerance });
+      if (!merged && !dropped) continue;
+      console.log(`[optimize] budget pass (grid ${tolerance.toFixed(4)} m): merged ${merged.toLocaleString()} verts, dropped ${dropped.toLocaleString()} degenerate tris`);
+      await document.transform(simplify({
+        simplifier: MeshoptSimplifier,
+        ratio: Math.max(0.02, Math.min(1, triangleBudget / trianglesAfter)),
+        error: Math.min(1, error),
+        lockBorder: false,
+      }));
+      trianglesAfter = countTriangles(document);
+      console.log(`[optimize] after grid ${tolerance.toFixed(4)} m + simplify -> ${trianglesAfter.toLocaleString()} tris`);
+    }
+    if (trianglesAfter > triangleBudget) {
+      console.warn(`[optimize] ${target.id} is still over its triangle budget: ${trianglesAfter.toLocaleString()} > ${triangleBudget.toLocaleString()}`);
+    }
   }
 
   const interior = target.kind === 'car' ? stripInterior(document, target.kind) : { removed: [], skipped: null };
@@ -575,6 +610,9 @@ async function buildCarManifest(document, target, id, { strip, interior, flatDec
       textureBytesBefore: textureStats.before,
       textureBytesAfter: textureStats.after,
       textureMemoryMB: Number((textureMemory ?? 0).toFixed(1)),
+      triangleBudget: target.maxTriangles,
+      overBudget: trianglesAfter > target.maxTriangles,
+      sizeBudgetBytes: target.maxBytes,
     },
     transform: {
       yawRadians: Number(placement.yaw.toFixed(6)),
