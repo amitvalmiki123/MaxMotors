@@ -5,34 +5,34 @@
   "views": {
     "front34": {
       "optimized": {
-        "iou": 0.9784,
-        "meanDelta": 30.73,
+        "iou": 0.9781,
+        "meanDelta": 20.86,
         "coverage": [
           0.1477,
-          0.1457
+          0.1456
         ]
       },
       "inGame": {
-        "iou": 0.9784,
-        "meanDelta": 37.36,
+        "iou": 0.9781,
+        "meanDelta": 29.38,
         "coverage": [
           0.1477,
-          0.1457
+          0.1456
         ]
       }
     },
     "rear34": {
       "optimized": {
-        "iou": 0.9845,
-        "meanDelta": 24.88,
+        "iou": 0.984,
+        "meanDelta": 16.06,
         "coverage": [
           0.1458,
           0.144
         ]
       },
       "inGame": {
-        "iou": 0.9845,
-        "meanDelta": 35.3,
+        "iou": 0.984,
+        "meanDelta": 24.73,
         "coverage": [
           0.1458,
           0.144
@@ -41,19 +41,19 @@
     },
     "side": {
       "optimized": {
-        "iou": 0.9438,
-        "meanDelta": 19.04,
+        "iou": 0.9419,
+        "meanDelta": 14.34,
         "coverage": [
           0.1388,
-          0.142
+          0.1417
         ]
       },
       "inGame": {
-        "iou": 0.9438,
-        "meanDelta": 30.11,
+        "iou": 0.9419,
+        "meanDelta": 23.21,
         "coverage": [
           0.1388,
-          0.142
+          0.1417
         ]
       }
     }
@@ -65,19 +65,20 @@
       "materials": 43
     },
     "optimized": {
-      "meshes": 161,
-      "triangles": 94578,
-      "materials": 35
+      "meshes": 159,
+      "triangles": 95469,
+      "materials": 34
     },
     "inGame": {
-      "meshes": 161,
-      "triangles": 94578,
-      "materials": 36
+      "meshes": 159,
+      "triangles": 95469,
+      "materials": 35
     }
   },
   "materials": {
     "droppedByOptimizer": [
       "boot.5",
+      "glass.001",
       "glass.002",
       "indicator_lf",
       "indicator_rf",
@@ -93,7 +94,6 @@
       "foglight_m.0",
       "foglight_r",
       "glass",
-      "glass.001",
       "glass.003",
       "glass.004",
       "headlight_f.2",
@@ -130,5 +130,5 @@
     "chrome": "Chrome/155.0.8059.39",
     "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
   },
-  "generatedAt": "2026-10-15T14:24:58.650Z"
+  "generatedAt": "2026-10-15T14:31:22.123Z"
 }

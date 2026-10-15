@@ -1,25 +1,25 @@
 {
   "id": "sikandar-suv",
   "kind": "car",
-  "generatedAt": "2026-10-15T14:24:19.999Z",
+  "generatedAt": "2026-10-15T14:30:33.521Z",
   "cockpit": {
     "source": "steering-node",
     "driverSide": "right",
     "head": [
-      0.381,
-      1.444,
-      -0.003
+      0.375,
+      1.425,
+      0.006
     ],
     "steeringWheel": {
       "center": [
-        0.376,
-        1.177,
-        -0.41
+        0.374,
+        1.176,
+        -0.408
       ],
       "axis": [
-        0.012,
-        0.381,
-        0.925
+        0.003,
+        0.338,
+        0.941
       ],
       "radius": 0.18,
       "node": "steering_dummy",
@@ -34,9 +34,9 @@
       "axis": "y",
       "angle": -1.0821041362364843,
       "hinge": [
-        -1.085,
+        -1.083,
         1.024,
-        -0.909
+        -0.906
       ]
     },
     {
@@ -46,7 +46,7 @@
       "axis": "y",
       "angle": 1.0821041362364843,
       "hinge": [
-        1.085,
+        1.083,
         1.021,
         -0.909
       ]
@@ -58,7 +58,7 @@
       "axis": "y",
       "angle": 1.0821041362364843,
       "hinge": [
-        0.927,
+        0.924,
         1.021,
         0.116
       ]
@@ -70,7 +70,7 @@
       "axis": "y",
       "angle": -1.0821041362364843,
       "hinge": [
-        -0.945,
+        -0.944,
         1.021,
         0.116
       ]
@@ -84,7 +84,7 @@
       "hinge": [
         -0.012,
         1.763,
-        1.782
+        1.786
       ]
     }
   ],
@@ -106,12 +106,12 @@
     "triangles": 1354283,
     "bounds": {
       "min": [
-        -1.078,
+        -1.076,
         0,
         -2.423
       ],
       "max": [
-        1.097,
+        1.096,
         1.843,
         2.25
       ]
@@ -119,8 +119,8 @@
   },
   "output": {
     "file": "public/models/sikandar-suv.glb",
-    "bytes": 2183668,
-    "triangles": 94626,
+    "bytes": 2797056,
+    "triangles": 95510,
     "attempts": 1,
     "textureSizePx": 2048,
     "textureQuality": 80,
@@ -136,13 +136,13 @@
     "yawDegrees": 0,
     "scale": 0.997379,
     "position": [
-      -0.0092,
+      -0.0101,
       0.0002,
       0.0863
     ],
-    "frontConfidence": "naming(43)",
+    "frontConfidence": "naming(42)",
     "sourceSize": [
-      2.175,
+      2.172,
       1.843,
       4.672
     ],
@@ -150,18 +150,18 @@
   },
   "bounds": {
     "min": [
-      -1.085,
+      -1.083,
       0,
       -2.33
     ],
     "max": [
-      1.085,
+      1.083,
       1.838,
       2.33
     ]
   },
   "size": [
-    2.17,
+    2.166,
     1.838,
     4.66
   ],
@@ -177,7 +177,7 @@
       {
         "corner": "front-left",
         "position": [
-          -0.82,
+          -0.821,
           0.379,
           -1.474
         ],
@@ -200,7 +200,7 @@
       {
         "corner": "front-right",
         "position": [
-          0.801,
+          0.8,
           0.379,
           -1.474
         ],
@@ -223,7 +223,7 @@
       {
         "corner": "rear-left",
         "position": [
-          -0.82,
+          -0.821,
           0.379,
           1.27
         ],
@@ -246,7 +246,7 @@
       {
         "corner": "rear-right",
         "position": [
-          0.801,
+          0.8,
           0.379,
           1.27
         ],
@@ -276,15 +276,13 @@
     "interiorSkipped": "glass is transparent",
     "flatDecalRemoved": [
       "movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005)",
-      "scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.008)",
+      "scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.001x0.002x0.002)",
       "scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.424x0.115x0.004)",
       "scorpio_n_int_seat_reck_movsteer_1.0.3_0 (0.008x0.011x0.028)",
-      "scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.065x0.002)",
+      "scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002)",
       "scorpio_n_int_console_movsteer_1.0.3_0 (0.009x0.001x0.009)",
-      "int_door_lf_movsteer_1.0.3_0 (0.009x0.001x0.003)",
       "int_door_rf_movsteer_1.0.3_0 (0.009x0.001x0.010)",
-      "int_door_rr_movsteer_1.0.3_0 (0.009x0.001x0.007)",
-      "int_door_lr_movsteer_1.0.3_0 (0.009x0.001x0.003)",
+      "int_door_rr_movsteer_1.0.3_0 (0.008x0.001x0.007)",
       "boot_scorpio_n_ext_1.2_0 (0.471x0.112x0.010)"
     ]
   },
@@ -523,19 +521,6 @@
         0.8,
         0.8,
         1
-      ],
-      "textures": []
-    },
-    {
-      "name": "glass.001",
-      "alphaMode": "BLEND",
-      "doubleSided": true,
-      "emissive": false,
-      "baseColor": [
-        0.937,
-        0.937,
-        0.937,
-        0.047
       ],
       "textures": []
     },
@@ -786,9 +771,9 @@
     }
   ],
   "stats": {
-    "nodes": 236,
-    "meshes": 161,
-    "materials": 35,
+    "nodes": 233,
+    "meshes": 159,
+    "materials": 34,
     "textures": 10
   }
 }

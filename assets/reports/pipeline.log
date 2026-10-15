@@ -1,7 +1,7 @@
-mode=build only='' ref=arena/9609d7db-maxmotors sha=5c52cdb5cf8d3da28fbea821358525067e8e29d6
+mode=build only='' ref=arena/9609d7db-maxmotors sha=0c82353283fa8ac2a6190232d66014fda0f41a25
 runner=Linux runnervm8k3b6 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
 
-added 70 packages, and audited 71 packages in 2s
+added 70 packages, and audited 71 packages in 3s
 
 25 packages are looking for funding
   run `npm fund` for details
@@ -33,12 +33,14 @@ found 0 vulnerabilities
 [optimize] seam-aware simplify error 0.012: 255,541 -> 221,170 tris
 [optimize] seam-aware simplify error 0.025: 221,170 -> 210,256 tris
 [optimize] seam-aware simplify error 0.05: 210,256 -> 206,254 tris
-[optimize] interior position weld: merged 5,423 verts, dropped 505 tris -> 201,193 tris
-[optimize] LAST RESORT position weld 0.0001 m (UV seams stretch): merged 185,014 -> 94,626 tris
-[optimize] flat badge plaques removed (11): movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.008), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.424x0.115x0.004), scorpio_n_int_seat_reck_movsteer_1.0.3_0 (0.008x0.011x0.028), scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.065x0.002), scorpio_n_int_console_movsteer_1.0.3_0 (0.009x0.001x0.009), int_door_lf_movsteer_1.0.3_0 (0.009x0.001x0.003), int_door_rf_movsteer_1.0.3_0 (0.009x0.001x0.010), …
+[optimize] position weld (untextured): merged 38,891 verts, dropped 3,420 -> 177,531 tris
+[optimize] position weld (interior): merged 5,358 verts, dropped 511 -> 163,508 tris
+[optimize] position weld (LAST RESORT everything 0.0001 m (textured UV seams stretch)): merged 146,066 verts, dropped 6,983 -> 95,510 tris
+[optimize] crease-aware normals rebuilt on 158 welded primitives (+65,814 split vertices)
+[optimize] flat badge plaques removed (9): movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.001x0.002x0.002), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.424x0.115x0.004), scorpio_n_int_seat_reck_movsteer_1.0.3_0 (0.008x0.011x0.028), scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002), scorpio_n_int_console_movsteer_1.0.3_0 (0.009x0.001x0.009), int_door_rf_movsteer_1.0.3_0 (0.009x0.001x0.010), int_door_rr_movsteer_1.0.3_0 (0.008x0.001x0.007), …
 [optimize] interior kept (glass is transparent)
-prune: Removed types... Node (22), Mesh (11), Primitive (11), TextureInfo (40), Material (8), Texture (9), Accessor (91)
-prune: Removed types... Accessor (612)
+prune: Removed types... Node (27), Mesh (9), Primitive (9), TextureInfo (45), Material (9), Texture (9), Accessor (80)
+prune: Removed types... Accessor (606)
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
@@ -88,10 +90,10 @@ quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
-prune: Removed types... Accessor (241)
-[optimize] sikandar-suv attempt 1: 2.1 MB (limit 8.0 MB) | tris 94,626 (limit 100,000) | textures 1.4 MB @2048px q80 | GPU 31 MB (limit 128)
+prune: Removed types... Accessor (239)
+[optimize] sikandar-suv attempt 1: 2.7 MB (limit 8.0 MB) | tris 95,510 (limit 100,000) | textures 1.4 MB @2048px q80 | GPU 31 MB (limit 128)
 [optimize] sikandar-suv shipped textures: 10 used, 0 unused
-[optimize] sikandar-suv -> public/models/sikandar-suv.glb 2.1 MB | 94,626 tris | {"detected":true,"count":4,"wheelbase":2.744,"track":1.621,"radius":0.379,"frontZ":-1.474,"rearZ":1.27,"list":[{"corner":"front-left","position":[-0.82,0.379,-1.474],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.003_wheel_rf.2_0","wheel_rf.003_wheel_rf.1_0","wheel_rf.003_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.0_0#0"]},{"corner":"front-right","position":[0.801,0.379,-1.474],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf_wheel_rf.2_0","wheel_rf_wheel_rf.1_0","wheel_rf_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.0_0#0"]},{"corner":"rear-left","position":[-0.82,0.379,1.27],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.002_wheel_rf.2_0","wheel_rf.002_wheel_rf.1_0","wheel_rf.002_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.0_0#0"]},{"corner":"rear-right","position":[0.801,0.379,1.27],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.001_wheel_rf.2_0","wheel_rf.001_wheel_rf.1_0","wheel_rf.001_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.0_0#0"]}]}
+[optimize] sikandar-suv -> public/models/sikandar-suv.glb 2.7 MB | 95,510 tris | {"detected":true,"count":4,"wheelbase":2.744,"track":1.621,"radius":0.379,"frontZ":-1.474,"rearZ":1.27,"list":[{"corner":"front-left","position":[-0.821,0.379,-1.474],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.003_wheel_rf.2_0","wheel_rf.003_wheel_rf.1_0","wheel_rf.003_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.0_0#0"]},{"corner":"front-right","position":[0.8,0.379,-1.474],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf_wheel_rf.2_0","wheel_rf_wheel_rf.1_0","wheel_rf_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.0_0#0"]},{"corner":"rear-left","position":[-0.821,0.379,1.27],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.002_wheel_rf.2_0","wheel_rf.002_wheel_rf.1_0","wheel_rf.002_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.0_0#0"]},{"corner":"rear-right","position":[0.8,0.379,1.27],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.001_wheel_rf.2_0","wheel_rf.001_wheel_rf.1_0","wheel_rf.001_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.0_0#0"]}]}
 [optimize] seam snap 0.1 mm: 408 vertices aligned (UVs + normals kept)
 [optimize] seam-aware simplify error 0.004: 108,327 -> 70,886 tris
 [optimize] seam-aware simplify error 0.012: 70,886 -> 69,910 tris
@@ -157,91 +159,91 @@ prune: Removed types... Accessor (61)
 [audio] wrote public/audio/engine.index.json
 [compare] page error: Failed to load resource: the server responded with a status of 404 (Not Found)
 [compare] chrome Chrome/155.0.8059.39 | ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver) | hdri 2048x1024
-[compare] sikandar-suv front34: optimized IoU 0.9784 Δ 30.73 | in-game IoU 0.9784 Δ 37.36
-[compare] sikandar-suv rear34: optimized IoU 0.9845 Δ 24.88 | in-game IoU 0.9845 Δ 35.3
-[compare] sikandar-suv side: optimized IoU 0.9438 Δ 19.04 | in-game IoU 0.9438 Δ 30.11
-[compare] sikandar-suv -> assets/reports/sikandar-suv.compare.png | tris 1,354,283 -> 94,578 | materials 43 -> 35
-[compare] aurora-v12 front34: optimized IoU 0.9647 Δ 12.35 | in-game IoU 0.9644 Δ 58.64
-[compare] aurora-v12 rear34: optimized IoU 0.9672 Δ 8.92 | in-game IoU 0.9664 Δ 68.27
-[compare] aurora-v12 side: optimized IoU 0.9914 Δ 8.89 | in-game IoU 0.99 Δ 62.64
+[compare] sikandar-suv front34: optimized IoU 0.9781 Δ 20.86 | in-game IoU 0.9781 Δ 29.38
+[compare] sikandar-suv rear34: optimized IoU 0.984 Δ 16.06 | in-game IoU 0.984 Δ 24.73
+[compare] sikandar-suv side: optimized IoU 0.9419 Δ 14.34 | in-game IoU 0.9419 Δ 23.21
+[compare] sikandar-suv -> assets/reports/sikandar-suv.compare.png | tris 1,354,283 -> 95,469 | materials 43 -> 34
+[compare] aurora-v12 front34: optimized IoU 0.9647 Δ 12.35 | in-game IoU 0.9644 Δ 29.77
+[compare] aurora-v12 rear34: optimized IoU 0.9672 Δ 8.92 | in-game IoU 0.9664 Δ 26.92
+[compare] aurora-v12 side: optimized IoU 0.9914 Δ 8.89 | in-game IoU 0.99 Δ 25.25
 [compare] aurora-v12 -> assets/reports/aurora-v12.compare.png | tris 108,327 -> 51,263 | materials 47 -> 21
 --- public/ tree ---
 8.0K	public/cars
 360K	public/audio
-2.9M	public/models
+3.5M	public/models
 9.0M	public/textures
 10M	public/tracks
 23M	public
 --- files ---
 assets/reports:
-total 15240
-drwxr-xr-x 2 runner runner    4096 Oct 15 14:23 .
-drwxr-xr-x 4 runner runner    4096 Oct 15 14:23 ..
--rw-r--r-- 1 runner runner    2277 Oct 15 14:24 SUMMARY.md
--rw-r--r-- 1 runner runner    2718 Oct 15 14:25 aurora-v12.compare.json
--rw-r--r-- 1 runner runner  320975 Oct 15 14:25 aurora-v12.compare.png
--rw-r--r-- 1 runner runner   99600 Oct 15 14:24 aurora-v12.report.json
--rw-r--r-- 1 runner runner  112866 Oct 15 14:24 aurora-v12.shipped-textures.png
--rw-r--r-- 1 runner runner    4451 Oct 15 14:24 aurora-v12.side.png
--rw-r--r-- 1 runner runner     842 Oct 15 14:24 aurora-v12.textures.json
--rw-r--r-- 1 runner runner  287933 Oct 15 14:24 aurora-v12.textures.png
--rw-r--r-- 1 runner runner    5659 Oct 15 14:24 aurora-v12.top.png
--rw-r--r-- 1 runner runner   23963 Oct 15 14:24 aurora-v12.tree.txt
--rw-r--r-- 1 runner runner   60931 Oct 15 14:24 forest-dirt-trail.height.png
--rw-r--r-- 1 runner runner    4376 Oct 15 14:24 forest-dirt-trail.map.png
--rw-r--r-- 1 runner runner   73742 Oct 15 14:24 forest-dirt-trail.map.txt
--rw-r--r-- 1 runner runner   58473 Oct 15 14:24 forest-dirt-trail.report.json
--rw-r--r-- 1 runner runner 5148935 Oct 15 14:24 forest-dirt-trail.shipped-textures.png
--rw-r--r-- 1 runner runner    3018 Oct 15 14:24 forest-dirt-trail.side.png
--rw-r--r-- 1 runner runner   17345 Oct 15 14:24 forest-dirt-trail.textures.json
--rw-r--r-- 1 runner runner 6939973 Oct 15 14:24 forest-dirt-trail.textures.png
--rw-r--r-- 1 runner runner    3018 Oct 15 14:24 forest-dirt-trail.top.png
--rw-r--r-- 1 runner runner    7359 Oct 15 14:24 forest-dirt-trail.tree.txt
--rw-r--r-- 1 runner runner   35532 Oct 15 14:24 optimized-manifests.json
--rw-r--r-- 1 runner runner   18725 Oct 15 14:25 pipeline.log
--rw-r--r-- 1 runner runner    2783 Oct 15 14:24 sikandar-suv.compare.json
--rw-r--r-- 1 runner runner  505436 Oct 15 14:24 sikandar-suv.compare.png
--rw-r--r-- 1 runner runner  103330 Oct 15 14:24 sikandar-suv.report.json
--rw-r--r-- 1 runner runner  564927 Oct 15 14:24 sikandar-suv.shipped-textures.png
--rw-r--r-- 1 runner runner    8086 Oct 15 14:24 sikandar-suv.side.png
--rw-r--r-- 1 runner runner    2816 Oct 15 14:24 sikandar-suv.textures.json
--rw-r--r-- 1 runner runner 1025128 Oct 15 14:24 sikandar-suv.textures.png
--rw-r--r-- 1 runner runner   16801 Oct 15 14:24 sikandar-suv.top.png
--rw-r--r-- 1 runner runner   33668 Oct 15 14:24 sikandar-suv.tree.txt
--rw-r--r-- 1 runner runner   30322 Oct 15 14:24 source-summary.json
+total 15192
+drwxr-xr-x 2 runner runner    4096 Oct 15 14:30 .
+drwxr-xr-x 4 runner runner    4096 Oct 15 14:30 ..
+-rw-r--r-- 1 runner runner    2277 Oct 15 14:30 SUMMARY.md
+-rw-r--r-- 1 runner runner    2718 Oct 15 14:31 aurora-v12.compare.json
+-rw-r--r-- 1 runner runner  324741 Oct 15 14:31 aurora-v12.compare.png
+-rw-r--r-- 1 runner runner   99600 Oct 15 14:30 aurora-v12.report.json
+-rw-r--r-- 1 runner runner  112866 Oct 15 14:30 aurora-v12.shipped-textures.png
+-rw-r--r-- 1 runner runner    4451 Oct 15 14:30 aurora-v12.side.png
+-rw-r--r-- 1 runner runner     842 Oct 15 14:30 aurora-v12.textures.json
+-rw-r--r-- 1 runner runner  287933 Oct 15 14:30 aurora-v12.textures.png
+-rw-r--r-- 1 runner runner    5659 Oct 15 14:30 aurora-v12.top.png
+-rw-r--r-- 1 runner runner   23963 Oct 15 14:30 aurora-v12.tree.txt
+-rw-r--r-- 1 runner runner   60931 Oct 15 14:30 forest-dirt-trail.height.png
+-rw-r--r-- 1 runner runner    4376 Oct 15 14:30 forest-dirt-trail.map.png
+-rw-r--r-- 1 runner runner   73742 Oct 15 14:30 forest-dirt-trail.map.txt
+-rw-r--r-- 1 runner runner   58473 Oct 15 14:30 forest-dirt-trail.report.json
+-rw-r--r-- 1 runner runner 5148935 Oct 15 14:30 forest-dirt-trail.shipped-textures.png
+-rw-r--r-- 1 runner runner    3018 Oct 15 14:30 forest-dirt-trail.side.png
+-rw-r--r-- 1 runner runner   17345 Oct 15 14:30 forest-dirt-trail.textures.json
+-rw-r--r-- 1 runner runner 6939973 Oct 15 14:30 forest-dirt-trail.textures.png
+-rw-r--r-- 1 runner runner    3018 Oct 15 14:30 forest-dirt-trail.top.png
+-rw-r--r-- 1 runner runner    7359 Oct 15 14:30 forest-dirt-trail.tree.txt
+-rw-r--r-- 1 runner runner   35155 Oct 15 14:30 optimized-manifests.json
+-rw-r--r-- 1 runner runner   18939 Oct 15 14:31 pipeline.log
+-rw-r--r-- 1 runner runner    2784 Oct 15 14:31 sikandar-suv.compare.json
+-rw-r--r-- 1 runner runner  451659 Oct 15 14:31 sikandar-suv.compare.png
+-rw-r--r-- 1 runner runner  103330 Oct 15 14:30 sikandar-suv.report.json
+-rw-r--r-- 1 runner runner  564927 Oct 15 14:30 sikandar-suv.shipped-textures.png
+-rw-r--r-- 1 runner runner    8086 Oct 15 14:30 sikandar-suv.side.png
+-rw-r--r-- 1 runner runner    2816 Oct 15 14:30 sikandar-suv.textures.json
+-rw-r--r-- 1 runner runner 1025128 Oct 15 14:30 sikandar-suv.textures.png
+-rw-r--r-- 1 runner runner   16801 Oct 15 14:30 sikandar-suv.top.png
+-rw-r--r-- 1 runner runner   33668 Oct 15 14:30 sikandar-suv.tree.txt
+-rw-r--r-- 1 runner runner   30322 Oct 15 14:30 source-summary.json
 
 public/audio:
 total 364
-drwxr-xr-x 2 runner runner  4096 Oct 15 14:23 .
-drwxr-xr-x 7 runner runner  4096 Oct 15 14:23 ..
--rw-r--r-- 1 runner runner 88244 Oct 15 14:24 aurora-v10-high.wav
--rw-r--r-- 1 runner runner 88024 Oct 15 14:24 aurora-v10-low.wav
--rw-r--r-- 1 runner runner  1280 Oct 15 14:24 engine.index.json
--rw-r--r-- 1 runner runner 88244 Oct 15 14:24 sikandar-diesel-high.wav
--rw-r--r-- 1 runner runner 88244 Oct 15 14:24 sikandar-diesel-low.wav
+drwxr-xr-x 2 runner runner  4096 Oct 15 14:30 .
+drwxr-xr-x 7 runner runner  4096 Oct 15 14:30 ..
+-rw-r--r-- 1 runner runner 88244 Oct 15 14:30 aurora-v10-high.wav
+-rw-r--r-- 1 runner runner 88024 Oct 15 14:30 aurora-v10-low.wav
+-rw-r--r-- 1 runner runner  1280 Oct 15 14:30 engine.index.json
+-rw-r--r-- 1 runner runner 88244 Oct 15 14:30 sikandar-diesel-high.wav
+-rw-r--r-- 1 runner runner 88244 Oct 15 14:30 sikandar-diesel-low.wav
 
 public/models:
-total 2968
-drwxr-xr-x 2 runner runner    4096 Oct 15 14:23 .
-drwxr-xr-x 7 runner runner    4096 Oct 15 14:23 ..
--rw-r--r-- 1 runner runner  808492 Oct 15 14:24 aurora-v12.glb
--rw-r--r-- 1 runner runner   14621 Oct 15 14:24 aurora-v12.manifest.json
--rw-r--r-- 1 runner runner 2183668 Oct 15 14:24 sikandar-suv.glb
--rw-r--r-- 1 runner runner   16006 Oct 15 14:24 sikandar-suv.manifest.json
+total 3564
+drwxr-xr-x 2 runner runner    4096 Oct 15 14:30 .
+drwxr-xr-x 7 runner runner    4096 Oct 15 14:30 ..
+-rw-r--r-- 1 runner runner  808492 Oct 15 14:30 aurora-v12.glb
+-rw-r--r-- 1 runner runner   14621 Oct 15 14:30 aurora-v12.manifest.json
+-rw-r--r-- 1 runner runner 2797056 Oct 15 14:30 sikandar-suv.glb
+-rw-r--r-- 1 runner runner   15659 Oct 15 14:30 sikandar-suv.manifest.json
 
 public/textures:
 total 9120
-drwxr-xr-x 2 runner runner    4096 Oct 15 14:23 .
-drwxr-xr-x 7 runner runner    4096 Oct 15 14:23 ..
--rw-r--r-- 1 runner runner    1044 Oct 15 14:24 asphalt.index.json
--rw-r--r-- 1 runner runner 1299186 Oct 15 14:24 asphalt_arm_2k.jpg
--rw-r--r-- 1 runner runner 3075676 Oct 15 14:24 asphalt_diffuse_2k.jpg
--rw-r--r-- 1 runner runner 4943950 Oct 15 14:24 asphalt_normal_2k.jpg
+drwxr-xr-x 2 runner runner    4096 Oct 15 14:30 .
+drwxr-xr-x 7 runner runner    4096 Oct 15 14:30 ..
+-rw-r--r-- 1 runner runner    1044 Oct 15 14:30 asphalt.index.json
+-rw-r--r-- 1 runner runner 1299186 Oct 15 14:30 asphalt_arm_2k.jpg
+-rw-r--r-- 1 runner runner 3075676 Oct 15 14:30 asphalt_diffuse_2k.jpg
+-rw-r--r-- 1 runner runner 4943950 Oct 15 14:30 asphalt_normal_2k.jpg
 
 public/tracks:
 total 10144
-drwxr-xr-x 2 runner runner     4096 Oct 15 14:23 .
-drwxr-xr-x 7 runner runner     4096 Oct 15 14:23 ..
--rw-r--r-- 1 runner runner 10174824 Oct 15 14:24 forest-dirt-trail.glb
--rw-r--r-- 1 runner runner     1935 Oct 15 14:24 forest-dirt-trail.manifest.json
--rw-r--r-- 1 runner runner   194438 Oct 15 14:24 forest-dirt-trail.terrain.json
+drwxr-xr-x 2 runner runner     4096 Oct 15 14:30 .
+drwxr-xr-x 7 runner runner     4096 Oct 15 14:30 ..
+-rw-r--r-- 1 runner runner 10174824 Oct 15 14:30 forest-dirt-trail.glb
+-rw-r--r-- 1 runner runner     1935 Oct 15 14:30 forest-dirt-trail.manifest.json
+-rw-r--r-- 1 runner runner   194438 Oct 15 14:30 forest-dirt-trail.terrain.json
