@@ -314,6 +314,11 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
      * Soft walls: past the corridor the car is pulled back towards the trail and
      * scrubbed of speed. Deliberately a spring, not a collision, so brushing a
      * tree line slows you down instead of stopping the car dead.
+     *
+     * M4.5 Free Roam (deferred): same track, but this corridor spring is
+     * replaced by soft outer bounds at the heightfield edge
+     * (terrain.origin + (cols|rows - 1) * cellSize, minus a margin), and
+     * bounds.isOnTrack keeps deciding on-road vs off-road grip.
      */
     update(deltaTime, car) {
       if (!car?.chassisBody) return;

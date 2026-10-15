@@ -26,6 +26,12 @@ const lightsIndicator = document.querySelector('#lights-indicator');
 const appRoot = document.querySelector('#app');
 const creditsDialog = document.querySelector('#credits-dialog');
 
+// Free Roam (third entry) — deferred to M4.5. The forest collider now works
+// everywhere on the baked terrain (see tracks/forest-trail.js), so the mode is
+// a variant of that track: no lap logic, no corridor soft walls, soft outer
+// bounds at the heightfield edge, off-road grip from SURFACES.dirt.offTrackGrip.
+// It ships with its own acceptance pass (the forest renders far below the
+// frame rate needed to verify it in the M2.5 sandbox).
 const TRACKS = [
   {
     id: 'test-circuit-01',
