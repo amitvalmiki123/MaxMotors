@@ -1,7 +1,7 @@
 {
   "id": "sikandar-suv",
   "kind": "car",
-  "generatedAt": "2026-10-15T15:04:31.845Z",
+  "generatedAt": "2026-10-15T15:48:41.752Z",
   "cockpit": {
     "source": "steering-node",
     "driverSide": "right",
