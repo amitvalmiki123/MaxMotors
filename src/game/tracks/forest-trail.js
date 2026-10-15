@@ -26,7 +26,7 @@ const MAX_CORRIDOR_HALF_WIDTH = 9.5;
 const MIN_CORRIDOR_HALF_WIDTH = 4.5;
 const WALL_MARGIN = 2.5;
 
-function decodeHeights(encoded, expectedLength) {
+export function decodeHeights(encoded, expectedLength) {
   const binary = atob(encoded);
   const bytes = new Uint8Array(binary.length);
   for (let index = 0; index < binary.length; index += 1) bytes[index] = binary.charCodeAt(index);
@@ -36,8 +36,14 @@ function decodeHeights(encoded, expectedLength) {
   return heights;
 }
 
-function buildHeightfieldBody(terrain, material) {
-  const { cols, rows, cellSize, origin, heights, heightOffset } = terrain;
+export function buildHeightfieldBody(terrain, material) {
+  const { cols, rows, cellSize, origin, heightOffset } = terrain;
+  // `terrain.heights` is the base64 payload from the JSON. It used to be indexed
+  // as-is, which filled the heightfield with single characters ('A', '/', …):
+  // every raycast missed and the wheels never touched the trail.
+  const heights = typeof terrain.heights === 'string'
+    ? decodeHeights(terrain.heights, cols * rows)
+    : terrain.heights;
   // cannon's Heightfield lives in the local X/Y plane with heights along +Z, and
   // data[i][j] maps to (x = i, y = j). Rotating the body -90° about X turns local
   // +Z into world +Y and local +Y into world -Z, so rows are flipped here.
@@ -54,7 +60,11 @@ function buildHeightfieldBody(terrain, material) {
   const shape = new CANNON.Heightfield(matrix, { elementSize: cellSize });
   const body = new CANNON.Body({ mass: 0, material });
   body.addShape(shape);
-  body.position.set(origin[0], heightOffset, origin[2] + (rows - 1) * cellSize);
+  // The pipeline bakes `heightOffset` into every stored height (and the road
+  // path), see serializeTrail() in scripts/assets/terrain.mjs. Adding it again
+  // here sank the collider ~160 m under the spawn point.
+  void heightOffset;
+  body.position.set(origin[0], 0, origin[2] + (rows - 1) * cellSize);
   body.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
   body.updateAABB?.();
   return body;
@@ -152,12 +162,30 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
       triangles += (count / 3) * (object.isInstancedMesh ? object.count : 1);
     }
   });
+  // The terrain JSON (heights + road path) lives in the pipeline's shifted
+  // space: source height + `heightOffset`. The GLB still carries the source
+  // heights, so the visual scene is moved into the same space as the collider.
+  model.position.y = terrain.heightOffset ?? 0;
   group.add(model);
 
-  // Collider: the baked heightfield, plus the flat plane already in the physics
-  // world as a safety net far outside the trail.
-  const heightfieldBody = buildHeightfieldBody(terrain, physics.groundMaterial ?? physics.roadMaterial);
-  physics.world.addBody(heightfieldBody);
+  // Collider: the baked heightfield. It is only in the physics world while this
+  // track is active (see activate/deactivate): at true terrain heights it would
+  // otherwise intersect the test circuit, which shares the world origin.
+  const heightfieldBody = buildHeightfieldBody(terrain, physics.roadMaterial ?? physics.groundMaterial);
+  // The world's flat safety plane sits at y ≈ 0, above most of this terrain
+  // (-66 m … +11 m): a car spawned under it gets launched by the plane contact.
+  // While the forest is active the plane drops below the lowest terrain point.
+  const safetyPlaneY = (terrain.stats?.minHeight ?? -100) - 6;
+  let restorePlaneY = null;
+  let active = false;
+  const movePlane = (y) => {
+    const plane = physics.groundBody;
+    if (!plane) return;
+    plane.position.y = y;
+    plane.aabbNeedsUpdate = true;
+    plane.updateAABB?.();
+    if (physics.world.broadphase) physics.world.broadphase.dirty = true;
+  };
 
   const heights = decodeHeights(terrain.heights, terrain.cols * terrain.rows);
   const pathIndexer = createPathIndexer(terrain.path);
@@ -228,6 +256,25 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
     setVisible(visible) {
       group.visible = visible;
     },
+    /** The world ground plane would slice through the hills: the forest hides it. */
+    hidesWorldGround: true,
+    /** Puts the collider into the physics world (called by the game on select). */
+    activate() {
+      if (active) return;
+      active = true;
+      physics.world.addBody(heightfieldBody);
+      restorePlaneY = physics.groundBody?.position.y ?? null;
+      movePlane(safetyPlaneY);
+    },
+    deactivate() {
+      if (!active) return;
+      active = false;
+      physics.world.removeBody(heightfieldBody);
+      if (restorePlaneY !== null) movePlane(restorePlaneY);
+    },
+    get active() {
+      return active;
+    },
     /**
      * Soft walls: past the corridor the car is pulled back towards the trail and
      * scrubbed of speed. Deliberately a spring, not a collision, so brushing a
@@ -260,7 +307,7 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
       wallEvents += 1;
     },
     dispose() {
-      physics.world.removeBody(heightfieldBody);
+      this.deactivate();
       group.traverse((object) => {
         if (!object.isMesh && !object.isInstancedMesh) return;
         object.geometry?.dispose();

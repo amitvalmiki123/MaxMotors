@@ -247,7 +247,16 @@ export function createGame({
 
     const next = tracks.get(trackId);
     if (!next) return false;
-    for (const [id, track] of tracks) track.setVisible(id === trackId);
+    // Deactivate everything else first: tracks can share a scene group and a
+    // collider (Free Roam reuses the forest), so the selected one goes last.
+    for (const track of tracks.values()) {
+      if (track === next) continue;
+      track.setVisible(false);
+      track.deactivate?.();
+    }
+    next.setVisible(true);
+    next.activate?.();
+    ground.visible = !next.hidesWorldGround;
     activeTrack = next;
     activeTrackId = trackId;
     applyTrackVisuals(trackId);
