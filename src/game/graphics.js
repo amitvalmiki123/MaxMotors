@@ -1,17 +1,20 @@
 import * as THREE from 'three';
 
 /**
- * Post-processing chain: SSAO → bloom → vignette → output.
+ * Post-processing chain: beauty → SSAO → bloom → vignette → output.
  *
  * Desktop only by design (see `src/game/config.js`): SSAO is the single most
  * expensive effect in the chain and mobile stays on the direct render path, so a
  * phone never pays for it. ACES tone mapping is preserved by `OutputPass`, which
- * applies the renderer's tone mapping and colour space after the chain.
+ * applies the renderer's tone mapping and colour space after the chain. The
+ * renderer itself stays on the direct path until the chain is ready, so the
+ * passes are imported on demand.
  */
 export function createPostProcessing({ renderer, scene, camera, tier }) {
   if (!tier?.postprocessing) {
     return {
       enabled: false,
+      chain: [],
       render() {
         renderer.render(scene, camera);
       },
@@ -46,15 +49,21 @@ export function createPostProcessing({ renderer, scene, camera, tier }) {
       const nextComposer = new composerModule.EffectComposer(renderer);
       nextComposer.setPixelRatio(renderer.getPixelRatio());
 
+      // The beauty pass comes first and always runs.
+      nextComposer.addPass(new renderPassModule.RenderPass(scene, camera));
+
       if (tier.ssao) {
+        // SSAOPass multiplies its occlusion over the frame that is already in the
+        // read buffer (`needsSwap = false`, DstColor/Zero blending). It must
+        // therefore be added right *after* the beauty pass — it cannot replace
+        // it: without a RenderPass in front, the multiply darkens an empty
+        // (black, gaussian-blurred) buffer and the whole scene washes out.
         ssaoPass = new ssaoModule.SSAOPass(scene, camera, width, height);
         ssaoPass.kernelRadius = 0.9;
         ssaoPass.minDistance = 0.0015;
         ssaoPass.maxDistance = 0.08;
         ssaoPass.output = ssaoModule.SSAOPass.OUTPUT.Default;
         nextComposer.addPass(ssaoPass);
-      } else {
-        nextComposer.addPass(new renderPassModule.RenderPass(scene, camera));
       }
 
       if (tier.bloom) {
@@ -81,6 +90,10 @@ export function createPostProcessing({ renderer, scene, camera, tier }) {
     enabled: true,
     get ready() {
       return Boolean(composer);
+    },
+    /** Pass class names in render order — diagnostics, and asserted in tests. */
+    get chain() {
+      return composer ? composer.passes.map((pass) => pass.constructor.name) : [];
     },
     render(deltaTime) {
       void deltaTime;
