@@ -115,6 +115,7 @@ function weldPrimitiveByPosition(document, primitive, tolerance) {
 export function weldByPosition(document, { tolerance = DEFAULT_TOLERANCE, filter = null } = {}) {
   let merged = 0;
   let dropped = 0;
+  const primitives = [];
   for (const mesh of document.getRoot().listMeshes()) {
     for (const primitive of mesh.listPrimitives()) {
       if (filter && !filter(primitive)) continue;
@@ -123,12 +124,13 @@ export function weldByPosition(document, { tolerance = DEFAULT_TOLERANCE, filter
         if (!result) continue;
         merged += result.merged;
         dropped += result.dropped;
+        primitives.push(primitive);
       } catch (error) {
         document.getLogger().warn(`weldByPosition: skipped a primitive (${error.message})`);
       }
     }
   }
-  return { merged, dropped };
+  return { merged, dropped, primitives };
 }
 
 /**
@@ -200,4 +202,115 @@ export function snapPositions(document, { tolerance = DEFAULT_TOLERANCE, filter 
     }
   }
   return snapped;
+}
+
+/**
+ * Crease-aware vertex normals ("auto smooth"), for primitives whose normals
+ * were lost to position welding — the weld keeps one arbitrary normal per
+ * merged vertex, which is what produced the chrome-like splotches on the
+ * Sikandar's doors. Faces around a vertex are grouped by normal angle; each
+ * group gets its own (area-weighted) normal and, past the first, its own copy
+ * of the vertex, so curved panels shade smoothly and real creases stay sharp.
+ *
+ * Returns the number of vertices added.
+ */
+export function recomputeCreaseNormals(document, primitive, { creaseAngle = 40 } = {}) {
+  if (primitive.isDisposed?.() || primitive.getMode() !== Primitive.Mode.TRIANGLES) return 0;
+  const position = primitive.getAttribute('POSITION');
+  const indices = primitive.getIndices();
+  if (!position || !indices) return 0;
+  const element = [];
+  const vertexCount = position.getCount();
+  const points = new Float64Array(vertexCount * 3);
+  for (let vertex = 0; vertex < vertexCount; vertex += 1) points.set(position.getElement(vertex, element), vertex * 3);
+  const source = indices.getArray();
+  const faceCount = source.length / 3;
+  const area = new Float64Array(faceCount * 3);
+  const unit = new Float64Array(faceCount * 3);
+  for (let face = 0; face < faceCount; face += 1) {
+    const [a, b, c] = [source[face * 3], source[face * 3 + 1], source[face * 3 + 2]];
+    const ux = points[b * 3] - points[a * 3];
+    const uy = points[b * 3 + 1] - points[a * 3 + 1];
+    const uz = points[b * 3 + 2] - points[a * 3 + 2];
+    const vx = points[c * 3] - points[a * 3];
+    const vy = points[c * 3 + 1] - points[a * 3 + 1];
+    const vz = points[c * 3 + 2] - points[a * 3 + 2];
+    const nx = uy * vz - uz * vy;
+    const ny = uz * vx - ux * vz;
+    const nz = ux * vy - uy * vx;
+    const length = Math.hypot(nx, ny, nz) || 1;
+    area.set([nx, ny, nz], face * 3);
+    unit.set([nx / length, ny / length, nz / length], face * 3);
+  }
+  // Faces incident to each vertex (CSR layout).
+  const offsets = new Uint32Array(vertexCount + 1);
+  for (const vertex of source) offsets[vertex + 1] += 1;
+  for (let vertex = 0; vertex < vertexCount; vertex += 1) offsets[vertex + 1] += offsets[vertex];
+  const cursor = offsets.slice(0, vertexCount);
+  const incident = new Uint32Array(source.length);
+  for (let corner = 0; corner < source.length; corner += 1) incident[cursor[source[corner]]++] = corner;
+
+  const threshold = Math.cos((creaseAngle * Math.PI) / 180);
+  const output = new Uint32Array(source);
+  const extraSource = [];
+  const normals = [];
+  for (let vertex = 0; vertex < vertexCount; vertex += 1) {
+    const groups = [];
+    for (let slot = offsets[vertex]; slot < offsets[vertex + 1]; slot += 1) {
+      const corner = incident[slot];
+      const face = Math.floor(corner / 3);
+      const n = [unit[face * 3], unit[face * 3 + 1], unit[face * 3 + 2]];
+      let group = groups.find((candidate) => {
+        const length = Math.hypot(...candidate.sum) || 1;
+        return (candidate.sum[0] * n[0] + candidate.sum[1] * n[1] + candidate.sum[2] * n[2]) / length >= threshold;
+      });
+      if (!group) {
+        group = { sum: [0, 0, 0], corners: [] };
+        groups.push(group);
+      }
+      group.sum[0] += area[face * 3];
+      group.sum[1] += area[face * 3 + 1];
+      group.sum[2] += area[face * 3 + 2];
+      group.corners.push(corner);
+    }
+    groups.forEach((group, index) => {
+      const target = index === 0 ? vertex : vertexCount + extraSource.length;
+      if (index > 0) extraSource.push(vertex);
+      const length = Math.hypot(...group.sum);
+      // Only zero-area faces around this vertex: borrow the first face's normal.
+      const fallbackFace = Math.floor(group.corners[0] / 3);
+      normals[target] = length > 1e-12
+        ? [group.sum[0] / length, group.sum[1] / length, group.sum[2] / length]
+        : [unit[fallbackFace * 3], unit[fallbackFace * 3 + 1], unit[fallbackFace * 3 + 2] || 1];
+      for (const corner of group.corners) output[corner] = target;
+    });
+  }
+  const total = vertexCount + extraSource.length;
+  const sourceOf = (index) => (index < vertexCount ? index : extraSource[index - vertexCount]);
+  const buffer = document.getRoot().listBuffers()[0];
+  for (const semantic of primitive.listSemantics()) {
+    const attribute = primitive.getAttribute(semantic);
+    if (semantic === 'NORMAL' || semantic === 'TANGENT') {
+      primitive.setAttribute(semantic, null);
+      if (attribute.listParents().length <= 1) attribute.dispose();
+      continue;
+    }
+    const array = attribute.getArray();
+    const size = attribute.getElementSize();
+    const next = new array.constructor(total * size);
+    for (let index = 0; index < total; index += 1) {
+      const from = sourceOf(index) * size;
+      for (let component = 0; component < size; component += 1) next[index * size + component] = array[from + component];
+    }
+    primitive.setAttribute(semantic, document.createAccessor(`${attribute.getName() || semantic}-creased`)
+      .setType(attribute.getType()).setNormalized(attribute.getNormalized()).setArray(next).setBuffer(buffer));
+    if (attribute.listParents().length <= 1) attribute.dispose();
+  }
+  const normalArray = new Float32Array(total * 3);
+  for (let index = 0; index < total; index += 1) normalArray.set(normals[index] ?? [0, 1, 0], index * 3);
+  primitive.setAttribute('NORMAL', document.createAccessor('normals-creased').setType('VEC3').setArray(normalArray).setBuffer(buffer));
+  primitive.setIndices(document.createAccessor(`${indices.getName() || 'indices'}-creased`)
+    .setType('SCALAR').setArray(total > 65535 ? output : new Uint16Array(output)).setBuffer(buffer));
+  if (indices.listParents().length <= 1) indices.dispose();
+  return extraSource.length;
 }

@@ -81,7 +81,15 @@ async function load({ column, url, manifest, carId, inGame = false }) {
   let root;
   if (inGame) {
     const preset = getCar(carId);
-    root = buildCarRig({ gltf, manifest, preset, paint: preset.paint[0], tier: { mobile: false } }).group;
+    const rig = buildCarRig({ gltf, manifest, preset, paint: preset.paint[0], tier: { mobile: false } });
+    // Factory colour: the source's own paint colour and finish, so this column
+    // isolates the runtime treatment (clearcoat, glass, lamps) from the palette.
+    for (const material of rig.paintMaterials) {
+      material.color.copy(material.userData.bakedColor);
+      material.metalness = material.userData.bakedMetalness;
+      material.roughness = material.userData.bakedRoughness;
+    }
+    root = rig.group;
   } else {
     // Same placement the game applies (manifest transform), so columns align.
     const transform = manifest?.transform ?? {};

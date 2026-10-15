@@ -24,7 +24,7 @@ import { ASSET_TARGETS, RAW_DIR, REPORT_DIR } from './config.mjs';
 import { clusterWheels, descriptorFromBounds } from '../../src/game/cars/wheel-clusters.js';
 import { buildTerrainGrid, classifyMaterial, collectTriangles, extractRoadPath, serializeTrail, writeOccupancyArtifacts } from './terrain.mjs';
 import { ensureDir, formatBytes, getNodeIO } from './gltf-io.mjs';
-import { snapPositions, weldByPosition } from './weld-position.mjs';
+import { recomputeCreaseNormals, snapPositions, weldByPosition } from './weld-position.mjs';
 import { computeCockpit, steeringColumnAxis } from '../../src/game/cars/cockpit.js';
 import { STEERING_NAME_PATTERN, isWheelName, openableKind } from '../../src/game/cars/names.js';
 import { planOpenable } from '../../src/game/cars/openables.js';
@@ -481,6 +481,7 @@ async function simplifyToward(document, budget, current, error) {
  */
 async function simplifyCarToBudget(document, target, budget, trianglesBefore) {
   let triangles = trianglesBefore;
+  const welded = new Set();
   const snapped = snapPositions(document, { tolerance: 1e-4 });
   await document.transform(weld());
   console.log(`[optimize] seam snap 0.1 mm: ${snapped.toLocaleString()} vertices aligned (UVs + normals kept)`);
@@ -490,24 +491,34 @@ async function simplifyCarToBudget(document, target, budget, trianglesBefore) {
     console.log(`[optimize] seam-aware simplify error ${error}: ${triangles.toLocaleString()} -> ${next.toLocaleString()} tris`);
     triangles = next;
   }
-  if (triangles > budget) {
-    const interiorOnly = (primitive) => classifyMaterial(primitive.getMaterial(), { kind: 'car' }) === 'interior';
-    const { merged, dropped } = weldByPosition(document, { tolerance: 1e-4, filter: interiorOnly });
-    const next = await simplifyToward(document, budget, triangles, MAX_CAR_SIMPLIFY_ERROR);
-    console.log(`[optimize] interior position weld: merged ${merged.toLocaleString()} verts, dropped ${dropped.toLocaleString()} tris -> ${next.toLocaleString()} tris`);
+  // Position welds, cheapest visual cost first. Every welded primitive gets
+  // crease-aware normals rebuilt at the end (the weld keeps arbitrary normals).
+  const hasTextures = (material) => Boolean(material && (material.getBaseColorTexture() || material.getNormalTexture()
+    || material.getMetallicRoughnessTexture() || material.getOcclusionTexture() || material.getEmissiveTexture()));
+  const stages = [
+    // Untextured (paint, rubber, glass, plain trim): UV seams carry nothing.
+    { label: 'untextured', filter: (primitive) => !hasTextures(primitive.getMaterial()), tolerance: 1e-4, error: MAX_CAR_SIMPLIFY_ERROR },
+    // Textured interior: a texel band on a seam is barely visible from outside.
+    { label: 'interior', filter: (primitive) => classifyMaterial(primitive.getMaterial(), { kind: 'car' }) === 'interior', tolerance: 1e-4, error: MAX_CAR_SIMPLIFY_ERROR },
+  ];
+  const extent = Math.max(1, ...sceneBounds(document).size);
+  for (const tolerance of [1e-4, extent * 0.0005, extent * 0.001, extent * 0.002]) {
+    stages.push({ label: `LAST RESORT everything ${tolerance.toFixed(4)} m (textured UV seams stretch)`, filter: null, tolerance, error: 0.08 });
+  }
+  for (const stage of stages) {
+    if (triangles <= budget) break;
+    const { merged, dropped, primitives } = weldByPosition(document, { tolerance: stage.tolerance, filter: stage.filter });
+    for (const primitive of primitives) welded.add(primitive);
+    if (!merged && !dropped) continue;
+    const next = await simplifyToward(document, budget, triangles, stage.error);
+    const log = stage.filter ? console.log : console.warn;
+    log(`[optimize] position weld (${stage.label}): merged ${merged.toLocaleString()} verts, dropped ${dropped.toLocaleString()} -> ${next.toLocaleString()} tris`);
     triangles = next;
   }
-  if (triangles > budget) {
-    const extent = Math.max(1, ...sceneBounds(document).size);
-    for (const tolerance of [1e-4, extent * 0.0005, extent * 0.001, extent * 0.002]) {
-      if (triangles <= budget) break;
-      const { merged } = weldByPosition(document, { tolerance });
-      const next = await simplifyToward(document, budget, triangles, 0.08);
-      console.warn(`[optimize] LAST RESORT position weld ${tolerance.toFixed(4)} m (UV seams stretch): merged ${merged.toLocaleString()} -> ${next.toLocaleString()} tris`);
-      triangles = next;
-    }
-  }
-  if (triangles > budget) console.warn(`[optimize] ${target.id ?? 'car'} is still over its triangle budget: ${triangles.toLocaleString()} > ${budget.toLocaleString()}`);
+  let added = 0;
+  for (const primitive of welded) added += recomputeCreaseNormals(document, primitive, { creaseAngle: 40 });
+  if (welded.size) console.log(`[optimize] crease-aware normals rebuilt on ${welded.size} welded primitives (+${added.toLocaleString()} split vertices)`);
+  if (triangles > budget) console.warn(`[optimize] car is still over its triangle budget: ${triangles.toLocaleString()} > ${budget.toLocaleString()}`);
   return triangles;
 }
 

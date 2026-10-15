@@ -45,7 +45,7 @@ const HEADER = 46;
 const COLUMNS = [
   { id: 'source', label: 'SOURCE (assets/raw)' },
   { id: 'optimized', label: 'OPTIMIZED (public/models)' },
-  { id: 'inGame', label: 'IN-GAME (runtime materials)' },
+  { id: 'inGame', label: 'IN-GAME (runtime, factory paint)' },
 ];
 const VIEW_LABELS = { front34: 'front 3/4', rear34: 'rear 3/4', side: 'side' };
 const ROOT = process.cwd();

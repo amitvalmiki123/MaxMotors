@@ -431,7 +431,10 @@ export function classifyCarMaterials(root, { paint = null, tier = null } = {}) {
       side: material.side,
     });
     physical.userData.isPaint = true;
+    // The source finish, so tools (the material audit) can show the factory paint.
     physical.userData.bakedColor = material.color?.clone() ?? new THREE.Color(0xffffff);
+    physical.userData.bakedMetalness = material.metalness ?? 0.5;
+    physical.userData.bakedRoughness = material.roughness ?? 0.4;
     replaceMaterialInScene(root, material, physical);
     paintMaterials.push(physical);
   }
