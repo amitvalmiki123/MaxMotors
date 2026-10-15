@@ -1,7 +1,7 @@
 {
   "id": "aurora-v12",
   "kind": "car",
-  "generatedAt": "2026-10-15T08:50:53.799Z",
+  "generatedAt": "2026-10-15T08:57:32.129Z",
   "credits": {
     "inGameName": "Aurora V12",
     "title": "( FREE ) Lamborghini Terzo Millennio",
@@ -41,7 +41,10 @@
     "textureQuality": 78,
     "textureBytesBefore": 1464780,
     "textureBytesAfter": 203262,
-    "textureMemoryMB": 18.3
+    "textureMemoryMB": 18.3,
+    "triangleBudget": 70000,
+    "overBudget": false,
+    "sizeBudgetBytes": 4194304
   },
   "transform": {
     "yawRadians": 0,

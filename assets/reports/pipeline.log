@@ -1,5 +1,5 @@
-mode=build only='' ref=arena/6900dcad-maxmotors sha=480f1abac559dedbe5fafdf98d1a12982981188b
-runner=Linux runnervmmprz5 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+mode=build only='' ref=arena/6900dcad-maxmotors sha=d5855eee4e476d43dbc03469e571aea540b63a10
+runner=Linux runnervm8k3b6 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
 
 added 45 packages, and audited 46 packages in 2s
 
@@ -32,10 +32,12 @@ found 0 vulnerabilities
 [optimize] simplify pass 2: ratio 0.416 error 0.0180 -> 202,334 tris
 [optimize] simplify pass 3: ratio 0.494 error 0.0540 -> 191,751 tris
 [optimize] simplify pass 4: ratio 0.522 error 0.1620 -> 188,984 tris
-[optimize] flat badge plaques removed (17): movsteer_1.0_movsteer_1.0.3_0 (0.134x0.015x0.030), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.426x0.105x0.004), taillight_r_taillight_r.7_0 (0.044x0.006x0.035), scorpio_n_int_seat_reck_movsteer_1.0.3_0 (0.008x0.011x0.028), scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308), scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002), scorpio_n_int_console_movsteer_1.0.3_0 (0.009x0.001x0.009), …
+[optimize] budget pass (grid 0.0001 m): merged 172,179 verts, dropped 8,461 degenerate tris
+[optimize] after grid 0.0001 m + simplify -> 95,246 tris
+[optimize] flat badge plaques removed (15): movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.008), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.424x0.105x0.003), headlight_led_right front light_0 (0.047x0.054x0.015), taillight_r_taillight_r.7_0 (0.041x0.006x0.035), scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308), scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002), roof_lights_right front light_0 (0.157x0.016x0.060), …
 [optimize] interior kept (glass is transparent)
-prune: Removed types... Node (7), Mesh (17), Primitive (27), TextureInfo (20), Material (4), Texture (9), Accessor (138)
-prune: Removed types... Accessor (589)
+prune: Removed types... Node (20), Mesh (15), Primitive (25), TextureInfo (30), Material (6), Texture (9), Accessor (126)
+prune: Removed types... Accessor (567)
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
@@ -81,175 +83,10 @@ quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
-prune: Removed types... Accessor (232)
-[optimize] sikandar-suv attempt 1: 3.3 MB (limit 8.0 MB) | tris 188,984 (limit 100,000) | textures 878 KB @2048px q80 | GPU 31 MB (limit 128)
-[optimize] simplify pass 1: ratio 0.068 error 0.0060 -> 237,592 tris
-[optimize] simplify pass 2: ratio 0.379 error 0.0180 -> 201,027 tris
-[optimize] simplify pass 3: ratio 0.448 error 0.0540 -> 191,426 tris
-[optimize] simplify pass 4: ratio 0.470 error 0.1620 -> 188,870 tris
-[optimize] flat badge plaques removed (19): movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.426x0.105x0.004), headlight_led_right front light_0 (0.059x0.054x0.017), taillight_r_taillight_r.7_0 (0.044x0.006x0.035), scorpio_n_int_seat_reck_movsteer_1.0.3_0 (0.008x0.011x0.028), scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308), scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002), …
-[optimize] interior kept (glass is transparent)
-prune: Removed types... Node (11), Mesh (19), Primitive (29), TextureInfo (25), Material (5), Texture (9), Accessor (144)
-prune: Removed types... Accessor (578)
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-prune: Removed types... Accessor (227)
-[optimize] sikandar-suv attempt 2: 3.2 MB (limit 8.0 MB) | tris 188,870 (limit 100,000) | textures 732 KB @1536px q72 | GPU 31 MB (limit 128)
-[optimize] simplify pass 1: ratio 0.060 error 0.0060 -> 235,479 tris
-[optimize] simplify pass 2: ratio 0.340 error 0.0180 -> 200,346 tris
-[optimize] simplify pass 3: ratio 0.399 error 0.0540 -> 191,190 tris
-[optimize] simplify pass 4: ratio 0.418 error 0.1620 -> 188,768 tris
-[optimize] flat badge plaques removed (20): movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.426x0.105x0.004), headlight_led_right front light_0 (0.059x0.054x0.015), taillight_r_taillight_r.7_0 (0.041x0.001x0.023), scorpio_n_int_seat_reck_movsteer_1.0.3_0 (0.008x0.011x0.028), scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308), scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002), …
-[optimize] interior kept (glass is transparent)
-prune: Removed types... Node (11), Mesh (20), Primitive (30), TextureInfo (30), Material (6), Texture (9), Accessor (148)
-prune: Removed types... Accessor (574)
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-prune: Removed types... Accessor (225)
-[optimize] sikandar-suv attempt 3: 3.1 MB (limit 8.0 MB) | tris 188,768 (limit 100,000) | textures 703 KB @1024px q68 | GPU 31 MB (limit 128)
-[optimize] simplify pass 1: ratio 0.053 error 0.0060 -> 233,823 tris
-[optimize] simplify pass 2: ratio 0.299 error 0.0180 -> 200,071 tris
-[optimize] simplify pass 3: ratio 0.350 error 0.0540 -> 191,126 tris
-[optimize] simplify pass 4: ratio 0.366 error 0.1620 -> 188,775 tris
-[optimize] flat badge plaques removed (20): movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005), scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009), scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.426x0.105x0.004), headlight_led_right front light_0 (0.059x0.054x0.015), taillight_r_taillight_r.7_0 (0.041x0.001x0.023), scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308), scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002), roof_lights_right front light_0 (0.160x0.016x0.060), …
-[optimize] interior kept (glass is transparent)
-prune: Removed types... Node (22), Mesh (20), Primitive (30), TextureInfo (35), Material (7), Texture (9), Accessor (138)
-prune: Removed types... Accessor (555)
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-prune: Removed types... Accessor (218)
-[optimize] sikandar-suv attempt 4: 2.9 MB (limit 8.0 MB) | tris 188,775 (limit 100,000) | textures 474 KB @768px q64 | GPU 24 MB (limit 128)
+prune: Removed types... Accessor (222)
+[optimize] sikandar-suv attempt 1: 1.6 MB (limit 8.0 MB) | tris 95,246 (limit 100,000) | textures 878 KB @2048px q80 | GPU 31 MB (limit 128)
 [optimize] sikandar-suv shipped textures: 10 used, 0 unused
-[optimize] sikandar-suv -> public/models/sikandar-suv.glb 2.9 MB | 188,775 tris | {"detected":true,"count":4,"wheelbase":2.744,"track":1.622,"radius":0.379,"frontZ":-1.474,"rearZ":1.27,"list":[{"corner":"front-left","position":[-0.82,0.379,-1.474],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.003_wheel_rf.2_0","wheel_rf.003_wheel_rf.1_0","wheel_rf.003_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.0_0#0"]},{"corner":"front-right","position":[0.802,0.379,-1.474],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf_wheel_rf.2_0","wheel_rf_wheel_rf.1_0","wheel_rf_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.0_0#0"]},{"corner":"rear-left","position":[-0.82,0.379,1.27],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.002_wheel_rf.2_0","wheel_rf.002_wheel_rf.1_0","wheel_rf.002_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.0_0#0"]},{"corner":"rear-right","position":[0.802,0.379,1.27],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.001_wheel_rf.2_0","wheel_rf.001_wheel_rf.1_0","wheel_rf.001_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.0_0#0"]}]}
+[optimize] sikandar-suv -> public/models/sikandar-suv.glb 1.6 MB | 95,246 tris | {"detected":true,"count":4,"wheelbase":2.744,"track":1.622,"radius":0.379,"frontZ":-1.474,"rearZ":1.27,"list":[{"corner":"front-left","position":[-0.82,0.379,-1.474],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.003_wheel_rf.2_0","wheel_rf.003_wheel_rf.1_0","wheel_rf.003_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.003#0/wheel_rf.003_wheel_rf.0_0#0"]},{"corner":"front-right","position":[0.802,0.379,-1.474],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf_wheel_rf.2_0","wheel_rf_wheel_rf.1_0","wheel_rf_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf#0/wheel_rf_wheel_rf.0_0#0"]},{"corner":"rear-left","position":[-0.82,0.379,1.27],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.002_wheel_rf.2_0","wheel_rf.002_wheel_rf.1_0","wheel_rf.002_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.002#0/wheel_rf.002_wheel_rf.0_0#0"]},{"corner":"rear-right","position":[0.802,0.379,1.27],"radius":0.379,"width":0.252,"axleAxis":"x","source":"name+shape","confidence":1,"members":["wheel_rf.001_wheel_rf.2_0","wheel_rf.001_wheel_rf.1_0","wheel_rf.001_wheel_rf.0_0"],"memberPaths":["/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.2_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.1_0#0","/Sketchfab_model#0/scorpio_n.fbx#0/RootNode#0/Scorpio-N22#0/wheel_rf_dummy#0/wheel_rf.001#0/wheel_rf.001_wheel_rf.0_0#0"]}]}
 [optimize] simplify pass 1: ratio 0.660 error 0.0040 -> 70,531 tris
 [optimize] simplify pass 2: ratio 0.992 error 0.0120 -> 69,894 tris
 [optimize] flat badge plaques removed (60): Object_4 (1.280x0.045x0.373), Object_8 (0.021x0.035x0.205), Object_10 (0.049x0.092x0.379), Object_14 (0.020x0.034x0.192), Object_16 (0.049x0.092x0.379), Object_18 (0.074x0.214x0.657), Object_20 (0.074x0.211x0.654), Object_35 (0.061x0.419x0.419), …
@@ -268,9 +105,11 @@ prune: Removed types... Accessor (52)
 [optimize] simplify pass 2: ratio 0.875 error 0.0300 -> 155,104 tris
 [optimize] simplify pass 3: ratio 0.967 error 0.0900 -> 151,364 tris
 [optimize] simplify pass 4: ratio 0.991 error 0.2700 -> 150,366 tris
-prune: Removed types... Accessor (190)
+[optimize] budget pass (grid 0.0001 m): merged 88,110 verts, dropped 692 degenerate tris
+[optimize] after grid 0.0001 m + simplify -> 149,290 tris
+prune: Removed types... Accessor (225)
 instance: No meshes with >=4 parent nodes were found.
-prune: Removed types... Accessor (159)
+prune: Removed types... Accessor (162)
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_1; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
@@ -295,44 +134,11 @@ quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
 quantize: Skipping TEXCOORD_0; out of [0,1] range.
-prune: Removed types... Accessor (60)
-[optimize] forest-dirt-trail attempt 1: 11.1 MB (limit 20.0 MB) | tris 150,366 (limit 150,000) | textures 7.5 MB @512px q76 | GPU 53 MB (limit 150)
-[optimize] simplify pass 1: ratio 0.396 error 0.0100 -> 158,569 tris
-[optimize] simplify pass 2: ratio 0.851 error 0.0300 -> 141,136 tris
-[optimize] simplify pass 3: ratio 0.957 error 0.0900 -> 136,810 tris
-[optimize] simplify pass 4: ratio 0.987 error 0.2700 -> 135,544 tris
-prune: Removed types... Accessor (190)
-instance: No meshes with >=4 parent nodes were found.
-prune: Removed types... Accessor (159)
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_1; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_1; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_1; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-quantize: Skipping TEXCOORD_0; out of [0,1] range.
-prune: Removed types... Accessor (60)
-[optimize] forest-dirt-trail attempt 2: 10.7 MB (limit 20.0 MB) | tris 135,544 (limit 150,000) | textures 7.3 MB @512px q68 | GPU 53 MB (limit 150)
+prune: Removed types... Accessor (61)
+[optimize] forest-dirt-trail attempt 1: 9.7 MB (limit 20.0 MB) | tris 149,290 (limit 150,000) | textures 7.5 MB @512px q76 | GPU 53 MB (limit 150)
 [optimize] forest-dirt-trail shipped textures: 70 used, 0 unused
-[optimize] forest-dirt-trail terrain: road 82 pts, half-width 12.02 m, coverage 1.85%, grid 263x274 @ 2.00 m, offset -162.45
-[optimize] forest-dirt-trail -> public/tracks/forest-dirt-trail.glb 10.7 MB | 135,544 tris | {"file":"public/tracks/forest-dirt-trail.terrain.json","cellSize":2,"cols":263,"rows":274,"heightOffset":-162.446,"roadHalfWidth":12.024,"roadPoints":82,"roadCoverage":0.0185,"heights":{"minHeight":-66.041,"maxHeight":11.09}}
+[optimize] forest-dirt-trail terrain: road 82 pts, half-width 12.04 m, coverage 1.86%, grid 263x274 @ 2.00 m, offset -162.45
+[optimize] forest-dirt-trail -> public/tracks/forest-dirt-trail.glb 9.7 MB | 149,290 tris | {"file":"public/tracks/forest-dirt-trail.terrain.json","cellSize":2,"cols":263,"rows":274,"heightOffset":-162.446,"roadHalfWidth":12.037,"roadPoints":82,"roadCoverage":0.0186,"heights":{"minHeight":-66.041,"maxHeight":11.09}}
 [optimize] done: 3 assets
 [env] asphalt_02: diffuse -> public/textures/asphalt_diffuse_2k.jpg (2.9 MB, 2048x2048)
 [env] asphalt_02: normal -> public/textures/asphalt_normal_2k.jpg (4.7 MB, 2048x2048)
@@ -346,76 +152,76 @@ prune: Removed types... Accessor (60)
 --- public/ tree ---
 8.0K	public/cars
 360K	public/audio
-3.6M	public/models
+2.4M	public/models
 9.0M	public/textures
-11M	public/tracks
-24M	public
+10M	public/tracks
+22M	public
 --- files ---
 assets/reports:
-total 14340
-drwxr-xr-x 2 runner runner    4096 Oct 15 08:44 .
-drwxr-xr-x 4 runner runner    4096 Oct 15 08:44 ..
--rw-r--r-- 1 runner runner    2270 Oct 15 08:50 SUMMARY.md
--rw-r--r-- 1 runner runner   99600 Oct 15 08:50 aurora-v12.report.json
--rw-r--r-- 1 runner runner  119163 Oct 15 08:50 aurora-v12.shipped-textures.png
--rw-r--r-- 1 runner runner    4451 Oct 15 08:50 aurora-v12.side.png
--rw-r--r-- 1 runner runner     839 Oct 15 08:50 aurora-v12.textures.json
--rw-r--r-- 1 runner runner  287933 Oct 15 08:50 aurora-v12.textures.png
--rw-r--r-- 1 runner runner    5659 Oct 15 08:50 aurora-v12.top.png
--rw-r--r-- 1 runner runner   23963 Oct 15 08:50 aurora-v12.tree.txt
--rw-r--r-- 1 runner runner   60975 Oct 15 08:51 forest-dirt-trail.height.png
--rw-r--r-- 1 runner runner    4359 Oct 15 08:51 forest-dirt-trail.map.png
--rw-r--r-- 1 runner runner   73740 Oct 15 08:51 forest-dirt-trail.map.txt
--rw-r--r-- 1 runner runner   58473 Oct 15 08:50 forest-dirt-trail.report.json
--rw-r--r-- 1 runner runner 5104828 Oct 15 08:51 forest-dirt-trail.shipped-textures.png
--rw-r--r-- 1 runner runner    3018 Oct 15 08:50 forest-dirt-trail.side.png
--rw-r--r-- 1 runner runner   17344 Oct 15 08:51 forest-dirt-trail.textures.json
--rw-r--r-- 1 runner runner 6939973 Oct 15 08:50 forest-dirt-trail.textures.png
--rw-r--r-- 1 runner runner    3018 Oct 15 08:50 forest-dirt-trail.top.png
--rw-r--r-- 1 runner runner    7359 Oct 15 08:50 forest-dirt-trail.tree.txt
--rw-r--r-- 1 runner runner   30120 Oct 15 08:51 optimized-manifests.json
--rw-r--r-- 1 runner runner   29292 Oct 15 08:51 pipeline.log
--rw-r--r-- 1 runner runner  103300 Oct 15 08:50 sikandar-suv.report.json
--rw-r--r-- 1 runner runner  509421 Oct 15 08:50 sikandar-suv.shipped-textures.png
--rw-r--r-- 1 runner runner    8086 Oct 15 08:50 sikandar-suv.side.png
--rw-r--r-- 1 runner runner    2595 Oct 15 08:50 sikandar-suv.textures.json
--rw-r--r-- 1 runner runner 1025128 Oct 15 08:50 sikandar-suv.textures.png
--rw-r--r-- 1 runner runner   16801 Oct 15 08:50 sikandar-suv.top.png
--rw-r--r-- 1 runner runner   33668 Oct 15 08:50 sikandar-suv.tree.txt
--rw-r--r-- 1 runner runner   30322 Oct 15 08:50 source-summary.json
+total 14396
+drwxr-xr-x 2 runner runner    4096 Oct 15 08:57 .
+drwxr-xr-x 4 runner runner    4096 Oct 15 08:57 ..
+-rw-r--r-- 1 runner runner    2270 Oct 15 08:57 SUMMARY.md
+-rw-r--r-- 1 runner runner   99600 Oct 15 08:57 aurora-v12.report.json
+-rw-r--r-- 1 runner runner  119163 Oct 15 08:57 aurora-v12.shipped-textures.png
+-rw-r--r-- 1 runner runner    4451 Oct 15 08:57 aurora-v12.side.png
+-rw-r--r-- 1 runner runner     839 Oct 15 08:57 aurora-v12.textures.json
+-rw-r--r-- 1 runner runner  287933 Oct 15 08:57 aurora-v12.textures.png
+-rw-r--r-- 1 runner runner    5659 Oct 15 08:57 aurora-v12.top.png
+-rw-r--r-- 1 runner runner   23963 Oct 15 08:57 aurora-v12.tree.txt
+-rw-r--r-- 1 runner runner   60931 Oct 15 08:57 forest-dirt-trail.height.png
+-rw-r--r-- 1 runner runner    4376 Oct 15 08:57 forest-dirt-trail.map.png
+-rw-r--r-- 1 runner runner   73742 Oct 15 08:57 forest-dirt-trail.map.txt
+-rw-r--r-- 1 runner runner   58473 Oct 15 08:57 forest-dirt-trail.report.json
+-rw-r--r-- 1 runner runner 5148935 Oct 15 08:57 forest-dirt-trail.shipped-textures.png
+-rw-r--r-- 1 runner runner    3018 Oct 15 08:57 forest-dirt-trail.side.png
+-rw-r--r-- 1 runner runner   17345 Oct 15 08:57 forest-dirt-trail.textures.json
+-rw-r--r-- 1 runner runner 6939973 Oct 15 08:57 forest-dirt-trail.textures.png
+-rw-r--r-- 1 runner runner    3018 Oct 15 08:57 forest-dirt-trail.top.png
+-rw-r--r-- 1 runner runner    7359 Oct 15 08:57 forest-dirt-trail.tree.txt
+-rw-r--r-- 1 runner runner   30227 Oct 15 08:57 optimized-manifests.json
+-rw-r--r-- 1 runner runner   17338 Oct 15 08:57 pipeline.log
+-rw-r--r-- 1 runner runner  103300 Oct 15 08:57 sikandar-suv.report.json
+-rw-r--r-- 1 runner runner  535529 Oct 15 08:57 sikandar-suv.shipped-textures.png
+-rw-r--r-- 1 runner runner    8086 Oct 15 08:57 sikandar-suv.side.png
+-rw-r--r-- 1 runner runner    2602 Oct 15 08:57 sikandar-suv.textures.json
+-rw-r--r-- 1 runner runner 1025128 Oct 15 08:57 sikandar-suv.textures.png
+-rw-r--r-- 1 runner runner   16801 Oct 15 08:57 sikandar-suv.top.png
+-rw-r--r-- 1 runner runner   33668 Oct 15 08:57 sikandar-suv.tree.txt
+-rw-r--r-- 1 runner runner   30322 Oct 15 08:57 source-summary.json
 
 public/audio:
 total 364
-drwxr-xr-x 2 runner runner  4096 Oct 15 08:44 .
-drwxr-xr-x 7 runner runner  4096 Oct 15 08:44 ..
--rw-r--r-- 1 runner runner 88244 Oct 15 08:51 aurora-v10-high.wav
--rw-r--r-- 1 runner runner 88024 Oct 15 08:51 aurora-v10-low.wav
--rw-r--r-- 1 runner runner  1280 Oct 15 08:51 engine.index.json
--rw-r--r-- 1 runner runner 88244 Oct 15 08:51 sikandar-diesel-high.wav
--rw-r--r-- 1 runner runner 88244 Oct 15 08:51 sikandar-diesel-low.wav
+drwxr-xr-x 2 runner runner  4096 Oct 15 08:57 .
+drwxr-xr-x 7 runner runner  4096 Oct 15 08:57 ..
+-rw-r--r-- 1 runner runner 88244 Oct 15 08:57 aurora-v10-high.wav
+-rw-r--r-- 1 runner runner 88024 Oct 15 08:57 aurora-v10-low.wav
+-rw-r--r-- 1 runner runner  1280 Oct 15 08:57 engine.index.json
+-rw-r--r-- 1 runner runner 88244 Oct 15 08:57 sikandar-diesel-high.wav
+-rw-r--r-- 1 runner runner 88244 Oct 15 08:57 sikandar-diesel-low.wav
 
 public/models:
-total 3676
-drwxr-xr-x 2 runner runner    4096 Oct 15 08:44 .
-drwxr-xr-x 7 runner runner    4096 Oct 15 08:44 ..
--rw-r--r-- 1 runner runner  673704 Oct 15 08:50 aurora-v12.glb
--rw-r--r-- 1 runner runner   13770 Oct 15 08:50 aurora-v12.manifest.json
--rw-r--r-- 1 runner runner 3049520 Oct 15 08:50 sikandar-suv.glb
--rw-r--r-- 1 runner runner   12147 Oct 15 08:50 sikandar-suv.manifest.json
+total 2364
+drwxr-xr-x 2 runner runner    4096 Oct 15 08:57 .
+drwxr-xr-x 7 runner runner    4096 Oct 15 08:57 ..
+-rw-r--r-- 1 runner runner  673704 Oct 15 08:57 aurora-v12.glb
+-rw-r--r-- 1 runner runner   13856 Oct 15 08:57 aurora-v12.manifest.json
+-rw-r--r-- 1 runner runner 1707424 Oct 15 08:57 sikandar-suv.glb
+-rw-r--r-- 1 runner runner   12140 Oct 15 08:57 sikandar-suv.manifest.json
 
 public/textures:
 total 9120
-drwxr-xr-x 2 runner runner    4096 Oct 15 08:44 .
-drwxr-xr-x 7 runner runner    4096 Oct 15 08:44 ..
--rw-r--r-- 1 runner runner    1044 Oct 15 08:51 asphalt.index.json
--rw-r--r-- 1 runner runner 1299186 Oct 15 08:51 asphalt_arm_2k.jpg
--rw-r--r-- 1 runner runner 3075676 Oct 15 08:51 asphalt_diffuse_2k.jpg
--rw-r--r-- 1 runner runner 4943950 Oct 15 08:51 asphalt_normal_2k.jpg
+drwxr-xr-x 2 runner runner    4096 Oct 15 08:57 .
+drwxr-xr-x 7 runner runner    4096 Oct 15 08:57 ..
+-rw-r--r-- 1 runner runner    1044 Oct 15 08:57 asphalt.index.json
+-rw-r--r-- 1 runner runner 1299186 Oct 15 08:57 asphalt_arm_2k.jpg
+-rw-r--r-- 1 runner runner 3075676 Oct 15 08:57 asphalt_diffuse_2k.jpg
+-rw-r--r-- 1 runner runner 4943950 Oct 15 08:57 asphalt_normal_2k.jpg
 
 public/tracks:
-total 11188
-drwxr-xr-x 2 runner runner     4096 Oct 15 08:44 .
-drwxr-xr-x 7 runner runner     4096 Oct 15 08:44 ..
--rw-r--r-- 1 runner runner 11244312 Oct 15 08:51 forest-dirt-trail.glb
--rw-r--r-- 1 runner runner     1847 Oct 15 08:51 forest-dirt-trail.manifest.json
--rw-r--r-- 1 runner runner   194438 Oct 15 08:51 forest-dirt-trail.terrain.json
+total 10144
+drwxr-xr-x 2 runner runner     4096 Oct 15 08:57 .
+drwxr-xr-x 7 runner runner     4096 Oct 15 08:57 ..
+-rw-r--r-- 1 runner runner 10174824 Oct 15 08:57 forest-dirt-trail.glb
+-rw-r--r-- 1 runner runner     1847 Oct 15 08:57 forest-dirt-trail.manifest.json
+-rw-r--r-- 1 runner runner   194438 Oct 15 08:57 forest-dirt-trail.terrain.json

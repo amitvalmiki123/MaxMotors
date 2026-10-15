@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-15T08:50:52.255Z",
+  "generatedAt": "2026-10-15T08:57:30.677Z",
   "count": 10,
   "textures": [
     {
       "index": 0,
       "mimeType": "image/webp",
-      "bytes": 128,
+      "bytes": 112,
       "width": 128,
       "height": 128,
       "used": true,
@@ -19,7 +19,7 @@
     {
       "index": 1,
       "mimeType": "image/webp",
-      "bytes": 56280,
+      "bytes": 75384,
       "width": 512,
       "height": 512,
       "used": true,
@@ -33,9 +33,9 @@
     {
       "index": 2,
       "mimeType": "image/webp",
-      "bytes": 135814,
-      "width": 768,
-      "height": 768,
+      "bytes": 197354,
+      "width": 1024,
+      "height": 1024,
       "used": true,
       "materials": [
         "movsteer_1.0.3"
@@ -47,7 +47,7 @@
     {
       "index": 3,
       "mimeType": "image/webp",
-      "bytes": 17862,
+      "bytes": 18734,
       "width": 512,
       "height": 512,
       "used": true,
@@ -61,7 +61,7 @@
     {
       "index": 4,
       "mimeType": "image/webp",
-      "bytes": 334,
+      "bytes": 304,
       "width": 256,
       "height": 256,
       "used": true,
@@ -75,9 +75,9 @@
     {
       "index": 5,
       "mimeType": "image/webp",
-      "bytes": 78878,
-      "width": 768,
-      "height": 768,
+      "bytes": 176420,
+      "width": 1024,
+      "height": 1024,
       "used": true,
       "materials": [
         "indicator_lf",
@@ -90,7 +90,7 @@
     {
       "index": 6,
       "mimeType": "image/webp",
-      "bytes": 41666,
+      "bytes": 54500,
       "width": 512,
       "height": 512,
       "used": true,
@@ -104,7 +104,7 @@
     {
       "index": 7,
       "mimeType": "image/webp",
-      "bytes": 14224,
+      "bytes": 18194,
       "width": 256,
       "height": 256,
       "used": true,
@@ -118,9 +118,9 @@
     {
       "index": 8,
       "mimeType": "image/webp",
-      "bytes": 114090,
-      "width": 768,
-      "height": 768,
+      "bytes": 309880,
+      "width": 1024,
+      "height": 1024,
       "used": true,
       "materials": [
         "scorpio_n_int_dashboard.6"
@@ -132,7 +132,7 @@
     {
       "index": 9,
       "mimeType": "image/webp",
-      "bytes": 6282,
+      "bytes": 6802,
       "width": 512,
       "height": 512,
       "used": true,

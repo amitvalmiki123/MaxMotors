@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-15T08:51:08.335Z",
+  "generatedAt": "2026-10-15T08:57:39.774Z",
   "count": 70,
   "textures": [
     {
       "index": 0,
       "mimeType": "image/webp",
-      "bytes": 133874,
+      "bytes": 138430,
       "width": 512,
       "height": 512,
       "used": true,
@@ -19,7 +19,7 @@
     {
       "index": 1,
       "mimeType": "image/webp",
-      "bytes": 842,
+      "bytes": 888,
       "width": 512,
       "height": 512,
       "used": true,
@@ -33,7 +33,7 @@
     {
       "index": 2,
       "mimeType": "image/webp",
-      "bytes": 11720,
+      "bytes": 13900,
       "width": 512,
       "height": 512,
       "used": true,
@@ -61,7 +61,7 @@
     {
       "index": 4,
       "mimeType": "image/webp",
-      "bytes": 75644,
+      "bytes": 78352,
       "width": 512,
       "height": 256,
       "used": true,
@@ -75,7 +75,7 @@
     {
       "index": 5,
       "mimeType": "image/webp",
-      "bytes": 1060,
+      "bytes": 1292,
       "width": 256,
       "height": 128,
       "used": true,
@@ -103,7 +103,7 @@
     {
       "index": 7,
       "mimeType": "image/webp",
-      "bytes": 30380,
+      "bytes": 36622,
       "width": 512,
       "height": 512,
       "used": true,
@@ -117,7 +117,7 @@
     {
       "index": 8,
       "mimeType": "image/webp",
-      "bytes": 4134,
+      "bytes": 6160,
       "width": 512,
       "height": 512,
       "used": true,
@@ -145,7 +145,7 @@
     {
       "index": 10,
       "mimeType": "image/webp",
-      "bytes": 6688,
+      "bytes": 7416,
       "width": 64,
       "height": 512,
       "used": true,
@@ -159,7 +159,7 @@
     {
       "index": 11,
       "mimeType": "image/webp",
-      "bytes": 2876,
+      "bytes": 3626,
       "width": 64,
       "height": 512,
       "used": true,
@@ -187,7 +187,7 @@
     {
       "index": 13,
       "mimeType": "image/webp",
-      "bytes": 21684,
+      "bytes": 27196,
       "width": 512,
       "height": 512,
       "used": true,
@@ -201,7 +201,7 @@
     {
       "index": 14,
       "mimeType": "image/webp",
-      "bytes": 4878,
+      "bytes": 5826,
       "width": 64,
       "height": 512,
       "used": true,
@@ -215,7 +215,7 @@
     {
       "index": 15,
       "mimeType": "image/webp",
-      "bytes": 604,
+      "bytes": 786,
       "width": 64,
       "height": 512,
       "used": true,
@@ -243,7 +243,7 @@
     {
       "index": 17,
       "mimeType": "image/webp",
-      "bytes": 13536,
+      "bytes": 14206,
       "width": 512,
       "height": 512,
       "used": true,
@@ -257,7 +257,7 @@
     {
       "index": 18,
       "mimeType": "image/webp",
-      "bytes": 3246,
+      "bytes": 3654,
       "width": 256,
       "height": 256,
       "used": true,
@@ -285,7 +285,7 @@
     {
       "index": 20,
       "mimeType": "image/webp",
-      "bytes": 62188,
+      "bytes": 70036,
       "width": 512,
       "height": 512,
       "used": true,
@@ -299,7 +299,7 @@
     {
       "index": 21,
       "mimeType": "image/webp",
-      "bytes": 38648,
+      "bytes": 46030,
       "width": 512,
       "height": 512,
       "used": true,
@@ -327,7 +327,7 @@
     {
       "index": 23,
       "mimeType": "image/webp",
-      "bytes": 10260,
+      "bytes": 10704,
       "width": 256,
       "height": 256,
       "used": true,
@@ -355,7 +355,7 @@
     {
       "index": 25,
       "mimeType": "image/webp",
-      "bytes": 25860,
+      "bytes": 26236,
       "width": 256,
       "height": 256,
       "used": true,
@@ -369,7 +369,7 @@
     {
       "index": 26,
       "mimeType": "image/webp",
-      "bytes": 1372,
+      "bytes": 1702,
       "width": 256,
       "height": 256,
       "used": true,
@@ -399,7 +399,7 @@
     {
       "index": 28,
       "mimeType": "image/webp",
-      "bytes": 26536,
+      "bytes": 26940,
       "width": 256,
       "height": 256,
       "used": true,
@@ -413,7 +413,7 @@
     {
       "index": 29,
       "mimeType": "image/webp",
-      "bytes": 95490,
+      "bytes": 99928,
       "width": 512,
       "height": 512,
       "used": true,
@@ -427,7 +427,7 @@
     {
       "index": 30,
       "mimeType": "image/webp",
-      "bytes": 3590,
+      "bytes": 4540,
       "width": 512,
       "height": 512,
       "used": true,
@@ -455,7 +455,7 @@
     {
       "index": 32,
       "mimeType": "image/webp",
-      "bytes": 238862,
+      "bytes": 246048,
       "width": 512,
       "height": 512,
       "used": true,
@@ -469,7 +469,7 @@
     {
       "index": 33,
       "mimeType": "image/webp",
-      "bytes": 21438,
+      "bytes": 25988,
       "width": 512,
       "height": 512,
       "used": true,
@@ -497,7 +497,7 @@
     {
       "index": 35,
       "mimeType": "image/webp",
-      "bytes": 7030,
+      "bytes": 8518,
       "width": 512,
       "height": 256,
       "used": true,
@@ -511,7 +511,7 @@
     {
       "index": 36,
       "mimeType": "image/webp",
-      "bytes": 3372,
+      "bytes": 4226,
       "width": 512,
       "height": 256,
       "used": true,
@@ -539,7 +539,7 @@
     {
       "index": 38,
       "mimeType": "image/webp",
-      "bytes": 63600,
+      "bytes": 66922,
       "width": 512,
       "height": 256,
       "used": true,
@@ -553,7 +553,7 @@
     {
       "index": 39,
       "mimeType": "image/webp",
-      "bytes": 42342,
+      "bytes": 46752,
       "width": 512,
       "height": 256,
       "used": true,
@@ -581,7 +581,7 @@
     {
       "index": 41,
       "mimeType": "image/webp",
-      "bytes": 72308,
+      "bytes": 75720,
       "width": 512,
       "height": 256,
       "used": true,
@@ -595,7 +595,7 @@
     {
       "index": 42,
       "mimeType": "image/webp",
-      "bytes": 31786,
+      "bytes": 36112,
       "width": 512,
       "height": 256,
       "used": true,
@@ -623,7 +623,7 @@
     {
       "index": 44,
       "mimeType": "image/webp",
-      "bytes": 52504,
+      "bytes": 54592,
       "width": 512,
       "height": 512,
       "used": true,
@@ -637,7 +637,7 @@
     {
       "index": 45,
       "mimeType": "image/webp",
-      "bytes": 13450,
+      "bytes": 15664,
       "width": 512,
       "height": 512,
       "used": true,
@@ -665,7 +665,7 @@
     {
       "index": 47,
       "mimeType": "image/webp",
-      "bytes": 10868,
+      "bytes": 12694,
       "width": 256,
       "height": 256,
       "used": true,
@@ -679,7 +679,7 @@
     {
       "index": 48,
       "mimeType": "image/webp",
-      "bytes": 62048,
+      "bytes": 68032,
       "width": 512,
       "height": 512,
       "used": true,
@@ -693,7 +693,7 @@
     {
       "index": 49,
       "mimeType": "image/webp",
-      "bytes": 19754,
+      "bytes": 25728,
       "width": 512,
       "height": 512,
       "used": true,
@@ -721,7 +721,7 @@
     {
       "index": 51,
       "mimeType": "image/webp",
-      "bytes": 33264,
+      "bytes": 40018,
       "width": 512,
       "height": 512,
       "used": true,
@@ -735,7 +735,7 @@
     {
       "index": 52,
       "mimeType": "image/webp",
-      "bytes": 19506,
+      "bytes": 25638,
       "width": 512,
       "height": 512,
       "used": true,
@@ -749,7 +749,7 @@
     {
       "index": 53,
       "mimeType": "image/webp",
-      "bytes": 2218,
+      "bytes": 2666,
       "width": 512,
       "height": 512,
       "used": true,
@@ -777,7 +777,7 @@
     {
       "index": 55,
       "mimeType": "image/webp",
-      "bytes": 57416,
+      "bytes": 64000,
       "width": 512,
       "height": 512,
       "used": true,
@@ -791,7 +791,7 @@
     {
       "index": 56,
       "mimeType": "image/webp",
-      "bytes": 32028,
+      "bytes": 38648,
       "width": 512,
       "height": 512,
       "used": true,
@@ -819,7 +819,7 @@
     {
       "index": 58,
       "mimeType": "image/webp",
-      "bytes": 28234,
+      "bytes": 32636,
       "width": 512,
       "height": 512,
       "used": true,
@@ -833,7 +833,7 @@
     {
       "index": 59,
       "mimeType": "image/webp",
-      "bytes": 16404,
+      "bytes": 20242,
       "width": 512,
       "height": 512,
       "used": true,
@@ -861,7 +861,7 @@
     {
       "index": 61,
       "mimeType": "image/webp",
-      "bytes": 55296,
+      "bytes": 65336,
       "width": 512,
       "height": 512,
       "used": true,
@@ -875,7 +875,7 @@
     {
       "index": 62,
       "mimeType": "image/webp",
-      "bytes": 20968,
+      "bytes": 26758,
       "width": 512,
       "height": 512,
       "used": true,
@@ -903,7 +903,7 @@
     {
       "index": 64,
       "mimeType": "image/webp",
-      "bytes": 65298,
+      "bytes": 72342,
       "width": 512,
       "height": 512,
       "used": true,
@@ -917,7 +917,7 @@
     {
       "index": 65,
       "mimeType": "image/webp",
-      "bytes": 9066,
+      "bytes": 12726,
       "width": 512,
       "height": 512,
       "used": true,
@@ -945,7 +945,7 @@
     {
       "index": 67,
       "mimeType": "image/webp",
-      "bytes": 60836,
+      "bytes": 68558,
       "width": 512,
       "height": 512,
       "used": true,
@@ -959,7 +959,7 @@
     {
       "index": 68,
       "mimeType": "image/webp",
-      "bytes": 27630,
+      "bytes": 33322,
       "width": 512,
       "height": 512,
       "used": true,

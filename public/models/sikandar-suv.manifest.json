@@ -1,7 +1,7 @@
 {
   "id": "sikandar-suv",
   "kind": "car",
-  "generatedAt": "2026-10-15T08:50:52.820Z",
+  "generatedAt": "2026-10-15T08:57:31.080Z",
   "credits": {
     "inGameName": "Sikandar SUV",
     "title": "2022 Mahindra Scorpio-N",
@@ -33,14 +33,17 @@
   },
   "output": {
     "file": "public/models/sikandar-suv.glb",
-    "bytes": 3049520,
-    "triangles": 188775,
-    "attempts": 4,
-    "textureSizePx": 768,
-    "textureQuality": 64,
+    "bytes": 1707424,
+    "triangles": 95246,
+    "attempts": 1,
+    "textureSizePx": 2048,
+    "textureQuality": 80,
     "textureBytesBefore": 5210357,
-    "textureBytesAfter": 485434,
-    "textureMemoryMB": 23.8
+    "textureBytesAfter": 899514,
+    "textureMemoryMB": 30.8,
+    "triangleBudget": 100000,
+    "overBudget": false,
+    "sizeBudgetBytes": 8388608
   },
   "transform": {
     "yawRadians": 0,
@@ -187,25 +190,20 @@
     "interiorSkipped": "glass is transparent",
     "flatDecalRemoved": [
       "movsteer_1.0_movsteer_1.0.3_0 (0.036x0.014x0.005)",
-      "scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.009)",
-      "scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.426x0.105x0.004)",
-      "headlight_led_right front light_0 (0.059x0.054x0.015)",
-      "taillight_r_taillight_r.7_0 (0.041x0.001x0.023)",
+      "scorpio_n_ext_chassis_scorpio_n_ext_chassis.3_0 (0.003x0.004x0.008)",
+      "scorpio_n_ext_1_scorpio_n_ext_1.2_0 (0.424x0.105x0.003)",
+      "headlight_led_right front light_0 (0.047x0.054x0.015)",
+      "taillight_r_taillight_r.7_0 (0.041x0.006x0.035)",
       "scorpio_n_int_sidewall_headlight_f.2_0 (0.005x0.142x0.308)",
       "scorpio_n_int_roof_scorpio_n_int_roof.4_0 (0.223x0.066x0.002)",
-      "roof_lights_right front light_0 (0.160x0.016x0.060)",
+      "roof_lights_right front light_0 (0.157x0.016x0.060)",
       "scorpio_n_int_console_movsteer_1.0.3_0 (0.009x0.001x0.009)",
-      "scorpio_n_int_console_scorpio_n_int_seats-stiches.0_0 (0.010x0.019x0.017)",
-      "int_door_lf_movsteer_1.0.3_0 (0.000x0.000x0.003)",
-      "int_door_rf_movsteer_1.0.3_0 (0.009x0.001x0.061)",
+      "int_door_rf_movsteer_1.0.3_0 (0.009x0.001x0.010)",
       "indicator_rm_indicator rm_0 (0.108x0.017x0.126)",
       "int_door_rr_movsteer_1.0.3_0 (0.008x0.001x0.007)",
-      "int_door_lr_movsteer_1.0.3_0 (0.000x0.000x0.003)",
-      "boot_scorpio_n_ext_1.2_0 (0.471x0.112x0.010)",
-      "boot_boot.5_0 (0.482x0.006x0.057)",
-      "breaklight_ml_breaklight r_0 (0.313x0.012x0.005)",
-      "breaklight_mesh_headlight_f.2_0 (0.400x0.025x0.017)",
-      "breaklight_mesh_taillight_r.5_0 (0.370x0.019x0.018)"
+      "boot_scorpio_n_ext_1.2_0 (0.467x0.112x0.010)",
+      "boot_boot.5_0 (0.466x0.011x0.055)",
+      "breaklight_mesh_headlight_f.2_0 (0.400x0.025x0.011)"
     ]
   },
   "materials": [
@@ -230,8 +228,8 @@
       "doubleSided": true,
       "emissive": false,
       "baseColor": [
-        0.175,
-        0.223,
+        0.168,
+        0.227,
         0.258,
         1
       ],
@@ -432,6 +430,19 @@
       ]
     },
     {
+      "name": "glass.002",
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "emissive": false,
+      "baseColor": [
+        0.8,
+        0.8,
+        0.8,
+        0.047
+      ],
+      "textures": []
+    },
+    {
       "name": "glass.003",
       "alphaMode": "BLEND",
       "doubleSided": true,
@@ -532,9 +543,9 @@
     }
   ],
   "stats": {
-    "nodes": 227,
-    "meshes": 146,
-    "materials": 23,
+    "nodes": 234,
+    "meshes": 150,
+    "materials": 24,
     "textures": 10
   }
 }
