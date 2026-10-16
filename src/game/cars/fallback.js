@@ -144,6 +144,7 @@ export function createFallbackCarVisual({ preset, paint, quality } = {}) {
   return {
     group,
     root: group,
+    preset,
     wheels,
     complete: true,
     problems: [],

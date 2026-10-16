@@ -84,14 +84,20 @@ Every shipped model was processed by `gltf-transform` in CI:
 | --- | --- | --- | --- |
 | Asphalt PBR (diffuse / normal / AO-roughness-metalness, 2K) | `public/textures/asphalt_{diffuse,normal,arm}_2k.jpg`, `public/textures/asphalt.index.json` | Poly Haven, slug `asphalt_02` — <https://polyhaven.com/a/asphalt_02> (fetched from `dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_02/`) | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) |
 | Outdoor HDRI (4K desktop, 1K mobile) | fetched at runtime, `VITE_HDRI_URL_4K` / `VITE_HDRI_URL_1K` | Poly Haven `kloppenheim_06_puresky` (4K/1K) with a `lot_01_2k` fallback — see `HDRI_URLS` in `scripts/assets/config.mjs` and `src/game/environment.js` | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) |
-| Engine loops — V10 bed for the Aurora, diesel rumble for the Sikandar | `public/audio/aurora-v10-{low,high}.wav`, `public/audio/sikandar-diesel-{low,high}.wav`, `public/audio/engine.index.json` | **Original work**, synthesised from scratch by `scripts/assets/build-audio.mjs` (additive harmonics at the firing frequency plus shaped noise), dedicated to the public domain | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Engine loop beds — V12 for the Aurora, turbo-diesel for the Sikandar | `public/audio/aurora-v12-{low,mid,high}.wav`, `public/audio/sikandar-diesel-{low,mid,high}.wav`, `public/audio/engine.index.json` | **Original work**, synthesised from scratch by `scripts/assets/build-audio.mjs` (per-cylinder firing pulses summed over one 720° cycle, driven through exhaust resonators, plus induction and turbo noise), dedicated to the public domain | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) |
 | Tyre scrub, skid and dust noise | synthesised at runtime (WebAudio buffers in `src/game/audio.js`, particles in `src/game/effects.js`) | Original work | Project-owned |
 
 Each loop spans a whole number of firing cycles at its reference RPM, so it stays seamless when
 pitched by `playbackRate = rpm / referenceRpm`; `engine.index.json` records the reference RPM,
-firing frequency and loop length per layer. No third-party audio recordings ship with the game. The
-HDRI is a runtime download (with a generated canvas-sky fallback), so it is CC0 media loaded by the
-app rather than a file in this repository.
+firing frequency and loop length per layer, plus the engine spec the runtime synth needs
+(cylinders, firing order, exhaust resonances, idle and redline). No third-party audio recordings
+ship with the game. The HDRI is a runtime download (with a generated canvas-sky fallback), so it is
+CC0 media loaded by the app rather than a file in this repository.
+
+The beds are only part of the engine note: `src/game/audio.js` synthesises the live per-cylinder
+pulse train, exhaust resonance and overrun/gear-shift behaviour at runtime from that same spec, so
+the loops and the synth always describe the same engine. The Aurora's profile id is `aurora-v12`
+(it was `aurora-v10` in M2/M2.5, when the car was described as a "V10-style" engine).
 
 ## Restrictions
 

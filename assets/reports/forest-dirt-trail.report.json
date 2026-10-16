@@ -2,7 +2,7 @@
   "id": "forest-dirt-trail",
   "source": "assets/raw/forest-dirt-road.glb",
   "kind": "track",
-  "generatedAt": "2026-10-15T15:50:58.175Z",
+  "generatedAt": "2026-10-16T06:18:09.542Z",
   "stats": {
     "nodes": 56,
     "meshes": 27,
@@ -36,13 +36,13 @@
   "materials": [
     {
       "name": "Background_Tree_Atlas",
-      "class": "terrain",
+      "class": "vegetation",
       "triangles": 93803,
       "primitives": 2,
       "skipped": false,
       "detail": {
         "name": "Background_Tree_Atlas",
-        "class": "terrain",
+        "class": "vegetation",
         "alphaMode": "BLEND",
         "doubleSided": true,
         "emissive": [
@@ -60,13 +60,13 @@
     },
     {
       "name": "Trunk_Oak",
-      "class": "terrain",
+      "class": "trunk",
       "triangles": 70153,
       "primitives": 1,
       "skipped": false,
       "detail": {
         "name": "Trunk_Oak",
-        "class": "terrain",
+        "class": "trunk",
         "alphaMode": "OPAQUE",
         "doubleSided": true,
         "emissive": [
@@ -84,13 +84,13 @@
     },
     {
       "name": "Grass_Vegetation_Green",
-      "class": "terrain",
+      "class": "vegetation",
       "triangles": 26126,
       "primitives": 1,
       "skipped": false,
       "detail": {
         "name": "Grass_Vegetation_Green",
-        "class": "terrain",
+        "class": "vegetation",
         "alphaMode": "BLEND",
         "doubleSided": true,
         "emissive": [
@@ -132,13 +132,13 @@
     },
     {
       "name": "Grass_Vegetation_Dry",
-      "class": "terrain",
+      "class": "vegetation",
       "triangles": 16726,
       "primitives": 1,
       "skipped": false,
       "detail": {
         "name": "Grass_Vegetation_Dry",
-        "class": "terrain",
+        "class": "vegetation",
         "alphaMode": "BLEND",
         "doubleSided": true,
         "emissive": [
@@ -156,13 +156,13 @@
     },
     {
       "name": "Trunk_Birch",
-      "class": "terrain",
+      "class": "trunk",
       "triangles": 12921,
       "primitives": 1,
       "skipped": false,
       "detail": {
         "name": "Trunk_Birch",
-        "class": "terrain",
+        "class": "trunk",
         "alphaMode": "OPAQUE",
         "doubleSided": true,
         "emissive": [
@@ -180,13 +180,13 @@
     },
     {
       "name": "Fallen_Maple_Leaves",
-      "class": "terrain",
+      "class": "vegetation",
       "triangles": 11505,
       "primitives": 1,
       "skipped": false,
       "detail": {
         "name": "Fallen_Maple_Leaves",
-        "class": "terrain",
+        "class": "vegetation",
         "alphaMode": "BLEND",
         "doubleSided": true,
         "emissive": [
@@ -204,13 +204,13 @@
     },
     {
       "name": "Aerial_Grass",
-      "class": "terrain",
+      "class": "vegetation",
       "triangles": 10729,
       "primitives": 1,
       "skipped": false,
       "detail": {
         "name": "Aerial_Grass",
-        "class": "terrain",
+        "class": "vegetation",
         "alphaMode": "OPAQUE",
         "doubleSided": true,
         "emissive": [
@@ -276,13 +276,13 @@
     },
     {
       "name": "Forest_Bush",
-      "class": "terrain",
+      "class": "vegetation",
       "triangles": 8570,
       "primitives": 1,
       "skipped": false,
       "detail": {
         "name": "Forest_Bush",
-        "class": "terrain",
+        "class": "vegetation",
         "alphaMode": "BLEND",
         "doubleSided": true,
         "emissive": [
@@ -324,13 +324,13 @@
     },
     {
       "name": "Fallen_Generic_Leaves",
-      "class": "terrain",
+      "class": "vegetation",
       "triangles": 7649,
       "primitives": 1,
       "skipped": false,
       "detail": {
         "name": "Fallen_Generic_Leaves",
-        "class": "terrain",
+        "class": "vegetation",
         "alphaMode": "BLEND",
         "doubleSided": true,
         "emissive": [
@@ -348,13 +348,13 @@
     },
     {
       "name": "Grass_Close",
-      "class": "terrain",
+      "class": "vegetation",
       "triangles": 7328,
       "primitives": 1,
       "skipped": false,
       "detail": {
         "name": "Grass_Close",
-        "class": "terrain",
+        "class": "vegetation",
         "alphaMode": "OPAQUE",
         "doubleSided": true,
         "emissive": [
@@ -492,13 +492,13 @@
     },
     {
       "name": "Terrain_Far",
-      "class": "terrain",
+      "class": "backdrop",
       "triangles": 2644,
       "primitives": 1,
       "skipped": false,
       "detail": {
         "name": "Terrain_Far",
-        "class": "terrain",
+        "class": "backdrop",
         "alphaMode": "OPAQUE",
         "doubleSided": true,
         "emissive": [
@@ -564,13 +564,13 @@
     },
     {
       "name": "Wood_Log",
-      "class": "terrain",
+      "class": "prop",
       "triangles": 882,
       "primitives": 1,
       "skipped": false,
       "detail": {
         "name": "Wood_Log",
-        "class": "terrain",
+        "class": "prop",
         "alphaMode": "OPAQUE",
         "doubleSided": true,
         "emissive": [
@@ -588,13 +588,13 @@
     },
     {
       "name": "Wood_Fence",
-      "class": "terrain",
+      "class": "prop",
       "triangles": 668,
       "primitives": 1,
-      "skipped": false,
+      "skipped": true,
       "detail": {
         "name": "Wood_Fence",
-        "class": "terrain",
+        "class": "prop",
         "alphaMode": "OPAQUE",
         "doubleSided": true,
         "emissive": [
@@ -636,13 +636,13 @@
     },
     {
       "name": "Metal_Fence",
-      "class": "trim",
+      "class": "prop",
       "triangles": 82,
       "primitives": 1,
-      "skipped": false,
+      "skipped": true,
       "detail": {
         "name": "Metal_Fence",
-        "class": "trim",
+        "class": "prop",
         "alphaMode": "BLEND",
         "doubleSided": true,
         "emissive": [

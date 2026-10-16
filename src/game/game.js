@@ -12,7 +12,7 @@ import { createTyreEffects } from './effects.js';
 import { createEnvironment } from './environment.js';
 import { fogColorForPath } from './fog.js';
 import { engineLoad, shift } from './drivetrain.js';
-import { createVehiclePhysics, FIXED_TIME_STEP, getVehicleTelemetry, resetVehicle, resolveVehicleConfig, stepVehicle } from './physics.js';
+import { createVehiclePhysics, FIXED_TIME_STEP, getVehicleTelemetry, resetControlState, resetVehicle, resolveVehicleConfig, setDriftMode, setSelector, stepVehicle } from './physics.js';
 import { createSceneGraphics } from './scene-graphics.js';
 import { createTestCircuitTrack } from './tracks/test-circuit.js';
 
@@ -140,7 +140,14 @@ export function createGame({
     const tint = TRACK_TINT[fogTrackId] ?? TRACK_TINT['test-circuit-01'];
     const color = new THREE.Color(tint.fog);
     if (horizon) {
-      const [r, g, b] = fogColorForPath(horizon, { postprocessing: quality.postprocessing, exposure: renderer.toneMappingExposure });
+      // `horizon` is the trimmed, sun-rejecting estimate from fog.js; the cap is
+      // per track because an open circuit should haze towards light sky while
+      // the forest must never go milky (see TRACK_TINT).
+      const [r, g, b] = fogColorForPath(horizon, {
+        postprocessing: quality.postprocessing,
+        exposure: renderer.toneMappingExposure,
+        cap: tint.fogCap,
+      });
       color.setRGB(r, g, b, THREE.LinearSRGBColorSpace);
     }
     scene.fog = tint.fogDensity
@@ -153,6 +160,9 @@ export function createGame({
     tier: quality,
     trackId: initialTrackId,
     hdriUrls: HDRI_URLS,
+    // The HDRI is the largest asset on the desktop path; it waits until the
+    // selected car is on screen (see init()) instead of racing it for bandwidth.
+    defer: true,
     onStatus: (status) => onStatus({ environment: status }),
     onHorizon: (radiance) => {
       horizon = radiance;
@@ -258,7 +268,12 @@ export function createGame({
 
   async function selectTrack(trackId) {
     onStatus({ track: trackId, state: 'loading' });
-    if (trackId === 'forest-dirt-trail' && !tracks.has('forest-dirt-trail')) {
+    // Forest Dirt Trail and Forest Free Roam are the same 15 MB scene with the
+    // same collider — only the rules differ (corridor soft walls vs. the whole
+    // map with a soft outer edge), so they share one download and one
+    // heightfield (see tracks/forest-trail.js).
+    const forestModes = { 'forest-dirt-trail': 'trail', 'forest-free-roam': 'free-roam' };
+    if (forestModes[trackId] && !tracks.has(trackId)) {
       try {
         const { createForestDirtTrail } = await import('./tracks/forest-trail.js');
         const forest = await createForestDirtTrail({
@@ -266,8 +281,9 @@ export function createGame({
           physics,
           quality,
           onStatus: (status) => onStatus({ track: trackId, ...status }),
+          mode: forestModes[trackId],
         });
-        tracks.set('forest-dirt-trail', forest);
+        tracks.set(trackId, forest);
         onStatus({ track: trackId, state: 'ready', stats: forest.stats });
       } catch (error) {
         onStatus({ track: trackId, state: 'error', reason: error?.message ?? String(error) });
@@ -306,6 +322,10 @@ export function createGame({
 
   // --- driving state --------------------------------------------------------
   const input = { throttle: 0, brake: 0, steer: 0, handbrake: false, horn: false };
+  /** Transmission gate, P/R/N/D. Latched in the physics control state. */
+  let selector = 'D';
+  /** Drift mode (T key / DRIFT button): a loose rear axle until switched off. */
+  let driftMode = false;
   let gear = 1;
   let rpm = 900;
   let load = 0;
@@ -325,11 +345,13 @@ export function createGame({
 
   function reset() {
     const spawn = spawnFor(activeTrack);
-    resetVehicle(physics, spawn);
+    // A reset returns the car to the start line, not the gearbox to its default:
+    // the driver's P/R/N/D choice and drift toggle survive it.
+    resetVehicle(physics, { ...spawn, selector });
     accumulator = 0;
     slipEstimate = 0;
-    gear = 1;
-    rpm = physics.config ? 900 : 900;
+    gear = selector === 'D' ? 1 : selector === 'R' ? -1 : 0;
+    rpm = gearbox.idleRpm;
     effects.reset();
     syncVisuals(0);
     cameras.snap();
@@ -375,6 +397,11 @@ export function createGame({
 
   function updateCamera(deltaTime, speedKmh) {
     const body = physics.chassisBody;
+    // The dark cabin shell exists for the cockpit camera only (see
+    // cars/cockpit-rig.js): showing it from outside would put a black box where
+    // the canopy glass is.
+    const cockpitView = cameras.mode === 'cockpit';
+    if (rig?.cockpit?.setInteriorVisible) rig.cockpit.setInteriorVisible(cockpitView);
     cameras.update({
       deltaTime,
       // Frame the visible car (GLB rigs sit lower than the chassis centre).
@@ -461,10 +488,19 @@ export function createGame({
 
     const telemetry = getVehicleTelemetry(physics);
     gearbox.wheelRadius = physics.config.wheelRadius;
-    const shiftState = shift({ speedKmh: telemetry.signedSpeedKmh, gear, throttle: input.throttle, gearbox });
+    // The drivetrain follows the P/R/N/D gate: in D the automatic can never
+    // select reverse, so `S` in D only ever brakes.
+    const shiftState = shift({
+      speedKmh: telemetry.signedSpeedKmh,
+      gear,
+      throttle: input.throttle,
+      gearbox,
+      selector,
+    });
     gear = shiftState.gear;
     rpm = shiftState.rpm;
-    load = engineLoad({ rpm, throttle: input.throttle, gearbox });
+    load = engineLoad({ rpm, throttle: input.throttle, gearbox, selector });
+    const control = physics.control;
 
     const slip = estimateSlip();
     effects.update({
@@ -479,10 +515,20 @@ export function createGame({
 
     syncVisuals(deltaTime);
     rig?.openables?.update(deltaTime, telemetry.speedKmh);
-    lights.update({ braking: input.brake > 0.05 && telemetry.signedSpeedKmh > 1.4 });
+    lights.update({ braking: input.brake > 0.05 && Math.abs(telemetry.signedSpeedKmh) > 1.4 });
     updateCamera(deltaTime, telemetry.speedKmh);
     audio.setHorn(input.horn);
-    audio.update({ rpm, load, speedKmh: telemetry.speedKmh, slip, muted });
+    // The smoothed actuator values (not the raw keys) drive the engine note, so
+    // the audio follows the same throttle ramp and gear dips as the physics.
+    audio.update({
+      rpm,
+      load,
+      throttle: control?.throttle ?? input.throttle,
+      speedKmh: telemetry.speedKmh,
+      slip,
+      gear: selector === 'D' || selector === 'R' ? gear : 0,
+      muted,
+    });
     graphics.render(deltaTime);
 
     telemetryTime += deltaTime;
@@ -492,6 +538,13 @@ export function createGame({
         gear,
         rpm,
         load,
+        selector,
+        driftMode,
+        abs: Boolean(control?.absActive),
+        tilt: control?.tilt ?? 0,
+        flipped: Boolean(control?.flipped),
+        throttle: control?.throttle ?? input.throttle,
+        brakePressure: control?.brake ?? input.brake,
         onTrack,
         surface: activeTrack?.surface?.id ?? 'asphalt',
         carId: carPreset.id,
@@ -527,16 +580,61 @@ export function createGame({
       return rigIsFallback;
     },
     get telemetry() {
-      return { ...getVehicleTelemetry(physics), gear, rpm, load, onTrack, slip: slipEstimate };
+      return {
+        ...getVehicleTelemetry(physics),
+        gear,
+        rpm,
+        load,
+        selector,
+        driftMode,
+        abs: Boolean(physics.control?.absActive),
+        onTrack,
+        slip: slipEstimate,
+      };
+    },
+    /** 1–4 / P / N keys, or the on-screen gate. Returns the accepted position. */
+    setSelector(next) {
+      const accepted = setSelector(physics, next);
+      if (!accepted) return selector;
+      selector = accepted;
+      gear = selector === 'D' ? Math.max(1, gear) : selector === 'R' ? -1 : 0;
+      onStatus({ selector, state: 'gear' });
+      return selector;
+    },
+    get selector() {
+      return selector;
+    },
+    /** T key / DRIFT button: toggles the loose-rear setup. */
+    toggleDriftMode() {
+      driftMode = !driftMode;
+      setDriftMode(physics, driftMode);
+      onStatus({ driftMode, state: 'drift' });
+      return driftMode;
+    },
+    setDriftMode(enabled) {
+      driftMode = Boolean(enabled);
+      setDriftMode(physics, driftMode);
+      return driftMode;
+    },
+    get driftMode() {
+      return driftMode;
     },
     cars: CAR_PRESETS,
     async init() {
+      // Load order (M2.6): the **selected car first**, then the track, then the
+      // sky. It used to be track → car, with the HDRI requested at construction
+      // time — three large downloads racing, and on desktop the 2K/4K sky won,
+      // so the car the player picked was the last thing to arrive. The sky is
+      // deferred to `environment.start()` and the scene stays lit by the
+      // generated fallback until it lands.
+      const carTask = loadRigFor(carPreset);
       try {
         await selectTrack(initialTrackId);
       } catch (error) {
         onStatus({ track: initialTrackId, state: 'error', reason: error?.message ?? String(error) });
       }
-      loadRigFor(carPreset);
+      await carTask.catch(() => null);
+      environment.start();
       onReady({ quality, car: carPreset.id, track: activeTrackId });
       animationFrame = window.requestAnimationFrame(frame);
       return api;
@@ -557,7 +655,11 @@ export function createGame({
       const resolved = resolveVehicleConfig(next.physics);
       physics.config = resolved;
       physics.preset = next.physics;
+      // Fresh actuators for the new car's mass and forces, keeping the driver's
+      // gate and drift choice (both are driver state, not car state).
+      resetControlState(physics, { selector, driftMode });
       gearbox = gearboxFor(next.id);
+      gear = selector === 'D' ? 1 : selector === 'R' ? -1 : 0;
       physics.chassisBody.mass = resolved.mass;
       physics.chassisBody.updateMassProperties();
       for (const wheel of physics.vehicle.wheelInfos) {

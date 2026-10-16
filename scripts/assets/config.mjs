@@ -60,7 +60,17 @@ export const ASSET_TARGETS = {
     maxBytes: 8 * 1024 * 1024,
     maxTriangles: 100_000,
     textureSize: 2048,
-    textureQuality: 80,
+    // M2.6: raised from 80 on the assumption that the SUV's maps were being
+    // down-encoded while it sat at 1.5 MB of a 9 MB texture budget. The CI run
+    // for this change (Asset pipeline #38798486879) disproved the assumption:
+    // every texture this car ships is already a WebP at <= 1024 px (see
+    // assets/reports/sikandar-suv.textures.json), so a re-encode at any quality
+    // comes out *larger* than the source and compressTextures keeps the original
+    // bytes. public/models/sikandar-suv.glb was byte-identical after the run and
+    // the material audit moved by <= 0.01 mean delta - q85 is a no-op here, and
+    // sharper SUV textures would need a higher-resolution source, not this knob.
+    // Kept at 85 because it is the intended quality if that source ever lands.
+    textureQuality: 85,
     baseColorQuality: 92,
     maxTextureBytes: 9 * 1024 * 1024,
     maxTextureMemoryMB: 128,

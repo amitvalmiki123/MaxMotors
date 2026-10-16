@@ -1,7 +1,7 @@
 {
   "id": "sikandar-suv",
   "kind": "car",
-  "generatedAt": "2026-10-15T15:51:08.194Z",
+  "generatedAt": "2026-10-16T06:18:19.194Z",
   "cockpit": {
     "source": "steering-node",
     "driverSide": "right",
@@ -123,7 +123,7 @@
     "triangles": 95510,
     "attempts": 1,
     "textureSizePx": 2048,
-    "textureQuality": 80,
+    "textureQuality": 85,
     "textureBytesBefore": 5210357,
     "textureBytesAfter": 1472382,
     "textureMemoryMB": 30.8,

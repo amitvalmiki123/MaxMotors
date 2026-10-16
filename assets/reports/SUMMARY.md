@@ -1,6 +1,6 @@
 # Source asset inspection
 
-Generated 2026-10-15T15:50:58.396Z
+Generated 2026-10-16T06:18:09.648Z
 
 ## sikandar-suv
 
@@ -33,5 +33,5 @@ Generated 2026-10-15T15:50:58.396Z
 - bounds: 551.19 x 111.23 x 547.97 @ min -203.278, 96.239, -348.129 (long axis x)
 - wheels: none detected
 - terrain grid: 276x274 @ 2.00 m, road half-width 11.902 m, coverage 1.77%, 82 centreline points
-- materials: Background_Tree_Atlas[terrain,blend], Trunk_Oak[terrain], Grass_Vegetation_Green[terrain,blend], Rock_Decal[terrain,blend], Grass_Vegetation_Dry[terrain,blend], Trunk_Birch[terrain], Fallen_Maple_Leaves[terrain,blend], Aerial_Grass[terrain], Sloped_Rock[terrain], Dirt_Road[terrain,blend], Forest_Bush[terrain,blend], Tall_Cliff[terrain]
+- materials: Background_Tree_Atlas[vegetation,blend], Trunk_Oak[trunk], Grass_Vegetation_Green[vegetation,blend], Rock_Decal[terrain,blend], Grass_Vegetation_Dry[vegetation,blend], Trunk_Birch[trunk], Fallen_Maple_Leaves[vegetation,blend], Aerial_Grass[vegetation], Sloped_Rock[terrain], Dirt_Road[terrain,blend], Forest_Bush[vegetation,blend], Tall_Cliff[terrain]
 

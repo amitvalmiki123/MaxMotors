@@ -2,6 +2,12 @@ import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
 import { loadGLTF } from '../cars/loader.js';
 import { SURFACES } from '../surfaces.js';
+import {
+  createHeightSampler,
+  decodeHeights,
+  filterHeightOutliers,
+  heightfieldMatrix,
+} from './terrain-grid.js';
 
 /**
  * Forest Dirt Trail — the CC BY 4.0 "Dirt Road Through Forest" scene (99.Miles)
@@ -14,50 +20,106 @@ import { SURFACES } from '../surfaces.js';
  * becomes a cannon-es Heightfield, so the car drives on the real ground shape,
  * and a traced dirt-road centreline that defines the track bounds and the soft
  * walls that nudge the car back onto the trail.
+ *
+ * M2.6 reworks the ground, because the baked grid was measured from *every*
+ * material the scene happened to call terrain — which, in a forest, included the
+ * 105 m canopy, the 70k-triangle trunk atlas and standing grass cards. Taking
+ * the lowest hit per cell turned that into a surface of spikes and holes: the
+ * shipped payload measured 224 spikes and 223 holes (plus a 7×7 corner of cells
+ * the bake never reached, written as a bare 0 and read back as a 96 m pit). The
+ * car was being thrown around the trail by its own collision mesh.
+ *
+ * Two layers now fix that, because the shipped payload cannot be re-baked in the
+ * browser:
+ *   - the pipeline rebuilds the grid from ground materials only and filters it
+ *     before writing (scripts/assets/terrain.mjs);
+ *   - the runtime applies the *same* filter (tracks/terrain-grid.js, shared) to
+ *     whatever payload it is given, and slope-limits the seam where the source's
+ *     far-terrain sheet crosses the near grid.
+ *
+ * It also adds tree-trunk colliders, so hitting a tree stops the car instead of
+ * letting it drive through the forest, and a **Free Roam** mode: the same scene
+ * and the same collider, but the corridor soft-walls are replaced by a soft
+ * outer edge at the heightfield boundary and the whole map is in play.
  */
 
 const TRACK_ID = 'forest-dirt-trail';
+const FREE_ROAM_ID = 'forest-free-roam';
 const MODEL_URL = '/tracks/forest-dirt-trail.glb';
 const TERRAIN_URL = '/tracks/forest-dirt-trail.terrain.json';
 const DEFAULT_MANIFEST_URL = '/tracks/forest-dirt-trail.manifest.json';
 
-/** Corridor half-width used for the soft walls (clamped: the real road is wide). */
-const MAX_CORRIDOR_HALF_WIDTH = 9.5;
-const MIN_CORRIDOR_HALF_WIDTH = 4.5;
-const WALL_MARGIN = 2.5;
+/**
+ * Corridor half-width used for the soft walls.
+ *
+ * M2.6 widened it: the traced road is ~12 m to the half-width and the M2 clamp
+ * of 9.5 m put the soft walls inside the visible verges, so the trail felt like
+ * a slot. The clamp now sits above the measured value and only guards against a
+ * bad bake.
+ */
+const MAX_CORRIDOR_HALF_WIDTH = 13.5;
+const MIN_CORRIDOR_HALF_WIDTH = 6;
+/**
+ * Ceiling on trunk colliders, so a future source that ships tens of thousands of
+ * trunk samples cannot flood the broadphase. It is a ceiling, not a target: the
+ * baked forest payload has 1333 trunks, 1292 of them clear of the road, and all
+ * of them are used. Measured on that real payload (600 steps + 2400 wheel rays),
+ * going from the old 700-trunk cap to all 1292 - 67 to 134 tile bodies, 700 to
+ * 1292 cylinders - costs +1.3% per step, and tree collision then reaches 148 m
+ * off the trail instead of 60 m. Free Roam is the whole map, so the trees have to
+ * be solid across it, not just in a band beside the road.
+ */
+export const MAX_TRUNK_COLLIDERS = 2000;
 
-export function decodeHeights(encoded, expectedLength) {
-  const binary = atob(encoded);
-  const bytes = new Uint8Array(binary.length);
-  for (let index = 0; index < binary.length; index += 1) bytes[index] = binary.charCodeAt(index);
-  const view = new Int16Array(bytes.buffer, bytes.byteOffset, Math.min(expectedLength, bytes.length / 2));
-  const heights = new Float32Array(expectedLength);
-  for (let index = 0; index < heights.length; index += 1) heights[index] = (view[index] ?? 0) / 100;
-  return heights;
+/** Free Roam keeps this much of the heightfield edge as a soft margin. */
+const FREE_ROAM_EDGE_MARGIN = 14;
+
+export { decodeHeights };
+
+/**
+ * Decodes and cleans the shipped height grid.
+ *
+ * Memoized per terrain payload: the grid is 72k cells and both the heightfield
+ * body and the sampler need it, so it must not be filtered twice.
+ *
+ * @returns {{heights: Float32Array, raw: Float32Array, spikes: number, holes: number,
+ *            sentinelCells: number, steepCells: number}}
+ */
+const cleanedCache = new WeakMap();
+export function resolveTerrainHeights(terrain) {
+  if (cleanedCache.has(terrain)) return cleanedCache.get(terrain);
+  const count = terrain.cols * terrain.rows;
+  const raw = typeof terrain.heights === 'string'
+    ? decodeHeights(terrain.heights, count)
+    : Float32Array.from(terrain.heights ?? new Float32Array(count));
+  // `sentinel`: the old serializer wrote unreachable cells as a bare 0, which
+  // after the height offset becomes exactly `heightOffset` — a real-looking
+  // number 96 m below the terrain. Treat it as "no data" and fill it in.
+  const cleaned = filterHeightOutliers(raw, terrain.cols, terrain.rows, {
+    sentinel: terrain.heightOffset ?? null,
+  });
+  const entry = {
+    raw,
+    heights: cleaned.values,
+    spikes: cleaned.spikes,
+    holes: cleaned.holes,
+    sentinelCells: cleaned.sentinelCells,
+    steepCells: cleaned.steepCells,
+  };
+  cleanedCache.set(terrain, entry);
+  return entry;
 }
 
 export function buildHeightfieldBody(terrain, material) {
   const { cols, rows, cellSize, origin, heightOffset } = terrain;
-  // `terrain.heights` is the base64 payload from the JSON. It used to be indexed
-  // as-is, which filled the heightfield with single characters ('A', '/', …):
-  // every raycast missed and the wheels never touched the trail.
-  const heights = typeof terrain.heights === 'string'
-    ? decodeHeights(terrain.heights, cols * rows)
-    : terrain.heights;
+  // `terrain.heights` is the base64 payload from the JSON, decoded and cleaned by
+  // resolveTerrainHeights: it used to be indexed as-is, which filled the
+  // heightfield with single characters ('A', '/', …) so every raycast missed.
+  const { heights } = resolveTerrainHeights(terrain);
   // cannon's Heightfield lives in the local X/Y plane with heights along +Z, and
   // data[i][j] maps to (x = i, y = j). Rotating the body -90° about X turns local
   // +Z into world +Y and local +Y into world -Z, so rows are flipped here.
-  const matrix = [];
-  for (let i = 0; i < cols; i += 1) {
-    const column = new Array(rows);
-    for (let j = 0; j < rows; j += 1) {
-      const zIndex = rows - 1 - j;
-      column[j] = heights[zIndex * cols + i];
-    }
-    matrix.push(column);
-  }
-
-  const shape = new CANNON.Heightfield(matrix, { elementSize: cellSize });
+  const shape = new CANNON.Heightfield(heightfieldMatrix(heights, cols, rows), { elementSize: cellSize });
   const body = new CANNON.Body({ mass: 0, material });
   body.addShape(shape);
   // The pipeline bakes `heightOffset` into every stored height (and the road
@@ -150,62 +212,314 @@ export function pickSpawnIndex(points, heightAt, { lookAhead = 6, maxRoughness =
   return scores.reduce((best, entry, index) => (entry.roughness < scores[best].roughness ? index : best), 0);
 }
 
-export async function createForestDirtTrail({ scene, physics, quality, onStatus = () => {}, manifestUrl = DEFAULT_MANIFEST_URL }) {
-  const group = new THREE.Group();
-  group.name = `track:${TRACK_ID}`;
-  group.visible = false;
-  scene.add(group);
+const TRUNK_MATERIAL = /trunk/i;
 
-  const [gltf, terrain, manifest] = await Promise.all([
-    loadGLTF(MODEL_URL),
-    fetch(TERRAIN_URL).then((response) => {
-      if (!response.ok) throw new Error(`${TERRAIN_URL} -> HTTP ${response.status}`);
-      return response.json();
-    }),
-    fetch(manifestUrl).then((response) => (response.ok ? response.json() : null)).catch(() => null),
-  ]);
+/**
+ * Recovers the trees from the loaded scene.
+ *
+ * The trunk atlas ships as one merged primitive per species covering every trunk
+ * in the forest, so trunks are found by clustering their vertices on a coarse XZ
+ * grid: a cluster that is tall and narrow is a trunk, one that is wide or short
+ * is a branch fan, a root flare or a bush. Vertices are sampled with a stride so
+ * a 70k-triangle atlas costs a few milliseconds rather than a hitch.
+ *
+ * Used only when the pipeline has not baked `terrain.trunks` into the payload —
+ * the baked list is preferred because it is measured from the unsimplified
+ * source geometry.
+ *
+ * @returns {Array<{x: number, z: number, radius: number, baseY: number, topY: number}>}
+ */
+export function deriveTrunks(model, heightAt, {
+  cellSize = 2.4,
+  minHeight = 3.2,
+  minRadius = 0.16,
+  maxRadius = 1.6,
+  maxLean = 0.6,
+  maxVerticesPerMesh = 6000,
+} = {}) {
+  model.updateMatrixWorld(true);
+  const buckets = new Map();
+  const point = new THREE.Vector3();
+  const instance = new THREE.Matrix4();
+  const up = new THREE.Vector3();
 
-  onStatus({
-    track: TRACK_ID,
-    credits: manifest?.credits ?? null,
-  });
+  const addPoint = (x, y, z) => {
+    const key = `${Math.floor(x / cellSize)}:${Math.floor(z / cellSize)}`;
+    let bucket = buckets.get(key);
+    if (!bucket) {
+      bucket = { count: 0, sumX: 0, sumZ: 0, minX: Infinity, maxX: -Infinity, minZ: Infinity, maxZ: -Infinity, minY: Infinity, maxY: -Infinity };
+      buckets.set(key, bucket);
+    }
+    bucket.count += 1;
+    bucket.sumX += x;
+    bucket.sumZ += z;
+    bucket.minX = Math.min(bucket.minX, x);
+    bucket.maxX = Math.max(bucket.maxX, x);
+    bucket.minZ = Math.min(bucket.minZ, z);
+    bucket.maxZ = Math.max(bucket.maxZ, z);
+    bucket.minY = Math.min(bucket.minY, y);
+    bucket.maxY = Math.max(bucket.maxY, y);
+  };
 
-  const model = gltf.scene;
-  const textureAnisotropy = quality?.anisotropy ?? 4;
-  let meshes = 0;
-  let triangles = 0;
   model.traverse((object) => {
-    if (!object.isMesh && !object.isInstancedMesh) return;
-    meshes += 1;
-    object.castShadow = true;
-    object.receiveShadow = true;
+    const isInstanced = Boolean(object.isInstancedMesh);
+    if (!object.isMesh && !isInstanced) return;
     const materials = Array.isArray(object.material) ? object.material : [object.material];
-    for (const material of materials) {
-      if (!material) continue;
-      for (const key of ['map', 'normalMap', 'roughnessMap', 'aoMap']) {
-        if (material[key]) material[key].anisotropy = textureAnisotropy;
+    if (!materials.some((material) => TRUNK_MATERIAL.test(material?.name ?? ''))) return;
+    const position = object.geometry?.getAttribute('position');
+    if (!position?.count) return;
+    // Sampled: the trunk atlas is one merged primitive covering every trunk in
+    // the scene (25k triangles here), and a cluster only needs enough points to
+    // measure its footprint and height.
+    const stride = Math.max(1, Math.ceil(position.count / maxVerticesPerMesh));
+    const instances = isInstanced ? object.count : 1;
+    for (let copy = 0; copy < instances; copy += 1) {
+      if (isInstanced) {
+        object.getMatrixAt(copy, instance);
+        instance.premultiply(object.matrixWorld);
+        // A trunk stands up: an instance tipped more than ~25° off vertical is a
+        // fallen log or a branch fan, and colliding with either is wrong.
+        up.set(0, 1, 0).applyMatrix4(new THREE.Matrix4().extractRotation(instance));
+        if (up.y < 0.9) continue;
       }
-      // Photogrammetry foliage often ships double-sided alpha; keep it cheap.
-      if (material.transparent && material.opacity >= 0.99) material.transparent = false;
-    }
-    const geometry = object.geometry;
-    if (geometry) {
-      const position = geometry.getAttribute('position');
-      const index = geometry.getIndex();
-      const count = index ? index.count : (position?.count ?? 0);
-      triangles += (count / 3) * (object.isInstancedMesh ? object.count : 1);
+      for (let index = 0; index < position.count; index += stride) {
+        point.fromBufferAttribute(position, index);
+        // Read the source vertex fresh for every instance: transforming the
+        // previous instance's already-transformed point compounds the matrices.
+        if (isInstanced) point.applyMatrix4(instance);
+        else point.applyMatrix4(object.matrixWorld);
+        if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) continue;
+        addPoint(point.x, point.y, point.z);
+      }
     }
   });
-  // The terrain JSON (heights + road path) lives in the pipeline's shifted
-  // space: source height + `heightOffset`. The GLB still carries the source
-  // heights, so the visual scene is moved into the same space as the collider.
-  model.position.y = terrain.heightOffset ?? 0;
-  group.add(model);
 
-  // Collider: the baked heightfield. It is only in the physics world while this
-  // track is active (see activate/deactivate): at true terrain heights it would
-  // otherwise intersect the test circuit, which shares the world origin.
-  const heightfieldBody = buildHeightfieldBody(terrain, physics.roadMaterial ?? physics.groundMaterial);
+  const trunks = [];
+  for (const bucket of buckets.values()) {
+    if (bucket.count < 12) continue;
+    const width = bucket.maxX - bucket.minX;
+    const depth = bucket.maxZ - bucket.minZ;
+    const height = bucket.maxY - bucket.minY;
+    const radius = Math.max(width, depth) / 2;
+    if (height < minHeight || radius < minRadius || radius > maxRadius) continue;
+    if (Math.min(width, depth) > height * maxLean) continue;
+    const x = bucket.sumX / bucket.count;
+    const z = bucket.sumZ / bucket.count;
+    // Seat the collider on the *cleaned* heightfield, not on the mesh's own
+    // lowest vertex: a trunk base sampled into a hole would float or sink.
+    const groundY = heightAt(x, z);
+    trunks.push({ x, z, radius, baseY: groundY, topY: groundY + Math.min(18, Math.max(4.5, height)) });
+  }
+  return trunks;
+}
+
+/**
+ * Builds the trunk colliders.
+ *
+ * One static body per ~24 m tile rather than one per tree: the wheel raycasts
+ * test every body's AABB each step, so 500 loose bodies would cost far more than
+ * 500 cylinders grouped into a few dozen tiles.
+ */
+export function buildTrunkBodies(trunks, material, { tileSize = 24 } = {}) {
+  const tiles = new Map();
+  for (const trunk of trunks) {
+    const key = `${Math.floor(trunk.x / tileSize)}:${Math.floor(trunk.z / tileSize)}`;
+    if (!tiles.has(key)) tiles.set(key, []);
+    tiles.get(key).push(trunk);
+  }
+  const bodies = [];
+  for (const [key, group] of tiles) {
+    const body = new CANNON.Body({ mass: 0, material });
+    body.type = CANNON.Body.STATIC;
+    const centre = { x: 0, z: 0 };
+    for (const trunk of group) {
+      centre.x += trunk.x / group.length;
+      centre.z += trunk.z / group.length;
+    }
+    for (const trunk of group) {
+      const height = Math.max(2, trunk.topY - trunk.baseY);
+      const shape = new CANNON.Cylinder(trunk.radius * 0.85, trunk.radius, height, 7);
+      // cannon-es cylinders stand along +Y, so only the offset is needed.
+      body.addShape(shape, new CANNON.Vec3(trunk.x - centre.x, trunk.baseY + height / 2 - 0.35, trunk.z - centre.z));
+    }
+    body.position.set(centre.x, 0, centre.z);
+    body.name = `trunk-tile:${key}`;
+    bodies.push(body);
+  }
+  return bodies;
+}
+
+/**
+ * The scene, its terrain payload and its colliders are shared by Forest Dirt
+ * Trail and Free Roam: they are the same place with different rules, and a
+ * 15 MB scene must not be fetched twice (or build two heightfields).
+ */
+let sharedAssets = null;
+let sharedPromise = null;
+
+async function loadSharedAssets({ quality, onStatus, manifestUrl }) {
+  if (sharedAssets) return sharedAssets;
+  if (sharedPromise) return sharedPromise;
+  sharedPromise = (async () => {
+    const [gltf, terrain, manifest] = await Promise.all([
+      loadGLTF(MODEL_URL),
+      fetch(TERRAIN_URL).then((response) => {
+        if (!response.ok) throw new Error(`${TERRAIN_URL} -> HTTP ${response.status}`);
+        return response.json();
+      }),
+      fetch(manifestUrl).then((response) => (response.ok ? response.json() : null)).catch(() => null),
+    ]);
+
+    const model = gltf.scene;
+    const textureAnisotropy = quality?.anisotropy ?? 4;
+    let meshes = 0;
+    let triangles = 0;
+    model.traverse((object) => {
+      if (!object.isMesh && !object.isInstancedMesh) return;
+      meshes += 1;
+      object.castShadow = true;
+      object.receiveShadow = true;
+      const materials = Array.isArray(object.material) ? object.material : [object.material];
+      for (const material of materials) {
+        if (!material) continue;
+        for (const key of ['map', 'normalMap', 'roughnessMap', 'aoMap']) {
+          if (material[key]) material[key].anisotropy = textureAnisotropy;
+        }
+        // Photogrammetry foliage often ships double-sided alpha; keep it cheap.
+        if (material.transparent && material.opacity >= 0.99) material.transparent = false;
+      }
+      const geometry = object.geometry;
+      if (geometry) {
+        const position = geometry.getAttribute('position');
+        const index = geometry.getIndex();
+        const count = index ? index.count : (position?.count ?? 0);
+        triangles += (count / 3) * (object.isInstancedMesh ? object.count : 1);
+      }
+    });
+    // The terrain JSON (heights + road path) lives in the pipeline's shifted
+    // space: source height + `heightOffset`. The GLB still carries the source
+    // heights, so the visual scene is moved into the same space as the collider.
+    model.position.y = terrain.heightOffset ?? 0;
+
+    const cleaned = resolveTerrainHeights(terrain);
+    const heightAt = createHeightSampler(terrain, cleaned.heights);
+    const pathIndexer = createPathIndexer(terrain.path);
+
+    // Trunk colliders: baked by the pipeline when the payload has them, derived
+    // from the loaded scene otherwise (the shipped payload predates the bake).
+    const baked = Array.isArray(terrain.trunks) && terrain.trunks.length;
+    const trunks = baked
+      ? terrain.trunks.map(([x, z, radius, baseY]) => ({
+        x,
+        z,
+        radius,
+        baseY: heightAt(x, z) - 0.2,
+        topY: heightAt(x, z) + Math.max(5, Math.min(16, radius * 12)),
+      }))
+      : deriveTrunks(model, heightAt);
+    // A trunk standing in the middle of the road is a bake artifact, not a tree.
+    const corridor = Math.max(MIN_CORRIDOR_HALF_WIDTH, Math.min(MAX_CORRIDOR_HALF_WIDTH, terrain.roadHalfWidth ?? 6));
+    const roadClearance = Math.min(4, corridor * 0.35);
+    const usable = trunks.filter((trunk) => pathIndexer.nearest(trunk.x, trunk.z).distance > roadClearance);
+
+    // Only a ceiling, not a target: the trees nearest the road are kept first if
+    // a future source ships more trunks than this. See MAX_TRUNK_COLLIDERS.
+    const colliders = usable.length > MAX_TRUNK_COLLIDERS
+      ? usable
+        .map((trunk) => ({ trunk, distance: pathIndexer.nearest(trunk.x, trunk.z).distance }))
+        .sort((a, b) => a.distance - b.distance)
+        .slice(0, MAX_TRUNK_COLLIDERS)
+        .map((entry) => entry.trunk)
+      : usable;
+
+    // One shared scene graph for both modes: Forest Dirt Trail and Free Roam are
+    // the same place with different rules, and the model cannot be parented to
+    // two groups at once.
+    const group = new THREE.Group();
+    group.name = 'track:forest';
+    group.visible = false;
+    group.add(model);
+
+    sharedAssets = {
+      group,
+      model,
+      terrain,
+      manifest,
+      cleaned,
+      heightAt,
+      pathIndexer,
+      corridor,
+      trunks: colliders,
+      trunksFound: usable.length,
+      trunksFrom: baked ? 'baked' : 'scene',
+      references: 0,
+      stats: { meshes, triangles: Math.round(triangles) },
+    };
+    return sharedAssets;
+  })().catch((error) => {
+    sharedPromise = null;
+    throw error;
+  });
+  return sharedPromise;
+}
+
+/** Soft outer limits of the whole heightfield, for Free Roam. Exported for tests. */
+export function mapExtent(terrain) {
+  return {
+    minX: terrain.origin[0] + FREE_ROAM_EDGE_MARGIN,
+    maxX: terrain.origin[0] + (terrain.cols - 1) * terrain.cellSize - FREE_ROAM_EDGE_MARGIN,
+    minZ: terrain.origin[2] + FREE_ROAM_EDGE_MARGIN,
+    maxZ: terrain.origin[2] + (terrain.rows - 1) * terrain.cellSize - FREE_ROAM_EDGE_MARGIN,
+  };
+}
+
+/**
+ * @param {object} options
+ * @param {'trail'|'free-roam'} [options.mode]
+ */
+export async function createForestDirtTrail({
+  scene,
+  physics,
+  quality,
+  onStatus = () => {},
+  manifestUrl = DEFAULT_MANIFEST_URL,
+  mode = 'trail',
+}) {
+  const freeRoam = mode === 'free-roam';
+  const trackId = freeRoam ? FREE_ROAM_ID : TRACK_ID;
+  const assets = await loadSharedAssets({ quality, onStatus: (status) => onStatus({ track: trackId, ...status }), manifestUrl });
+  const { terrain, cleaned, heightAt, pathIndexer, corridor, trunks } = assets;
+
+  // Both modes share one scene graph (see loadSharedAssets): whichever track is
+  // selected makes it visible.
+  const group = assets.group;
+  if (!group.parent) scene.add(group);
+  assets.references += 1;
+  // The cleanup report is emitted per track, because the shared load only runs
+  // for whichever mode was selected first.
+  onStatus({
+    track: trackId,
+    credits: assets.manifest?.credits ?? null,
+    terrain: {
+      spikes: cleaned.spikes,
+      holes: cleaned.holes,
+      sentinelCells: cleaned.sentinelCells,
+      steepCells: cleaned.steepCells,
+      trunks: trunks.length,
+      trunksFound: assets.trunksFound,
+      trunksFrom: assets.trunksFrom,
+    },
+  });
+
+  // Collider: the baked heightfield, cleaned at load. It is only in the physics
+  // world while this track is active (see activate/deactivate): at true terrain
+  // heights it would otherwise intersect the test circuit, which shares the
+  // world origin.
+  assets.heightfieldBody ??= buildHeightfieldBody(terrain, physics.roadMaterial ?? physics.groundMaterial);
+  assets.trunkBodies ??= buildTrunkBodies(trunks, physics.roadMaterial ?? physics.groundMaterial);
+  const heightfieldBody = assets.heightfieldBody;
+  const trunkBodies = assets.trunkBodies;
+
   // The world's flat safety plane sits at y ≈ 0, above most of this terrain
   // (-66 m … +11 m): a car spawned under it gets launched by the plane contact.
   // While the forest is active the plane drops below the lowest terrain point.
@@ -221,49 +535,90 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
     if (physics.world.broadphase) physics.world.broadphase.dirty = true;
   };
 
-  const heights = decodeHeights(terrain.heights, terrain.cols * terrain.rows);
-  const pathIndexer = createPathIndexer(terrain.path);
-  const corridor = Math.max(MIN_CORRIDOR_HALF_WIDTH, Math.min(MAX_CORRIDOR_HALF_WIDTH, terrain.roadHalfWidth ?? 6));
-
-  const heightAt = (x, z) => {
-    const { cols, rows, cellSize, origin } = terrain;
-    const fx = (x - origin[0]) / cellSize;
-    const fz = (z - origin[2]) / cellSize;
-    const ix = Math.max(0, Math.min(cols - 2, Math.floor(fx)));
-    const iz = Math.max(0, Math.min(rows - 2, Math.floor(fz)));
-    const tx = Math.max(0, Math.min(1, fx - ix));
-    const tz = Math.max(0, Math.min(1, fz - iz));
-    const at = (cx, cz) => heights[cz * cols + cx];
-    return (at(ix, iz) * (1 - tx) + at(ix + 1, iz) * tx) * (1 - tz) + (at(ix, iz + 1) * (1 - tx) + at(ix + 1, iz + 1) * tx) * tz;
-  };
   const spawnIndex = pickSpawnIndex(pathIndexer.points, heightAt);
   const spawnPoint = pathIndexer.points[spawnIndex];
   const nextPoint = pathIndexer.points[Math.min(pathIndexer.points.length - 1, spawnIndex + 1)];
   const spawnYaw = Math.atan2(-(nextPoint.x - spawnPoint.x), -(nextPoint.z - spawnPoint.z));
+  const extent = mapExtent(terrain);
 
-  const bounds = {
-    halfWidth: corridor,
-    pathIndexer,
-    isOnTrack(x, z) {
-      return pathIndexer.nearest(x, z).distance <= corridor + 0.5;
-    },
-    distance(x, z) {
-      return pathIndexer.nearest(x, z).distance;
-    },
-  };
+  const bounds = freeRoam
+    ? {
+      // Free Roam: the whole map is the track, so "on track" keeps meaning
+      // "on the dirt road" (that is what decides the grip modifier) while the
+      // driveable area is bounded by the heightfield edge, not the corridor.
+      halfWidth: corridor,
+      pathIndexer,
+      extent,
+      freeRoam: true,
+      isOnTrack(x, z) {
+        return pathIndexer.nearest(x, z).distance <= corridor + 0.5;
+      },
+      distance(x, z) {
+        return pathIndexer.nearest(x, z).distance;
+      },
+      isInside(x, z) {
+        return x >= extent.minX && x <= extent.maxX && z >= extent.minZ && z <= extent.maxZ;
+      },
+    }
+    : {
+      halfWidth: corridor,
+      pathIndexer,
+      freeRoam: false,
+      isOnTrack(x, z) {
+        return pathIndexer.nearest(x, z).distance <= corridor + 0.5;
+      },
+      distance(x, z) {
+        return pathIndexer.nearest(x, z).distance;
+      },
+      isInside(x, z) {
+        return pathIndexer.nearest(x, z).distance <= corridor + 34;
+      },
+    };
 
   let wallForce = 0;
   let wallEvents = 0;
 
+  /**
+   * Soft edge for Free Roam: a spring that only starts past the margin and gets
+   * progressively firmer, so driving off the end of the map feels like heavy
+   * undergrowth rather than a wall.
+   */
+  function freeRoamEdge(body, deltaTime) {
+    const overshoot = Math.max(
+      extent.minX - body.position.x,
+      body.position.x - extent.maxX,
+      extent.minZ - body.position.z,
+      body.position.z - extent.maxZ,
+    );
+    if (overshoot <= 0 || !Number.isFinite(overshoot)) {
+      wallForce *= Math.max(0, 1 - deltaTime * 3);
+      return;
+    }
+    const strength = Math.min(1, overshoot / 18);
+    const dx = clampToRange(body.position.x, extent.minX, extent.maxX) - body.position.x;
+    const dz = clampToRange(body.position.z, extent.minZ, extent.maxZ) - body.position.z;
+    const length = Math.hypot(dx, dz) || 1;
+    const force = body.mass * 11 * strength;
+    body.applyForce(
+      new CANNON.Vec3((dx / length) * force, 0, (dz / length) * force),
+      new CANNON.Vec3(body.position.x, body.position.y, body.position.z),
+    );
+    const damping = 1 - Math.min(0.5, strength * 0.8 * deltaTime * 3);
+    body.velocity.scale(damping, body.velocity);
+    wallForce = strength;
+    wallEvents += 1;
+  }
+
   return {
-    id: TRACK_ID,
-    name: 'Forest Dirt Trail',
-    subtitle: 'Loose surface, soft walls',
+    id: trackId,
+    mode,
+    name: freeRoam ? 'Forest Free Roam' : 'Forest Dirt Trail',
+    subtitle: freeRoam ? 'Whole map, soft outer edge' : 'Loose surface, soft walls',
     surface: SURFACES.dirt,
     group,
-    model,
+    model: assets.model,
     terrain,
-    heights,
+    heights: cleaned.heights,
     roadHalfWidth: corridor,
     bounds,
     path: pathIndexer.points,
@@ -271,16 +626,27 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
       position: { x: spawnPoint.x, y: spawnPoint.y + 0.6, z: spawnPoint.z },
       yaw: spawnYaw,
     },
-    physics: { heightfieldBody },
+    physics: { heightfieldBody, trunkBodies },
     spawnIndex,
     /** Bilinear ground height: contact shadow, dust height, camera horizon. */
     groundHeightAt: heightAt,
+    /** What the load-time cleanup did to the baked grid (diagnostics / reports). */
+    terrainCleaning: {
+      spikes: cleaned.spikes,
+      holes: cleaned.holes,
+      sentinelCells: cleaned.sentinelCells,
+      steepCells: cleaned.steepCells,
+      trunks: trunks.length,
+    },
     stats: {
-      meshes,
-      triangles: Math.round(triangles),
+      meshes: assets.stats.meshes,
+      triangles: assets.stats.triangles,
       corridor: Number(corridor.toFixed(2)),
       heightfield: { cols: terrain.cols, rows: terrain.rows, cellSize: terrain.cellSize },
       heightRange: [terrain.stats?.minHeight ?? 0, terrain.stats?.maxHeight ?? 0],
+      trunks: trunks.length,
+      spikesRemoved: cleaned.spikes,
+      holesRemoved: cleaned.holes,
     },
     get wallForce() {
       return wallForce;
@@ -297,7 +663,11 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
     activate() {
       if (active) return;
       active = true;
-      physics.world.addBody(heightfieldBody);
+      const { world } = physics;
+      if (!world.bodies.includes(heightfieldBody)) world.addBody(heightfieldBody);
+      for (const body of trunkBodies) {
+        if (!world.bodies.includes(body)) world.addBody(body);
+      }
       restorePlaneY = physics.groundBody?.position.y ?? null;
       movePlane(safetyPlaneY);
     },
@@ -305,24 +675,27 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
       if (!active) return;
       active = false;
       physics.world.removeBody(heightfieldBody);
+      for (const body of trunkBodies) physics.world.removeBody(body);
       if (restorePlaneY !== null) movePlane(restorePlaneY);
     },
     get active() {
       return active;
     },
     /**
-     * Soft walls: past the corridor the car is pulled back towards the trail and
-     * scrubbed of speed. Deliberately a spring, not a collision, so brushing a
-     * tree line slows you down instead of stopping the car dead.
+     * Trail: soft walls past the corridor pull the car back towards the trail and
+     * scrub speed — deliberately a spring, not a collision, so brushing a tree
+     * line slows you down instead of stopping the car dead.
      *
-     * M4.5 Free Roam (deferred): same track, but this corridor spring is
-     * replaced by soft outer bounds at the heightfield edge
-     * (terrain.origin + (cols|rows - 1) * cellSize, minus a margin), and
-     * bounds.isOnTrack keeps deciding on-road vs off-road grip.
+     * Free Roam: the whole map is in play and the corridor spring is replaced by
+     * the soft outer edge at the heightfield boundary.
      */
     update(deltaTime, car) {
       if (!car?.chassisBody) return;
       const body = car.chassisBody;
+      if (freeRoam) {
+        freeRoamEdge(body, deltaTime);
+        return;
+      }
       const nearest = pathIndexer.nearest(body.position.x, body.position.z);
       const overshoot = nearest.distance - corridor;
       if (overshoot <= 0 || !Number.isFinite(overshoot)) {
@@ -348,6 +721,9 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
     },
     dispose() {
       this.deactivate();
+      // Shared assets: only the last track to go actually tears the scene down.
+      assets.references = Math.max(0, (assets.references ?? 1) - 1);
+      if (assets.references > 0) return;
       group.traverse((object) => {
         if (!object.isMesh && !object.isInstancedMesh) return;
         object.geometry?.dispose();
@@ -358,6 +734,18 @@ export async function createForestDirtTrail({ scene, physics, quality, onStatus 
         }
       });
       group.removeFromParent();
+      sharedAssets = null;
+      sharedPromise = null;
     },
   };
+}
+
+function clampToRange(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+/** Test/diagnostic helper: forgets the shared scene so it can be rebuilt. */
+export function resetForestAssets() {
+  sharedAssets = null;
+  sharedPromise = null;
 }

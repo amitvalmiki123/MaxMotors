@@ -63,10 +63,29 @@ export function detectTier(environment = {}) {
   };
 }
 
-/** Blend two colour values through the scene fog (used for track switching). */
+/**
+ * Per-track fog presets (used for track switching).
+ *
+ * `fog` / `sky` are the offline fallbacks: at runtime the fog colour is measured
+ * from the sky's horizon (see fog.js) and then **brightness capped** by `fogCap`.
+ *
+ * M2.6 circuit re-tune. The M2 numbers (near 145 / far 420) were tuned against a
+ * sun-inflated near-white fog colour, so they only ever looked "right" by
+ * washing the distance out. With the sun now excluded from the estimate the same
+ * distances read as a hard grey band starting just past the far corner, so the
+ * ramp is stretched: nothing happens inside 90 m (the car, the kerbs and the
+ * corner exits stay crisp), the scenery picks up gentle aerial perspective
+ * through the 100–300 m range, and the 1400 m ground plane's horizon is fully
+ * dissolved by 620 m instead of standing out as an edge. `fogCap` is a little
+ * higher here than in the forest — an open bright day should haze towards light
+ * sky, not towards grey.
+ */
 export const TRACK_TINT = Object.freeze({
-  'test-circuit-01': { fog: 0x9daaa2, sky: 0xaebbb4, fogNear: 145, fogFar: 420 },
+  'test-circuit-01': { fog: 0x8d9da6, sky: 0xaebbb4, fogNear: 90, fogFar: 620, fogCap: 0.6 },
   // Forest: exponential-squared fog (FOREST_FOG_DENSITY in fog.js) whose colour
   // is measured from the sky's horizon at runtime; `fog` is the offline fallback.
-  'forest-dirt-trail': { fog: 0x9fb0b4, sky: 0x8ea184, fogNear: 60, fogFar: 300, fogDensity: 0.0058 },
+  'forest-dirt-trail': { fog: 0x8fa3a0, sky: 0x8ea184, fogNear: 60, fogFar: 300, fogDensity: 0.0058, fogCap: 0.48 },
+  // Free Roam shares the forest sky and terrain, but the whole map is in play:
+  // the fog is a touch thinner so the far hills read as distance, not as mist.
+  'forest-free-roam': { fog: 0x8fa3a0, sky: 0x8ea184, fogNear: 60, fogFar: 340, fogDensity: 0.0048, fogCap: 0.46 },
 });

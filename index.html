@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#111a1d" />
-    <meta name="description" content="MaxMotors — a two-car, two-track driving prototype with asphalt and dirt handling." />
-    <title>MaxMotors — Drive Lab M2</title>
+    <meta name="description" content="MaxMotors — a two-car, three-track driving prototype with asphalt and dirt handling, a P/R/N/D gate and drift mode." />
+    <title>MaxMotors — Drive Lab M2.6</title>
   </head>
   <body>
     <div id="app">
@@ -15,7 +15,7 @@
       <header class="topbar">
         <a class="wordmark" href="#" aria-label="MaxMotors home">
           <span class="wordmark-icon" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="wordmark-text">MAX<span>MOTORS</span><small>DRIVE LAB / M2</small></span>
+          <span class="wordmark-text">MAX<span>MOTORS</span><small>DRIVE LAB / M2.6</small></span>
         </a>
         <div class="session-status">
           <span class="status-light"></span>
@@ -61,7 +61,8 @@
         <section class="telemetry" aria-label="Telemetry">
           <div class="speed-readout"><strong id="speed-value">000</strong><span>km/h</span></div>
           <div class="speed-meter" aria-hidden="true"><span id="speed-meter-fill"></span></div>
-          <span class="strip-item" id="gear-value">GEAR 1</span>
+          <span class="strip-item" id="gear-value">D1</span>
+          <span class="strip-item strip-gear" id="selector-value">D</span>
           <span class="strip-item" id="rpm-value">950 RPM</span>
           <span class="strip-item strip-state" id="drive-state">READY</span>
           <span class="strip-item" id="surface-label">ASPHALT</span>
@@ -70,11 +71,27 @@
           <span class="strip-item strip-lamp" id="lights-indicator" hidden>◐ LIGHTS</span>
         </section>
 
+        <!-- Transmission gate: P/R/N/D. Keys 1–4 (P and N also work), or tap. -->
+        <section class="gear-gate" id="gear-gate" role="radiogroup" aria-label="Transmission selector">
+          <span class="gear-gate-label">GEAR</span>
+          <div class="gear-gate-buttons">
+            <button class="gear-button" data-gear="P" type="button" role="radio" aria-checked="false" aria-label="Park" title="Park (1)">P</button>
+            <button class="gear-button" data-gear="R" type="button" role="radio" aria-checked="false" aria-label="Reverse" title="Reverse (2)">R</button>
+            <button class="gear-button" data-gear="N" type="button" role="radio" aria-checked="false" aria-label="Neutral" title="Neutral (3 or N)">N</button>
+            <button class="gear-button is-active" data-gear="D" type="button" role="radio" aria-checked="true" aria-label="Drive" title="Drive (4)">D</button>
+          </div>
+          <span class="gear-gate-hint" aria-hidden="true">1·2·3·4</span>
+        </section>
+
         <div class="desktop-hint" id="desktop-hint">
           <span class="hint-key">W</span><span class="hint-key">A</span><span class="hint-key">S</span><span class="hint-key">D</span>
           <span class="hint-copy">DRIVE</span>
           <span class="hint-divider"></span>
           <span class="hint-key hint-space">SPACE</span><span class="hint-copy">HANDBRAKE</span>
+          <span class="hint-key">T</span><span class="hint-copy">DRIFT MODE</span>
+          <span class="hint-divider"></span>
+          <span class="hint-key">1</span><span class="hint-key">2</span><span class="hint-key">3</span><span class="hint-key">4</span>
+          <span class="hint-copy">P·R·N·D</span>
           <span class="hint-divider"></span>
           <span class="hint-key">C</span><span class="hint-copy">CAMERA</span>
           <span class="hint-key">H</span><span class="hint-copy">HORN</span>
@@ -104,9 +121,18 @@
             <button class="touch-button feature-button horn-button" data-control="horn" type="button" aria-label="Horn">
               <span aria-hidden="true">◖</span><small>HORN</small>
             </button>
+            <!-- Held: the handbrake itself. Phones had no way to pull one, so
+                 drifting was keyboard-only until M2.6. -->
+            <button class="touch-button feature-button drift-button" data-control="handbrake" type="button" aria-label="Handbrake, hold to drift">
+              <span aria-hidden="true">⌇</span><small>DRIFT</small>
+            </button>
+            <!-- Toggled: the loose-rear setup, which stays on until switched off. -->
+            <button class="touch-button feature-button drift-mode-button" data-action="drift" type="button" aria-pressed="false" aria-label="Drift mode, toggle">
+              <span aria-hidden="true">≋</span><small>MODE</small>
+            </button>
           </div>
           <div class="pedal-pad">
-            <button class="touch-button pedal-button brake-button" data-control="brake" type="button" aria-label="Brake or reverse">
+            <button class="touch-button pedal-button brake-button" data-control="brake" type="button" aria-label="Brake">
               <span aria-hidden="true">▾</span><small>BRAKE</small>
             </button>
             <button class="touch-button pedal-button throttle-button" data-control="throttle" type="button" aria-label="Accelerate">

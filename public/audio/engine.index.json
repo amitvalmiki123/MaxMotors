@@ -1,35 +1,106 @@
 {
-  "generatedAt": "2026-10-15T15:51:20.059Z",
+  "generatedAt": "2026-10-16T06:18:31.281Z",
   "license": "CC0 1.0",
   "sampleRate": 44100,
   "engines": [
     {
-      "id": "aurora-v10",
-      "label": "Aurora V12 — V10-style petrol engine bed",
-      "cylinders": 10,
+      "id": "aurora-v12",
+      "label": "Aurora V12 — 6.5 L naturally aspirated V12 petrol",
+      "character": "petrol-v12",
+      "cylinders": 12,
+      "firingOrder": [
+        1,
+        7,
+        5,
+        11,
+        3,
+        9,
+        6,
+        12,
+        2,
+        8,
+        4,
+        10
+      ],
+      "idleRpm": 950,
+      "redlineRpm": 8600,
+      "resonanceHz": [
+        118,
+        268,
+        690
+      ],
+      "resonanceQ": [
+        5.5,
+        4,
+        2.6
+      ],
+      "resonanceGain": [
+        1,
+        0.62,
+        0.34
+      ],
+      "turbo": null,
       "layers": [
         {
           "id": "low",
-          "file": "/audio/aurora-v10-low.wav",
-          "referenceRpm": 1600,
-          "loopSeconds": 0.9975,
-          "firingFrequencyHz": 133.33,
-          "bytes": 88024
+          "file": "/audio/aurora-v12-low.wav",
+          "referenceRpm": 1400,
+          "loopSeconds": 0.8,
+          "firingFrequencyHz": 140,
+          "bytes": 70604
+        },
+        {
+          "id": "mid",
+          "file": "/audio/aurora-v12-mid.wav",
+          "referenceRpm": 4200,
+          "loopSeconds": 0.7,
+          "firingFrequencyHz": 420,
+          "bytes": 61784
         },
         {
           "id": "high",
-          "file": "/audio/aurora-v10-high.wav",
-          "referenceRpm": 7200,
-          "loopSeconds": 1,
-          "firingFrequencyHz": 600,
-          "bytes": 88244
+          "file": "/audio/aurora-v12-high.wav",
+          "referenceRpm": 8200,
+          "loopSeconds": 0.7,
+          "firingFrequencyHz": 820,
+          "bytes": 61784
         }
       ]
     },
     {
       "id": "sikandar-diesel",
-      "label": "Sikandar SUV — turbo-diesel rumble bed",
+      "label": "Sikandar SUV — 2.2 L turbo-diesel, four cylinders",
+      "character": "turbo-diesel",
       "cylinders": 4,
+      "firingOrder": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "idleRpm": 750,
+      "redlineRpm": 5200,
+      "resonanceHz": [
+        58,
+        132,
+        286
+      ],
+      "resonanceQ": [
+        7,
+        5,
+        3
+      ],
+      "resonanceGain": [
+        1,
+        0.72,
+        0.3
+      ],
+      "turbo": {
+        "whineHz": 920,
+        "whineRatio": 2.6,
+        "gain": 0.16,
+        "wastegate": 0.1
+      },
       "layers": [
         {
           "id": "low",
@@ -40,12 +111,20 @@
           "bytes": 88244
         },
         {
+          "id": "mid",
+          "file": "/audio/sikandar-diesel-mid.wav",
+          "referenceRpm": 2100,
+          "loopSeconds": 1,
+          "firingFrequencyHz": 70,
+          "bytes": 88244
+        },
+        {
           "id": "high",
           "file": "/audio/sikandar-diesel-high.wav",
-          "referenceRpm": 3600,
-          "loopSeconds": 1,
-          "firingFrequencyHz": 120,
-          "bytes": 88244
+          "referenceRpm": 4400,
+          "loopSeconds": 1.0023,
+          "firingFrequencyHz": 146.67,
+          "bytes": 88444
         }
       ]
     }
