@@ -4,6 +4,7 @@ import test from 'node:test';
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
 import {
+  MAX_TRUNK_COLLIDERS,
   buildHeightfieldBody,
   buildTrunkBodies,
   decodeHeights,
@@ -66,34 +67,100 @@ test('the forest grid is built from ground materials only (M2.6)', () => {
   assert.equal(classifyMaterial({ getName: () => 'Carosserie', getAlphaMode: () => 'OPAQUE' }, { kind: 'car' }), 'body');
 });
 
-test('the shipped heightfield is cleaned at load: pits, spikes and holes', () => {
+test('the baked heightfield arrives clean: no sentinel pits, no spikes (M2.6)', () => {
+  const count = terrain.cols * terrain.rows;
+  const raw = decodeHeights(terrain.heights, count);
+
+  // The old serializer wrote unreachable cells as a bare 0, which after the
+  // height offset is exactly `heightOffset`: a real-looking number 96 m down.
+  // The pipeline now fills every cell before it ships (stats.filled, including
+  // stats.unreachable), so the runtime never sees one.
+  const pits = [...raw].filter((value) => Math.abs(value - terrain.heightOffset) < 0.02).length;
+  assert.equal(pits, 0, `the baked payload must not contain sentinel pits, found ${pits}`);
+  assert.ok(terrain.stats.filled > 0, 'the bake reports the cells it had to fill');
+  assert.ok(raw.every(Number.isFinite), 'every cell decodes to a finite height');
+
+  // Ground-only sampling is what removed the canopy holes and trunk-base spikes
+  // at source; the audit that used to report 67 spikes / 70 holes on the M2.5
+  // payload now finds no cell towering over its neighbours at all.
+  const audit = auditOutliers(Array.from(raw), { threshold: 8 });
+  assert.equal(audit.spikes, 0, `no cell may tower over its neighbours: ${JSON.stringify(audit)}`);
+  // Cells far *below* their neighbours remain: that is the valley and the rock
+  // faces the scene really has, not bad data (the cleaner leaves them alone).
+  assert.ok(audit.holes <= 40, `deep cells are geography, not errors: ${JSON.stringify(audit)}`);
+
+  // The grid is the mapped ground, not the tree canopy or the far backdrop.
+  assert.ok(terrain.groundMaterials.includes('Dirt_Road'), 'the road surface defines the ground');
+  assert.ok(!terrain.groundMaterials.some((name) => /Tree|Bush|Grass|Leaves|Trunk|Fence|Far/i.test(name)),
+    `vegetation, trunks, props and backdrop are not ground: ${terrain.groundMaterials.join(', ')}`);
+  for (const kind of ['vegetation', 'trunk', 'backdrop']) {
+    assert.ok(terrain.excludedMaterials.some((entry) => entry.endsWith(`[${kind}]`)), `${kind} is recorded as excluded`);
+  }
+  assert.ok(terrain.stats.groundTriangles > 0, 'the bake counts the ground triangles it sampled');
+
+  // Trunks ship with the payload, so the game does not have to recover them
+  // from the instanced scene (that path stays as a fallback for old payloads).
+  assert.equal(terrain.trunks.length, terrain.stats.trunks, 'trunk list matches the reported count');
+  assert.ok(terrain.trunks.length > 500, `baked trunks: ${terrain.trunks.length}`);
+  for (const trunk of terrain.trunks.slice(0, 40)) {
+    const [x, z, radius, baseY] = trunk;
+    assert.ok(Number.isFinite(x) && Number.isFinite(z), 'trunk position is finite');
+    assert.ok(radius > 0.1 && radius < 3, `trunk radius ${radius} is a trunk, not a branch or a tile`);
+    assert.ok(baseY >= terrain.stats.minHeight - 1 && baseY <= terrain.stats.maxHeight + 1,
+      `trunk base ${baseY} sits on the terrain`);
+  }
+});
+
+test('the runtime cleaner is a safety net over the baked grid, and still fixes real dirt', () => {
   const count = terrain.cols * terrain.rows;
   const raw = decodeHeights(terrain.heights, count);
   const cleaned = resolveTerrainHeights(terrain);
 
-  // The old serializer wrote unreachable cells as a bare 0, which after the
-  // height offset is exactly `heightOffset`: a real-looking number 96 m down.
-  const pits = [...raw].filter((value) => Math.abs(value - terrain.heightOffset) < 0.02).length;
-  assert.ok(pits > 0, `the shipped payload still has ${pits} sentinel pits to clean`);
-  assert.equal(cleaned.sentinelCells, pits);
+  assert.equal(cleaned.sentinelCells, 0, 'nothing left to un-sentinel');
+  let changed = 0;
+  let maxCorrection = 0;
+  for (let index = 0; index < count; index += 1) {
+    const delta = Math.abs(cleaned.heights[index] - raw[index]);
+    if (delta > 1e-6) {
+      changed += 1;
+      maxCorrection = Math.max(maxCorrection, delta);
+    }
+  }
+  // Heights ship as int16 centimetres, so a few cells can still read as local
+  // outliers after decoding. The pass corrects those and leaves the rest alone.
+  assert.ok(changed <= 64, `a clean bake needs at most a touch-up: ${changed} of ${count} cells moved`);
+  assert.ok(maxCorrection < 12, `the largest correction stays local: ${maxCorrection.toFixed(2)} m`);
 
-  const before = auditOutliers(Array.from(raw), { threshold: 8 });
-  const after = auditOutliers(Array.from(cleaned.heights), { threshold: 8 });
-  assert.ok(before.spikes + before.holes > 50, `the raw grid really is broken: ${JSON.stringify(before)}`);
-  assert.ok(
-    after.spikes + after.holes <= Math.max(6, (before.spikes + before.holes) * 0.1),
-    `extreme outliers must be gone: ${JSON.stringify(before)} -> ${JSON.stringify(after)}`,
-  );
-  // Reported counts, so the HUD/report can show what was fixed.
-  assert.ok(cleaned.spikes > 0 && cleaned.holes > 0, `corrected ${cleaned.spikes} spikes and ${cleaned.holes} holes`);
-
-  // No 96 m pit survives, and the cleaned grid stays inside the mapped range.
   const min = Math.min(...cleaned.heights);
-  assert.ok(min > terrain.stats.minHeight - 1, `cleaned min ${min.toFixed(2)} stays on the terrain`);
+  const max = Math.max(...cleaned.heights);
+  assert.ok(Math.abs(min - terrain.stats.minHeight) < 0.5, `cleaned min ${min.toFixed(2)} matches the bake`);
+  assert.ok(Math.abs(max - terrain.stats.maxHeight) < 0.5, `cleaned max ${max.toFixed(2)} matches the bake`);
   assert.ok(min < -20, 'the real valley floor is still there');
 
   // resolveTerrainHeights is memoized: the 72k-cell grid is not filtered twice.
   assert.equal(resolveTerrainHeights(terrain), cleaned);
+
+  // The cleaner must still do the heavy lifting when a bake *is* dirty - this is
+  // exactly what the M2.5 payload looked like, and what any future source that
+  // regresses would produce again.
+  const cols = 16;
+  const rows = 16;
+  const sentinel = -162.446;
+  const dirty = new Float32Array(cols * rows);
+  for (let iz = 0; iz < rows; iz += 1) {
+    for (let ix = 0; ix < cols; ix += 1) dirty[iz * cols + ix] = 4 + ix * 0.25 + iz * 0.1;
+  }
+  dirty[5 * cols + 5] += 45;        // canopy spike
+  dirty[9 * cols + 10] -= 45;       // trunk-base hole
+  dirty[12 * cols + 3] = sentinel;  // unsampled cell written as a real number
+  const fixed = filterHeightOutliers(dirty, cols, rows, { sentinel });
+  assert.equal(fixed.sentinelCells, 1, 'the sentinel cell is recognised');
+  assert.ok(fixed.spikes >= 1 && fixed.holes >= 1, `spike and hole corrected: ${JSON.stringify({ spikes: fixed.spikes, holes: fixed.holes })}`);
+  assert.ok(Math.abs(fixed.values[5 * cols + 5] - dirty[5 * cols + 6]) < 6, 'the spike is pulled down to its neighbours');
+  assert.ok(Math.abs(fixed.values[9 * cols + 10] - dirty[9 * cols + 11]) < 6, 'the hole is filled from its neighbours');
+  assert.ok(Math.abs(fixed.values[12 * cols + 3] - sentinel) > 1, 'the sentinel value is gone');
+  assert.ok(Math.abs(fixed.values[0] - dirty[0]) < 0.5, 'untouched ground is left exactly alone');
+  assert.equal(fixed.values.length, dirty.length, 'same grid shape back');
 });
 
 test('the heightfield body is built from the cleaned grid', () => {
@@ -164,6 +231,38 @@ test('trunk colliders are grouped into tiles, standing along +Y', () => {
       assert.equal(body.shapeOrientations[index].w, 1, 'no rotation applied');
     }
   }
+});
+
+test('the collider ceiling keeps every trunk the bake ships, in coarse tiles', () => {
+  // Free Roam is the whole map, so a ceiling below the baked count would quietly
+  // turn the trees beyond the trail band into drive-through scenery.
+  assert.ok(
+    terrain.trunks.length <= MAX_TRUNK_COLLIDERS,
+    `all ${terrain.trunks.length} baked trunks fit under the ${MAX_TRUNK_COLLIDERS} ceiling`,
+  );
+
+  const trunks = terrain.trunks.map(([x, z, radius, baseY]) => ({ x, z, radius, baseY, topY: baseY + 8 }));
+  const bodies = buildTrunkBodies(trunks, new CANNON.Material('road'));
+  const shapes = bodies.reduce((sum, body) => sum + body.shapes.length, 0);
+  assert.equal(shapes, trunks.length, 'every trunk became a collider');
+  assert.ok(bodies.length < trunks.length / 5, `grouped into ${bodies.length} tiles, not ${trunks.length} loose bodies`);
+  assert.ok(bodies.every((body) => body.mass === 0), 'trunks never move');
+
+  // Coverage: the colliders span the forest, not a strip beside the road. The
+  // baked payload covers 361 m of the 496 m map across X and 295 m of 518 m
+  // across Z, while the trail itself only runs 162 m x 38 m - so trees are solid
+  // well away from the road in every direction, which is what Free Roam needs.
+  const extent = mapExtent(terrain);
+  const span = (values) => {
+    const sorted = [...values].sort((a, b) => a - b);
+    return sorted[sorted.length - 1] - sorted[0];
+  };
+  const trunkX = span(trunks.map((trunk) => trunk.x));
+  const trunkZ = span(trunks.map((trunk) => trunk.z));
+  assert.ok(trunkX > (extent.maxX - extent.minX) * 0.6, `trunks span ${trunkX.toFixed(0)} m of the ${(extent.maxX - extent.minX).toFixed(0)} m map across X`);
+  assert.ok(trunkZ > (extent.maxZ - extent.minZ) * 0.5, `trunks span ${trunkZ.toFixed(0)} m of the ${(extent.maxZ - extent.minZ).toFixed(0)} m map across Z`);
+  const roadZ = span(terrain.path.map((point) => point[1]));
+  assert.ok(trunkZ > roadZ * 4, `the forest is deeper than the trail is wide: ${trunkZ.toFixed(0)} m vs ${roadZ.toFixed(0)} m`);
 });
 
 test('Free Roam bounds are the whole map, the trail bounds are the corridor', () => {

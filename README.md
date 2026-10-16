@@ -26,8 +26,11 @@ Eight issues found by driving the M2.5 build, each with the fix and where it liv
    requested in the same tick as the car model and won the race. `createEnvironment({ defer: true })`
    now waits, and `game.init()` loads **the selected car first**, then the track, then calls
    `environment.start()`. The generated canvas sky lights the scene in the meantime, so nothing looks
-   unlit while it waits. The SUV's textures also move from q80 to q85 (`scripts/assets/config.mjs`);
-   it was using 1.5 MB of a 9 MB texture budget.
+   unlit while it waits. The SUV's texture quality also moves from q80 to q85
+   (`scripts/assets/config.mjs`) — though the pipeline run that applied it proved the knob is a no-op
+   for this model: every texture it ships is *already* a WebP at ≤ 1024 px, so a re-encode comes out
+   larger than the source and is discarded. Its 1.5 MB of a 9 MB budget is a source-resolution limit,
+   not an encode-quality one (`docs/acceptance/m2.6/README.md`, *What landed via CI*).
 3. **The SUV was silent, and both engines sounded the same.** `audio.setCar()` tore the layers down
    and set `started = false`, but only `unlock()` — a user-gesture-only entry point — ever rebuilt
    them, so switching cars left the game permanently mute. It now rebuilds the engine itself.
@@ -72,9 +75,12 @@ Eight issues found by driving the M2.5 build, each with the fix and where it liv
    the pipeline and the runtime, so both sides clean identically — filters single-cell outliers with
    a *relative* test (median absolute deviation of the 8 neighbours, which keeps real cliffs and
    removes isolated spikes) and slope-limits the seam where the far-terrain sheet crosses the grid.
-   On the shipped payload that takes cells deviating more than 8 m from their neighbourhood from
-   **150 to 3**. Tree trunks are recovered by clustering trunk vertices and become cylinder
-   colliders grouped into ~24 m tiles, so a tree stops the car. The trail corridor widens from a
+   On the M2.5 payload that took cells deviating more than 8 m from their neighbourhood from
+   **150 to 3**; the pipeline has since **re-baked** the grid, so what ships now has 0 sentinel pits
+   and 0 spikes, and the runtime pass touches 6 of 72,062 cells. Tree trunks are baked into the
+   payload (**1333** of them) and become cylinder colliders grouped into ~24 m tiles — 1292 usable
+   trunks in 134 static bodies, covering 361 m × 295 m of the map against a trail that runs
+   162 m × 38 m — so a tree stops the car anywhere in the forest, not just beside the road. The trail corridor widens from a
    9.5 m clamp to the traced road's real ~12 m, and **Forest Free Roam** opens the whole map with a
    soft outer edge at the heightfield boundary instead of corridor walls — the same scene and the
    same collider, so switching between the two is instant.
@@ -183,7 +189,8 @@ The pipeline also writes the two data files the game cannot synthesise at runtim
   `stats.unreachable`, `stats.trunks`, plus `groundMaterials` / `excludedMaterials`). The grid is
   built from ground materials only and filtered before it is written. The runtime applies the *same*
   filter (`src/game/tracks/terrain-grid.js`, imported by both sides) to whatever payload it is given,
-  so a stale bake is still drivable — but re-running the pipeline is what removes the need for it.
+  so a stale bake is still drivable — and re-running the pipeline removes the need for it, which the
+  `Asset pipeline` run for M2.6 did (run `38798486879` → commit `ad7ae39` on this branch).
 - `public/audio/engine.index.json` — per engine: cylinders, firing order, exhaust resonances, idle
   and redline, and the low/mid/high beds with their reference RPMs. `src/game/audio.js` builds its
   live per-cylinder synth from those numbers, so the beds and the synth cannot drift apart.

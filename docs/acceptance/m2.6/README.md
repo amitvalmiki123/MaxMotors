@@ -150,7 +150,8 @@ named `Background_Tree_Atlas` — so *all 26* classified as ground, nothing was 
 (`SKIP_PATTERN` is guarded by `!GROUND_PATTERN.test(label)`), and the canopy, trunk atlas and
 standing grass cards were all sampled as the driveable surface.
 
-Cleaning the **shipped** `forest-dirt-trail.terrain.json` (263 × 274 cells, 2 m) at load:
+What the runtime filter had to repair in the **M2.5** `forest-dirt-trail.terrain.json`
+(263 × 274 cells, 2 m) — the payload that was shipped when this milestone started:
 
 | | before | after |
 | --- | --- | --- |
@@ -160,6 +161,25 @@ Cleaning the **shipped** `forest-dirt-trail.terrain.json` (263 × 274 cells, 2 m
 | over-steep cells slope-limited (the `Terrain_Far` seam, ~38 m in one cell) | — | 197 |
 | max neighbour-to-neighbour step | 100.4 m | 38.6 m, and only at the map edge 83 m off the road |
 
+**That repair is no longer needed.** The pipeline re-baked the grid on the same branch
+(Asset pipeline run `38798486879` → commit `ad7ae39`), sampling ground materials only and running
+this same filter before it wrote the file. What now ships:
+
+| re-baked payload | |
+| --- | --- |
+| ground triangles sampled | **42,811 of 149,290** (12 materials); 14 materials excluded as vegetation / trunk / prop / backdrop |
+| cells written as a sentinel 0 | **0** — 63,917 cells filled, 9,663 of them unreachable from any hit |
+| outliers removed at bake time | 8 spikes / 14 holes |
+| cells > 8 m from their 8-neighbour median | **0 spikes**, 22 deep cells (the valley and rock faces the scene really has — the cleaner leaves them) |
+| height range | −66.04 … +11.76 m (was −110.8 … +11.8 m with the sentinel pits) |
+| trunks baked into the payload | **1333** |
+| what the runtime filter still changes | **6 of 72,062 cells**, largest correction 4.04 m — int16-centimetre quantisation, not bad data |
+
+`tests/forest-collision.test.js` asserts both halves of that: the baked grid arrives with no pits and
+no spikes, and the runtime cleaner is still able to fix a dirty one (a synthetic grid with a 45 m
+canopy spike, a 45 m trunk-base hole and a sentinel cell comes back clean, with untouched ground left
+byte-exact). The cleaner is now a safety net, not the load-bearing fix.
+
 The filter is *relative* (median absolute deviation of the 8 neighbours), which is what keeps real
 terrain: a genuine cliff has most of its neighbours spread across it too. The suite asserts a
 synthetic cliff survives, a smooth rolling grid is untouched, and an adjacent spike/hole *pair* is
@@ -168,16 +188,36 @@ both removed — a max-min spread test would let the two grant each other immuni
 The cleaner lives in `src/game/tracks/terrain-grid.js` and is **imported by both sides** (the
 pipeline re-exports it), so the bake and the runtime cannot disagree about what a spike is.
 
-Tree trunks, recovered from the decoded shipped GLB by clustering trunk-atlas vertices on a 2.4 m
-XZ grid:
+Tree trunks. The re-baked payload carries them, so the game reads `terrain.trunks`
+(`[x, z, radius, baseY]`) instead of recovering them from the instanced scene:
 
-| | |
+| baked trunks (shipped path) | |
 | --- | --- |
-| trunks found | **128** (137 at 3.2 m, 73 at 1.2 m) in ~1 ms |
-| radius min / median / max | 0.39 / **0.54** / 1.16 m |
-| collider height min / median / max | 7.9 / **12.4** / 18.0 m |
-| inside the Free Roam extent | 128 of 128 |
-| static bodies (24 m tiles) | **56**, holding 128 cannon `Cylinder` shapes |
+| in the payload | **1333** |
+| dropped as road artifacts (within 4 m of the centreline) | 41 |
+| colliders built | **1292** — all of them, under the 2000 ceiling |
+| radius min / median / max | 0.17 / **0.50** / 1.19 m |
+| collider height min / median / max | 5.2 / **6.2** / 14.5 m |
+| static bodies (24 m tiles) | **134**, holding 1292 cannon `Cylinder` shapes, built in 42 ms |
+| coverage | 361 m × 295 m of the 496 m × 518 m map, against a trail that only runs 162 m × 38 m |
+
+`MAX_TRUNK_COLLIDERS` was 700 while the runtime could only derive 128 trunks from the scene; with
+1292 usable it would have discarded 46% of the forest and left tree collision as a 60 m band beside
+the road — which Free Roam, being the whole map, does not want. Measured on the real payload
+(600 steps + 2400 wheel rays, SAPBroadphase, heightfield + car + trunks):
+
+| | bodies / cylinders | ms per step |
+| --- | --- | --- |
+| capped at the 700 nearest the road | 67 / 700 | 0.291 |
+| all 1292 usable trunks | 134 / 1292 | **0.295** (+1.3%) |
+
+So the ceiling is now 2000 — a guard against a future source shipping tens of thousands of trunk
+samples, not a budget this map spends.
+
+The scene-derived path is still there for payloads that predate the bake, recovering trunks from the
+decoded GLB by clustering trunk-atlas vertices on a 2.4 m XZ grid: **128** trunks (radius
+0.39 / 0.54 / 1.16 m, collider height 7.9 / 12.4 / 18.0 m) in ~1 ms, → **56** tile bodies.
+`terrain.trunks` decides which path runs, and `trunksFrom` reports it (`baked` / `scene`).
 
 Trunks are grouped into tiles rather than one body each because every wheel raycast tests each
 body's AABB. A trunk standing inside the road corridor is dropped as a bake artifact, and each
@@ -215,20 +255,119 @@ height and a 0.19 m rim; `darkInterior` is off. A real wheel node is rescaled to
 radius (measured in the pivot's own frame, clamped 0.55–1.7×), so the correction works whether the
 wheel is a node, a material match or procedural.
 
-## What must land via CI
+## What landed via CI
 
-Two fixes are code/config changes that only take effect when the asset pipeline re-runs, and the
-source host is not reachable from this sandbox:
+Two of these fixes are code/config changes that only take effect when the asset pipeline re-runs, and
+the source host (`files.catbox.moe`) is not reachable from the sandbox. The push of `0cbb8cb`
+triggered the pipeline itself — `.github/workflows/assets-pipeline.yml` watches `scripts/assets/**`,
+`src/game/**` and `docs/**` — and it did the work:
 
-1. **`public/tracks/forest-dirt-trail.terrain.json`** — re-baking with the ground-only
-   classification, the shared outlier filter and `extractTrunks()` writes `trunks`,
-   `groundMaterials` / `excludedMaterials` and `stats.{spikes,holes,filled,unreachable,trunks}`.
-   Until then the runtime filter and the scene-derived trunk list carry the load, which is exactly
-   what they were built to do.
-2. **`public/models/sikandar-suv.glb`** — re-encoding at q85.
+| | |
+| --- | --- |
+| workflow | `Asset pipeline` (`.github/workflows/assets-pipeline.yml`) |
+| run | **`38798486879`**, triggered by `push` on `arena/9c4cc4fa-maxmotors`, **completed / success**, 1 m 40 s |
+| output commit | **`ad7ae39`** `chore(assets): pipeline output (build) [skip ci]`, pushed by `maxmotors-asset-bot` to the *same* branch |
+| landed before the merge PR? | **yes** — the bot commit is on the branch, so the PR carries the re-baked assets |
 
-`npm run assets:pipeline` runs both; the workflow commits the result and its log to
-`assets/reports/pipeline.log`.
+1. **`public/tracks/forest-dirt-trail.terrain.json` — re-baked.** `[optimize] track ground: 42,811 of
+   149,290 triangles are ground (12 materials); excluded 14; trunks 1333`, then `terrain: road 82 pts,
+   half-width 12.04 m, coverage 1.86%, grid 263x274 @ 2.00 m, offset -162.45, outliers 8 spikes /
+   14 holes removed, holes filled 63917 (+9663 unreachable), trunks 1333`. The payload now carries
+   `trunks`, `groundMaterials` / `excludedMaterials` and
+   `stats.{spikes,holes,filled,unreachable,trunks}` — measured in section 7 above.
+2. **`public/models/sikandar-suv.glb` at q85 — applied, and a no-op.** The run logged
+   `textures 1.4 MB @2048px q85` and the manifest now records `"textureQuality": 85`, but the GLB came
+   out **byte-identical** (it is not in the bot commit at all) and the material audit moved by ≤ 0.01
+   mean delta, which is software-render nondeterminism. `assets/reports/sikandar-suv.textures.json`
+   says why: all ten textures this car ships are *already* WebP at 128–1024 px, so
+   `compressTextures` re-encodes them to something **larger** than the source and its
+   `if (encoded.byteLength < image.byteLength)` guard keeps the original bytes. The SUV's softness is
+   a source-resolution limit, not an encode-quality one — and its exterior paint has no map at all
+   (the ten shipped textures are wheel, steering wheel, lights and interior). The knob stays at 85
+   with that finding recorded in `scripts/assets/config.mjs`; a sharper SUV needs a re-export.
+
+The two `.glb` files did not change in that run — the optimization is deterministic and only the
+terrain/report data moved. `npm run assets:pipeline` reproduces it locally where the source host is
+reachable; the log always lands in `assets/reports/pipeline.log`.
+
+## Pre-merge verification: the four open items
+
+Everything below was checked against the repository and the CI run, not against memory.
+
+### 1 — Horn and headlights: implemented, nothing deferred
+
+| | where |
+| --- | --- |
+| `H` horn (held) | `input-controller.js` `HORN_KEY = 'KeyH'` — tracked separately from the driving input, so it sounds while steering or braking, and reported as `read().horn` |
+| horn on touch | `<button data-control="horn">` in the feature pad → `updateTouchState()` → `touch.horn` → the same `read().horn` |
+| horn audio | `game.js:476,520` → `audio.setHorn()`; `audio.js` decodes `horn.wav` from `engine.index.json`'s `effects` into gain → analyser → destination and exposes `hornLevel` (RMS) so it is measurable |
+| `L` headlights | `ACTION_KEYS` `KeyL → 'lights'` → `game.toggleHeadlights()` / `headlightsOn` → `main.js:348` drives `#lights-indicator` (`◐ LIGHTS`) in the telemetry strip |
+| measured | M2.5 acceptance, step 2: horn analyser RMS **0.206 / 0.207**, lights on/off screenshots (`docs/acceptance/m2.5/`) |
+
+Both survived the M2.6 rewrite of `input-controller.js` (which added the gear gate and drift) and are
+listed in the README controls. No code comment or docs caveat is owed.
+
+### 2 — Bonnet / doors: the inspect-report node check, recorded
+
+The decision lives in the header of `src/game/car-openables.js`, and was re-verified here against the
+**shipped GLBs' node tables** (parsed straight out of the binary JSON chunk), not just the source
+trees in `assets/reports/*.tree.txt`:
+
+| car | nodes in the shipped GLB | baked `openables` | `O` | `B` |
+| --- | --- | --- | --- | --- |
+| Aurora V12 (131 nodes) | `detach_door_L_60_63`, `detach_door_R_60_67` (+ their mesh children). **No `detach_trunk_*` node**, no bonnet/hood node | 2 scissor doors | opens both | returns `null` → toast |
+| Sikandar SUV (233 nodes) | `door_lf/rf/lr/rr`, `boot`, `Rear_Door`, `int_door_*` trim. No bonnet/hood node | 4 swing doors + boot | 4 doors | opens the **boot** |
+
+- `toggle('bonnet')` groups *everything that is not a door*, so `B` is bonnet-then-boot: it works on
+  the SUV, and on the Aurora `group('bonnet')` is empty → `toggle` returns `null` →
+  `main.js:350` shows *"This car has no separately modelled bonnet or boot."* Nothing is faked.
+- The Aurora's `detach_trunk_50_85` **does** exist in the source and matches
+  `OPENABLE_PATTERNS` (`/^detach_trunk_\d+_\d+$/i`), but it does not survive optimization as its own
+  node — `collectOpenables()` requires mesh nodes under the node, and the shipped GLB has none. That
+  is a pipeline/model question, not a runtime one: logged as an M2.7 candidate (re-export or preserve
+  the trunk node through the strip), and until then the honest answer is the toast.
+- Manifests that predate the `openables` field fall back to `detectPlans()` at runtime — the same
+  `openableKind()` patterns and the same `planOpenable()` hinges — so an old payload still opens what
+  it has.
+
+### 3 — Material-fidelity side-by-sides: committed for both cars
+
+`scripts/assets/render-compare.mjs` (workflow step *"Material audit (source vs optimized vs in-game,
+same HDRI)"*) renders **source vs optimized vs in-game** from three views under one HDRI and writes
+`assets/reports/<car>.compare.png` + `.compare.json`. Both are committed, and both were regenerated by
+run `38798486879`:
+
+| car | view | silhouette IoU (optimized / in-game) | mean Δ 0-255 (optimized / in-game) |
+| --- | --- | --- | --- |
+| Aurora V12 | front34 | 0.9647 / 0.9644 | 12.35 / 29.77 |
+| | rear34 | 0.9672 / 0.9664 | 8.92 / 26.92 |
+| | side | 0.9914 / 0.9900 | 8.89 / 25.25 |
+| Sikandar SUV | front34 | 0.9781 / 0.9781 | 20.86 / 29.38 |
+| | rear34 | 0.9840 / 0.9840 | 16.07 / 24.74 |
+| | side | 0.9419 / 0.9419 | 14.35 / 23.22 |
+
+Silhouette is preserved to ≥ 0.94 IoU on every view; the in-game Δ is higher than the optimized Δ
+because it adds the scene's lighting and tone mapping on top of the material change. Alongside them:
+`<car>.textures.png` (the source atlas sheet), `<car>.shipped-textures.png` (what actually ships),
+`.side.png` / `.top.png`, and for the forest `.map.png` / `.height.png` /
+`.chase-{before,after}-<car>.png`. The SUV's reduction is recorded as `tris 1,354,283 → 95,469`,
+`materials 43 → 34`.
+
+The SUV q85 re-encode is item 2 of *What landed via CI* above: applied, byte-identical result, and the
+reason is in `sikandar-suv.textures.json`.
+
+### 4 — The pipeline run and the SSAO hotfix
+
+Covered above: run `38798486879` (push, success) → bot commit `ad7ae39` already on
+`arena/9c4cc4fa-maxmotors`, so the terrain re-bake lands **before** the merge PR.
+
+The SSAO post-chain hotfix is in this branch's history: `tests/post-chain.test.js` was added by
+`01f5122` *"fix(graphics): the desktop frame was SSAO multiplied over a black buffer"*, merged to
+`main` in PR #4, and `gh api repos/amitvalmiki123/MaxMotors/compare/01f5122...ad7ae39` returns
+`status: ahead, ahead_by: 23, behind_by: 0` — i.e. the hotfix is an **ancestor** of this branch head.
+The test passes in this tree and pins the chain to
+`RenderPass → SSAOPass → UnrealBloomPass → ShaderPass → OutputPass`, asserting
+`chain[0] === 'RenderPass'` ("SSAOPass must never be the first pass").
 
 ## Checklist for the browser pass
 
@@ -244,4 +383,5 @@ Things that cannot be evidenced headlessly:
 - [ ] Orbit while driving, drag to a three-quarter view, take a corner: the car stays framed
 - [ ] Cockpit in the Aurora: eyes above the dash, a small low wheel, a dark roof — no sky
 - [ ] Forest: the car is not thrown by the surface; a tree stops it; Free Roam turns you back softly at the map edge
-- [ ] SUV textures at q85 after the pipeline re-run
+- [ ] SUV cockpit textures: the pipeline confirmed q85 changes nothing (its maps are the source's own
+      ≤ 1024 px WebP), so judge them as they are — acceptable close-up, or an M2.7 re-export request

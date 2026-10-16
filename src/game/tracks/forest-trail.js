@@ -59,6 +59,18 @@ const DEFAULT_MANIFEST_URL = '/tracks/forest-dirt-trail.manifest.json';
  */
 const MAX_CORRIDOR_HALF_WIDTH = 13.5;
 const MIN_CORRIDOR_HALF_WIDTH = 6;
+/**
+ * Ceiling on trunk colliders, so a future source that ships tens of thousands of
+ * trunk samples cannot flood the broadphase. It is a ceiling, not a target: the
+ * baked forest payload has 1333 trunks, 1292 of them clear of the road, and all
+ * of them are used. Measured on that real payload (600 steps + 2400 wheel rays),
+ * going from the old 700-trunk cap to all 1292 - 67 to 134 tile bodies, 700 to
+ * 1292 cylinders - costs +1.3% per step, and tree collision then reaches 148 m
+ * off the trail instead of 60 m. Free Roam is the whole map, so the trees have to
+ * be solid across it, not just in a band beside the road.
+ */
+export const MAX_TRUNK_COLLIDERS = 2000;
+
 /** Free Roam keeps this much of the heightfield edge as a soft margin. */
 const FREE_ROAM_EDGE_MARGIN = 14;
 
@@ -410,14 +422,13 @@ async function loadSharedAssets({ quality, onStatus, manifestUrl }) {
     const roadClearance = Math.min(4, corridor * 0.35);
     const usable = trunks.filter((trunk) => pathIndexer.nearest(trunk.x, trunk.z).distance > roadClearance);
 
-    // Cap the collider count: the trees nearest the road are the ones worth
-    // hitting, and every extra body costs the wheel raycasts an AABB test.
-    const MAX_TRUNK_BODIES = 700;
-    const colliders = usable.length > MAX_TRUNK_BODIES
+    // Only a ceiling, not a target: the trees nearest the road are kept first if
+    // a future source ships more trunks than this. See MAX_TRUNK_COLLIDERS.
+    const colliders = usable.length > MAX_TRUNK_COLLIDERS
       ? usable
         .map((trunk) => ({ trunk, distance: pathIndexer.nearest(trunk.x, trunk.z).distance }))
         .sort((a, b) => a.distance - b.distance)
-        .slice(0, MAX_TRUNK_BODIES)
+        .slice(0, MAX_TRUNK_COLLIDERS)
         .map((entry) => entry.trunk)
       : usable;
 
