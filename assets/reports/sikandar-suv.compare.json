@@ -24,7 +24,7 @@
     "rear34": {
       "optimized": {
         "iou": 0.984,
-        "meanDelta": 16.07,
+        "meanDelta": 16.06,
         "coverage": [
           0.1458,
           0.144
@@ -32,7 +32,7 @@
       },
       "inGame": {
         "iou": 0.984,
-        "meanDelta": 24.74,
+        "meanDelta": 24.73,
         "coverage": [
           0.1458,
           0.144
@@ -42,7 +42,7 @@
     "side": {
       "optimized": {
         "iou": 0.9419,
-        "meanDelta": 14.35,
+        "meanDelta": 14.34,
         "coverage": [
           0.1388,
           0.1417
@@ -50,7 +50,7 @@
       },
       "inGame": {
         "iou": 0.9419,
-        "meanDelta": 23.22,
+        "meanDelta": 23.21,
         "coverage": [
           0.1388,
           0.1417
@@ -130,5 +130,5 @@
     "chrome": "Chrome/155.0.8059.39",
     "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
   },
-  "generatedAt": "2026-10-15T20:02:16.044Z"
+  "generatedAt": "2026-10-16T06:19:18.182Z"
 }
