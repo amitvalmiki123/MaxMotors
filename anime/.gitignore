@@ -2,3 +2,5 @@ _work/
 _archive/
 __pycache__/
 *.pyc
+out/*_preview.mp4
+out/*_full.mp4
