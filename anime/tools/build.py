@@ -29,6 +29,13 @@ FX = {
     "ayaan": "asetrate=44100*1.1225,aresample=44100,atempo=0.8909",   # +2 st
 }
 
+try:
+    import animate
+    import scenes_hybrid
+    HYBRID = scenes_hybrid.SCENES
+except Exception:
+    HYBRID = {}
+
 # (id, target seconds, ambience, [images], [(clip, fx|None)])
 SCENES = [
     ("title", 6, None, ["cards/title.png"], []),
@@ -175,32 +182,43 @@ def build(mode):
     for sid, tgt, amb, imgs, clips in scenes:
         print(f"== {sid} target {tgt}s ==", flush=True)
         dwav = os.path.join(WORK, f"{sid}_dlg.wav")
-        if clips:
-            ws = []
-            for i, (c, fx) in enumerate(clips):
-                d = os.path.join(WORK, f"{sid}_c{i}.wav")
-                clip_wav(c, fx, d)
-                ws.append(d)
-            dialogue_track(ws, dwav)
-        else:
-            silence(dwav, 1.0)
-        # plan segments: ~10-13s each, >=1 per image, cycle motion modes
-        n_img = len(imgs)
-        per_img = max(1, -(-tgt // (n_img * 12)))          # ceil(tgt/(n*12))
-        segs = []
-        mm = sum(map(ord, sid)) % 2
-        for i, img in enumerate(imgs):
-            for k in range(per_img):
-                segs.append((img, mm))
-                mm += 1
-        base = tgt / len(segs)
-        vparts = []
-        for i, (img, m) in enumerate(segs):
-            p = os.path.join(WORK, f"{sid}_v{i}.mp4")
-            segment(img, base, m, p)
-            vparts.append(p)
-        vcat = os.path.join(WORK, f"{sid}_v.mp4")
-        concat(vparts, vcat)
+        hybrid = False
+        if sid in HYBRID:
+            shots, hclips = HYBRID[sid]
+            ok = all(os.path.exists(os.path.join(
+                ROOT if sh["bg"].startswith("assets/") else SB, sh["bg"]))
+                for sh in shots)
+            if ok:
+                vcat, dwav, total = animate.render_scene(sid, shots, hclips)
+                print(f"   hybrid animated {total:.1f}s", flush=True)
+                hybrid = True
+        if not hybrid:
+            if clips:
+                ws = []
+                for i, (c, fx) in enumerate(clips):
+                    d = os.path.join(WORK, f"{sid}_c{i}.wav")
+                    clip_wav(c, fx, d)
+                    ws.append(d)
+                dialogue_track(ws, dwav)
+            else:
+                silence(dwav, 1.0)
+            # plan segments: ~10-13s each, >=1 per image, cycle motion modes
+            n_img = len(imgs)
+            per_img = max(1, -(-tgt // (n_img * 12)))          # ceil(tgt/(n*12))
+            segs = []
+            mm = sum(map(ord, sid)) % 2
+            for i, img in enumerate(imgs):
+                for k in range(per_img):
+                    segs.append((img, mm))
+                    mm += 1
+            base = tgt / len(segs)
+            vparts = []
+            for i, (img, m) in enumerate(segs):
+                p = os.path.join(WORK, f"{sid}_v{i}.mp4")
+                segment(img, base, m, p)
+                vparts.append(p)
+            vcat = os.path.join(WORK, f"{sid}_v.mp4")
+            concat(vparts, vcat)
         # audio: dialogue + ambience loop, padded to target
         ambf = os.path.join(AUD, amb) if amb else None
         scmp4 = os.path.join(WORK, f"{sid}_scene.mp4")

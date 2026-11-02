@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+"""Hybrid shot lists for Scenes 1-2 (puppet acting + plate mood shots)."""
+
+S1_SHOTS = [
+    dict(kind="plate", bg="s01_1_school_rain.jpg", vfx=["rain"], mode=0, dur=10),
+    dict(kind="puppet", bg="assets/bg_rooftop_rain.png", vfx=["rain"], dur=14,
+         actors=[dict(char="amito", path=[(0, 0.06), (3.5, 0.52)], smiles=[(4.5, 14)])]),
+    dict(kind="plate", bg="s01_2_roof_umbrella.jpg", vfx=["rain"], mode=0, dur=12),
+    dict(kind="plate", bg="s01_3_sketch_close.jpg", vfx=["rain"], mode=3, dur=10),
+    dict(kind="puppet", bg="assets/bg_rooftop_rain.png", vfx=["rain"], dur=12,
+         actors=[dict(char="amito", path=[(0, 0.52)], smiles=[(1, 12)])]),
+    dict(kind="plate", bg="s01_4_amito_face.jpg", vfx=["rain"], mode=1, dur=12),
+    dict(kind="plate", bg="s01_5_stairs.jpg", vfx=["rain"], mode=2, dur=10),
+    dict(kind="puppet", bg="assets/bg_rooftop_rain.png", vfx=["rain"], dur=8,
+         actors=[dict(char="amito", path=[(0, 0.52), (6.5, 1.15)])]),
+    dict(kind="plate", bg="s01_1_school_rain.jpg", vfx=["rain"], mode=1, dur=12),
+    dict(kind="plate", bg="s01_2_roof_umbrella.jpg", vfx=["rain"], mode=3, dur=14),
+]
+S1_CLIPS = [("01_amito_vo_open.mp3", 2, 1.0)]
+
+S2_SHOTS = [
+    dict(kind="plate", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], mode=2, dur=14),
+    dict(kind="puppet", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], dur=8,
+         actors=[dict(char="punumi", path=[(0, -0.10), (2.5, 0.40)], talks=[(2.7, 4.2)]),
+                 dict(char="amito", path=[(0, 0.74)])]),
+    dict(kind="puppet", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], dur=6,
+         actors=[dict(char="punumi", path=[(0, 0.40)]),
+                 dict(char="amito", path=[(0, 0.74)])]),
+    dict(kind="puppet", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], dur=9,
+         actors=[dict(char="punumi", path=[(0, 0.40), (2.0, 0.60)], talks=[(2.4, 5.4)]),
+                 dict(char="amito", path=[(0, 0.74)])]),
+    dict(kind="puppet", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], dur=5,
+         actors=[dict(char="amito", path=[(0, 0.74)], talks=[(0.8, 2.1)]),
+                 dict(char="punumi", path=[(0, 0.60)], smiles=[(0, 5)])]),
+    dict(kind="puppet", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], dur=10,
+         actors=[dict(char="punumi", path=[(0, 0.60)], talks=[(0.6, 5.5)]),
+                 dict(char="amito", path=[(0, 0.74)])]),
+    dict(kind="plate", bg="s02_2_handshake.jpg", vfx=["dust"], mode=0, dur=10),
+    dict(kind="plate", bg="s02_3_sketchbook_fall.jpg", vfx=["dust"], mode=3, dur=6),
+    dict(kind="plate", bg="s02_4_page_close.jpg", vfx=["dust"], mode=1, dur=9),
+    dict(kind="puppet", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], dur=4,
+         actors=[dict(char="amito", path=[(0, 0.74)], talks=[(0.4, 1.9)]),
+                 dict(char="punumi", path=[(0, 0.60)])]),
+    dict(kind="puppet", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], dur=5,
+         actors=[dict(char="punumi", path=[(0, 0.60)], talks=[(0.5, 2.7)]),
+                 dict(char="amito", path=[(0, 0.74)])]),
+    dict(kind="puppet", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], dur=5,
+         actors=[dict(char="amito", path=[(0, 0.74)], talks=[(0.8, 2.1)]),
+                 dict(char="punumi", path=[(0, 0.60)])]),
+    dict(kind="plate", bg="s02_5_backbench.jpg", vfx=["dust", "rays"], mode=0, dur=10),
+    dict(kind="puppet", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], dur=18,
+         actors=[dict(char="punumi", path=[(0, 0.60)], smiles=[(0, 18)]),
+                 dict(char="amito", path=[(0, 0.74)], smiles=[(2, 18)])]),
+    dict(kind="plate", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], mode=1, dur=18),
+    dict(kind="plate", bg="s02_1_door.jpg", vfx=["dust"], mode=1, dur=10),
+    dict(kind="puppet", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], dur=16,
+         actors=[dict(char="punumi", path=[(0, 0.60)], smiles=[(0, 16)]),
+                 dict(char="amito", path=[(0, 0.74)], smiles=[(1, 16)])]),
+    dict(kind="plate", bg="assets/bg_classroom_empty.png", vfx=["dust", "rays"], mode=3, dur=15),
+]
+S2_CLIPS = [
+    ("02_punumi_sorry.mp3", 1, 2.7),
+    ("03_teacher.mp3", 2, 0.5, "teach"),
+    ("04_punumi_hi.mp3", 3, 2.4),
+    ("05_amito_name.mp3", 4, 0.8),
+    ("06_punumi_mrquiet.mp3", 5, 0.6),
+    ("07_punumi_sketch.mp3", 8, 0.6),
+    ("08_amito_kuchnahi.mp3", 9, 0.4),
+    ("09_punumi_kiska.mp3", 10, 0.5),
+    ("10_amito_patannahi.mp3", 11, 0.8),
+]
+
+SCENES = {"s1": (S1_SHOTS, S1_CLIPS), "s2": (S2_SHOTS, S2_CLIPS)}
